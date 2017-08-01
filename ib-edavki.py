@@ -8,6 +8,7 @@ import datetime
 import os
 import glob
 import copy
+import argparse
 from pprint import pprint
 
 
@@ -17,18 +18,18 @@ derivateAssets = ['CFD']
 ignoreAssets = ['CASH']
 
 
-if len(sys.argv) < 2:
-    sys.exit('Usage:\n' + sys.argv[0] + ' <ib-xml> [report-year] [test]')
 
-reportYear = datetime.date.today().year
-if len(sys.argv) >= 3:
-    reportYear = sys.argv[2]
+parser = argparse.ArgumentParser()
+parser.add_argument("ibXmlFile", metavar="ib-xml-file", help="InteractiveBrokers XML ouput (see README.md on how to generate one)")
+parser.add_argument("-y", metavar="report-year", type=int, default=datetime.date.today().year, help="Report will be generated for the provided calendar year (defaults to " + str(datetime.date.today().year) + ")")
+parser.add_argument("-t", help="Change trade dates to previous year (see README.md)", action="store_true")
+args = parser.parse_args()
+ibXmlFilename = args.ibXmlFile
+reportYear = str(args.y)
+test = args.t
 
-test = False
-if len(sys.argv) >= 4:
-    if sys.argv[3] == 'test':
-        test = True
-        testYear = datetime.date.today().year - 1
+if test == True:
+    testYear = datetime.date.today().year - 1
 
 ''' Creating daily exchange rates object '''
 bsRateXmlFilename = 'bsrate-' + str(datetime.date.today().year) + str(datetime.date.today().month) + str(datetime.date.today().day) + '.xml'
@@ -51,7 +52,6 @@ for d in bsRateXml:
 
 
 ''' Parsing IB XML '''
-ibXmlFilename = sys.argv[1]
 ibXml = xml.etree.ElementTree.parse(ibXmlFilename).getroot()
 ibTrades = ibXml[0][0].find('Trades')
 '''ibPositions = ibXml[0][0].find('OpenPositions')'''

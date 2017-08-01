@@ -21,20 +21,19 @@ Poleg pretvorbe vrednosti skripta naredi še konverzijo iz tujih valut v EUR po 
 Na računalniku imej **python 2.x**.
 
 ```
-./ib-furs.py <ib-xml-file> [year] [test]
+./ib-edavki.py [-h] [-y report-year] [-t] ib-xml-file
 ```
 
 Skripta po uspešni konverziji v lokalnem direktoriju ustvari dve datoteki:
 * normal.xml (datoteka namenjena uvozu v obrazec Doh-KDVP - Napoved za odmero dohodnine od dobička od odsvojitve vrednostnih papirjev in drugih deležev ter investicijskih kuponov)
 * derivate.xml (datoteka namenjena uvozu v obrazec D-IFI - Napoved za odmero davka od dobička od odsvojitve izvedenih finančnih instrumentov)
 
-#### Year (opcijsko)
+#### -y <leto> (opcijsko)
 Leto za katerega se izdelajo popisni listi. Privzeto trenutno leto.
 
-#### Test (opcijsko)
-eDavki ne omogočajo dodajanje popisnih listov za tekoče leto, temveč le za preteklo.
-Parameter *test* spremeni datume vseh poslov v preteklo leto, kar omogoča uvoz popisnih listov in **informativni izračun davka** že za tekoče leto.
-Konverzija iz tuje valute v EUR je kljub temu opravljena na pravi datum posla.
+#### -t (opcijsko)
+eDavki ne omogočajo dodajanje popisnih listov za tekoče leto, temveč le za preteklo. Parameter *-t* spremeni datume vseh poslov v preteklo leto, kar omogoča uvoz popisnih listov in **informativni izračun davka** že za tekoče leto. Konverzija iz tuje valute v EUR je kljub temu opravljena na pravi datum posla.
+**Pozor: namenjeno informativnemu izračunu, ne oddaji obrazca!**
 
 ### Uvoz v eDavke
 1. V meniju **Dokumenti > Nov dokument** izberi obrazec Doh-KDVP (za trgovanje z vrednostnimi papirji na dolgo) ali D-IFI (za trgovanje z vrednostnimi papirji na kratko in trgovanje z izvedenimi finančnimi inštrumenti).
