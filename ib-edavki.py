@@ -83,7 +83,8 @@ for ibTrade in ibTrades:
             'buySell': ibTrade.attrib['buySell'],
             'tradeDate': ibTrade.attrib['tradeDate'],
             'tradeTime': ibTrade.attrib['tradeTime'],
-            'transactionID': ibTrade.attrib['transactionID']
+            'transactionID': ibTrade.attrib['transactionID'],
+            'ibOrderID': ibTrade.attrib['ibOrderID']
         }
         if ibTrade.attrib['description'] != '':
             trade['description'] = ibTrade.attrib['description'];
@@ -175,7 +176,7 @@ for symbol in yearTrades:
         tradeExists = False
         if symbol in mergedTrades:
             for previousTrade in mergedTrades[symbol]:
-                if previousTrade['transactionID'] == trade['transactionID']:
+                if previousTrade['ibOrderID'] == trade['ibOrderID']:
                     previousTrade['tradePrice'] = (previousTrade['quantity'] * previousTrade['tradePrice'] + trade['quantity'] * trade['tradePrice']) / (previousTrade['quantity'] + trade['quantity'])
                     previousTrade['quantity'] = previousTrade['quantity'] + trade['quantity']
                     tradeExists = True
