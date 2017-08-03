@@ -25,11 +25,11 @@ parser.add_argument("-y", metavar="report-year", type=int, default=datetime.date
 parser.add_argument("-t", help="Change trade dates to previous year (see README.md)", action="store_true")
 args = parser.parse_args()
 ibXmlFilename = args.ibXmlFile
-reportYear = str(args.y)
+reportYear = args.y
 test = args.t
 
 if test == True:
-    testYear = datetime.date.today().year - 1
+    testYearDiff = reportYear - datetime.date.today().year - 1
 
 ''' Creating daily exchange rates object '''
 bsRateXmlFilename = 'bsrate-' + str(datetime.date.today().year) + str(datetime.date.today().month) + str(datetime.date.today().day) + '.xml'
@@ -58,11 +58,11 @@ ibTrades = ibXml[0][0].find('Trades')
 ibFlexStatement = ibXml[0][0]
 
 if test == True:
-    statementStartDate = str(testYear) + '0101'
-    statementEndDate = str(testYear) + '1231'
+    statementStartDate = str(reportYear + testYearDiff) + '0101'
+    statementEndDate = str(reportYear + testYearDiff) + '1231'
 else:
-    statementStartDate = ibFlexStatement.attrib['fromDate']
-    statementEndDate = ibFlexStatement.attrib['toDate']
+    statementStartDate = str(reportYear) + '0101'
+    statementEndDate = str(reportYear) + '1231'
 
 
 
@@ -155,7 +155,7 @@ for symbol in trades:
 yearTrades = {}
 for symbol in trades:
     for trade in trades[symbol]:
-        if trade['tradeDate'][0:4] == reportYear and trade['positionMove'] == 'close':
+        if trade['tradeDate'][0:4] == str(reportYear) and trade['positionMove'] == 'close':
             if symbol not in yearTrades:
                 yearTrades[symbol] = []
             for xtrade in trades[symbol]:
@@ -266,21 +266,21 @@ for symbol in normalTrades:
     for trade in normalTrades[symbol]:
         n += 1
         if test == True:
-            tradeYear = str(testYear)
+            tradeYear = int(trade['tradeDate'][0:4]) + testYearDiff
         else:
-            tradeYear = str(trade['tradeDate'][0:4])
+            tradeYear = int(trade['tradeDate'][0:4])
         Row = xml.etree.ElementTree.SubElement(Securities, "Row")
         ID = xml.etree.ElementTree.SubElement(Row, "ID").text = str(n)
         if trade['quantity'] > 0:
             PurchaseSale = xml.etree.ElementTree.SubElement(Row, "Purchase")
-            F1 = xml.etree.ElementTree.SubElement(PurchaseSale, "F1").text = tradeYear + '-' + trade['tradeDate'][4:6]+ '-' + trade['tradeDate'][6:8]
+            F1 = xml.etree.ElementTree.SubElement(PurchaseSale, "F1").text = str(tradeYear) + '-' + trade['tradeDate'][4:6]+ '-' + trade['tradeDate'][6:8]
             F2 = xml.etree.ElementTree.SubElement(PurchaseSale, "F2").text = 'B'
             F3 = xml.etree.ElementTree.SubElement(PurchaseSale, "F3").text = '{0:.4f}'.format(trade['quantity'])
             F4 = xml.etree.ElementTree.SubElement(PurchaseSale, "F4").text = '{0:.4f}'.format(trade['tradePriceEUR'])
             F5 = xml.etree.ElementTree.SubElement(PurchaseSale, "F5").text = '0.0000'
         else:
             PurchaseSale = xml.etree.ElementTree.SubElement(Row, "Sale")
-            F6 = xml.etree.ElementTree.SubElement(PurchaseSale, "F6").text = tradeYear + '-' + trade['tradeDate'][4:6]+ '-' + trade['tradeDate'][6:8]
+            F6 = xml.etree.ElementTree.SubElement(PurchaseSale, "F6").text = str(tradeYear) + '-' + trade['tradeDate'][4:6]+ '-' + trade['tradeDate'][6:8]
             F7 = xml.etree.ElementTree.SubElement(PurchaseSale, "F7").text = '{0:.4f}'.format(-trade['quantity'])
             F9 = xml.etree.ElementTree.SubElement(PurchaseSale, "F9").text = '{0:.4f}'.format(trade['tradePriceEUR'])
         F8Value += trade['quantity']
@@ -337,20 +337,20 @@ for symbol in derivateTrades:
     F8Value = 0
     for trade in derivateTrades[symbol]:
         if test == True:
-            tradeYear = str(testYear)
+            tradeYear = int(trade['tradeDate'][0:4]) + testYearDiff
         else:
-            tradeYear = str(trade['tradeDate'][0:4])
+            tradeYear = int(trade['tradeDate'][0:4])
         TSubItem = xml.etree.ElementTree.SubElement(TItem, "TSubItem")
         ItemId = xml.etree.ElementTree.SubElement(TSubItem, "ItemId").text = str(n)
         if trade['quantity'] > 0:
             PurchaseSale = xml.etree.ElementTree.SubElement(TSubItem, "Purchase")
-            F1 = xml.etree.ElementTree.SubElement(PurchaseSale, "F1").text = tradeYear + '-' + trade['tradeDate'][4:6]+ '-' + trade['tradeDate'][6:8]
+            F1 = xml.etree.ElementTree.SubElement(PurchaseSale, "F1").text = str(tradeYear) + '-' + trade['tradeDate'][4:6]+ '-' + trade['tradeDate'][6:8]
             F2 = xml.etree.ElementTree.SubElement(PurchaseSale, "F2").text = 'A'
             F3 = xml.etree.ElementTree.SubElement(PurchaseSale, "F3").text = '{0:.4f}'.format(trade['quantity'])
             F4 = xml.etree.ElementTree.SubElement(PurchaseSale, "F4").text = '{0:.4f}'.format(trade['tradePriceEUR'])
         else:
             PurchaseSale = xml.etree.ElementTree.SubElement(TSubItem, "Sale")
-            F5 = xml.etree.ElementTree.SubElement(PurchaseSale, "F5").text = tradeYear + '-' + trade['tradeDate'][4:6]+ '-' + trade['tradeDate'][6:8]
+            F5 = xml.etree.ElementTree.SubElement(PurchaseSale, "F5").text = str(tradeYear) + '-' + trade['tradeDate'][4:6]+ '-' + trade['tradeDate'][6:8]
             F6 = xml.etree.ElementTree.SubElement(PurchaseSale, "F6").text = '{0:.4f}'.format(-trade['quantity'])
             F7 = xml.etree.ElementTree.SubElement(PurchaseSale, "F7").text = '{0:.4f}'.format(trade['tradePriceEUR'])
         F8Value += trade['quantity']
@@ -374,20 +374,20 @@ for symbol in shortTrades:
     F8Value = 0
     for trade in shortTrades[symbol]:
         if test == True:
-            tradeYear = str(testYear)
+            tradeYear = int(trade['tradeDate'][0:4]) + testYearDiff
         else:
-            tradeYear = str(trade['tradeDate'][0:4])
+            tradeYear = int(trade['tradeDate'][0:4])
         TShortSubItem = xml.etree.ElementTree.SubElement(TItem, "TShortSubItem")
         ItemId = xml.etree.ElementTree.SubElement(TShortSubItem, "ItemId").text = str(n)
         if trade['quantity'] > 0:
             PurchaseSale = xml.etree.ElementTree.SubElement(TShortSubItem, "Purchase")
-            F4 = xml.etree.ElementTree.SubElement(PurchaseSale, "F4").text = tradeYear + '-' + trade['tradeDate'][4:6]+ '-' + trade['tradeDate'][6:8]
+            F4 = xml.etree.ElementTree.SubElement(PurchaseSale, "F4").text = str(tradeYear) + '-' + trade['tradeDate'][4:6]+ '-' + trade['tradeDate'][6:8]
             F5 = xml.etree.ElementTree.SubElement(PurchaseSale, "F5").text = 'A'
             F6 = xml.etree.ElementTree.SubElement(PurchaseSale, "F6").text = '{0:.4f}'.format(trade['quantity'])
             F7 = xml.etree.ElementTree.SubElement(PurchaseSale, "F7").text = '{0:.4f}'.format(trade['tradePriceEUR'])
         else:
             PurchaseSale = xml.etree.ElementTree.SubElement(TShortSubItem, "Sale")
-            F1 = xml.etree.ElementTree.SubElement(PurchaseSale, "F1").text = tradeYear + '-' + trade['tradeDate'][4:6]+ '-' + trade['tradeDate'][6:8]
+            F1 = xml.etree.ElementTree.SubElement(PurchaseSale, "F1").text = str(tradeYear) + '-' + trade['tradeDate'][4:6]+ '-' + trade['tradeDate'][6:8]
             F2 = xml.etree.ElementTree.SubElement(PurchaseSale, "F2").text = '{0:.4f}'.format(-trade['quantity'])
             F3 = xml.etree.ElementTree.SubElement(PurchaseSale, "F3").text = '{0:.4f}'.format(trade['tradePriceEUR'])
         F8Value += trade['quantity']
