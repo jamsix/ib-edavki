@@ -287,7 +287,7 @@ for symbol in normalTrades:
         F8 = xml.etree.ElementTree.SubElement(Row, "F8").text = '{0:.4f}'.format(F8Value)
 
 tree = xml.etree.ElementTree.ElementTree(envelope)
-tree.write("normal.xml")
+tree.write("Doh-KDVP.xml")
 
 
 
@@ -394,4 +394,4 @@ for symbol in shortTrades:
         F8 = xml.etree.ElementTree.SubElement(TShortSubItem, "F8").text = '{0:.4f}'.format(F8Value)
 
 tree = xml.etree.ElementTree.ElementTree(envelope)
-tree.write("derivate.xml")
+tree.write("D-IFI.xml")

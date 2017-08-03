@@ -25,8 +25,8 @@ Na računalniku imej **python 2.x**.
 ```
 
 Skripta po uspešni konverziji v lokalnem direktoriju ustvari dve datoteki:
-* normal.xml (datoteka namenjena uvozu v obrazec Doh-KDVP - Napoved za odmero dohodnine od dobička od odsvojitve vrednostnih papirjev in drugih deležev ter investicijskih kuponov)
-* derivate.xml (datoteka namenjena uvozu v obrazec D-IFI - Napoved za odmero davka od dobička od odsvojitve izvedenih finančnih instrumentov)
+* Doh-KDVP.xml (datoteka namenjena uvozu v obrazec Doh-KDVP - Napoved za odmero dohodnine od dobička od odsvojitve vrednostnih papirjev in drugih deležev ter investicijskih kuponov)
+* D-IFI.xml (datoteka namenjena uvozu v obrazec D-IFI - Napoved za odmero davka od dobička od odsvojitve izvedenih finančnih instrumentov)
 
 #### -y <leto> (opcijsko)
 Leto za katerega se izdelajo popisni listi. Privzeto trenutno leto.
