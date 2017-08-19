@@ -14,7 +14,7 @@ from pprint import pprint
 
 bsRateXmlUrl = 'http://www.bsi.si/_data/tecajnice/dtecbs-l.xml';
 normalAssets = ['STK']
-derivateAssets = ['CFD']
+derivateAssets = ['CFD', 'OPT']
 ignoreAssets = ['CASH']
 
 
@@ -84,12 +84,16 @@ for ibTrade in ibTrades:
             'tradeDate': ibTrade.attrib['tradeDate'],
             'tradeTime': ibTrade.attrib['tradeTime'],
             'transactionID': ibTrade.attrib['transactionID'],
-            'ibOrderID': ibTrade.attrib['ibOrderID']
+            'ibOrderID': ibTrade.attrib['ibOrderID'],
+            'openCloseIndicator': ibTrade.attrib['openCloseIndicator']
         }
         if ibTrade.attrib['description'] != '':
             trade['description'] = ibTrade.attrib['description'];
         if ibTrade.attrib['isin'] != '':
             trade['isin'] = ibTrade.attrib['isin'];
+        ''' Options have multipliers, i.e. a quantity of 1 with tradePrice 3 and multiplier 100 is actually an option for 100 stocks, worth 100 x 3 = 300 '''
+        if 'multiplier' in ibTrade.attrib:
+            trade['tradePrice'] = float(ibTrade.attrib['tradePrice']) * float(ibTrade.attrib['multiplier'])
         symbol = ibTrade.attrib['symbol']
         if symbol not in trades:
             trades[symbol] = []
@@ -127,16 +131,9 @@ for symbol in trades:
                 sys.exit('Error: There is no exchange rate for ' + str(date))
             trade['tradePriceEUR'] = trade['tradePrice'] / rate
 
-        if 'openTransactionIds' in trade and len(trade['openTransactionIds']) > 0:
-            ''' Closing position '''
-            trade['positionMove'] = 'close'
-        else:
-            ''' Opening position '''
-            trade['positionMove'] = 'open'
-
         if (
-                (trade['positionMove'] == 'open' and trade['quantity'] > 0) or
-                (trade['positionMove'] == 'close' and trade['quantity'] < 0)
+                (trade['openCloseIndicator'] == 'O' and trade['quantity'] > 0) or
+                (trade['openCloseIndicator'] == 'C' and trade['quantity'] < 0)
             ):
             ''' Long position '''
             trade['positionType'] = 'long'
@@ -155,7 +152,7 @@ for symbol in trades:
 yearTrades = {}
 for symbol in trades:
     for trade in trades[symbol]:
-        if trade['tradeDate'][0:4] == str(reportYear) and trade['positionMove'] == 'close':
+        if trade['tradeDate'][0:4] == str(reportYear) and trade['openCloseIndicator'] == 'C':
             if symbol not in yearTrades:
                 yearTrades[symbol] = []
             for xtrade in trades[symbol]:
@@ -324,12 +321,17 @@ for symbol in derivateTrades:
     if derivateTrades[symbol][0]['assetCategory'] == 'CFD':
         Type = xml.etree.ElementTree.SubElement(TItem, "Type").text = '02'
         TypeName = xml.etree.ElementTree.SubElement(TItem, "TypeName").text = 'financne pogodbe na razliko'
+    elif derivateTrades[symbol][0]['assetCategory'] == 'OPT':
+        Type = xml.etree.ElementTree.SubElement(TItem, "Type").text = '03'
+        TypeName = xml.etree.ElementTree.SubElement(TItem, "TypeName").text = 'opcija in certifikat'
     else:
         Type = xml.etree.ElementTree.SubElement(TItem, "Type").text = '04'
         TypeName = xml.etree.ElementTree.SubElement(TItem, "TypeName").text = 'drugo'
     if len(derivateTrades[symbol]) > 0 and 'description' in derivateTrades[symbol][0]:
         Name = xml.etree.ElementTree.SubElement(TItem, "Name").text = derivateTrades[symbol][0]['description']
-    Code = xml.etree.ElementTree.SubElement(TItem, "Code").text = symbol
+    if derivateTrades[symbol][0]['assetCategory'] != 'OPT':
+        ''' Option symbols are to long and not accepted by eDavki '''
+        Code = xml.etree.ElementTree.SubElement(TItem, "Code").text = symbol
     if len(derivateTrades[symbol]) > 0 and 'isin' in derivateTrades[symbol][0]:
         ISIN = xml.etree.ElementTree.SubElement(TItem, "ISIN").text = derivateTrades[symbol][0]['isin']
     HasForeignTax = xml.etree.ElementTree.SubElement(TItem, "HasForeignTax").text = 'false'
