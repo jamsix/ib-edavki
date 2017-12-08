@@ -10,6 +10,7 @@ import glob
 import copy
 import argparse
 from pprint import pprint
+from xml.dom import minidom
 
 
 bsRateXmlUrl = 'https://www.bsi.si/_data/tecajnice/dtecbs-l.xml';
@@ -283,8 +284,11 @@ for symbol in normalTrades:
         F8Value += trade['quantity']
         F8 = xml.etree.ElementTree.SubElement(Row, "F8").text = '{0:.4f}'.format(F8Value)
 
-tree = xml.etree.ElementTree.ElementTree(envelope)
-tree.write("Doh-KDVP.xml")
+
+xmlString = xml.etree.ElementTree.tostring(envelope)
+prettyXmlString = minidom.parseString(xmlString).toprettyxml(indent="\t")
+with open("Doh-KDVP.xml", "w") as f:
+    f.write(prettyXmlString.encode('utf-8'))
 
 
 
@@ -395,5 +399,7 @@ for symbol in shortTrades:
         F8Value += trade['quantity']
         F8 = xml.etree.ElementTree.SubElement(TShortSubItem, "F8").text = '{0:.4f}'.format(F8Value)
 
-tree = xml.etree.ElementTree.ElementTree(envelope)
-tree.write("D-IFI.xml")
+xmlString = xml.etree.ElementTree.tostring(envelope)
+prettyXmlString = minidom.parseString(xmlString).toprettyxml(indent="\t")
+with open("D-IFI.xml", "w") as f:
+    f.write(prettyXmlString.encode('utf-8'))
