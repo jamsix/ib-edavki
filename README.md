@@ -7,14 +7,19 @@ Poleg pretvorbe vrednosti skripta naredi še konverzijo iz tujih valut v EUR po 
 
 ### Izvoz poročila v platformi InteractiveBrokers
 
-1. V meniju **Reports > Activity > Flex Queries** odpri pogled **Activity Flex Queries**.
-1. Ustvari novo poizvedbo s klikom na gumb **Create New Flex Query**.
+1. V meniju **Reports** odpri **Flex Queries**
+1. Na desni strani ob **Custom Flex Queries** klikni ikono za konfiguracijo (Configure).
+1. V **Activity Flex Query Templates** klikni **+** (Create).
 1. Vpiši poljuben **Query Name**.
+1. Kot **Date Period** izberi **Custom Date Range**.
 1. Izberi najstarejši mogoč **From Date** in najnovejši mogoč **To Date**.
-1. V odseku **Trades** vse parametre iz **Fields Available** premakni v **Fields Included**. Pod **Level of Detail** označi **Executions** in **Closed lots**.
+1. Pod **Sections** klikni na **Trades**.
+1. Pod **Options** označi **Executions** in **Closed lots**.
+1. Odkljukaj vse parametre na seznamu.
 1. Vse ostale nastavitve pusti tako kot so.
-1. Na dnu klikni **Save Query**
-1. V pogledu pri novo narejenem reportu klikni **Run**, shrani XML.
+1. Na dnu klikni **Save**
+1. Na dnu klikni *Continue* in nato *Create*.
+1. V pogledu **Reports > Flex Queries** se je pojavil novo narejeni report. Klikni **Run**, shrani XML.
 
 ### Konverzija IB poročila v popisne liste primerne za uvoz v eDavke
 
