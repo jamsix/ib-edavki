@@ -12,7 +12,7 @@ import argparse
 from pprint import pprint
 
 
-bsRateXmlUrl = 'http://www.bsi.si/_data/tecajnice/dtecbs-l.xml';
+bsRateXmlUrl = 'https://www.bsi.si/_data/tecajnice/dtecbs-l.xml';
 normalAssets = ['STK']
 derivateAssets = ['CFD', 'OPT']
 ignoreAssets = ['CASH']
@@ -36,7 +36,7 @@ bsRateXmlFilename = 'bsrate-' + str(datetime.date.today().year) + str(datetime.d
 if not os.path.isfile(bsRateXmlFilename):
     for file in glob.glob("bsrate-*.xml"):
         os.remove(file)
-    bsRateXmlFile = urllib.URLopener()
+    bsRateXmlFile = urllib.FancyURLopener()
     bsRateXmlFile.retrieve(bsRateXmlUrl, bsRateXmlFilename)
 bsRateXml = xml.etree.ElementTree.parse(bsRateXmlFilename).getroot()
 bsRates = bsRateXml.find('DtecBS')
