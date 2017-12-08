@@ -109,13 +109,6 @@ for ibTrade in ibTrades:
 
 
 
-''' Sort the trades by time '''
-for symbol in trades:
-    l = sorted(trades[symbol], key=lambda k: "%s%s" % (k['tradeDate'], k['tradeTime']))
-    trades[symbol] = l
-
-
-
 ''' Detect if trades are Normal or Derivates and if they are Opening or Closing positions
     Convert the price to EUR '''
 for symbol in trades:
@@ -183,6 +176,13 @@ for symbol in yearTrades:
             if symbol not in mergedTrades:
                 mergedTrades[symbol] = []
             mergedTrades[symbol].append(trade)
+
+
+
+''' Sort the trades by time '''
+for symbol in mergedTrades:
+    l = sorted(mergedTrades[symbol], key=lambda k: "%s%s" % (k['tradeDate'], k['tradeTime']))
+    mergedTrades[symbol] = l
 
 
 
