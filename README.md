@@ -44,6 +44,7 @@ eDavki ne omogočajo dodajanje popisnih listov za tekoče leto, temveč le za pr
 ### Uvoz v eDavke
 1. V meniju **Dokumenti > Nov dokument** izberi obrazec Doh-KDVP (za trgovanje z vrednostnimi papirji na dolgo) ali D-IFI (za trgovanje z vrednostnimi papirji na kratko in trgovanje z izvedenimi finančnimi inštrumenti).
 1. Izbira obdobja naj bo lansko leto.
+1. Vrsta dokumenta naj bo **O**. Če si za preteklo leto že oddal obrazec, pa želiš le testno narediti izračun davka za tekoče leto, izberi **I**.
 1. Izberi **Nov prazen dokument**.
 1. Klikni **Uvoz popisnih listov** in izberi ustrezno datoteko (normal.xml za obrazec Doh-KDVP, derivate.xml za obrazec D-IFI) in klikni **Uvozi**.
 1. Na seznamu popisnih listov se bo pojavil po en popisni list za vsak vrednostni papir (ticker).
