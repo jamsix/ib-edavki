@@ -122,7 +122,14 @@ for symbol in trades:
             if date in rates and currency in rates[date]:
                 rate = float(rates[date][currency])
             else:
-                sys.exit('Error: There is no exchange rate for ' + str(date))
+                for i in range(0, 6):
+                    date = str(int(date) - 1)
+                    if date in rates and currency in rates[date]:
+                        rate = float(rates[date][currency])
+                        print('There is no exchange rate for ' + str(trade['tradeDate']) + ', using ' + str(date))
+                        break;
+                    if i == 6:
+                        sys.exit('Error: There is no exchange rate for ' + str(date))
             trade['tradePriceEUR'] = trade['tradePrice'] / rate
 
         if (
