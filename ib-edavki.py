@@ -21,11 +21,11 @@ ignoreAssets = ['CASH']
 
 
 parser = argparse.ArgumentParser()
-parser.add_argument("ibXmlFile", metavar="ib-xml-file", help="InteractiveBrokers XML ouput (see README.md on how to generate one)")
+parser.add_argument("ibXmlFiles", metavar="ib-xml-file", help="InteractiveBrokers XML ouput file(s) (see README.md on how to generate one)", nargs='+')
 parser.add_argument("-y", metavar="report-year", type=int, default=datetime.date.today().year, help="Report will be generated for the provided calendar year (defaults to " + str(datetime.date.today().year) + ")")
 parser.add_argument("-t", help="Change trade dates to previous year (see README.md)", action="store_true")
 args = parser.parse_args()
-ibXmlFilename = args.ibXmlFile
+ibXmlFilenames = args.ibXmlFiles
 reportYear = args.y
 test = args.t
 
@@ -52,11 +52,13 @@ for d in bsRateXml:
 
 
 
-''' Parsing IB XML '''
-ibXml = xml.etree.ElementTree.parse(ibXmlFilename).getroot()
-ibTrades = ibXml[0][0].find('Trades')
-'''ibPositions = ibXml[0][0].find('OpenPositions')'''
-ibFlexStatement = ibXml[0][0]
+''' Parsing IB XMLs '''
+ibTradesList = []
+for ibXmlFilename in ibXmlFilenames:
+    ibXml = xml.etree.ElementTree.parse(ibXmlFilename).getroot()
+    ibTradesList.append(ibXml[0][0].find('Trades'))
+    '''ibPositions = ibXml[0][0].find('OpenPositions')'''
+    ibFlexStatement = ibXml[0][0]
 
 if test == True:
     statementStartDate = str(reportYear + testYearDiff) + '0101'
@@ -71,41 +73,42 @@ else:
 trades = {}
 
 ''' Get trades from IB XML and sort them by the symbol '''
-for ibTrade in ibTrades:
-    if ibTrade.attrib['assetCategory'] in ignoreAssets:
-        continue
+for ibTrades in ibTradesList:
+    for ibTrade in ibTrades:
+        if ibTrade.attrib['assetCategory'] in ignoreAssets:
+            continue
 
-    if ibTrade.tag == 'Trade':
-        trade = {
-            'currency': ibTrade.attrib['currency'],
-            'assetCategory': ibTrade.attrib['assetCategory'],
-            'tradePrice': float(ibTrade.attrib['tradePrice']),
-            'quantity': float(ibTrade.attrib['quantity']),
-            'buySell': ibTrade.attrib['buySell'],
-            'tradeDate': ibTrade.attrib['tradeDate'],
-            'tradeTime': ibTrade.attrib['tradeTime'],
-            'transactionID': ibTrade.attrib['transactionID'],
-            'ibOrderID': ibTrade.attrib['ibOrderID'],
-            'openCloseIndicator': ibTrade.attrib['openCloseIndicator']
-        }
-        if ibTrade.attrib['description'] != '':
-            trade['description'] = ibTrade.attrib['description'];
-        if ibTrade.attrib['isin'] != '':
-            trade['isin'] = ibTrade.attrib['isin'];
-        ''' Options have multipliers, i.e. a quantity of 1 with tradePrice 3 and multiplier 100 is actually an option for 100 stocks, worth 100 x 3 = 300 '''
-        if 'multiplier' in ibTrade.attrib:
-            trade['tradePrice'] = float(ibTrade.attrib['tradePrice']) * float(ibTrade.attrib['multiplier'])
-        symbol = ibTrade.attrib['symbol']
-        if symbol not in trades:
-            trades[symbol] = []
-        lastTrade = trade;
-        trades[symbol].append(trade)
+        if ibTrade.tag == 'Trade':
+            trade = {
+                'currency': ibTrade.attrib['currency'],
+                'assetCategory': ibTrade.attrib['assetCategory'],
+                'tradePrice': float(ibTrade.attrib['tradePrice']),
+                'quantity': float(ibTrade.attrib['quantity']),
+                'buySell': ibTrade.attrib['buySell'],
+                'tradeDate': ibTrade.attrib['tradeDate'],
+                'tradeTime': ibTrade.attrib['tradeTime'],
+                'transactionID': ibTrade.attrib['transactionID'],
+                'ibOrderID': ibTrade.attrib['ibOrderID'],
+                'openCloseIndicator': ibTrade.attrib['openCloseIndicator']
+            }
+            if ibTrade.attrib['description'] != '':
+                trade['description'] = ibTrade.attrib['description'];
+            if ibTrade.attrib['isin'] != '':
+                trade['isin'] = ibTrade.attrib['isin'];
+            ''' Options have multipliers, i.e. a quantity of 1 with tradePrice 3 and multiplier 100 is actually an option for 100 stocks, worth 100 x 3 = 300 '''
+            if 'multiplier' in ibTrade.attrib:
+                trade['tradePrice'] = float(ibTrade.attrib['tradePrice']) * float(ibTrade.attrib['multiplier'])
+            symbol = ibTrade.attrib['symbol']
+            if symbol not in trades:
+                trades[symbol] = []
+            lastTrade = trade;
+            trades[symbol].append(trade)
 
-    elif ibTrade.tag == 'Lot' and lastTrade != None:
-        if 'openTransactionIds' not in lastTrade:
-            lastTrade['openTransactionIds'] = {}
-        tid = ibTrade.attrib['transactionID']
-        lastTrade['openTransactionIds'][tid] = float(ibTrade.attrib['quantity']);
+        elif ibTrade.tag == 'Lot' and lastTrade != None:
+            if 'openTransactionIds' not in lastTrade:
+                lastTrade['openTransactionIds'] = {}
+            tid = ibTrade.attrib['transactionID']
+            lastTrade['openTransactionIds'][tid] = float(ibTrade.attrib['quantity']);
 
 
 
@@ -261,7 +264,7 @@ for symbol in normalTrades:
     Securities = xml.etree.ElementTree.SubElement(KDVPItem, "Securities")
     if len(normalTrades[symbol]) > 0 and 'isin' in normalTrades[symbol][0]:
         ISIN = xml.etree.ElementTree.SubElement(Securities, "ISIN").text = normalTrades[symbol][0]['isin']
-    Code = xml.etree.ElementTree.SubElement(Securities, "Code").text = symbol
+    Code = xml.etree.ElementTree.SubElement(Securities, "Code").text = symbol[:10]
     if len(normalTrades[symbol]) > 0 and 'description' in normalTrades[symbol][0]:
         Name = xml.etree.ElementTree.SubElement(Securities, "Name").text = normalTrades[symbol][0]['description']
     IsFond = xml.etree.ElementTree.SubElement(Securities, "IsFond").text = 'false'
@@ -342,7 +345,7 @@ for symbol in derivateTrades:
         Name = xml.etree.ElementTree.SubElement(TItem, "Name").text = derivateTrades[symbol][0]['description']
     if derivateTrades[symbol][0]['assetCategory'] != 'OPT':
         ''' Option symbols are to long and not accepted by eDavki '''
-        Code = xml.etree.ElementTree.SubElement(TItem, "Code").text = symbol
+        Code = xml.etree.ElementTree.SubElement(TItem, "Code").text = symbol[:10]
     if len(derivateTrades[symbol]) > 0 and 'isin' in derivateTrades[symbol][0]:
         ISIN = xml.etree.ElementTree.SubElement(TItem, "ISIN").text = derivateTrades[symbol][0]['isin']
     HasForeignTax = xml.etree.ElementTree.SubElement(TItem, "HasForeignTax").text = 'false'
@@ -375,11 +378,18 @@ for symbol in shortTrades:
     TItem = xml.etree.ElementTree.SubElement(difi, "TItem")
     Id = xml.etree.ElementTree.SubElement(TItem, "Id").text = str(n)
     TypeId = xml.etree.ElementTree.SubElement(TItem, "TypeId").text = 'PLIFIShort'
-    Type = xml.etree.ElementTree.SubElement(TItem, "Type").text = '04'
-    TypeName = xml.etree.ElementTree.SubElement(TItem, "TypeName").text = 'drugo'
+    if shortTrades[symbol][0]['assetCategory'] == 'CFD':
+        Type = xml.etree.ElementTree.SubElement(TItem, "Type").text = '02'
+        TypeName = xml.etree.ElementTree.SubElement(TItem, "TypeName").text = 'financne pogodbe na razliko'
+    elif shortTrades[symbol][0]['assetCategory'] == 'OPT':
+        Type = xml.etree.ElementTree.SubElement(TItem, "Type").text = '03'
+        TypeName = xml.etree.ElementTree.SubElement(TItem, "TypeName").text = 'opcija in certifikat'
+    else:
+        Type = xml.etree.ElementTree.SubElement(TItem, "Type").text = '04'
+        TypeName = xml.etree.ElementTree.SubElement(TItem, "TypeName").text = 'drugo'
     if len(shortTrades[symbol]) > 0 and 'description' in shortTrades[symbol][0]:
         Name = xml.etree.ElementTree.SubElement(TItem, "Name").text = shortTrades[symbol][0]['description']
-    Code = xml.etree.ElementTree.SubElement(TItem, "Code").text = symbol
+    Code = xml.etree.ElementTree.SubElement(TItem, "Code").text = symbol[:10]
     if len(shortTrades[symbol]) > 0 and 'isin' in shortTrades[symbol][0]:
         ISIN = xml.etree.ElementTree.SubElement(TItem, "ISIN").text = shortTrades[symbol][0]['isin']
     HasForeignTax = xml.etree.ElementTree.SubElement(TItem, "HasForeignTax").text = 'false'

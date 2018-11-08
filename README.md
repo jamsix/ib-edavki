@@ -12,7 +12,7 @@ Poleg pretvorbe vrednosti skripta naredi še konverzijo iz tujih valut v EUR po 
 1. V **Activity Flex Query Templates** klikni **+** (Create).
 1. Vpiši poljuben **Query Name**.
 1. Kot **Date Period** izberi **Custom Date Range**.
-1. Izberi najstarejši mogoč **From Date** in najnovejši mogoč **To Date**.
+1. Izberi 01.01. za **From Date** in zadnji dan v letu za **To Date**.
 1. Pod **Sections** klikni na **Trades**.
 1. Pod **Options** označi **Executions** in **Closed lots**.
 1. Odkljukaj vse parametre na seznamu.
@@ -20,14 +20,16 @@ Poleg pretvorbe vrednosti skripta naredi še konverzijo iz tujih valut v EUR po 
 1. Na dnu klikni **Save**
 1. Na dnu klikni *Continue* in nato *Create*.
 1. V pogledu **Reports > Flex Queries** se je pojavil novo narejeni report. Klikni **Run**, shrani XML.
+1. Ponovi postopek za vsako leto trgovanja, če si trgoval v letih 2016, 2017 in 2018, generiraj 3 reporte, po enega za vsako leto.
 
 ### Konverzija IB poročila v popisne liste primerne za uvoz v eDavke
 
 Na računalniku imej **python 2.x**.
 
 ```
-./ib-edavki.py [-h] [-y report-year] [-t] ib-xml-file
+./ib-edavki.py [-h] [-y report-year] [-t] ib-xml-file-2016 [ib-xml-file-2017] [ib-xml-file-2018]
 ```
+Kot argument dodaj reporte za vsa leta trgovanja.
 
 Skripta po uspešni konverziji v lokalnem direktoriju ustvari dve datoteki:
 * Doh-KDVP.xml (datoteka namenjena uvozu v obrazec Doh-KDVP - Napoved za odmero dohodnine od dobička od odsvojitve vrednostnih papirjev in drugih deležev ter investicijskih kuponov)
