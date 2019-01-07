@@ -1,5 +1,9 @@
 # InteractiveBrokers -> FURS eDavki konverter
-_Skripta, ki prevede XML poročilo trgovalnih poslov v platformi InteractiveBrokers v XML format primeren za uvoz v obrazca Doh-KDVP in D-IFI v eDavkih Finančne uprave_
+_Skripta, ki prevede XML poročilo trgovalnih poslov v platformi InteractiveBrokers v XML format primeren za uvoz v obrazce:
+* Doh-KDVP - Napoved za odmero dohodnine od dobička od odsvojitve vrednostnih papirjev in drugih deležev ter investicijskih kuponov,
+* D-IFI - Napoved za odmero davka od dobička od odsvojitve izvedenih finančnih instrumentov in
+* Doh-Div - Napoved za odmero dohodnine od dividend
+v eDavkih Finančne uprave_
 
 Poleg pretvorbe vrednosti skripta naredi še konverzijo iz tujih valut v EUR po tečaju Banke Slovenije na dan posla.
 
@@ -12,13 +16,13 @@ Poleg pretvorbe vrednosti skripta naredi še konverzijo iz tujih valut v EUR po 
 1. V **Activity Flex Query Templates** klikni **+** (Create).
 1. Vpiši poljuben **Query Name**.
 1. Kot **Date Period** izberi **Custom Date Range**.
-1. Izberi 01.01. za **From Date** in zadnji dan v letu za **To Date**.
-1. Pod **Sections** klikni na **Trades**.
+1. Izberi prvi dan v letu za **From Date** in zadnji dan v letu za **To Date**.
+1. Pod **Sections** klikni na **Trades** in izberi vse stolpce (**Select All**), klikni **Cash Transactions**, izberi opciji **Dividends**, **Payment in Lieu of Dividends** in **Withholding Tax** ter izberi vse stolpce (**Select All**).
 1. Pod **Options** označi **Executions** in **Closed lots**.
 1. Odkljukaj vse parametre na seznamu.
 1. Vse ostale nastavitve pusti tako kot so.
 1. Na dnu klikni **Save**
-1. Na dnu klikni *Continue* in nato *Create*.
+1. Na dnu klikni **Continue** in nato **Create**.
 1. V pogledu **Reports > Flex Queries** se je pojavil novo narejeni report. Klikni **Run**, shrani XML.
 1. Ponovi postopek za vsako leto trgovanja, če si trgoval v letih 2016, 2017 in 2018, generiraj 3 reporte, po enega za vsako leto.
 
@@ -34,6 +38,7 @@ Kot argument dodaj reporte za vsa leta trgovanja.
 Skripta po uspešni konverziji v lokalnem direktoriju ustvari dve datoteki:
 * Doh-KDVP.xml (datoteka namenjena uvozu v obrazec Doh-KDVP - Napoved za odmero dohodnine od dobička od odsvojitve vrednostnih papirjev in drugih deležev ter investicijskih kuponov)
 * D-IFI.xml (datoteka namenjena uvozu v obrazec D-IFI - Napoved za odmero davka od dobička od odsvojitve izvedenih finančnih instrumentov)
+* D-Div.xml (datoteka namenjena uvozu v obrazec D-Div - Napoved za odmero dohodnine od dividend)
 
 #### -y <leto> (opcijsko)
 Leto za katerega se izdelajo popisni listi. Privzeto trenutno leto.

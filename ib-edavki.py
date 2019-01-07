@@ -54,10 +54,12 @@ for d in bsRateXml:
 
 ''' Parsing IB XMLs '''
 ibTradesList = []
+ibCashTransactionsList = []
 for ibXmlFilename in ibXmlFilenames:
     ibXml = xml.etree.ElementTree.parse(ibXmlFilename).getroot()
     ibTradesList.append(ibXml[0][0].find('Trades'))
     '''ibPositions = ibXml[0][0].find('OpenPositions')'''
+    ibCashTransactionsList.append(ibXml[0][0].find('CashTransactions'))
     ibFlexStatement = ibXml[0][0]
 
 if test == True:
@@ -74,6 +76,8 @@ trades = {}
 
 ''' Get trades from IB XML and sort them by the symbol '''
 for ibTrades in ibTradesList:
+    if ibTrades is None:
+        continue
     for ibTrade in ibTrades:
         if ibTrade.attrib['assetCategory'] in ignoreAssets:
             continue
@@ -419,4 +423,112 @@ for symbol in shortTrades:
 xmlString = xml.etree.ElementTree.tostring(envelope)
 prettyXmlString = minidom.parseString(xmlString).toprettyxml(indent="\t")
 with open("D-IFI.xml", "w") as f:
+    f.write(prettyXmlString.encode('utf-8'))
+
+
+
+''' Get dividends from IB XML '''
+dividends = []
+for ibCashTransactions in ibCashTransactionsList:
+    if ibCashTransactions is None:
+        continue
+    for ibCashTransaction in ibCashTransactions:
+        if ibCashTransaction.tag == 'CashTransaction' and \
+                ibCashTransaction.attrib['reportDate'].startswith(str(reportYear)) and \
+                ibCashTransaction.attrib['type'] in ['Dividends', 'Payment In Lieu Of Dividends']:
+            dividend = {
+                'currency': ibCashTransaction.attrib['currency'],
+                'type': ibCashTransaction.attrib['type'],
+                'amount': float(ibCashTransaction.attrib['amount']),
+                'symbol': ibCashTransaction.attrib['symbol'],
+                'description': ibCashTransaction.attrib['description'],
+                'reportDate': ibCashTransaction.attrib['reportDate'],
+                'transactionID': ibCashTransaction.attrib['transactionID'],
+                'tax': 0,
+                'taxEUR': 0
+            }
+            ''' Convert amount to EUR '''
+            if dividend['currency'] == 'EUR':
+                dividend['amountEUR'] = dividend['amount']
+            else:
+                date = dividend['reportDate']
+                currency = dividend['currency']
+                if date in rates and currency in rates[date]:
+                    rate = float(rates[date][currency])
+                else:
+                    for i in range(0, 6):
+                        date = str(int(date) - 1)
+                        if date in rates and currency in rates[date]:
+                            rate = float(rates[date][currency])
+                            print('There is no exchange rate for ' + str(dividend['reportDate']) + ', using ' + str(date))
+                            break;
+                        if i == 6:
+                            sys.exit('Error: There is no exchange rate for ' + str(date))
+                dividend['amountEUR'] = dividend['amount'] / rate
+            dividends.append(dividend)
+    for ibCashTransaction in ibCashTransactions:
+        if ibCashTransaction.tag == 'CashTransaction' and \
+                ibCashTransaction.attrib['reportDate'].startswith(str(reportYear)) and \
+                ibCashTransaction.attrib['type'] == 'Withholding Tax':
+                closestDividend = None
+                for dividend in dividends:
+                    if dividend['reportDate'] == ibCashTransaction.attrib['reportDate'] and \
+                    dividend['symbol'] == ibCashTransaction.attrib['symbol'] and \
+                    dividend['transactionID'] < ibCashTransaction.attrib['transactionID']:
+                        if closestDividend is None or dividend['transactionID'] > closestDividend['transactionID']:
+                            closestDividend = dividend
+                if closestDividend:
+                    closestDividend['tax'] = -float(ibCashTransaction.attrib['amount'])
+                    ''' Convert amount to EUR '''
+                    if ibCashTransaction.attrib['currency'] == 'EUR':
+                        closestDividend['taxEUR'] = closestDividend['tax']
+                    else:
+                        date = ibCashTransaction.attrib['reportDate']
+                        currency = ibCashTransaction.attrib['currency']
+                        if date in rates and currency in rates[date]:
+                            rate = float(rates[date][currency])
+                        else:
+                            for i in range(0, 6):
+                                date = str(int(date) - 1)
+                                if date in rates and currency in rates[date]:
+                                    rate = float(rates[date][currency])
+                                    print('There is no exchange rate for ' + str(ibCashTransaction.attrib['reportDate']) + ', using ' + str(date))
+                                    break;
+                                if i == 6:
+                                    sys.exit('Error: There is no exchange rate for ' + str(date))
+                        closestDividend['taxEUR'] = closestDividend['tax'] / rate
+
+
+
+''' Generate Doh-Div.xml '''
+envelope = xml.etree.ElementTree.Element("Envelope", xmlns="http://edavki.durs.si/Documents/Schemas/Doh_Div_1.xsd")
+envelope.set('xmlns:edp', "http://edavki.durs.si/Documents/Schemas/EDP-Common-1.xsd")
+header = xml.etree.ElementTree.SubElement(envelope, "edp:Header")
+taxpayer = xml.etree.ElementTree.SubElement(header, "edp:taxpayer")
+taxNumber = xml.etree.ElementTree.SubElement(taxpayer, "edp:taxNumber").text = '12345678'
+taxpayerType = xml.etree.ElementTree.SubElement(taxpayer, "edp:taxpayerType").text = 'FO'
+name = xml.etree.ElementTree.SubElement(taxpayer, "edp:name").text = 'Janez Novak'
+address1 = xml.etree.ElementTree.SubElement(taxpayer, "edp:address1").text = 'Slovenska 1'
+city = xml.etree.ElementTree.SubElement(taxpayer, "edp:city").text = 'Ljubljana'
+postNumber = xml.etree.ElementTree.SubElement(taxpayer, "edp:postNumber").text = '1000'
+postName = xml.etree.ElementTree.SubElement(taxpayer, "edp:postName").text = 'Ljubljana'
+AttachmentList = xml.etree.ElementTree.SubElement(envelope, "edp:AttachmentList")
+Signatures = xml.etree.ElementTree.SubElement(envelope, "edp:Signatures")
+body = xml.etree.ElementTree.SubElement(envelope, "body")
+bodyContent = xml.etree.ElementTree.SubElement(body, "edp:bodyContent")
+Doh_Div = xml.etree.ElementTree.SubElement(body, "Doh_Div")
+
+dividends = sorted(dividends, key=lambda k: k['reportDate'])
+for dividend in dividends:
+    Dividends = xml.etree.ElementTree.SubElement(Doh_Div, "Dividends")
+    Date = xml.etree.ElementTree.SubElement(Dividends, "Date").text = dividend['reportDate'][0:4] + '-' + dividend['reportDate'][4:6] + '-' + dividend['reportDate'][6:8]
+    Type = xml.etree.ElementTree.SubElement(Dividends, "Type").text = '1'
+    Value = xml.etree.ElementTree.SubElement(Dividends, "Value").text = '{0:.4f}'.format(dividend['amountEUR'])
+    ForeignTax = xml.etree.ElementTree.SubElement(Dividends, "ForeignTax").text = '{0:.4f}'.format(dividend['taxEUR'])
+    DividendsPayer = xml.etree.ElementTree.SubElement(Doh_Div, "DividendsPayer")
+    Company = xml.etree.ElementTree.SubElement(DividendsPayer, "Company").text = dividend['symbol']
+
+xmlString = xml.etree.ElementTree.tostring(envelope)
+prettyXmlString = minidom.parseString(xmlString).toprettyxml(indent="\t")
+with open("Doh-Div.xml", "w") as f:
     f.write(prettyXmlString.encode('utf-8'))
