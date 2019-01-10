@@ -30,6 +30,8 @@ Poleg pretvorbe vrednosti skripta naredi še konverzijo iz tujih valut v EUR po 
 
 Na računalniku imej **python 2.x**.
 
+Datoteko **taxpayer-sample.xml** preimenuj v **taxpayer.xml**, jo odpri in vnesi svoje davčne podatke.
+
 ```
 ./ib-edavki.py [-h] [-y report-year] [-t] ib-xml-file-2016 [ib-xml-file-2017] [ib-xml-file-2018]
 ```
@@ -49,11 +51,21 @@ eDavki ne omogočajo dodajanje popisnih listov za tekoče leto, temveč le za pr
 **Pozor: namenjeno informativnemu izračunu, ne oddajaj obrazca napolnjenega s temi podatki!**
 
 ### Uvoz v eDavke
+1. V meniju **Dokument** klikni **Uvoz**. Izberi eno izmed generiranih datotek (Doh-KDVP.xml, D-IFI, Doh-Div) in jo **Prenesi**.
+1. Preveri izpolnjene podatke in dodaj manjkajoče.
+1. Pri obrazcih Doh-KDVP in D-IFI je na seznamu popisnih listov po en popisni list za vsak vrednostni papir (ticker).
+1. Klikni na ime vrednostnega papirja in odpri popisni list.
+1. Klikni **Izračun**.
+1. Preveri če vse pridobitve in odsvojitve ustrezajo dejanskim. Zaloga pri zadnjem vnosu mora biti **0**.
+
+ali
+
 1. V meniju **Dokumenti > Nov dokument** izberi obrazec Doh-KDVP (za trgovanje z vrednostnimi papirji na dolgo) ali D-IFI (za trgovanje z vrednostnimi papirji na kratko in trgovanje z izvedenimi finančnimi inštrumenti).
 1. Izbira obdobja naj bo lansko leto.
 1. Vrsta dokumenta naj bo **O**. Če si za preteklo leto že oddal obrazec, pa želiš le testno narediti izračun davka za tekoče leto, izberi **I**.
 1. Izberi **Nov prazen dokument**.
-1. Klikni **Uvoz popisnih listov** in izberi ustrezno datoteko (normal.xml za obrazec Doh-KDVP, derivate.xml za obrazec D-IFI) in klikni **Uvozi**.
+1. Klikni **Uvoz popisnih listov** in izberi ustrezno datoteko (Doh-KDVP.xml za obrazec Doh-KDVP, D-IFI.xml za obrazec D-IFI) in klikni **Uvozi**.
+1. Preveri izpolnjene podatke in dodaj manjkajoče.
 1. Na seznamu popisnih listov se bo pojavil po en popisni list za vsak vrednostni papir (ticker).
 1. Klikni na ime vrednostnega papirja in odpri popisni list.
 1. Klikni **Izračun**.

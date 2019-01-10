@@ -1,0 +1,11 @@
+<taxpayer>
+    <taxNumber>12345678</taxNumber>
+    <taxpayerType>FO</taxpayerType>
+    <name>Janez Novak</name>
+    <address1>Slovenska 1</address1>
+    <city>Ljubljana</city>
+    <postNumber>1000</postNumber>
+    <postName>Ljubljana</postName>
+    <email>janez.novak@furs.si</email>
+    <telephoneNumber>01 123 45 67</telephoneNumber>
+<taxpayer>

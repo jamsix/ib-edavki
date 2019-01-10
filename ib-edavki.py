@@ -9,6 +9,7 @@ import os
 import glob
 import copy
 import argparse
+import shutil
 from pprint import pprint
 from xml.dom import minidom
 
@@ -30,9 +31,9 @@ parser.add_argument(
     "-y",
     metavar="report-year",
     type=int,
-    default=datetime.date.today().year,
+    default=0,
     help="Report will be generated for the provided calendar year (defaults to "
-    + str(datetime.date.today().year)
+    + str(datetime.date.today().year - 1)
     + ")",
 )
 parser.add_argument(
@@ -43,11 +44,34 @@ parser.add_argument(
 
 args = parser.parse_args()
 ibXmlFilenames = args.ibXmlFiles
-reportYear = args.y
 test = args.t
+if args.y == 0:
+    if test == True:
+        reportYear = datetime.date.today().year
+    else:
+        reportYear = datetime.date.today().year - 1
+
+
+if not os.path.isfile("taxpayer.xml"):
+    print("Modify taxpayer.xml and add your data first!")
+    shutil.copyfile("taxpayer-sample.xml", "taxpayer.xml")
+    exit(0)
 
 if test == True:
     testYearDiff = reportYear - datetime.date.today().year - 1
+
+taxpayer = xml.etree.ElementTree.parse("taxpayer.xml").getroot()
+taxpayerConfig = {
+    "taxNumber": taxpayer.find("taxNumber").text,
+    "taxpayerType": "FO",
+    "name": taxpayer.find("name").text,
+    "address1": taxpayer.find("address1").text,
+    "city": taxpayer.find("city").text,
+    "postNumber": taxpayer.find("postNumber").text,
+    "postName": taxpayer.find("postName").text,
+    "email": taxpayer.find("email").text,
+    "telephoneNumber": taxpayer.find("telephoneNumber").text,
+}
 
 """ Creating daily exchange rates object """
 bsRateXmlFilename = (
@@ -268,53 +292,50 @@ envelope = xml.etree.ElementTree.Element(
 envelope.set("xmlns:edp", "http://edavki.durs.si/Documents/Schemas/EDP-Common-1.xsd")
 header = xml.etree.ElementTree.SubElement(envelope, "edp:Header")
 taxpayer = xml.etree.ElementTree.SubElement(header, "edp:taxpayer")
-taxNumber = xml.etree.ElementTree.SubElement(
-    taxpayer, "edp:taxNumber"
-).text = "12345678"
-taxpayerType = xml.etree.ElementTree.SubElement(
-    taxpayer, "edp:taxpayerType"
-).text = "FO"
-name = xml.etree.ElementTree.SubElement(taxpayer, "edp:name").text = "Janez Novak"
-address1 = xml.etree.ElementTree.SubElement(
-    taxpayer, "edp:address1"
-).text = "Slovenska 1"
-city = xml.etree.ElementTree.SubElement(taxpayer, "edp:city").text = "Ljubljana"
-postNumber = xml.etree.ElementTree.SubElement(taxpayer, "edp:postNumber").text = "1000"
-postName = xml.etree.ElementTree.SubElement(taxpayer, "edp:postName").text = "Ljubljana"
-AttachmentList = xml.etree.ElementTree.SubElement(envelope, "edp:AttachmentList")
-Signatures = xml.etree.ElementTree.SubElement(envelope, "edp:Signatures")
+xml.etree.ElementTree.SubElement(taxpayer, "edp:taxNumber").text = taxpayerConfig[
+    "taxNumber"
+]
+xml.etree.ElementTree.SubElement(taxpayer, "edp:taxpayerType").text = taxpayerConfig[
+    "taxpayerType"
+]
+xml.etree.ElementTree.SubElement(taxpayer, "edp:name").text = taxpayerConfig["name"]
+xml.etree.ElementTree.SubElement(taxpayer, "edp:address1").text = taxpayerConfig[
+    "address1"
+]
+xml.etree.ElementTree.SubElement(taxpayer, "edp:city").text = taxpayerConfig["city"]
+xml.etree.ElementTree.SubElement(taxpayer, "edp:postNumber").text = taxpayerConfig[
+    "postNumber"
+]
+xml.etree.ElementTree.SubElement(taxpayer, "edp:postName").text = taxpayerConfig[
+    "postName"
+]
+xml.etree.ElementTree.SubElement(envelope, "edp:AttachmentList")
+xml.etree.ElementTree.SubElement(envelope, "edp:Signatures")
 body = xml.etree.ElementTree.SubElement(envelope, "body")
-bodyContent = xml.etree.ElementTree.SubElement(body, "edp:bodyContent")
+xml.etree.ElementTree.SubElement(body, "edp:bodyContent")
 Doh_KDVP = xml.etree.ElementTree.SubElement(body, "Doh_KDVP")
 KDVP = xml.etree.ElementTree.SubElement(Doh_KDVP, "KDVP")
-DocumentWorkflowID = xml.etree.ElementTree.SubElement(
-    KDVP, "DocumentWorkflowID"
-).text = "O"
-Year = xml.etree.ElementTree.SubElement(KDVP, "Year").text = statementEndDate[0:4]
-PeriodStart = xml.etree.ElementTree.SubElement(KDVP, "PeriodStart").text = (
+if test == True:
+    xml.etree.ElementTree.SubElement(KDVP, "DocumentWorkflowID").text = "I"
+else:
+    xml.etree.ElementTree.SubElement(KDVP, "DocumentWorkflowID").text = "O"
+xml.etree.ElementTree.SubElement(KDVP, "Year").text = statementEndDate[0:4]
+xml.etree.ElementTree.SubElement(KDVP, "PeriodStart").text = (
     statementStartDate[0:4]
     + "-"
     + statementStartDate[4:6]
     + "-"
     + statementStartDate[6:8]
 )
-PeriodEnd = xml.etree.ElementTree.SubElement(KDVP, "PeriodEnd").text = (
+xml.etree.ElementTree.SubElement(KDVP, "PeriodEnd").text = (
     statementEndDate[0:4] + "-" + statementEndDate[4:6] + "-" + statementEndDate[6:8]
 )
-IsResident = xml.etree.ElementTree.SubElement(KDVP, "IsResident").text = "true"
-SecurityCount = xml.etree.ElementTree.SubElement(KDVP, "SecurityCount").text = str(
-    len(normalTrades)
-)
-SecurityShortCount = xml.etree.ElementTree.SubElement(
-    KDVP, "SecurityShortCount"
-).text = "0"
-SecurityWithContractCount = xml.etree.ElementTree.SubElement(
-    KDVP, "SecurityWithContractCount"
-).text = "0"
-SecurityWithContractShortCount = xml.etree.ElementTree.SubElement(
-    KDVP, "SecurityWithContractShortCount"
-).text = "0"
-ShareCount = xml.etree.ElementTree.SubElement(KDVP, "ShareCount").text = "0"
+xml.etree.ElementTree.SubElement(KDVP, "IsResident").text = "true"
+xml.etree.ElementTree.SubElement(KDVP, "SecurityCount").text = str(len(normalTrades))
+xml.etree.ElementTree.SubElement(KDVP, "SecurityShortCount").text = "0"
+xml.etree.ElementTree.SubElement(KDVP, "SecurityWithContractCount").text = "0"
+xml.etree.ElementTree.SubElement(KDVP, "SecurityWithContractShortCount").text = "0"
+xml.etree.ElementTree.SubElement(KDVP, "ShareCount").text = "0"
 
 for symbol in normalTrades:
     KDVPItem = xml.etree.ElementTree.SubElement(Doh_KDVP, "KDVPItem")
@@ -407,41 +428,46 @@ envelope = xml.etree.ElementTree.Element(
 envelope.set("xmlns:edp", "http://edavki.durs.si/Documents/Schemas/EDP-Common-1.xsd")
 header = xml.etree.ElementTree.SubElement(envelope, "edp:Header")
 taxpayer = xml.etree.ElementTree.SubElement(header, "edp:taxpayer")
-taxNumber = xml.etree.ElementTree.SubElement(
-    taxpayer, "edp:taxNumber"
-).text = "12345678"
-taxpayerType = xml.etree.ElementTree.SubElement(
-    taxpayer, "edp:taxpayerType"
-).text = "FO"
-name = xml.etree.ElementTree.SubElement(taxpayer, "edp:name").text = "Janez Novak"
-address1 = xml.etree.ElementTree.SubElement(
-    taxpayer, "edp:address1"
-).text = "Slovenska 1"
-city = xml.etree.ElementTree.SubElement(taxpayer, "edp:city").text = "Ljubljana"
-postNumber = xml.etree.ElementTree.SubElement(taxpayer, "edp:postNumber").text = "1000"
-postName = xml.etree.ElementTree.SubElement(taxpayer, "edp:postName").text = "Ljubljana"
-AttachmentList = xml.etree.ElementTree.SubElement(envelope, "edp:AttachmentList")
-Signatures = xml.etree.ElementTree.SubElement(envelope, "edp:Signatures")
+xml.etree.ElementTree.SubElement(taxpayer, "edp:taxNumber").text = taxpayerConfig[
+    "taxNumber"
+]
+xml.etree.ElementTree.SubElement(taxpayer, "edp:taxpayerType").text = taxpayerConfig[
+    "taxpayerType"
+]
+xml.etree.ElementTree.SubElement(taxpayer, "edp:name").text = taxpayerConfig["name"]
+xml.etree.ElementTree.SubElement(taxpayer, "edp:address1").text = taxpayerConfig[
+    "address1"
+]
+xml.etree.ElementTree.SubElement(taxpayer, "edp:city").text = taxpayerConfig["city"]
+xml.etree.ElementTree.SubElement(taxpayer, "edp:postNumber").text = taxpayerConfig[
+    "postNumber"
+]
+xml.etree.ElementTree.SubElement(taxpayer, "edp:postName").text = taxpayerConfig[
+    "postName"
+]
+xml.etree.ElementTree.SubElement(envelope, "edp:AttachmentList")
+xml.etree.ElementTree.SubElement(envelope, "edp:Signatures")
 body = xml.etree.ElementTree.SubElement(envelope, "body")
-bodyContent = xml.etree.ElementTree.SubElement(body, "edp:bodyContent")
+xml.etree.ElementTree.SubElement(body, "edp:bodyContent")
 difi = xml.etree.ElementTree.SubElement(body, "D_IFI")
-DocumentWorkflowID = xml.etree.ElementTree.SubElement(
-    difi, "DocumentWorkflowID"
-).text = "O"
-PeriodStart = xml.etree.ElementTree.SubElement(difi, "PeriodStart").text = (
+if test == True:
+    xml.etree.ElementTree.SubElement(difi, "DocumentWorkflowID").text = "I"
+else:
+    xml.etree.ElementTree.SubElement(difi, "DocumentWorkflowID").text = "O"
+xml.etree.ElementTree.SubElement(difi, "PeriodStart").text = (
     statementStartDate[0:4]
     + "-"
     + statementStartDate[4:6]
     + "-"
     + statementStartDate[6:8]
 )
-PeriodEnd = xml.etree.ElementTree.SubElement(difi, "PeriodEnd").text = (
+xml.etree.ElementTree.SubElement(difi, "PeriodEnd").text = (
     statementEndDate[0:4] + "-" + statementEndDate[4:6] + "-" + statementEndDate[6:8]
 )
-TelephoneNumber = xml.etree.ElementTree.SubElement(
-    difi, "TelephoneNumber"
-).text = "012345678"
-Email = xml.etree.ElementTree.SubElement(difi, "Email").text = "noreply@furs.si"
+xml.etree.ElementTree.SubElement(difi, "TelephoneNumber").text = taxpayerConfig[
+    "telephoneNumber"
+]
+xml.etree.ElementTree.SubElement(difi, "Email").text = taxpayerConfig["email"]
 
 
 n = 0
@@ -708,36 +734,43 @@ envelope = xml.etree.ElementTree.Element(
 envelope.set("xmlns:edp", "http://edavki.durs.si/Documents/Schemas/EDP-Common-1.xsd")
 header = xml.etree.ElementTree.SubElement(envelope, "edp:Header")
 taxpayer = xml.etree.ElementTree.SubElement(header, "edp:taxpayer")
-taxNumber = xml.etree.ElementTree.SubElement(
-    taxpayer, "edp:taxNumber"
-).text = "12345678"
-taxpayerType = xml.etree.ElementTree.SubElement(
-    taxpayer, "edp:taxpayerType"
-).text = "FO"
-name = xml.etree.ElementTree.SubElement(taxpayer, "edp:name").text = "Janez Novak"
-address1 = xml.etree.ElementTree.SubElement(
-    taxpayer, "edp:address1"
-).text = "Slovenska 1"
-city = xml.etree.ElementTree.SubElement(taxpayer, "edp:city").text = "Ljubljana"
-postNumber = xml.etree.ElementTree.SubElement(taxpayer, "edp:postNumber").text = "1000"
-postName = xml.etree.ElementTree.SubElement(taxpayer, "edp:postName").text = "Ljubljana"
-AttachmentList = xml.etree.ElementTree.SubElement(envelope, "edp:AttachmentList")
-Signatures = xml.etree.ElementTree.SubElement(envelope, "edp:Signatures")
+xml.etree.ElementTree.SubElement(taxpayer, "edp:taxNumber").text = taxpayerConfig[
+    "taxNumber"
+]
+xml.etree.ElementTree.SubElement(taxpayer, "edp:taxpayerType").text = taxpayerConfig[
+    "taxpayerType"
+]
+xml.etree.ElementTree.SubElement(taxpayer, "edp:name").text = taxpayerConfig["name"]
+xml.etree.ElementTree.SubElement(taxpayer, "edp:address1").text = taxpayerConfig[
+    "address1"
+]
+xml.etree.ElementTree.SubElement(taxpayer, "edp:city").text = taxpayerConfig["city"]
+xml.etree.ElementTree.SubElement(taxpayer, "edp:postNumber").text = taxpayerConfig[
+    "postNumber"
+]
+xml.etree.ElementTree.SubElement(taxpayer, "edp:postName").text = taxpayerConfig[
+    "postName"
+]
+xml.etree.ElementTree.SubElement(envelope, "edp:AttachmentList")
+xml.etree.ElementTree.SubElement(envelope, "edp:Signatures")
 body = xml.etree.ElementTree.SubElement(envelope, "body")
-bodyContent = xml.etree.ElementTree.SubElement(body, "edp:bodyContent")
+xml.etree.ElementTree.SubElement(body, "edp:bodyContent")
 Doh_Div = xml.etree.ElementTree.SubElement(body, "Doh_Div")
-xml.etree.ElementTree.SubElement(Doh_Div, "Period").text = dividend["reportDate"][0:4]
-xml.etree.ElementTree.SubElement(Doh_Div, "DocumentWorkflowID").text = "I"
+if test == True:
+    dYear = str(reportYear + testYearDiff)
+else:
+    dYear = str(reportYear)
+xml.etree.ElementTree.SubElement(Doh_Div, "Period").text = dYear
+if test == True:
+    xml.etree.ElementTree.SubElement(Doh_Div, "DocumentWorkflowID").text = "I"
+else:
+    xml.etree.ElementTree.SubElement(Doh_Div, "DocumentWorkflowID").text = "O"
 
 dividends = sorted(dividends, key=lambda k: k["reportDate"])
 for dividend in dividends:
     Dividends = xml.etree.ElementTree.SubElement(Doh_Div, "Dividends")
     Date = xml.etree.ElementTree.SubElement(Dividends, "Date").text = (
-        dividend["reportDate"][0:4]
-        + "-"
-        + dividend["reportDate"][4:6]
-        + "-"
-        + dividend["reportDate"][6:8]
+        dYear + "-" + dividend["reportDate"][4:6] + "-" + dividend["reportDate"][6:8]
     )
     Type = xml.etree.ElementTree.SubElement(Dividends, "Type").text = "1"
     Value = xml.etree.ElementTree.SubElement(
