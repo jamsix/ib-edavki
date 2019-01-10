@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python2
 
 import urllib
 import urllib2
@@ -40,6 +40,7 @@ parser.add_argument(
     help="Change trade dates to previous year (see README.md)",
     action="store_true",
 )
+
 args = parser.parse_args()
 ibXmlFilenames = args.ibXmlFiles
 reportYear = args.y
@@ -725,6 +726,8 @@ Signatures = xml.etree.ElementTree.SubElement(envelope, "edp:Signatures")
 body = xml.etree.ElementTree.SubElement(envelope, "body")
 bodyContent = xml.etree.ElementTree.SubElement(body, "edp:bodyContent")
 Doh_Div = xml.etree.ElementTree.SubElement(body, "Doh_Div")
+xml.etree.ElementTree.SubElement(Doh_Div, "Period").text = dividend["reportDate"][0:4]
+xml.etree.ElementTree.SubElement(Doh_Div, "DocumentWorkflowID").text = "I"
 
 dividends = sorted(dividends, key=lambda k: k["reportDate"])
 for dividend in dividends:
@@ -739,10 +742,11 @@ for dividend in dividends:
     Type = xml.etree.ElementTree.SubElement(Dividends, "Type").text = "1"
     Value = xml.etree.ElementTree.SubElement(
         Dividends, "Value"
-    ).text = "{0:.4f}".format(dividend["amountEUR"])
+    ).text = "{0:.2f}".format(dividend["amountEUR"])
     ForeignTax = xml.etree.ElementTree.SubElement(
         Dividends, "ForeignTax"
-    ).text = "{0:.4f}".format(dividend["taxEUR"])
+    ).text = "{0:.2f}".format(dividend["taxEUR"])
+for dividend in dividends:
     DividendsPayer = xml.etree.ElementTree.SubElement(Doh_Div, "DividendsPayer")
     Company = xml.etree.ElementTree.SubElement(
         DividendsPayer, "Company"
