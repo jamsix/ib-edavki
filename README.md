@@ -1,13 +1,18 @@
 # InteractiveBrokers -> FURS eDavki konverter
-_Skripta, ki prevede XML poročilo trgovalnih poslov v platformi InteractiveBrokers v XML format primeren za uvoz v obrazce:
-* Doh-KDVP - Napoved za odmero dohodnine od dobička od odsvojitve vrednostnih papirjev in drugih deležev ter investicijskih kuponov,
-* D-IFI - Napoved za odmero davka od dobička od odsvojitve izvedenih finančnih instrumentov in
-* Doh-Div - Napoved za odmero dohodnine od dividend
-v eDavkih Finančne uprave_
+_Skripta, ki prevede XML poročilo trgovalnih poslov v platformi InteractiveBrokers v XML format primeren za uvoz v obrazce:_
+* _Doh-KDVP - Napoved za odmero dohodnine od dobička od odsvojitve vrednostnih papirjev in drugih deležev ter investicijskih kuponov,_
+* _D-IFI - Napoved za odmero davka od dobička od odsvojitve izvedenih finančnih instrumentov in_
+* _Doh-Div - Napoved za odmero dohodnine od dividend_
+_v eDavkih Finančne uprave_
 
 Poleg pretvorbe vrednosti skripta naredi še konverzijo iz tujih valut v EUR po tečaju Banke Slovenije na dan posla.
 
 ## Uporaba
+
+### Namestitev skripte
+```
+pip install --upgrade git+https://github.com/primoz64/ib-edavki.git
+```
 
 ### Izvoz poročila v platformi InteractiveBrokers
 
@@ -33,7 +38,7 @@ Na računalniku imej **python 3**.
 Datoteko **taxpayer-sample.xml** preimenuj v **taxpayer.xml**, jo odpri in vnesi svoje davčne podatke.
 
 ```
-./ib-edavki.py [-h] [-y report-year] [-t] ib-xml-file-2016 [ib-xml-file-2017] [ib-xml-file-2018]
+ib-edavki [-h] [-y report-year] [-t] ib-xml-file-2016 [ib-xml-file-2017] [ib-xml-file-2018]
 ```
 Kot argument dodaj reporte za vsa leta trgovanja.
 
