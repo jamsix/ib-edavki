@@ -1,7 +1,6 @@
-#!/usr/bin/python2
+#!/usr/bin/python
 
-import urllib
-import urllib2
+import urllib.request
 import sys
 import xml.etree.ElementTree
 import datetime
@@ -84,14 +83,13 @@ bsRateXmlFilename = (
 if not os.path.isfile(bsRateXmlFilename):
     for file in glob.glob("bsrate-*.xml"):
         os.remove(file)
-    bsRateXmlFile = urllib.FancyURLopener()
-    bsRateXmlFile.retrieve(bsRateXmlUrl, bsRateXmlFilename)
+    urllib.request.urlretrieve(bsRateXmlUrl, bsRateXmlFilename)
 bsRateXml = xml.etree.ElementTree.parse(bsRateXmlFilename).getroot()
 bsRates = bsRateXml.find("DtecBS")
 
 rates = {}
 for d in bsRateXml:
-    date = d.attrib["datum"].translate(None, "-")
+    date = d.attrib["datum"].replace("-", "")
     rates[date] = {}
     for r in d:
         currency = r.attrib["oznaka"]
@@ -418,7 +416,7 @@ for symbol in normalTrades:
 xmlString = xml.etree.ElementTree.tostring(envelope)
 prettyXmlString = minidom.parseString(xmlString).toprettyxml(indent="\t")
 with open("Doh-KDVP.xml", "w") as f:
-    f.write(prettyXmlString.encode("utf-8"))
+    f.write(prettyXmlString)
 
 
 """ Generate the files for Derivates and Shorts """
@@ -627,7 +625,7 @@ for symbol in shortTrades:
 xmlString = xml.etree.ElementTree.tostring(envelope)
 prettyXmlString = minidom.parseString(xmlString).toprettyxml(indent="\t")
 with open("D-IFI.xml", "w") as f:
-    f.write(prettyXmlString.encode("utf-8"))
+    f.write(prettyXmlString)
 
 
 """ Get dividends from IB XML """
@@ -788,4 +786,4 @@ for dividend in dividends:
 xmlString = xml.etree.ElementTree.tostring(envelope)
 prettyXmlString = minidom.parseString(xmlString).toprettyxml(indent="\t")
 with open("Doh-Div.xml", "w") as f:
-    f.write(prettyXmlString.encode("utf-8"))
+    f.write(prettyXmlString)

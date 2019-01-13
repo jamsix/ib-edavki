@@ -28,7 +28,7 @@ Poleg pretvorbe vrednosti skripta naredi še konverzijo iz tujih valut v EUR po 
 
 ### Konverzija IB poročila v popisne liste primerne za uvoz v eDavke
 
-Na računalniku imej **python 2.x**.
+Na računalniku imej **python 3**.
 
 Datoteko **taxpayer-sample.xml** preimenuj v **taxpayer.xml**, jo odpri in vnesi svoje davčne podatke.
 
