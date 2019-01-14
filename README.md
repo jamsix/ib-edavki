@@ -10,9 +10,18 @@ Poleg pretvorbe vrednosti skripta naredi še konverzijo iz tujih valut v EUR po 
 ## Uporaba
 
 ### Namestitev skripte
+
+Na računalniku imej **python 3**.
+
 ```
 pip install --upgrade git+https://github.com/primoz64/ib-edavki.git
 ```
+
+```
+ib-edavki
+```
+
+Odpri datoteko **taxpayer.xml** in vnesi svoje davčne podatke.
 
 ### Izvoz poročila v platformi InteractiveBrokers
 
@@ -32,10 +41,6 @@ pip install --upgrade git+https://github.com/primoz64/ib-edavki.git
 1. Ponovi postopek za vsako leto trgovanja, če si trgoval v letih 2016, 2017 in 2018, generiraj 3 reporte, po enega za vsako leto.
 
 ### Konverzija IB poročila v popisne liste primerne za uvoz v eDavke
-
-Na računalniku imej **python 3**.
-
-Datoteko **taxpayer-sample.xml** preimenuj v **taxpayer.xml**, jo odpri in vnesi svoje davčne podatke.
 
 ```
 ib-edavki [-h] [-y report-year] [-t] ib-xml-file-2016 [ib-xml-file-2017] [ib-xml-file-2018]

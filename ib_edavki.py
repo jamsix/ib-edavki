@@ -19,6 +19,22 @@ ignoreAssets = ["CASH"]
 
 
 def main():
+    if not os.path.isfile("taxpayer.xml"):
+        print("Modify taxpayer.xml and add your data first!")
+        f = open("taxpayer.xml","w+")
+        f.write("<taxpayer>\n"
+                "   <taxNumber>12345678</taxNumber>\n"
+                "   <taxpayerType>FO</taxpayerType>\n"
+                "   <name>Janez Novak</name>\n"
+                "   <address1>Slovenska 1</address1>\n"
+                "   <city>Ljubljana</city>\n"
+                "   <postNumber>1000</postNumber>\n"
+                "   <postName>Ljubljana</postName>\n"
+                "   <email>janez.novak@furs.si</email>\n"
+                "   <telephoneNumber>01 123 45 67</telephoneNumber>\n"
+                "</taxpayer>")
+        exit(0)
+
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "ibXmlFiles",
@@ -49,11 +65,6 @@ def main():
             reportYear = datetime.date.today().year
         else:
             reportYear = datetime.date.today().year - 1
-
-    if not os.path.isfile("taxpayer.xml"):
-        print("Modify taxpayer.xml and add your data first!")
-        shutil.copyfile("taxpayer-sample.xml", "taxpayer.xml")
-        exit(0)
 
     if test == True:
         testYearDiff = reportYear - datetime.date.today().year - 1
