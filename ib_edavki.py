@@ -21,18 +21,20 @@ ignoreAssets = ["CASH"]
 def main():
     if not os.path.isfile("taxpayer.xml"):
         print("Modify taxpayer.xml and add your data first!")
-        f = open("taxpayer.xml","w+")
-        f.write("<taxpayer>\n"
-                "   <taxNumber>12345678</taxNumber>\n"
-                "   <taxpayerType>FO</taxpayerType>\n"
-                "   <name>Janez Novak</name>\n"
-                "   <address1>Slovenska 1</address1>\n"
-                "   <city>Ljubljana</city>\n"
-                "   <postNumber>1000</postNumber>\n"
-                "   <postName>Ljubljana</postName>\n"
-                "   <email>janez.novak@furs.si</email>\n"
-                "   <telephoneNumber>01 123 45 67</telephoneNumber>\n"
-                "</taxpayer>")
+        f = open("taxpayer.xml", "w+")
+        f.write(
+            "<taxpayer>\n"
+            "   <taxNumber>12345678</taxNumber>\n"
+            "   <taxpayerType>FO</taxpayerType>\n"
+            "   <name>Janez Novak</name>\n"
+            "   <address1>Slovenska 1</address1>\n"
+            "   <city>Ljubljana</city>\n"
+            "   <postNumber>1000</postNumber>\n"
+            "   <postName>Ljubljana</postName>\n"
+            "   <email>janez.novak@furs.si</email>\n"
+            "   <telephoneNumber>01 123 45 67</telephoneNumber>\n"
+            "</taxpayer>"
+        )
         exit(0)
 
     parser = argparse.ArgumentParser()
@@ -755,7 +757,7 @@ def main():
 
     """ Generate Doh-Div.xml """
     envelope = xml.etree.ElementTree.Element(
-        "Envelope", xmlns="http://edavki.durs.si/Documents/Schemas/Doh_Div_1.xsd"
+        "Envelope", xmlns="http://edavki.durs.si/Documents/Schemas/Doh_Div_2.xsd"
     )
     envelope.set(
         "xmlns:edp", "http://edavki.durs.si/Documents/Schemas/EDP-Common-1.xsd"
@@ -796,26 +798,26 @@ def main():
 
     dividends = sorted(dividends, key=lambda k: k["reportDate"])
     for dividend in dividends:
-        Dividends = xml.etree.ElementTree.SubElement(Doh_Div, "Dividends")
-        Date = xml.etree.ElementTree.SubElement(Dividends, "Date").text = (
+        Dividend = xml.etree.ElementTree.SubElement(Doh_Div, "Dividend")
+        xml.etree.ElementTree.SubElement(Dividend, "Date").text = (
             dYear
             + "-"
             + dividend["reportDate"][4:6]
             + "-"
             + dividend["reportDate"][6:8]
         )
-        Type = xml.etree.ElementTree.SubElement(Dividends, "Type").text = "1"
-        Value = xml.etree.ElementTree.SubElement(
-            Dividends, "Value"
-        ).text = "{0:.2f}".format(dividend["amountEUR"])
-        ForeignTax = xml.etree.ElementTree.SubElement(
-            Dividends, "ForeignTax"
+        xml.etree.ElementTree.SubElement(Dividend, "PayerName").text = dividend[
+            "symbol"
+        ]
+        xml.etree.ElementTree.SubElement(Dividend, "Type").text = "1"
+        xml.etree.ElementTree.SubElement(Dividend, "Value").text = "{0:.2f}".format(
+            dividend["amountEUR"]
+        )
+        xml.etree.ElementTree.SubElement(
+            Dividend, "ForeignTax"
         ).text = "{0:.2f}".format(dividend["taxEUR"])
-    for dividend in dividends:
-        DividendsPayer = xml.etree.ElementTree.SubElement(Doh_Div, "DividendsPayer")
-        Company = xml.etree.ElementTree.SubElement(
-            DividendsPayer, "Company"
-        ).text = dividend["symbol"]
+        xml.etree.ElementTree.SubElement(Dividend, "SourceCountry").text = ""
+        xml.etree.ElementTree.SubElement(Dividend, "ReliefStatement").text = ""
 
     xmlString = xml.etree.ElementTree.tostring(envelope)
     prettyXmlString = minidom.parseString(xmlString).toprettyxml(indent="\t")
