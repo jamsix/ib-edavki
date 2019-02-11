@@ -110,11 +110,13 @@ def main():
     """ Parsing IB XMLs """
     ibTradesList = []
     ibCashTransactionsList = []
+    ibSecuritiesInfoList = []
     for ibXmlFilename in ibXmlFilenames:
         ibXml = xml.etree.ElementTree.parse(ibXmlFilename).getroot()
         ibTradesList.append(ibXml[0][0].find("Trades"))
         """ibPositions = ibXml[0][0].find('OpenPositions')"""
         ibCashTransactionsList.append(ibXml[0][0].find("CashTransactions"))
+        ibSecuritiesInfoList.append(ibXml[0][0].find("SecuritiesInfo"))
         ibFlexStatement = ibXml[0][0]
 
     if test == True:
@@ -285,10 +287,6 @@ def main():
                 sys.exit(
                     "Error: cannot figure out if trade is Normal or Derivate, Long or Short"
                 )
-
-    # pprint(normalTrades);
-    # pprint(derivateTrades);
-    # pprint(shortTrades);
 
     """ Generate the files for Normal """
     envelope = xml.etree.ElementTree.Element(
@@ -672,6 +670,7 @@ def main():
                 dividend = {
                     "currency": ibCashTransaction.attrib["currency"],
                     "type": ibCashTransaction.attrib["type"],
+                    "conid": ibCashTransaction.attrib["conid"],
                     "amount": float(ibCashTransaction.attrib["amount"]),
                     "symbol": ibCashTransaction.attrib["symbol"],
                     "description": ibCashTransaction.attrib["description"],
@@ -755,6 +754,17 @@ def main():
                                     )
                         closestDividend["taxEUR"] = closestDividend["tax"] / rate
 
+    """ Get securities info from IB XML """
+    securities = []
+    for ibSecuritiesInfo in ibSecuritiesInfoList:
+        if ibSecuritiesInfo is None:
+            continue
+        for ibSecurityInfo in ibSecuritiesInfo:
+            if ibSecurityInfo.attrib["conid"]:
+                for dividend in dividends:
+                    if ibSecurityInfo.attrib["conid"] == dividend["conid"]:
+                        dividend["description"] = ibSecurityInfo.attrib["description"]
+
     """ Generate Doh-Div.xml """
     envelope = xml.etree.ElementTree.Element(
         "Envelope", xmlns="http://edavki.durs.si/Documents/Schemas/Doh_Div_2.xsd"
@@ -806,9 +816,14 @@ def main():
             + "-"
             + dividend["reportDate"][6:8]
         )
-        xml.etree.ElementTree.SubElement(Dividend, "PayerName").text = dividend[
-            "symbol"
-        ]
+        if "description" in dividend:
+            xml.etree.ElementTree.SubElement(Dividend, "PayerName").text = dividend[
+                "description"
+            ]
+        else:
+            xml.etree.ElementTree.SubElement(Dividend, "PayerName").text = dividend[
+                "symbol"
+            ]
         xml.etree.ElementTree.SubElement(Dividend, "Type").text = "1"
         xml.etree.ElementTree.SubElement(Dividend, "Value").text = "{0:.2f}".format(
             dividend["amountEUR"]
