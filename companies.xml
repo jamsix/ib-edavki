@@ -1,0 +1,44 @@
+<companies>
+    <company>
+        <symbol>AAPL</symbol>
+        <name>Apple Inc</name>
+        <taxNumber>942404110</taxNumber>
+        <address>1 Infinite Loop, Cupertino, CA 95014</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>CME</symbol>
+        <name>CME Group Inc</name>
+        <taxNumber>364459170</taxNumber>
+        <address>20 S Wacker Dr, Chicago, IL 60606-7431</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>F</symbol>
+        <name>Ford Motor Company</name>
+        <taxNumber>380549190</taxNumber>
+        <address>One American Road, Dearborn, MI 48126</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>MTN</symbol>
+        <name>Vail Resorts Inc</name>
+        <taxNumber>510291762</taxNumber>
+        <address>390 Interlocken Crescent, Broomfield, CO 80021</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>NTES</symbol>
+        <name>NetEase Inc</name>
+        <taxNumber>64110W102</taxNumber>
+        <address>Zhongguancun Software Park (Phase II), No. 10 Xibeiwang East Road, Haidian District, Beijing, 100193</address>
+        <country>CN</country>
+    </company>
+    <company>
+        <symbol>TCEHY</symbol>
+        <name>Tencent Holdings Ltd</name>
+        <taxNumber>88032Q10</taxNumber>
+        <address>Kejizhongyi Avenue, Hi-tech Park, Nanshan District, Shenzhen, 518057</address>
+        <country>CN</country>
+    </company>
+</companies>

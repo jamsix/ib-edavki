@@ -60,6 +60,10 @@ eDavki ne omogočajo dodajanje popisnih listov za tekoče leto, temveč le za pr
 
 **Pozor: namenjeno informativnemu izračunu, ne oddajaj obrazca napolnjenega s temi podatki!**
 
+#### Dodatni podatki o podjetju za obrazec Doh-Div (opcijsko)
+Obrazec Doh-Div zahteva dodatne podatke o podjetju, ki je izplačalo dividende (identifikacijska številka, naslov, ...), ki jih v izvirnih podatkih IBja ni. Ob prvi uporabi, skripta prenese datoteki `companies.xml` in `relief-statement.xml`, ki že vsebujeta nekaj podjetij in sporazumov o izogibanju dvojnega obdavčevanja, ostale lahko dodaš sam, ali manjkajoče podatke po uvozu obrazca vneseš v eDavkih.
+*Če boš v `companies.xml` vnesel več novih podjetij, naredi pull request.*
+
 ### Uvoz v eDavke
 1. V meniju **Dokument** klikni **Uvoz**. Izberi eno izmed generiranih datotek (Doh-KDVP.xml, D-IFI, Doh-Div) in jo **Prenesi**.
 1. Preveri izpolnjene podatke in dodaj manjkajoče.

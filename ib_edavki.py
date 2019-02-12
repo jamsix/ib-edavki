@@ -71,6 +71,7 @@ def main():
     if test == True:
         testYearDiff = reportYear - datetime.date.today().year - 1
 
+    """ Parse taxpayer information from the local taxpayer.xml file """
     taxpayer = xml.etree.ElementTree.parse("taxpayer.xml").getroot()
     taxpayerConfig = {
         "taxNumber": taxpayer.find("taxNumber").text,
@@ -83,6 +84,40 @@ def main():
         "email": taxpayer.find("email").text,
         "telephoneNumber": taxpayer.find("telephoneNumber").text,
     }
+
+    """ Fetch companies.xml from GitHub if it doesn't exist and use the data for Doh-Div.xml """
+    companies = {}
+    if not os.path.isfile("companies.xml"):
+        urllib.request.urlretrieve(
+            "https://github.com/jamsix/ib-edavki/raw/master/companies.xml",
+            "companies.xml",
+        )
+    if os.path.isfile("companies.xml"):
+        cmpns = xml.etree.ElementTree.parse("companies.xml").getroot()
+        for company in cmpns:
+            c = {
+                "symbol": company.find("symbol").text,
+                "name": company.find("name").text,
+                "taxNumber": company.find("taxNumber").text,
+                "address": company.find("address").text,
+                "country": company.find("country").text,
+            }
+            companies[c["symbol"]] = c
+
+    """ Fetch relief-statements.xml from GitHub if it doesn't exist and use the data for Doh-Div.xml """
+    if not os.path.isfile("relief-statements.xml"):
+        urllib.request.urlretrieve(
+            "https://github.com/jamsix/ib-edavki/raw/master/relief-statements.xml",
+            "treaties.xml",
+        )
+    if os.path.isfile("relief-statements.xml"):
+        statements = xml.etree.ElementTree.parse("relief-statements.xml").getroot()
+        for statement in statements:
+            for symbol in companies:
+                if companies[symbol]["country"] == statement.find("country").text:
+                    companies[symbol]["reliefStatement"] = statement.find(
+                        "statement"
+                    ).text
 
     """ Creating daily exchange rates object """
     bsRateXmlFilename = (
@@ -679,6 +714,15 @@ def main():
                     "tax": 0,
                     "taxEUR": 0,
                 }
+                if companies and dividend["symbol"] in companies:
+                    dividend["description"] = companies[dividend["symbol"]]["name"]
+                    dividend["taxNumber"] = companies[dividend["symbol"]]["taxNumber"]
+                    dividend["address"] = companies[dividend["symbol"]]["address"]
+                    dividend["country"] = companies[dividend["symbol"]]["country"]
+                    if "reliefStatement" in companies[dividend["symbol"]]:
+                        dividend["reliefStatement"] = companies[dividend["symbol"]][
+                            "reliefStatement"
+                        ]
                 """ Convert amount to EUR """
                 if dividend["currency"] == "EUR":
                     dividend["amountEUR"] = dividend["amount"]
@@ -816,6 +860,10 @@ def main():
             + "-"
             + dividend["reportDate"][6:8]
         )
+        if "taxNumber" in dividend:
+            xml.etree.ElementTree.SubElement(
+                Dividend, "PayerIdentificationNumber"
+            ).text = dividend["taxNumber"]
         if "description" in dividend:
             xml.etree.ElementTree.SubElement(Dividend, "PayerName").text = dividend[
                 "description"
@@ -824,6 +872,14 @@ def main():
             xml.etree.ElementTree.SubElement(Dividend, "PayerName").text = dividend[
                 "symbol"
             ]
+        if "address" in dividend:
+            xml.etree.ElementTree.SubElement(Dividend, "PayerAddress").text = dividend[
+                "address"
+            ]
+        if "country" in dividend:
+            xml.etree.ElementTree.SubElement(Dividend, "PayerCountry").text = dividend[
+                "country"
+            ]
         xml.etree.ElementTree.SubElement(Dividend, "Type").text = "1"
         xml.etree.ElementTree.SubElement(Dividend, "Value").text = "{0:.2f}".format(
             dividend["amountEUR"]
@@ -831,8 +887,16 @@ def main():
         xml.etree.ElementTree.SubElement(
             Dividend, "ForeignTax"
         ).text = "{0:.2f}".format(dividend["taxEUR"])
-        xml.etree.ElementTree.SubElement(Dividend, "SourceCountry").text = ""
-        xml.etree.ElementTree.SubElement(Dividend, "ReliefStatement").text = ""
+        if "country" in dividend:
+            xml.etree.ElementTree.SubElement(Dividend, "SourceCountry").text = dividend[
+                "country"
+            ]
+        if "reliefStatement" in dividend:
+            xml.etree.ElementTree.SubElement(
+                Dividend, "ReliefStatement"
+            ).text = dividend["reliefStatement"]
+        else:
+            xml.etree.ElementTree.SubElement(Dividend, "ReliefStatement").text = ""
 
     xmlString = xml.etree.ElementTree.tostring(envelope)
     prettyXmlString = minidom.parseString(xmlString).toprettyxml(indent="\t")
