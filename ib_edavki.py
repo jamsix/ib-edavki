@@ -798,6 +798,25 @@ def main():
                                     )
                         closestDividend["taxEUR"] = closestDividend["tax"] / rate
 
+    """ Merge multiple dividends or payments in lieu of dividents on the same day from the same company into a single entry """
+    mergedDividends = []
+    for dividend in dividends:
+        merged = False
+        for mergedDividend in mergedDividends:
+            if dividend["reportDate"] == mergedDividend["reportDate"] and (
+                dividend["conid"] == mergedDividend["conid"]
+                or dividend["symbol"] == mergedDividend["symbol"]
+            ):
+                mergedDividend["amountEUR"] = (
+                    mergedDividend["amountEUR"] + dividend["amountEUR"]
+                )
+                mergedDividend["taxEUR"] = mergedDividend["taxEUR"] + dividend["taxEUR"]
+                merged = True
+                break
+        if merged == False:
+            mergedDividends.append(dividend)
+    dividends = mergedDividends
+
     """ Get securities info from IB XML """
     securities = []
     for ibSecuritiesInfo in ibSecuritiesInfoList:
