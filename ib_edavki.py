@@ -468,6 +468,7 @@ def main():
     prettyXmlString = minidom.parseString(xmlString).toprettyxml(indent="\t")
     with open("Doh-KDVP.xml", "w", encoding="utf-8") as f:
         f.write(prettyXmlString)
+        print("Doh-KDVP.xml created")
 
     """ Generate the files for Derivates and Shorts """
     envelope = xml.etree.ElementTree.Element(
@@ -691,6 +692,7 @@ def main():
     prettyXmlString = minidom.parseString(xmlString).toprettyxml(indent="\t")
     with open("D-IFI.xml", "w", encoding="utf-8") as f:
         f.write(prettyXmlString)
+        print("Doh-IFI.xml created")
 
     """ Get dividends from IB XML """
     dividends = []
@@ -923,6 +925,7 @@ def main():
     prettyXmlString = minidom.parseString(xmlString).toprettyxml(indent="\t")
     with open("Doh-Div.xml", "w", encoding="utf-8") as f:
         f.write(prettyXmlString)
+        print("Doh-Div.xml created")
 
 
 if __name__ == "__main__":
