@@ -67,6 +67,8 @@ def main():
             reportYear = datetime.date.today().year
         else:
             reportYear = datetime.date.today().year - 1
+    else:
+        reportYear = int(args.y)
 
     if test == True:
         testYearDiff = reportYear - datetime.date.today().year - 1
