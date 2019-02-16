@@ -21,7 +21,7 @@ ignoreAssets = ["CASH"]
 def main():
     if not os.path.isfile("taxpayer.xml"):
         print("Modify taxpayer.xml and add your data first!")
-        f = open("taxpayer.xml", "w+")
+        f = open("taxpayer.xml", "w+", encoding="utf-8")
         f.write(
             "<taxpayer>\n"
             "   <taxNumber>12345678</taxNumber>\n"
@@ -466,7 +466,7 @@ def main():
 
     xmlString = xml.etree.ElementTree.tostring(envelope)
     prettyXmlString = minidom.parseString(xmlString).toprettyxml(indent="\t")
-    with open("Doh-KDVP.xml", "w") as f:
+    with open("Doh-KDVP.xml", "w", encoding="utf-8") as f:
         f.write(prettyXmlString)
 
     """ Generate the files for Derivates and Shorts """
@@ -689,7 +689,7 @@ def main():
 
     xmlString = xml.etree.ElementTree.tostring(envelope)
     prettyXmlString = minidom.parseString(xmlString).toprettyxml(indent="\t")
-    with open("D-IFI.xml", "w") as f:
+    with open("D-IFI.xml", "w", encoding="utf-8") as f:
         f.write(prettyXmlString)
 
     """ Get dividends from IB XML """
@@ -921,7 +921,7 @@ def main():
 
     xmlString = xml.etree.ElementTree.tostring(envelope)
     prettyXmlString = minidom.parseString(xmlString).toprettyxml(indent="\t")
-    with open("Doh-Div.xml", "w") as f:
+    with open("Doh-Div.xml", "w", encoding="utf-8") as f:
         f.write(prettyXmlString)
 
 
