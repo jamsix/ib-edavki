@@ -1,5 +1,6 @@
 <companies>
     <company>
+        <conid>265598</conid>
         <symbol>AAPL</symbol>
         <name>Apple Inc</name>
         <taxNumber>942404110</taxNumber>
@@ -7,6 +8,14 @@
         <country>US</country>
     </company>
     <company>
+        <symbol>CSCO</symbol>
+        <name>Cisco Systems Inc</name>
+        <taxNumber>770059951</taxNumber>
+        <address>170 West Tasman Drive, San Jose, CA, 95134</address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>45127739</conid>
         <symbol>CME</symbol>
         <name>CME Group Inc</name>
         <taxNumber>364459170</taxNumber>
@@ -14,6 +23,7 @@
         <country>US</country>
     </company>
     <company>
+        <conid>9599491</conid>
         <symbol>F</symbol>
         <name>Ford Motor Company</name>
         <taxNumber>380549190</taxNumber>
@@ -21,6 +31,14 @@
         <country>US</country>
     </company>
     <company>
+        <symbol>JNJ</symbol>
+        <name>Johnson &amp; Johnson</name>
+        <taxNumber>221024240</taxNumber>
+        <address>One Johnson &amp; Johnson Plz, New Brunswick, NJ 08933</address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>2586162</conid>
         <symbol>MTN</symbol>
         <name>Vail Resorts Inc</name>
         <taxNumber>510291762</taxNumber>
@@ -28,6 +46,14 @@
         <country>US</country>
     </company>
     <company>
+        <symbol>NTAP</symbol>
+        <name>NetApp, Inc.</name>
+        <taxNumber>770307520</taxNumber>
+        <address>1395 Crossman Ave, Sunnyvale, CA 94089</address>
+        <country>US</country>
+    </company>	
+    <company>
+        <conid>55279376</conid>
         <symbol>NTES</symbol>
         <name>NetEase Inc</name>
         <taxNumber>64110W102</taxNumber>
@@ -35,6 +61,7 @@
         <country>CN</country>
     </company>
     <company>
+        <conid>55279376</conid>
         <symbol>TCEHY</symbol>
         <name>Tencent Holdings Ltd</name>
         <taxNumber>88032Q10</taxNumber>
