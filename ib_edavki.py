@@ -163,10 +163,10 @@ def main():
         statementStartDate = str(reportYear) + "0101"
         statementEndDate = str(reportYear) + "1231"
 
-    """ Dictionary of stock trade arrays, each key represents one symbol """
+    """ Dictionary of stock trade arrays, each key represents one conid """
     trades = {}
 
-    """ Get trades from IB XML and sort them by the symbol """
+    """ Get trades from IB XML and sort them by the conid """
     for ibTrades in ibTradesList:
         if ibTrades is None:
             continue
@@ -176,6 +176,7 @@ def main():
 
             if ibTrade.tag == "Trade":
                 trade = {
+                    "symbol": ibTrade.attrib["symbol"],
                     "currency": ibTrade.attrib["currency"],
                     "assetCategory": ibTrade.attrib["assetCategory"],
                     "tradePrice": float(ibTrade.attrib["tradePrice"]),
@@ -196,11 +197,11 @@ def main():
                     trade["tradePrice"] = float(ibTrade.attrib["tradePrice"]) * float(
                         ibTrade.attrib["multiplier"]
                     )
-                symbol = ibTrade.attrib["symbol"]
-                if symbol not in trades:
-                    trades[symbol] = []
+                conid = ibTrade.attrib["conid"]
+                if conid not in trades:
+                    trades[conid] = []
                 lastTrade = trade
-                trades[symbol].append(trade)
+                trades[conid].append(trade)
 
             elif ibTrade.tag == "Lot" and lastTrade != None:
                 if "openTransactionIds" not in lastTrade:
@@ -210,9 +211,9 @@ def main():
 
     """ Detect if trades are Normal or Derivates and if they are Opening or Closing positions
         Convert the price to EUR """
-    for symbol in trades:
+    for conid in trades:
         beforeTradePosition = 0
-        for trade in trades[symbol]:
+        for trade in trades[conid]:
             if trade["currency"] == "EUR":
                 trade["tradePriceEUR"] = trade["tradePrice"]
             else:
@@ -254,30 +255,30 @@ def main():
 
     """ Filter trades to only include those that closed in the parameter year and trades that opened the closing position """
     yearTrades = {}
-    for symbol in trades:
-        for trade in trades[symbol]:
+    for conid in trades:
+        for trade in trades[conid]:
             if (
                 trade["tradeDate"][0:4] == str(reportYear)
                 and trade["openCloseIndicator"] == "C"
             ):
-                if symbol not in yearTrades:
-                    yearTrades[symbol] = []
-                for xtrade in trades[symbol]:
+                if conid not in yearTrades:
+                    yearTrades[conid] = []
+                for xtrade in trades[conid]:
                     if xtrade["transactionID"] in trade["openTransactionIds"]:
                         ctrade = copy.copy(xtrade)
                         tid = ctrade["transactionID"]
                         ctrade["quantity"] = trade["openTransactionIds"][tid]
-                        yearTrades[symbol].append(ctrade)
+                        yearTrades[conid].append(ctrade)
 
-                yearTrades[symbol].append(trade)
+                yearTrades[conid].append(trade)
 
     """ Logical trade order can be executed as multiple suborders at different price. Merge suborders in a single logical order. """
     mergedTrades = {}
-    for symbol in yearTrades:
-        for trade in yearTrades[symbol]:
+    for conid in yearTrades:
+        for trade in yearTrades[conid]:
             tradeExists = False
-            if symbol in mergedTrades:
-                for previousTrade in mergedTrades[symbol]:
+            if conid in mergedTrades:
+                for previousTrade in mergedTrades[conid]:
                     if previousTrade["ibOrderID"] == trade["ibOrderID"]:
                         previousTrade["tradePrice"] = (
                             previousTrade["quantity"] * previousTrade["tradePrice"]
@@ -289,37 +290,36 @@ def main():
                         tradeExists = True
                         break
             if tradeExists == False:
-                if symbol not in mergedTrades:
-                    mergedTrades[symbol] = []
-                mergedTrades[symbol].append(trade)
+                if conid not in mergedTrades:
+                    mergedTrades[conid] = []
+                mergedTrades[conid].append(trade)
 
     """ Sort the trades by time """
-    for symbol in mergedTrades:
+    for conid in mergedTrades:
         l = sorted(
-            mergedTrades[symbol],
-            key=lambda k: "%s%s" % (k["tradeDate"], k["tradeTime"]),
+            mergedTrades[conid], key=lambda k: "%s%s" % (k["tradeDate"], k["tradeTime"])
         )
-        mergedTrades[symbol] = l
+        mergedTrades[conid] = l
 
     """ Sort the trades in 3 categories """
     normalTrades = {}
     derivateTrades = {}
     shortTrades = {}
 
-    for symbol in mergedTrades:
-        for trade in mergedTrades[symbol]:
+    for conid in mergedTrades:
+        for trade in mergedTrades[conid]:
             if trade["positionType"] == "short":
-                if symbol not in shortTrades:
-                    shortTrades[symbol] = []
-                shortTrades[symbol].append(trade)
+                if conid not in shortTrades:
+                    shortTrades[conid] = []
+                shortTrades[conid].append(trade)
             elif trade["assetType"] == "normal":
-                if symbol not in normalTrades:
-                    normalTrades[symbol] = []
-                normalTrades[symbol].append(trade)
+                if conid not in normalTrades:
+                    normalTrades[conid] = []
+                normalTrades[conid].append(trade)
             elif trade["assetType"] == "derivate":
-                if symbol not in derivateTrades:
-                    derivateTrades[symbol] = []
-                derivateTrades[symbol].append(trade)
+                if conid not in derivateTrades:
+                    derivateTrades[conid] = []
+                derivateTrades[conid].append(trade)
             else:
                 sys.exit(
                     "Error: cannot figure out if trade is Normal or Derivate, Long or Short"
@@ -385,12 +385,14 @@ def main():
     xml.etree.ElementTree.SubElement(KDVP, "SecurityWithContractShortCount").text = "0"
     xml.etree.ElementTree.SubElement(KDVP, "ShareCount").text = "0"
 
-    for symbol in normalTrades:
+    for conid in normalTrades:
         KDVPItem = xml.etree.ElementTree.SubElement(Doh_KDVP, "KDVPItem")
         InventoryListType = xml.etree.ElementTree.SubElement(
             KDVPItem, "InventoryListType"
         ).text = "PLVP"
-        Name = xml.etree.ElementTree.SubElement(KDVPItem, "Name").text = symbol
+        Name = xml.etree.ElementTree.SubElement(KDVPItem, "Name").text = normalTrades[
+            conid
+        ][0]["description"]
         HasForeignTax = xml.etree.ElementTree.SubElement(
             KDVPItem, "HasForeignTax"
         ).text = "false"
@@ -404,20 +406,22 @@ def main():
             KDVPItem, "TaxDecreaseConformance"
         ).text = "false"
         Securities = xml.etree.ElementTree.SubElement(KDVPItem, "Securities")
-        if len(normalTrades[symbol]) > 0 and "isin" in normalTrades[symbol][0]:
+        if len(normalTrades[conid]) > 0 and "isin" in normalTrades[conid][0]:
             ISIN = xml.etree.ElementTree.SubElement(
                 Securities, "ISIN"
-            ).text = normalTrades[symbol][0]["isin"]
-        Code = xml.etree.ElementTree.SubElement(Securities, "Code").text = symbol[:10]
-        if len(normalTrades[symbol]) > 0 and "description" in normalTrades[symbol][0]:
+            ).text = normalTrades[conid][0]["isin"]
+        Code = xml.etree.ElementTree.SubElement(Securities, "Code").text = normalTrades[
+            conid
+        ][0]["symbol"][:10]
+        if len(normalTrades[conid]) > 0 and "description" in normalTrades[conid][0]:
             Name = xml.etree.ElementTree.SubElement(
                 Securities, "Name"
-            ).text = normalTrades[symbol][0]["description"]
+            ).text = normalTrades[conid][0]["description"]
         IsFond = xml.etree.ElementTree.SubElement(Securities, "IsFond").text = "false"
 
         F8Value = 0
         n = -1
-        for trade in normalTrades[symbol]:
+        for trade in normalTrades[conid]:
             n += 1
             if test == True:
                 tradeYear = int(trade["tradeDate"][0:4]) + testYearDiff
@@ -525,17 +529,17 @@ def main():
     xml.etree.ElementTree.SubElement(difi, "Email").text = taxpayerConfig["email"]
 
     n = 0
-    for symbol in derivateTrades:
+    for conid in derivateTrades:
         n += 1
         TItem = xml.etree.ElementTree.SubElement(difi, "TItem")
         Id = xml.etree.ElementTree.SubElement(TItem, "Id").text = str(n)
         TypeId = xml.etree.ElementTree.SubElement(TItem, "TypeId").text = "PLIFI"
-        if derivateTrades[symbol][0]["assetCategory"] == "CFD":
+        if derivateTrades[conid][0]["assetCategory"] == "CFD":
             Type = xml.etree.ElementTree.SubElement(TItem, "Type").text = "02"
             TypeName = xml.etree.ElementTree.SubElement(
                 TItem, "TypeName"
             ).text = "financne pogodbe na razliko"
-        elif derivateTrades[symbol][0]["assetCategory"] == "OPT":
+        elif derivateTrades[conid][0]["assetCategory"] == "OPT":
             Type = xml.etree.ElementTree.SubElement(TItem, "Type").text = "03"
             TypeName = xml.etree.ElementTree.SubElement(
                 TItem, "TypeName"
@@ -545,26 +549,25 @@ def main():
             TypeName = xml.etree.ElementTree.SubElement(
                 TItem, "TypeName"
             ).text = "drugo"
-        if (
-            len(derivateTrades[symbol]) > 0
-            and "description" in derivateTrades[symbol][0]
-        ):
+        if len(derivateTrades[conid]) > 0 and "description" in derivateTrades[conid][0]:
             Name = xml.etree.ElementTree.SubElement(
                 TItem, "Name"
-            ).text = derivateTrades[symbol][0]["description"]
-        if derivateTrades[symbol][0]["assetCategory"] != "OPT":
-            """ Option symbols are to long and not accepted by eDavki """
-            Code = xml.etree.ElementTree.SubElement(TItem, "Code").text = symbol[:10]
-        if len(derivateTrades[symbol]) > 0 and "isin" in derivateTrades[symbol][0]:
+            ).text = derivateTrades[conid][0]["description"]
+        if derivateTrades[conid][0]["assetCategory"] != "OPT":
+            """ Option descriptions are to long and not accepted by eDavki """
+            Code = xml.etree.ElementTree.SubElement(
+                TItem, "Code"
+            ).text = derivateTrades[conid][0]["symbol"][:10]
+        if len(derivateTrades[conid]) > 0 and "isin" in derivateTrades[conid][0]:
             ISIN = xml.etree.ElementTree.SubElement(
                 TItem, "ISIN"
-            ).text = derivateTrades[symbol][0]["isin"]
+            ).text = derivateTrades[conid][0]["isin"]
         HasForeignTax = xml.etree.ElementTree.SubElement(
             TItem, "HasForeignTax"
         ).text = "false"
 
         F8Value = 0
-        for trade in derivateTrades[symbol]:
+        for trade in derivateTrades[conid]:
             if test == True:
                 tradeYear = int(trade["tradeDate"][0:4]) + testYearDiff
             else:
@@ -607,17 +610,17 @@ def main():
                 TSubItem, "F8"
             ).text = "{0:.4f}".format(F8Value)
 
-    for symbol in shortTrades:
+    for conid in shortTrades:
         n += 1
         TItem = xml.etree.ElementTree.SubElement(difi, "TItem")
         Id = xml.etree.ElementTree.SubElement(TItem, "Id").text = str(n)
         TypeId = xml.etree.ElementTree.SubElement(TItem, "TypeId").text = "PLIFIShort"
-        if shortTrades[symbol][0]["assetCategory"] == "CFD":
+        if shortTrades[conid][0]["assetCategory"] == "CFD":
             Type = xml.etree.ElementTree.SubElement(TItem, "Type").text = "02"
             TypeName = xml.etree.ElementTree.SubElement(
                 TItem, "TypeName"
             ).text = "financne pogodbe na razliko"
-        elif shortTrades[symbol][0]["assetCategory"] == "OPT":
+        elif shortTrades[conid][0]["assetCategory"] == "OPT":
             Type = xml.etree.ElementTree.SubElement(TItem, "Type").text = "03"
             TypeName = xml.etree.ElementTree.SubElement(
                 TItem, "TypeName"
@@ -627,21 +630,23 @@ def main():
             TypeName = xml.etree.ElementTree.SubElement(
                 TItem, "TypeName"
             ).text = "drugo"
-        if len(shortTrades[symbol]) > 0 and "description" in shortTrades[symbol][0]:
+        if len(shortTrades[conid]) > 0 and "description" in shortTrades[conid][0]:
             Name = xml.etree.ElementTree.SubElement(TItem, "Name").text = shortTrades[
-                symbol
+                conid
             ][0]["description"]
-        Code = xml.etree.ElementTree.SubElement(TItem, "Code").text = symbol[:10]
-        if len(shortTrades[symbol]) > 0 and "isin" in shortTrades[symbol][0]:
+        Code = xml.etree.ElementTree.SubElement(TItem, "Code").text = shortTrades[
+            conid
+        ][0]["symbol"][:10]
+        if len(shortTrades[conid]) > 0 and "isin" in shortTrades[conid][0]:
             ISIN = xml.etree.ElementTree.SubElement(TItem, "ISIN").text = shortTrades[
-                symbol
+                conid
             ][0]["isin"]
         HasForeignTax = xml.etree.ElementTree.SubElement(
             TItem, "HasForeignTax"
         ).text = "false"
 
         F8Value = 0
-        for trade in shortTrades[symbol]:
+        for trade in shortTrades[conid]:
             if test == True:
                 tradeYear = int(trade["tradeDate"][0:4]) + testYearDiff
             else:
