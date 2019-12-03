@@ -175,6 +175,10 @@ def main():
                 continue
 
             if ibTrade.tag == "Trade":
+                try:
+                    time = ibTrade.attrib["tradeTime"]
+                except KeyError:
+                    time = "0"
                 trade = {
                     "symbol": ibTrade.attrib["symbol"],
                     "currency": ibTrade.attrib["currency"],
@@ -183,7 +187,7 @@ def main():
                     "quantity": float(ibTrade.attrib["quantity"]),
                     "buySell": ibTrade.attrib["buySell"],
                     "tradeDate": ibTrade.attrib["tradeDate"],
-                    "tradeTime": ibTrade.attrib["tradeTime"],
+                    "tradeTime": time,
                     "transactionID": ibTrade.attrib["transactionID"],
                     "ibOrderID": ibTrade.attrib["ibOrderID"],
                     "openCloseIndicator": ibTrade.attrib["openCloseIndicator"],
