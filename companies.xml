@@ -38,6 +38,14 @@
         <country>US</country>
     </company>
     <company>
+        <conid>9408</conid>
+        <symbol>MCD</symbol>
+        <name>Mcdonald's Corp</name>
+        <taxNumber>362361282</taxNumber>
+        <address>110 North Carpenter Street, Chicago, IL 60607</address>
+        <country>US</country>
+    </company>
+    <company>
         <conid>2586162</conid>
         <symbol>MTN</symbol>
         <name>Vail Resorts Inc</name>
@@ -51,7 +59,7 @@
         <taxNumber>770307520</taxNumber>
         <address>1395 Crossman Ave, Sunnyvale, CA 94089</address>
         <country>US</country>
-    </company>	
+    </company>
     <company>
         <conid>55279376</conid>
         <symbol>NTES</symbol>
