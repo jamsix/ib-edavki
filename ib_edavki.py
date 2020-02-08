@@ -255,7 +255,10 @@ def main():
             else:
                 """ Short position """
                 trade["positionType"] = "short"
-                trade["assetType"] = "derivate"
+                if trade["assetCategory"] in normalAssets:
+                    trade["assetType"] = "normal"
+                elif trade["assetCategory"] in derivateAssets:
+                    trade["assetType"] = "derivate"
 
     """ Filter trades to only include those that closed in the parameter year and trades that opened the closing position """
     yearTrades = {}
@@ -384,7 +387,9 @@ def main():
     xml.etree.ElementTree.SubElement(KDVP, "SecurityCount").text = str(
         len(normalTrades)
     )
-    xml.etree.ElementTree.SubElement(KDVP, "SecurityShortCount").text = "0"
+    xml.etree.ElementTree.SubElement(KDVP, "SecurityShortCount").text = str(
+        len(shortTrades)
+    )
     xml.etree.ElementTree.SubElement(KDVP, "SecurityWithContractCount").text = "0"
     xml.etree.ElementTree.SubElement(KDVP, "SecurityWithContractShortCount").text = "0"
     xml.etree.ElementTree.SubElement(KDVP, "ShareCount").text = "0"
@@ -432,6 +437,89 @@ def main():
             else:
                 tradeYear = int(trade["tradeDate"][0:4])
             Row = xml.etree.ElementTree.SubElement(Securities, "Row")
+            ID = xml.etree.ElementTree.SubElement(Row, "ID").text = str(n)
+            if trade["quantity"] > 0:
+                PurchaseSale = xml.etree.ElementTree.SubElement(Row, "Purchase")
+                F1 = xml.etree.ElementTree.SubElement(PurchaseSale, "F1").text = (
+                    str(tradeYear)
+                    + "-"
+                    + trade["tradeDate"][4:6]
+                    + "-"
+                    + trade["tradeDate"][6:8]
+                )
+                F2 = xml.etree.ElementTree.SubElement(PurchaseSale, "F2").text = "B"
+                F3 = xml.etree.ElementTree.SubElement(
+                    PurchaseSale, "F3"
+                ).text = "{0:.4f}".format(trade["quantity"])
+                F4 = xml.etree.ElementTree.SubElement(
+                    PurchaseSale, "F4"
+                ).text = "{0:.4f}".format(trade["tradePriceEUR"])
+                F5 = xml.etree.ElementTree.SubElement(
+                    PurchaseSale, "F5"
+                ).text = "0.0000"
+            else:
+                PurchaseSale = xml.etree.ElementTree.SubElement(Row, "Sale")
+                F6 = xml.etree.ElementTree.SubElement(PurchaseSale, "F6").text = (
+                    str(tradeYear)
+                    + "-"
+                    + trade["tradeDate"][4:6]
+                    + "-"
+                    + trade["tradeDate"][6:8]
+                )
+                F7 = xml.etree.ElementTree.SubElement(
+                    PurchaseSale, "F7"
+                ).text = "{0:.4f}".format(-trade["quantity"])
+                F9 = xml.etree.ElementTree.SubElement(
+                    PurchaseSale, "F9"
+                ).text = "{0:.4f}".format(trade["tradePriceEUR"])
+            F8Value += trade["quantity"]
+            F8 = xml.etree.ElementTree.SubElement(Row, "F8").text = "{0:.4f}".format(
+                F8Value
+            )
+
+    for conid in shortTrades:
+        KDVPItem = xml.etree.ElementTree.SubElement(Doh_KDVP, "KDVPItem")
+        InventoryListType = xml.etree.ElementTree.SubElement(
+            KDVPItem, "InventoryListType"
+        ).text = "PLVPSHORT"
+        Name = xml.etree.ElementTree.SubElement(KDVPItem, "Name").text = shortTrades[
+            conid
+        ][0]["description"]
+        HasForeignTax = xml.etree.ElementTree.SubElement(
+            KDVPItem, "HasForeignTax"
+        ).text = "false"
+        HasLossTransfer = xml.etree.ElementTree.SubElement(
+            KDVPItem, "HasLossTransfer"
+        ).text = "false"
+        ForeignTransfer = xml.etree.ElementTree.SubElement(
+            KDVPItem, "ForeignTransfer"
+        ).text = "false"
+        TaxDecreaseConformance = xml.etree.ElementTree.SubElement(
+            KDVPItem, "TaxDecreaseConformance"
+        ).text = "false"
+        SecuritiesShort = xml.etree.ElementTree.SubElement(KDVPItem, "SecuritiesShort")
+        if len(shortTrades[conid]) > 0 and "isin" in shortTrades[conid][0]:
+            ISIN = xml.etree.ElementTree.SubElement(
+                SecuritiesShort, "ISIN"
+            ).text = shortTrades[conid][0]["isin"]
+        Code = xml.etree.ElementTree.SubElement(SecuritiesShort, "Code").text = shortTrades[
+            conid
+        ][0]["symbol"][:10]
+        if len(shortTrades[conid]) > 0 and "description" in shortTrades[conid][0]:
+            Name = xml.etree.ElementTree.SubElement(
+                SecuritiesShort, "Name"
+            ).text = shortTrades[conid][0]["description"]
+        IsFond = xml.etree.ElementTree.SubElement(SecuritiesShort, "IsFond").text = "false"
+
+        F8Value = 0
+        n = -1
+        for trade in shortTrades[conid]:
+            n += 1
+            if test == True:
+                tradeYear = int(trade["tradeDate"][0:4]) + testYearDiff
+            else:
+                tradeYear = int(trade["tradeDate"][0:4])
+            Row = xml.etree.ElementTree.SubElement(SecuritiesShort, "Row")
             ID = xml.etree.ElementTree.SubElement(Row, "ID").text = str(n)
             if trade["quantity"] > 0:
                 PurchaseSale = xml.etree.ElementTree.SubElement(Row, "Purchase")
