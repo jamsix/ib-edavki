@@ -246,15 +246,13 @@ def main():
             if (trade["openCloseIndicator"] == "O" and trade["quantity"] > 0) or (
                 trade["openCloseIndicator"] == "C" and trade["quantity"] < 0
             ):
-                """ Long position """
                 trade["positionType"] = "long"
-                if trade["assetCategory"] in normalAssets:
-                    trade["assetType"] = "normal"
-                elif trade["assetCategory"] in derivateAssets:
-                    trade["assetType"] = "derivate"
             else:
-                """ Short position """
                 trade["positionType"] = "short"
+
+            if trade["assetCategory"] in normalAssets:
+                trade["assetType"] = "normal"
+            elif trade["assetCategory"] in derivateAssets:
                 trade["assetType"] = "derivate"
 
     """ Filter trades to only include those that closed in the parameter year and trades that opened the closing position """
@@ -305,25 +303,30 @@ def main():
         )
         mergedTrades[conid] = l
 
-    """ Sort the trades in 3 categories """
-    normalTrades = {}
-    derivateTrades = {}
-    shortTrades = {}
+    """ Sort the trades in 4 categories """
+    longNormalTrades = {}
+    shortNormalTrades = {}
+    longDerivateTrades = {}
+    shortDerivateTrades = {}
 
     for conid in mergedTrades:
         for trade in mergedTrades[conid]:
-            if trade["positionType"] == "short":
-                if conid not in shortTrades:
-                    shortTrades[conid] = []
-                shortTrades[conid].append(trade)
-            elif trade["assetType"] == "normal":
-                if conid not in normalTrades:
-                    normalTrades[conid] = []
-                normalTrades[conid].append(trade)
-            elif trade["assetType"] == "derivate":
-                if conid not in derivateTrades:
-                    derivateTrades[conid] = []
-                derivateTrades[conid].append(trade)
+            if trade["assetType"] == "normal" and trade["positionType"] == "long":
+                if conid not in longNormalTrades:
+                    longNormalTrades[conid] = []
+                longNormalTrades[conid].append(trade)
+            elif trade["assetType"] == "normal" and trade["positionType"] == "short":
+                if conid not in shortNormalTrades:
+                    shortNormalTrades[conid] = []
+                shortNormalTrades[conid].append(trade)
+            elif trade["assetType"] == "derivate" and trade["positionType"] == "long":
+                if conid not in longDerivateTrades:
+                    longDerivateTrades[conid] = []
+                longDerivateTrades[conid].append(trade)
+            elif trade["assetType"] == "derivate" and trade["positionType"] == "short":
+                if conid not in shortDerivateTrades:
+                    shortDerivateTrades[conid] = []
+                shortDerivateTrades[conid].append(trade)
             else:
                 sys.exit(
                     "Error: cannot figure out if trade is Normal or Derivate, Long or Short"
@@ -382,21 +385,24 @@ def main():
     )
     xml.etree.ElementTree.SubElement(KDVP, "IsResident").text = "true"
     xml.etree.ElementTree.SubElement(KDVP, "SecurityCount").text = str(
-        len(normalTrades)
+        len(longNormalTrades)
     )
-    xml.etree.ElementTree.SubElement(KDVP, "SecurityShortCount").text = "0"
+    xml.etree.ElementTree.SubElement(KDVP, "SecurityShortCount").text = str(
+        len(shortNormalTrades)
+    )
     xml.etree.ElementTree.SubElement(KDVP, "SecurityWithContractCount").text = "0"
     xml.etree.ElementTree.SubElement(KDVP, "SecurityWithContractShortCount").text = "0"
     xml.etree.ElementTree.SubElement(KDVP, "ShareCount").text = "0"
 
-    for conid in normalTrades:
+    for conid in longNormalTrades:
+        trades = longNormalTrades[conid]
         KDVPItem = xml.etree.ElementTree.SubElement(Doh_KDVP, "KDVPItem")
         InventoryListType = xml.etree.ElementTree.SubElement(
             KDVPItem, "InventoryListType"
         ).text = "PLVP"
-        Name = xml.etree.ElementTree.SubElement(KDVPItem, "Name").text = normalTrades[
-            conid
-        ][0]["description"]
+        Name = xml.etree.ElementTree.SubElement(KDVPItem, "Name").text = trades[0][
+            "description"
+        ]
         HasForeignTax = xml.etree.ElementTree.SubElement(
             KDVPItem, "HasForeignTax"
         ).text = "false"
@@ -410,22 +416,22 @@ def main():
             KDVPItem, "TaxDecreaseConformance"
         ).text = "false"
         Securities = xml.etree.ElementTree.SubElement(KDVPItem, "Securities")
-        if len(normalTrades[conid]) > 0 and "isin" in normalTrades[conid][0]:
-            ISIN = xml.etree.ElementTree.SubElement(
-                Securities, "ISIN"
-            ).text = normalTrades[conid][0]["isin"]
-        Code = xml.etree.ElementTree.SubElement(Securities, "Code").text = normalTrades[
-            conid
-        ][0]["symbol"][:10]
-        if len(normalTrades[conid]) > 0 and "description" in normalTrades[conid][0]:
-            Name = xml.etree.ElementTree.SubElement(
-                Securities, "Name"
-            ).text = normalTrades[conid][0]["description"]
+        if len(trades) > 0 and "isin" in trades[0]:
+            ISIN = xml.etree.ElementTree.SubElement(Securities, "ISIN").text = trades[
+                0
+            ]["isin"]
+        Code = xml.etree.ElementTree.SubElement(Securities, "Code").text = trades[0][
+            "symbol"
+        ][:10]
+        if len(trades) > 0 and "description" in trades[0]:
+            Name = xml.etree.ElementTree.SubElement(Securities, "Name").text = trades[
+                0
+            ]["description"]
         IsFond = xml.etree.ElementTree.SubElement(Securities, "IsFond").text = "false"
 
         F8Value = 0
         n = -1
-        for trade in normalTrades[conid]:
+        for trade in trades:
             n += 1
             if test == True:
                 tradeYear = int(trade["tradeDate"][0:4]) + testYearDiff
@@ -472,13 +478,99 @@ def main():
                 F8Value
             )
 
+    for conid in shortNormalTrades:
+        trades = shortNormalTrades[conid]
+        KDVPItem = xml.etree.ElementTree.SubElement(Doh_KDVP, "KDVPItem")
+        InventoryListType = xml.etree.ElementTree.SubElement(
+            KDVPItem, "InventoryListType"
+        ).text = "PLVPSHORT"
+        Name = xml.etree.ElementTree.SubElement(KDVPItem, "Name").text = trades[0][
+            "description"
+        ]
+        HasForeignTax = xml.etree.ElementTree.SubElement(
+            KDVPItem, "HasForeignTax"
+        ).text = "false"
+        HasLossTransfer = xml.etree.ElementTree.SubElement(
+            KDVPItem, "HasLossTransfer"
+        ).text = "false"
+        ForeignTransfer = xml.etree.ElementTree.SubElement(
+            KDVPItem, "ForeignTransfer"
+        ).text = "false"
+        TaxDecreaseConformance = xml.etree.ElementTree.SubElement(
+            KDVPItem, "TaxDecreaseConformance"
+        ).text = "false"
+        SecuritiesShort = xml.etree.ElementTree.SubElement(KDVPItem, "SecuritiesShort")
+        if len(trades) > 0 and "isin" in trades[0]:
+            ISIN = xml.etree.ElementTree.SubElement(
+                SecuritiesShort, "ISIN"
+            ).text = trades[0]["isin"]
+        Code = xml.etree.ElementTree.SubElement(SecuritiesShort, "Code").text = trades[
+            0
+        ]["symbol"][:10]
+        if len(trades) > 0 and "description" in trades[0]:
+            Name = xml.etree.ElementTree.SubElement(
+                SecuritiesShort, "Name"
+            ).text = trades[0]["description"]
+        IsFond = xml.etree.ElementTree.SubElement(
+            SecuritiesShort, "IsFond"
+        ).text = "false"
+
+        F8Value = 0
+        n = -1
+        for trade in trades:
+            n += 1
+            if test == True:
+                tradeYear = int(trade["tradeDate"][0:4]) + testYearDiff
+            else:
+                tradeYear = int(trade["tradeDate"][0:4])
+            Row = xml.etree.ElementTree.SubElement(SecuritiesShort, "Row")
+            ID = xml.etree.ElementTree.SubElement(Row, "ID").text = str(n)
+            if trade["quantity"] > 0:
+                PurchaseSale = xml.etree.ElementTree.SubElement(Row, "Purchase")
+                F1 = xml.etree.ElementTree.SubElement(PurchaseSale, "F1").text = (
+                    str(tradeYear)
+                    + "-"
+                    + trade["tradeDate"][4:6]
+                    + "-"
+                    + trade["tradeDate"][6:8]
+                )
+                F2 = xml.etree.ElementTree.SubElement(PurchaseSale, "F2").text = "B"
+                F3 = xml.etree.ElementTree.SubElement(
+                    PurchaseSale, "F3"
+                ).text = "{0:.4f}".format(trade["quantity"])
+                F4 = xml.etree.ElementTree.SubElement(
+                    PurchaseSale, "F4"
+                ).text = "{0:.4f}".format(trade["tradePriceEUR"])
+                F5 = xml.etree.ElementTree.SubElement(
+                    PurchaseSale, "F5"
+                ).text = "0.0000"
+            else:
+                PurchaseSale = xml.etree.ElementTree.SubElement(Row, "Sale")
+                F6 = xml.etree.ElementTree.SubElement(PurchaseSale, "F6").text = (
+                    str(tradeYear)
+                    + "-"
+                    + trade["tradeDate"][4:6]
+                    + "-"
+                    + trade["tradeDate"][6:8]
+                )
+                F7 = xml.etree.ElementTree.SubElement(
+                    PurchaseSale, "F7"
+                ).text = "{0:.4f}".format(-trade["quantity"])
+                F9 = xml.etree.ElementTree.SubElement(
+                    PurchaseSale, "F9"
+                ).text = "{0:.4f}".format(trade["tradePriceEUR"])
+            F8Value += trade["quantity"]
+            F8 = xml.etree.ElementTree.SubElement(Row, "F8").text = "{0:.4f}".format(
+                F8Value
+            )
+
     xmlString = xml.etree.ElementTree.tostring(envelope)
     prettyXmlString = minidom.parseString(xmlString).toprettyxml(indent="\t")
     with open("Doh-KDVP.xml", "w", encoding="utf-8") as f:
         f.write(prettyXmlString)
         print("Doh-KDVP.xml created")
 
-    """ Generate the files for Derivates and Shorts """
+    """ Generate the files for Derivates """
     envelope = xml.etree.ElementTree.Element(
         "Envelope", xmlns="http://edavki.durs.si/Documents/Schemas/D_IFI_3.xsd"
     )
@@ -533,17 +625,18 @@ def main():
     xml.etree.ElementTree.SubElement(difi, "Email").text = taxpayerConfig["email"]
 
     n = 0
-    for conid in derivateTrades:
+    for conid in longDerivateTrades:
+        trades = longDerivateTrades[conid]
         n += 1
         TItem = xml.etree.ElementTree.SubElement(difi, "TItem")
         Id = xml.etree.ElementTree.SubElement(TItem, "Id").text = str(n)
         TypeId = xml.etree.ElementTree.SubElement(TItem, "TypeId").text = "PLIFI"
-        if derivateTrades[conid][0]["assetCategory"] == "CFD":
+        if trades[0]["assetCategory"] == "CFD":
             Type = xml.etree.ElementTree.SubElement(TItem, "Type").text = "02"
             TypeName = xml.etree.ElementTree.SubElement(
                 TItem, "TypeName"
             ).text = "financne pogodbe na razliko"
-        elif derivateTrades[conid][0]["assetCategory"] == "OPT":
+        elif trades[0]["assetCategory"] == "OPT":
             Type = xml.etree.ElementTree.SubElement(TItem, "Type").text = "03"
             TypeName = xml.etree.ElementTree.SubElement(
                 TItem, "TypeName"
@@ -553,25 +646,25 @@ def main():
             TypeName = xml.etree.ElementTree.SubElement(
                 TItem, "TypeName"
             ).text = "drugo"
-        if len(derivateTrades[conid]) > 0 and "description" in derivateTrades[conid][0]:
-            Name = xml.etree.ElementTree.SubElement(
-                TItem, "Name"
-            ).text = derivateTrades[conid][0]["description"]
-        if derivateTrades[conid][0]["assetCategory"] != "OPT":
+        if len(trades) > 0 and "description" in trades[0]:
+            Name = xml.etree.ElementTree.SubElement(TItem, "Name").text = trades[0][
+                "description"
+            ]
+        if trades[0]["assetCategory"] != "OPT":
             """ Option descriptions are to long and not accepted by eDavki """
-            Code = xml.etree.ElementTree.SubElement(
-                TItem, "Code"
-            ).text = derivateTrades[conid][0]["symbol"][:10]
-        if len(derivateTrades[conid]) > 0 and "isin" in derivateTrades[conid][0]:
-            ISIN = xml.etree.ElementTree.SubElement(
-                TItem, "ISIN"
-            ).text = derivateTrades[conid][0]["isin"]
+            Code = xml.etree.ElementTree.SubElement(TItem, "Code").text = trades[0][
+                "symbol"
+            ][:10]
+        if len(trades) > 0 and "isin" in trades[0]:
+            ISIN = xml.etree.ElementTree.SubElement(TItem, "ISIN").text = trades[0][
+                "isin"
+            ]
         HasForeignTax = xml.etree.ElementTree.SubElement(
             TItem, "HasForeignTax"
         ).text = "false"
 
         F8Value = 0
-        for trade in derivateTrades[conid]:
+        for trade in trades:
             if test == True:
                 tradeYear = int(trade["tradeDate"][0:4]) + testYearDiff
             else:
@@ -614,17 +707,18 @@ def main():
                 TSubItem, "F8"
             ).text = "{0:.4f}".format(F8Value)
 
-    for conid in shortTrades:
+    for conid in shortDerivateTrades:
+        trades = shortDerivateTrades[conid]
         n += 1
         TItem = xml.etree.ElementTree.SubElement(difi, "TItem")
         Id = xml.etree.ElementTree.SubElement(TItem, "Id").text = str(n)
         TypeId = xml.etree.ElementTree.SubElement(TItem, "TypeId").text = "PLIFIShort"
-        if shortTrades[conid][0]["assetCategory"] == "CFD":
+        if trades[0]["assetCategory"] == "CFD":
             Type = xml.etree.ElementTree.SubElement(TItem, "Type").text = "02"
             TypeName = xml.etree.ElementTree.SubElement(
                 TItem, "TypeName"
             ).text = "financne pogodbe na razliko"
-        elif shortTrades[conid][0]["assetCategory"] == "OPT":
+        elif trades[0]["assetCategory"] == "OPT":
             Type = xml.etree.ElementTree.SubElement(TItem, "Type").text = "03"
             TypeName = xml.etree.ElementTree.SubElement(
                 TItem, "TypeName"
@@ -634,23 +728,23 @@ def main():
             TypeName = xml.etree.ElementTree.SubElement(
                 TItem, "TypeName"
             ).text = "drugo"
-        if len(shortTrades[conid]) > 0 and "description" in shortTrades[conid][0]:
-            Name = xml.etree.ElementTree.SubElement(TItem, "Name").text = shortTrades[
-                conid
-            ][0]["description"]
-        Code = xml.etree.ElementTree.SubElement(TItem, "Code").text = shortTrades[
-            conid
-        ][0]["symbol"][:10]
-        if len(shortTrades[conid]) > 0 and "isin" in shortTrades[conid][0]:
-            ISIN = xml.etree.ElementTree.SubElement(TItem, "ISIN").text = shortTrades[
-                conid
-            ][0]["isin"]
+        if len(trades) > 0 and "description" in trades[0]:
+            Name = xml.etree.ElementTree.SubElement(TItem, "Name").text = trades[0][
+                "description"
+            ]
+        Code = xml.etree.ElementTree.SubElement(TItem, "Code").text = trades[0][
+            "symbol"
+        ][:10]
+        if len(trades) > 0 and "isin" in trades[0]:
+            ISIN = xml.etree.ElementTree.SubElement(TItem, "ISIN").text = trades[0][
+                "isin"
+            ]
         HasForeignTax = xml.etree.ElementTree.SubElement(
             TItem, "HasForeignTax"
         ).text = "false"
 
         F8Value = 0
-        for trade in shortTrades[conid]:
+        for trade in trades:
             if test == True:
                 tradeYear = int(trade["tradeDate"][0:4]) + testYearDiff
             else:
