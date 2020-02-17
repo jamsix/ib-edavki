@@ -795,7 +795,7 @@ def main():
     prettyXmlString = minidom.parseString(xmlString).toprettyxml(indent="\t")
     with open("D-IFI.xml", "w", encoding="utf-8") as f:
         f.write(prettyXmlString)
-        print("Doh-IFI.xml created")
+        print("D-IFI.xml created")
 
     """ Get dividends from IB XML """
     dividends = []
