@@ -534,7 +534,7 @@ def main():
                     + "-"
                     + trade["tradeDate"][6:8]
                 )
-                F2 = xml.etree.ElementTree.SubElement(PurchaseSale, "F2").text = "B"
+                F2 = xml.etree.ElementTree.SubElement(PurchaseSale, "F2").text = "A"
                 F3 = xml.etree.ElementTree.SubElement(
                     PurchaseSale, "F3"
                 ).text = "{0:.4f}".format(trade["quantity"])
