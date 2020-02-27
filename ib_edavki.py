@@ -817,6 +817,7 @@ def main():
                     "symbol": ibCashTransaction.attrib["symbol"],
                     "description": ibCashTransaction.attrib["description"],
                     "reportDate": ibCashTransaction.attrib["reportDate"],
+                    "dateTime": ibCashTransaction.attrib["dateTime"],
                     "transactionID": ibCashTransaction.attrib["transactionID"],
                     "tax": 0,
                     "taxEUR": 0,
@@ -910,7 +911,7 @@ def main():
     for dividend in dividends:
         merged = False
         for mergedDividend in mergedDividends:
-            if dividend["reportDate"] == mergedDividend["reportDate"] and (
+            if dividend["dateTime"][0:8] == mergedDividend["dateTime"][0:8] and (
                 dividend["conid"] == mergedDividend["conid"]
                 or dividend["symbol"] == mergedDividend["symbol"]
             ):
@@ -980,11 +981,7 @@ def main():
     for dividend in dividends:
         Dividend = xml.etree.ElementTree.SubElement(Doh_Div, "Dividend")
         xml.etree.ElementTree.SubElement(Dividend, "Date").text = (
-            dYear
-            + "-"
-            + dividend["reportDate"][4:6]
-            + "-"
-            + dividend["reportDate"][6:8]
+            dYear + "-" + dividend["dateTime"][4:6] + "-" + dividend["dateTime"][6:8]
         )
         if "taxNumber" in dividend:
             xml.etree.ElementTree.SubElement(
