@@ -807,7 +807,7 @@ def main():
         for ibCashTransaction in ibCashTransactions:
             if (
                 ibCashTransaction.tag == "CashTransaction"
-                and ibCashTransaction.attrib["reportDate"].startswith(str(reportYear))
+                and ibCashTransaction.attrib["dateTime"].startswith(str(reportYear))
                 and ibCashTransaction.attrib["type"]
                 in ["Dividends", "Payment In Lieu Of Dividends"]
             ):
@@ -818,7 +818,6 @@ def main():
                     "amount": float(ibCashTransaction.attrib["amount"]),
                     "symbol": ibCashTransaction.attrib["symbol"],
                     "description": ibCashTransaction.attrib["description"],
-                    "reportDate": ibCashTransaction.attrib["reportDate"],
                     "dateTime": ibCashTransaction.attrib["dateTime"],
                     "transactionID": ibCashTransaction.attrib["transactionID"],
                     "tax": 0,
@@ -837,7 +836,7 @@ def main():
                 if dividend["currency"] == "EUR":
                     dividend["amountEUR"] = dividend["amount"]
                 else:
-                    date = dividend["reportDate"]
+                    date = dividend["dateTime"][0:8]
                     currency = dividend["currency"]
                     if date in rates and currency in rates[date]:
                         rate = float(rates[date][currency])
@@ -848,7 +847,7 @@ def main():
                                 rate = float(rates[date][currency])
                                 print(
                                     "There is no exchange rate for "
-                                    + str(dividend["reportDate"])
+                                    + str(dividend["dateTime"][0:8])
                                     + ", using "
                                     + str(date)
                                 )
@@ -862,13 +861,14 @@ def main():
         for ibCashTransaction in ibCashTransactions:
             if (
                 ibCashTransaction.tag == "CashTransaction"
-                and ibCashTransaction.attrib["reportDate"].startswith(str(reportYear))
+                and ibCashTransaction.attrib["dateTime"].startswith(str(reportYear))
                 and ibCashTransaction.attrib["type"] == "Withholding Tax"
             ):
                 closestDividend = None
                 for dividend in dividends:
                     if (
-                        dividend["reportDate"] == ibCashTransaction.attrib["reportDate"]
+                        dividend["dateTime"][0:8]
+                        == ibCashTransaction.attrib["dateTime"][0:8]
                         and dividend["symbol"] == ibCashTransaction.attrib["symbol"]
                         and dividend["transactionID"]
                         < ibCashTransaction.attrib["transactionID"]
@@ -885,7 +885,7 @@ def main():
                     if ibCashTransaction.attrib["currency"] == "EUR":
                         closestDividend["taxEUR"] = closestDividend["tax"]
                     else:
-                        date = ibCashTransaction.attrib["reportDate"]
+                        date = ibCashTransaction.attrib["dateTime"][0:8]
                         currency = ibCashTransaction.attrib["currency"]
                         if date in rates and currency in rates[date]:
                             rate = float(rates[date][currency])
@@ -896,7 +896,7 @@ def main():
                                     rate = float(rates[date][currency])
                                     print(
                                         "There is no exchange rate for "
-                                        + str(ibCashTransaction.attrib["reportDate"])
+                                        + str(ibCashTransaction.attrib["dateTime"][0:8])
                                         + ", using "
                                         + str(date)
                                     )
@@ -979,7 +979,7 @@ def main():
     else:
         xml.etree.ElementTree.SubElement(Doh_Div, "DocumentWorkflowID").text = "O"
 
-    dividends = sorted(dividends, key=lambda k: k["reportDate"])
+    dividends = sorted(dividends, key=lambda k: k["dateTime"][0:8])
     for dividend in dividends:
         if round(dividend["amountEUR"], 2) <= 0:
             continue
