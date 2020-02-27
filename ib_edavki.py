@@ -732,9 +732,11 @@ def main():
             Name = xml.etree.ElementTree.SubElement(TItem, "Name").text = trades[0][
                 "description"
             ]
-        Code = xml.etree.ElementTree.SubElement(TItem, "Code").text = trades[0][
-            "symbol"
-        ][:10]
+        if trades[0]["assetCategory"] != "OPT":
+            """ Option descriptions are to long and not accepted by eDavki """
+            Code = xml.etree.ElementTree.SubElement(TItem, "Code").text = trades[0][
+                "symbol"
+            ][:10]
         if len(trades) > 0 and "isin" in trades[0]:
             ISIN = xml.etree.ElementTree.SubElement(TItem, "ISIN").text = trades[0][
                 "isin"
