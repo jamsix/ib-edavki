@@ -979,6 +979,8 @@ def main():
 
     dividends = sorted(dividends, key=lambda k: k["reportDate"])
     for dividend in dividends:
+        if round(dividend["amountEUR"], 2) <= 0:
+            continue
         Dividend = xml.etree.ElementTree.SubElement(Doh_Div, "Dividend")
         xml.etree.ElementTree.SubElement(Dividend, "Date").text = (
             dYear + "-" + dividend["dateTime"][4:6] + "-" + dividend["dateTime"][6:8]
