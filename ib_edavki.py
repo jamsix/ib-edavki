@@ -14,7 +14,7 @@ from xml.dom import minidom
 
 bsRateXmlUrl = "https://www.bsi.si/_data/tecajnice/dtecbs-l.xml"
 normalAssets = ["STK"]
-derivateAssets = ["CFD", "OPT"]
+derivateAssets = ["CFD", "OPT", "FUT"]
 ignoreAssets = ["CASH"]
 
 
@@ -196,7 +196,7 @@ def main():
                     trade["description"] = ibTrade.attrib["description"]
                 if ibTrade.attrib["isin"] != "":
                     trade["isin"] = ibTrade.attrib["isin"]
-                """ Options have multipliers, i.e. a quantity of 1 with tradePrice 3 and multiplier 100 is actually an option for 100 stocks, worth 100 x 3 = 300 """
+                """ Futures and options have multipliers, i.e. a quantity of 1 with tradePrice 3 and multiplier 100 is actually a future/option for 100 stocks, worth 100 x 3 = 300 """
                 if "multiplier" in ibTrade.attrib:
                     trade["tradePrice"] = float(ibTrade.attrib["tradePrice"]) * float(
                         ibTrade.attrib["multiplier"]
@@ -631,7 +631,12 @@ def main():
         TItem = xml.etree.ElementTree.SubElement(difi, "TItem")
         Id = xml.etree.ElementTree.SubElement(TItem, "Id").text = str(n)
         TypeId = xml.etree.ElementTree.SubElement(TItem, "TypeId").text = "PLIFI"
-        if trades[0]["assetCategory"] == "CFD":
+        if trades[0]["assetCategory"] == "FUT":
+            Type = xml.etree.ElementTree.SubElement(TItem, "Type").text = "01"
+            TypeName = xml.etree.ElementTree.SubElement(
+                TItem, "TypeName"
+            ).text = "terminska pogodba"
+        elif trades[0]["assetCategory"] == "CFD":
             Type = xml.etree.ElementTree.SubElement(TItem, "Type").text = "02"
             TypeName = xml.etree.ElementTree.SubElement(
                 TItem, "TypeName"
@@ -713,7 +718,12 @@ def main():
         TItem = xml.etree.ElementTree.SubElement(difi, "TItem")
         Id = xml.etree.ElementTree.SubElement(TItem, "Id").text = str(n)
         TypeId = xml.etree.ElementTree.SubElement(TItem, "TypeId").text = "PLIFIShort"
-        if trades[0]["assetCategory"] == "CFD":
+        if trades[0]["assetCategory"] == "FUT":
+            Type = xml.etree.ElementTree.SubElement(TItem, "Type").text = "01"
+            TypeName = xml.etree.ElementTree.SubElement(
+                TItem, "TypeName"
+            ).text = "terminska pogodba"
+        elif trades[0]["assetCategory"] == "CFD":
             Type = xml.etree.ElementTree.SubElement(TItem, "Type").text = "02"
             TypeName = xml.etree.ElementTree.SubElement(
                 TItem, "TypeName"
