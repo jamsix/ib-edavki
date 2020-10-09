@@ -201,6 +201,17 @@ def main():
                     trade["tradePrice"] = float(ibTrade.attrib["tradePrice"]) * float(
                         ibTrade.attrib["multiplier"]
                     )
+                """ If trade is an option exercise, tradePrice is set to 0, but closePrice is the one position was settled for """
+                if (
+                    trade["assetCategory"] == "OPT"
+                    and "notes" in trade
+                    and trade["notes"] == "Ex"
+                ):
+                    trade["tradePrice"] = trade["closePrice"]
+                    if "multiplier" in ibTrade.attrib:
+                        trade["tradePrice"] = float(
+                            ibTrade.attrib["closePrice"]
+                        ) * float(ibTrade.attrib["multiplier"])
                 conid = ibTrade.attrib["conid"]
                 if conid not in trades:
                     trades[conid] = []
