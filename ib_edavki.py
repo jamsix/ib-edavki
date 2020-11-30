@@ -163,10 +163,10 @@ def main():
         statementStartDate = str(reportYear) + "0101"
         statementEndDate = str(reportYear) + "1231"
 
-    """ Dictionary of stock trade arrays, each key represents one conid """
+    """ Dictionary of stock trade arrays, each key represents one securityID """
     trades = {}
 
-    """ Get trades from IB XML and sort them by the conid """
+    """ Get trades from IB XML and sort them by securityID """
     for ibTrades in ibTradesList:
         if ibTrades is None:
             continue
@@ -180,6 +180,7 @@ def main():
                 except KeyError:
                     time = "0"
                 trade = {
+                    "conid": ibTrade.attrib["conid"],
                     "symbol": ibTrade.attrib["symbol"],
                     "currency": ibTrade.attrib["currency"],
                     "assetCategory": ibTrade.attrib["assetCategory"],
@@ -192,10 +193,14 @@ def main():
                     "ibOrderID": ibTrade.attrib["ibOrderID"],
                     "openCloseIndicator": ibTrade.attrib["openCloseIndicator"],
                 }
-                if ibTrade.attrib["description"] != "":
-                    trade["description"] = ibTrade.attrib["description"]
+                if ibTrade.attrib["securityID"] != "":
+                    trade["securityID"] = ibTrade.attrib["securityID"]
                 if ibTrade.attrib["isin"] != "":
                     trade["isin"] = ibTrade.attrib["isin"]
+                if ibTrade.attrib["cusip"] != "":
+                    trade["cusip"] = ibTrade.attrib["cusip"]
+                if ibTrade.attrib["description"] != "":
+                    trade["description"] = ibTrade.attrib["description"]
                 """ Futures and options have multipliers, i.e. a quantity of 1 with tradePrice 3 and multiplier 100 is actually a future/option for 100 stocks, worth 100 x 3 = 300 """
                 if "multiplier" in ibTrade.attrib:
                     trade["tradePrice"] = float(ibTrade.attrib["tradePrice"]) * float(
@@ -212,23 +217,112 @@ def main():
                         trade["tradePrice"] = float(
                             ibTrade.attrib["closePrice"]
                         ) * float(ibTrade.attrib["multiplier"])
-                conid = ibTrade.attrib["conid"]
-                if conid not in trades:
-                    trades[conid] = []
+
                 lastTrade = trade
-                trades[conid].append(trade)
+
+                """
+                    IB is PITA in terms of unique security ID, old outputs and some asset types only have conid,
+                    same assets have ISIN but had none in the past, euro ETFs can have different symbols but same ISIN.
+                    Code below merges trades based on these IDs in the order of ISIN > CUSIP > securityID > CONID > Symbol
+                """
+                match = False
+                securityID = None
+                if "isin" in trade:
+                    securityID = trade["isin"]
+                    for xSecurityID in trades:
+                        for xtrade in trades[xSecurityID]:
+                            if 'isin' in xtrade and xtrade['isin'] == trade['isin']:
+                                trades[xSecurityID].append(trade)
+                                if xSecurityID != securityID:
+                                    trades[securityID] = trades[xSecurityID]
+                                    trades.pop(xSecurityID)
+                                match = True
+                                break
+                        if match:
+                            break
+                    if match:
+                        continue
+                if "cusip" in trade:
+                    if not securityID:
+                        securityID = trade["cusip"]
+                    for xSecurityID in trades:
+                        for xtrade in trades[xSecurityID]:
+                            if 'cusip' in xtrade and xtrade['cusip'] == trade['cusip']:
+                                trades[xSecurityID].append(trade)
+                                if xSecurityID != securityID:
+                                    trades[securityID] = trades[xSecurityID]
+                                    trades.pop(xSecurityID)
+                                match = True
+                                break
+                        if match:
+                            break
+                    if match:
+                        continue
+                if "securityID" in trade:
+                    if not securityID:
+                        securityID = trade["securityID"]
+                    for xSecurityID in trades:
+                        for xtrade in trades[xSecurityID]:
+                            if 'securityID' in xtrade and xtrade['securityID'] == trade['securityID']:
+                                trades[xSecurityID].append(trade)
+                                if xSecurityID != securityID:
+                                    trades[securityID] = trades[xSecurityID]
+                                    trades.pop(xSecurityID)
+                                match = True
+                                break
+                        if match:
+                            break
+                    if match:
+                        continue
+                if "conid" in trade:
+                    if not securityID:
+                        securityID = trade["conid"]
+                    for xSecurityID in trades:
+                        for xtrade in trades[xSecurityID]:
+                            if 'conid' in xtrade and xtrade['conid'] == trade['conid']:
+                                trades[xSecurityID].append(trade)
+                                if xSecurityID != securityID:
+                                    trades[securityID] = trades[xSecurityID]
+                                    trades.pop(xSecurityID)
+                                match = True
+                                break
+                        if match:
+                            break
+                    if match:
+                        continue
+                if "symbol" in trade:
+                    if not securityID:
+                        securityID = trade["symbol"]
+                    for xSecurityID in trades:
+                        for xtrade in trades[xSecurityID]:
+                            if 'symbol' in xtrade and xtrade['symbol'] == trade['symbol']:
+                                trades[xSecurityID].append(trade)
+                                if xSecurityID != securityID:
+                                    trades[securityID] = trades[xSecurityID]
+                                    trades.pop(xSecurityID)
+                                match = True
+                                break
+                        if match:
+                            break
+                    if match:
+                        continue
+
+                trades[securityID] = [trade]
 
             elif ibTrade.tag == "Lot" and lastTrade != None:
                 if "openTransactionIds" not in lastTrade:
                     lastTrade["openTransactionIds"] = {}
                 tid = ibTrade.attrib["transactionID"]
-                lastTrade["openTransactionIds"][tid] = float(ibTrade.attrib["quantity"])
+                if tid not in lastTrade["openTransactionIds"]:
+                    lastTrade["openTransactionIds"][tid] = float(ibTrade.attrib["quantity"])
+                else:
+                    lastTrade["openTransactionIds"][tid] += float(ibTrade.attrib["quantity"])
 
     """ Detect if trades are Normal or Derivates and if they are Opening or Closing positions
         Convert the price to EUR """
-    for conid in trades:
+    for securityID in trades:
         beforeTradePosition = 0
-        for trade in trades[conid]:
+        for trade in trades[securityID]:
             if trade["currency"] == "EUR":
                 trade["tradePriceEUR"] = trade["tradePrice"]
             else:
@@ -268,30 +362,30 @@ def main():
 
     """ Filter trades to only include those that closed in the parameter year and trades that opened the closing position """
     yearTrades = {}
-    for conid in trades:
-        for trade in trades[conid]:
+    for securityID in trades:
+        for trade in trades[securityID]:
             if (
                 trade["tradeDate"][0:4] == str(reportYear)
                 and trade["openCloseIndicator"] == "C"
             ):
-                if conid not in yearTrades:
-                    yearTrades[conid] = []
-                for xtrade in trades[conid]:
+                if securityID not in yearTrades:
+                    yearTrades[securityID] = []
+                for xtrade in trades[securityID]:
                     if xtrade["transactionID"] in trade["openTransactionIds"]:
                         ctrade = copy.copy(xtrade)
                         tid = ctrade["transactionID"]
                         ctrade["quantity"] = trade["openTransactionIds"][tid]
-                        yearTrades[conid].append(ctrade)
+                        yearTrades[securityID].append(ctrade)
 
-                yearTrades[conid].append(trade)
+                yearTrades[securityID].append(trade)
 
     """ Logical trade order can be executed as multiple suborders at different price. Merge suborders in a single logical order. """
     mergedTrades = {}
-    for conid in yearTrades:
-        for trade in yearTrades[conid]:
+    for securityID in yearTrades:
+        for trade in yearTrades[securityID]:
             tradeExists = False
-            if conid in mergedTrades:
-                for previousTrade in mergedTrades[conid]:
+            if securityID in mergedTrades:
+                for previousTrade in mergedTrades[securityID]:
                     if previousTrade["ibOrderID"] == trade["ibOrderID"]:
                         previousTrade["tradePrice"] = (
                             previousTrade["quantity"] * previousTrade["tradePrice"]
@@ -303,16 +397,16 @@ def main():
                         tradeExists = True
                         break
             if tradeExists == False:
-                if conid not in mergedTrades:
-                    mergedTrades[conid] = []
-                mergedTrades[conid].append(trade)
+                if securityID not in mergedTrades:
+                    mergedTrades[securityID] = []
+                mergedTrades[securityID].append(trade)
 
     """ Sort the trades by time """
-    for conid in mergedTrades:
+    for securityID in mergedTrades:
         l = sorted(
-            mergedTrades[conid], key=lambda k: "%s%s" % (k["tradeDate"], k["tradeTime"])
+            mergedTrades[securityID], key=lambda k: "%s%s" % (k["tradeDate"], k["tradeTime"])
         )
-        mergedTrades[conid] = l
+        mergedTrades[securityID] = l
 
     """ Sort the trades in 4 categories """
     longNormalTrades = {}
@@ -320,24 +414,24 @@ def main():
     longDerivateTrades = {}
     shortDerivateTrades = {}
 
-    for conid in mergedTrades:
-        for trade in mergedTrades[conid]:
+    for securityID in mergedTrades:
+        for trade in mergedTrades[securityID]:
             if trade["assetType"] == "normal" and trade["positionType"] == "long":
-                if conid not in longNormalTrades:
-                    longNormalTrades[conid] = []
-                longNormalTrades[conid].append(trade)
+                if securityID not in longNormalTrades:
+                    longNormalTrades[securityID] = []
+                longNormalTrades[securityID].append(trade)
             elif trade["assetType"] == "normal" and trade["positionType"] == "short":
-                if conid not in shortNormalTrades:
-                    shortNormalTrades[conid] = []
-                shortNormalTrades[conid].append(trade)
+                if securityID not in shortNormalTrades:
+                    shortNormalTrades[securityID] = []
+                shortNormalTrades[securityID].append(trade)
             elif trade["assetType"] == "derivate" and trade["positionType"] == "long":
-                if conid not in longDerivateTrades:
-                    longDerivateTrades[conid] = []
-                longDerivateTrades[conid].append(trade)
+                if securityID not in longDerivateTrades:
+                    longDerivateTrades[securityID] = []
+                longDerivateTrades[securityID].append(trade)
             elif trade["assetType"] == "derivate" and trade["positionType"] == "short":
-                if conid not in shortDerivateTrades:
-                    shortDerivateTrades[conid] = []
-                shortDerivateTrades[conid].append(trade)
+                if securityID not in shortDerivateTrades:
+                    shortDerivateTrades[securityID] = []
+                shortDerivateTrades[securityID].append(trade)
             else:
                 sys.exit(
                     "Error: cannot figure out if trade is Normal or Derivate, Long or Short"
@@ -405,8 +499,8 @@ def main():
     xml.etree.ElementTree.SubElement(KDVP, "SecurityWithContractShortCount").text = "0"
     xml.etree.ElementTree.SubElement(KDVP, "ShareCount").text = "0"
 
-    for conid in longNormalTrades:
-        trades = longNormalTrades[conid]
+    for securityID in longNormalTrades:
+        trades = longNormalTrades[securityID]
         KDVPItem = xml.etree.ElementTree.SubElement(Doh_KDVP, "KDVPItem")
         InventoryListType = xml.etree.ElementTree.SubElement(
             KDVPItem, "InventoryListType"
@@ -489,8 +583,8 @@ def main():
                 F8Value
             )
 
-    for conid in shortNormalTrades:
-        trades = shortNormalTrades[conid]
+    for securityID in shortNormalTrades:
+        trades = shortNormalTrades[securityID]
         KDVPItem = xml.etree.ElementTree.SubElement(Doh_KDVP, "KDVPItem")
         InventoryListType = xml.etree.ElementTree.SubElement(
             KDVPItem, "InventoryListType"
@@ -636,8 +730,8 @@ def main():
     xml.etree.ElementTree.SubElement(difi, "Email").text = taxpayerConfig["email"]
 
     n = 0
-    for conid in longDerivateTrades:
-        trades = longDerivateTrades[conid]
+    for securityID in longDerivateTrades:
+        trades = longDerivateTrades[securityID]
         n += 1
         TItem = xml.etree.ElementTree.SubElement(difi, "TItem")
         Id = xml.etree.ElementTree.SubElement(TItem, "Id").text = str(n)
@@ -723,8 +817,8 @@ def main():
                 TSubItem, "F8"
             ).text = "{0:.4f}".format(F8Value)
 
-    for conid in shortDerivateTrades:
-        trades = shortDerivateTrades[conid]
+    for securityID in shortDerivateTrades:
+        trades = shortDerivateTrades[securityID]
         n += 1
         TItem = xml.etree.ElementTree.SubElement(difi, "TItem")
         Id = xml.etree.ElementTree.SubElement(TItem, "Id").text = str(n)
@@ -844,6 +938,9 @@ def main():
                     "tax": 0,
                     "taxEUR": 0,
                 }
+                dividend["securityID"] = ibCashTransaction.attrib["securityID"];
+                if dividend["securityID"] == "":
+                    dividend["securityID"] = dividend["conid"]
                 if companies and dividend["symbol"] in companies:
                     dividend["description"] = companies[dividend["symbol"]]["name"]
                     dividend["taxNumber"] = companies[dividend["symbol"]]["taxNumber"]
@@ -935,7 +1032,7 @@ def main():
         merged = False
         for mergedDividend in mergedDividends:
             if dividend["dateTime"][0:8] == mergedDividend["dateTime"][0:8] and (
-                dividend["conid"] == mergedDividend["conid"]
+                dividend["securityID"] == mergedDividend["securityID"]
                 or dividend["symbol"] == mergedDividend["symbol"]
             ):
                 mergedDividend["amountEUR"] = (
