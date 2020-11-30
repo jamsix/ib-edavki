@@ -209,10 +209,10 @@ def main():
                 """ If trade is an option exercise, tradePrice is set to 0, but closePrice is the one position was settled for """
                 if (
                     trade["assetCategory"] == "OPT"
-                    and "notes" in trade
-                    and trade["notes"] == "Ex"
+                    and ibTrade.attrib["notes"] == "Ex"
+                    and ibTrade.attrib["closePrice"] != ""
                 ):
-                    trade["tradePrice"] = trade["closePrice"]
+                    trade["tradePrice"] = ibTrade.attrib["closePrice"]
                     if "multiplier" in ibTrade.attrib:
                         trade["tradePrice"] = float(
                             ibTrade.attrib["closePrice"]
@@ -231,7 +231,7 @@ def main():
                     securityID = trade["isin"]
                     for xSecurityID in trades:
                         for xtrade in trades[xSecurityID]:
-                            if 'isin' in xtrade and xtrade['isin'] == trade['isin']:
+                            if "isin" in xtrade and xtrade["isin"] == trade["isin"]:
                                 trades[xSecurityID].append(trade)
                                 if xSecurityID != securityID:
                                     trades[securityID] = trades[xSecurityID]
@@ -247,7 +247,7 @@ def main():
                         securityID = trade["cusip"]
                     for xSecurityID in trades:
                         for xtrade in trades[xSecurityID]:
-                            if 'cusip' in xtrade and xtrade['cusip'] == trade['cusip']:
+                            if "cusip" in xtrade and xtrade["cusip"] == trade["cusip"]:
                                 trades[xSecurityID].append(trade)
                                 if xSecurityID != securityID:
                                     trades[securityID] = trades[xSecurityID]
@@ -263,7 +263,10 @@ def main():
                         securityID = trade["securityID"]
                     for xSecurityID in trades:
                         for xtrade in trades[xSecurityID]:
-                            if 'securityID' in xtrade and xtrade['securityID'] == trade['securityID']:
+                            if (
+                                "securityID" in xtrade
+                                and xtrade["securityID"] == trade["securityID"]
+                            ):
                                 trades[xSecurityID].append(trade)
                                 if xSecurityID != securityID:
                                     trades[securityID] = trades[xSecurityID]
@@ -279,7 +282,7 @@ def main():
                         securityID = trade["conid"]
                     for xSecurityID in trades:
                         for xtrade in trades[xSecurityID]:
-                            if 'conid' in xtrade and xtrade['conid'] == trade['conid']:
+                            if "conid" in xtrade and xtrade["conid"] == trade["conid"]:
                                 trades[xSecurityID].append(trade)
                                 if xSecurityID != securityID:
                                     trades[securityID] = trades[xSecurityID]
@@ -295,7 +298,10 @@ def main():
                         securityID = trade["symbol"]
                     for xSecurityID in trades:
                         for xtrade in trades[xSecurityID]:
-                            if 'symbol' in xtrade and xtrade['symbol'] == trade['symbol']:
+                            if (
+                                "symbol" in xtrade
+                                and xtrade["symbol"] == trade["symbol"]
+                            ):
                                 trades[xSecurityID].append(trade)
                                 if xSecurityID != securityID:
                                     trades[securityID] = trades[xSecurityID]
@@ -314,9 +320,13 @@ def main():
                     lastTrade["openTransactionIds"] = {}
                 tid = ibTrade.attrib["transactionID"]
                 if tid not in lastTrade["openTransactionIds"]:
-                    lastTrade["openTransactionIds"][tid] = float(ibTrade.attrib["quantity"])
+                    lastTrade["openTransactionIds"][tid] = float(
+                        ibTrade.attrib["quantity"]
+                    )
                 else:
-                    lastTrade["openTransactionIds"][tid] += float(ibTrade.attrib["quantity"])
+                    lastTrade["openTransactionIds"][tid] += float(
+                        ibTrade.attrib["quantity"]
+                    )
 
     """ Detect if trades are Normal or Derivates and if they are Opening or Closing positions
         Convert the price to EUR """
@@ -404,7 +414,8 @@ def main():
     """ Sort the trades by time """
     for securityID in mergedTrades:
         l = sorted(
-            mergedTrades[securityID], key=lambda k: "%s%s" % (k["tradeDate"], k["tradeTime"])
+            mergedTrades[securityID],
+            key=lambda k: "%s%s" % (k["tradeDate"], k["tradeTime"]),
         )
         mergedTrades[securityID] = l
 
@@ -938,7 +949,7 @@ def main():
                     "tax": 0,
                     "taxEUR": 0,
                 }
-                dividend["securityID"] = ibCashTransaction.attrib["securityID"];
+                dividend["securityID"] = ibCashTransaction.attrib["securityID"]
                 if dividend["securityID"] == "":
                     dividend["securityID"] = dividend["conid"]
                 if companies and dividend["symbol"] in companies:
