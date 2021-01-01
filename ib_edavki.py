@@ -688,7 +688,7 @@ def main():
 
     """ Generate the files for Derivates """
     envelope = xml.etree.ElementTree.Element(
-        "Envelope", xmlns="http://edavki.durs.si/Documents/Schemas/D_IFI_3.xsd"
+        "Envelope", xmlns="http://edavki.durs.si/Documents/Schemas/D_IFI_4.xsd"
     )
     envelope.set(
         "xmlns:edp", "http://edavki.durs.si/Documents/Schemas/EDP-Common-1.xsd"
@@ -717,10 +717,6 @@ def main():
     body = xml.etree.ElementTree.SubElement(envelope, "body")
     xml.etree.ElementTree.SubElement(body, "edp:bodyContent")
     difi = xml.etree.ElementTree.SubElement(body, "D_IFI")
-    if test == True:
-        xml.etree.ElementTree.SubElement(difi, "DocumentWorkflowID").text = "I"
-    else:
-        xml.etree.ElementTree.SubElement(difi, "DocumentWorkflowID").text = "O"
     xml.etree.ElementTree.SubElement(difi, "PeriodStart").text = (
         statementStartDate[0:4]
         + "-"
@@ -745,7 +741,6 @@ def main():
         trades = longDerivateTrades[securityID]
         n += 1
         TItem = xml.etree.ElementTree.SubElement(difi, "TItem")
-        Id = xml.etree.ElementTree.SubElement(TItem, "Id").text = str(n)
         TypeId = xml.etree.ElementTree.SubElement(TItem, "TypeId").text = "PLIFI"
         if trades[0]["assetCategory"] == "FUT":
             Type = xml.etree.ElementTree.SubElement(TItem, "Type").text = "01"
@@ -791,7 +786,6 @@ def main():
             else:
                 tradeYear = int(trade["tradeDate"][0:4])
             TSubItem = xml.etree.ElementTree.SubElement(TItem, "TSubItem")
-            ItemId = xml.etree.ElementTree.SubElement(TSubItem, "ItemId").text = str(n)
             if trade["quantity"] > 0:
                 PurchaseSale = xml.etree.ElementTree.SubElement(TSubItem, "Purchase")
                 F1 = xml.etree.ElementTree.SubElement(PurchaseSale, "F1").text = (
@@ -808,6 +802,10 @@ def main():
                 F4 = xml.etree.ElementTree.SubElement(
                     PurchaseSale, "F4"
                 ).text = "{0:.4f}".format(trade["tradePriceEUR"])
+                F9 = xml.etree.ElementTree.SubElement(
+                    PurchaseSale, "F9"
+                ).text = "false"
+                # TODO: kako ugotovit iz reporta F9 = Trgovanje z vzvodom
             else:
                 PurchaseSale = xml.etree.ElementTree.SubElement(TSubItem, "Sale")
                 F5 = xml.etree.ElementTree.SubElement(PurchaseSale, "F5").text = (
@@ -832,7 +830,6 @@ def main():
         trades = shortDerivateTrades[securityID]
         n += 1
         TItem = xml.etree.ElementTree.SubElement(difi, "TItem")
-        Id = xml.etree.ElementTree.SubElement(TItem, "Id").text = str(n)
         TypeId = xml.etree.ElementTree.SubElement(TItem, "TypeId").text = "PLIFIShort"
         if trades[0]["assetCategory"] == "FUT":
             Type = xml.etree.ElementTree.SubElement(TItem, "Type").text = "01"
@@ -878,9 +875,6 @@ def main():
             else:
                 tradeYear = int(trade["tradeDate"][0:4])
             TShortSubItem = xml.etree.ElementTree.SubElement(TItem, "TShortSubItem")
-            ItemId = xml.etree.ElementTree.SubElement(
-                TShortSubItem, "ItemId"
-            ).text = str(n)
             if trade["quantity"] > 0:
                 PurchaseSale = xml.etree.ElementTree.SubElement(
                     TShortSubItem, "Purchase"
