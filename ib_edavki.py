@@ -14,7 +14,7 @@ from xml.dom import minidom
 
 bsRateXmlUrl = "https://www.bsi.si/_data/tecajnice/dtecbs-l.xml"
 normalAssets = ["STK"]
-derivateAssets = ["CFD", "OPT", "FUT"]
+derivateAssets = ["CFD", "OPT", "FUT", "FOP"]
 ignoreAssets = ["CASH"]
 
 
