@@ -908,6 +908,10 @@ def main():
                 F3 = xml.etree.ElementTree.SubElement(
                     PurchaseSale, "F3"
                 ).text = "{0:.4f}".format(trade["tradePriceEUR"])
+                F9 = xml.etree.ElementTree.SubElement(
+                    PurchaseSale, "F9"
+                ).text = "false"
+                # TODO: kako ugotovit iz reporta F9 = Trgovanje z vzvodom
             F8Value += trade["quantity"]
             F8 = xml.etree.ElementTree.SubElement(
                 TShortSubItem, "F8"
