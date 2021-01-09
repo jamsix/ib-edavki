@@ -712,6 +712,11 @@ def main():
     xml.etree.ElementTree.SubElement(taxpayer, "edp:postName").text = taxpayerConfig[
         "postName"
     ]
+    workflow = xml.etree.ElementTree.SubElement(header, "edp:Workflow")
+    if test == True:
+        xml.etree.ElementTree.SubElement(workflow, "edp:DocumentWorkflowID").text = "I"
+    else:
+        xml.etree.ElementTree.SubElement(workflow, "edp:DocumentWorkflowID").text = "O"
     xml.etree.ElementTree.SubElement(envelope, "edp:AttachmentList")
     xml.etree.ElementTree.SubElement(envelope, "edp:Signatures")
     body = xml.etree.ElementTree.SubElement(envelope, "body")
@@ -802,9 +807,7 @@ def main():
                 F4 = xml.etree.ElementTree.SubElement(
                     PurchaseSale, "F4"
                 ).text = "{0:.4f}".format(trade["tradePriceEUR"])
-                F9 = xml.etree.ElementTree.SubElement(
-                    PurchaseSale, "F9"
-                ).text = "false"
+                F9 = xml.etree.ElementTree.SubElement(PurchaseSale, "F9").text = "false"
                 # TODO: kako ugotovit iz reporta F9 = Trgovanje z vzvodom
             else:
                 PurchaseSale = xml.etree.ElementTree.SubElement(TSubItem, "Sale")
@@ -908,9 +911,7 @@ def main():
                 F3 = xml.etree.ElementTree.SubElement(
                     PurchaseSale, "F3"
                 ).text = "{0:.4f}".format(trade["tradePriceEUR"])
-                F9 = xml.etree.ElementTree.SubElement(
-                    PurchaseSale, "F9"
-                ).text = "false"
+                F9 = xml.etree.ElementTree.SubElement(PurchaseSale, "F9").text = "false"
                 # TODO: kako ugotovit iz reporta F9 = Trgovanje z vzvodom
             F8Value += trade["quantity"]
             F8 = xml.etree.ElementTree.SubElement(
