@@ -33,6 +33,8 @@ def main():
             "   <postName>Ljubljana</postName>\n"
             "   <email>janez.novak@furs.si</email>\n"
             "   <telephoneNumber>01 123 45 67</telephoneNumber>\n"
+            "   <residentCountry>SI</residentCountry>\n"
+            "   <isResident>true</isResident>\n"
             "</taxpayer>"
         )
         exit(0)
@@ -85,6 +87,8 @@ def main():
         "postName": taxpayer.find("postName").text,
         "email": taxpayer.find("email").text,
         "telephoneNumber": taxpayer.find("telephoneNumber").text,
+        "residentCountry": taxpayer.find("residentCountry").text,
+        "isResident": taxpayer.find("isResident").text,
     }
 
     """ Fetch companies.xml from GitHub if it doesn't exist and use the data for Doh-Div.xml """
@@ -1068,7 +1072,7 @@ def main():
 
     """ Generate Doh-Div.xml """
     envelope = xml.etree.ElementTree.Element(
-        "Envelope", xmlns="http://edavki.durs.si/Documents/Schemas/Doh_Div_2.xsd"
+        "Envelope", xmlns="http://edavki.durs.si/Documents/Schemas/Doh_Div_3.xsd"
     )
     envelope.set(
         "xmlns:edp", "http://edavki.durs.si/Documents/Schemas/EDP-Common-1.xsd"
@@ -1092,26 +1096,32 @@ def main():
     xml.etree.ElementTree.SubElement(taxpayer, "edp:postName").text = taxpayerConfig[
         "postName"
     ]
+    workflow = xml.etree.ElementTree.SubElement(header, "edp:Workflow")
+    if test == True:
+        xml.etree.ElementTree.SubElement(workflow, "edp:DocumentWorkflowID").text = "I"
+    else:
+        xml.etree.ElementTree.SubElement(workflow, "edp:DocumentWorkflowID").text = "O"
     xml.etree.ElementTree.SubElement(envelope, "edp:AttachmentList")
     xml.etree.ElementTree.SubElement(envelope, "edp:Signatures")
     body = xml.etree.ElementTree.SubElement(envelope, "body")
-    xml.etree.ElementTree.SubElement(body, "edp:bodyContent")
     Doh_Div = xml.etree.ElementTree.SubElement(body, "Doh_Div")
     if test == True:
         dYear = str(reportYear + testYearDiff)
     else:
         dYear = str(reportYear)
     xml.etree.ElementTree.SubElement(Doh_Div, "Period").text = dYear
-    if test == True:
-        xml.etree.ElementTree.SubElement(Doh_Div, "DocumentWorkflowID").text = "I"
-    else:
-        xml.etree.ElementTree.SubElement(Doh_Div, "DocumentWorkflowID").text = "O"
+    xml.etree.ElementTree.SubElement(Doh_Div, "ResidentCountry").text = taxpayerConfig[
+        "residentCountry"
+    ]
+    xml.etree.ElementTree.SubElement(Doh_Div, "IsResident").text = taxpayerConfig[
+        "isResident"
+    ]
 
     dividends = sorted(dividends, key=lambda k: k["dateTime"][0:8])
     for dividend in dividends:
         if round(dividend["amountEUR"], 2) <= 0:
             continue
-        Dividend = xml.etree.ElementTree.SubElement(Doh_Div, "Dividend")
+        Dividend = xml.etree.ElementTree.SubElement(body, "Dividend")
         xml.etree.ElementTree.SubElement(Dividend, "Date").text = (
             dYear + "-" + dividend["dateTime"][4:6] + "-" + dividend["dateTime"][6:8]
         )
