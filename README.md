@@ -7,6 +7,14 @@ _v eDavkih Finančne uprave_
 
 Poleg pretvorbe vrednosti skripta naredi še konverzijo iz tujih valut v EUR po tečaju Banke Slovenije na dan posla.
 
+## Izjava o omejitvi odgovornosti
+
+Davki so resna stvar. Avtor(ji) skripte si prizadevam(o) za natančno in ažurno delovanje skripte in jo tudi sam(i)
+uporabljam(o) za napovedi davkov. Kljub temu ne izključujem(o) možnosti napak, ki lahko vodijo v napačno oddajo davčne
+napovedi. Za pravilnost davčne napovedi si odgovoren sam in avtor(ji) skripte za njo ne prevzema(mo) nobene odgovornosti.
+
+Če ti je skripta prihranila nekaj ur, se mi lahko oddolžiš z [vabilom na kosilo](mailto:primoz@outlook.com?subject=[ib-edavki]%20Vabilo%20na%20kosilo).
+
 ## Uporaba
 
 ### Namestitev skripte
@@ -14,7 +22,7 @@ Poleg pretvorbe vrednosti skripta naredi še konverzijo iz tujih valut v EUR po 
 Na računalniku imej **python 3**.
 
 ```
-pip install --upgrade git+https://github.com/primoz64/ib-edavki.git
+pip install --upgrade git+https://github.com/jamsix/ib-edavki.git
 ```
 
 ```
@@ -47,7 +55,7 @@ ib-edavki [-h] [-y report-year] [-t] ib-xml-file-2016 [ib-xml-file-2017] [ib-xml
 ```
 Kot argument dodaj reporte za vsa leta trgovanja.
 
-Skripta po uspešni konverziji v lokalnem direktoriju ustvari dve datoteki:
+Skripta po uspešni konverziji v lokalnem direktoriju ustvari tri datoteke:
 * Doh-KDVP.xml (datoteka namenjena uvozu v obrazec Doh-KDVP - Napoved za odmero dohodnine od dobička od odsvojitve vrednostnih papirjev in drugih deležev ter investicijskih kuponov)
 * D-IFI.xml (datoteka namenjena uvozu v obrazec D-IFI - Napoved za odmero davka od dobička od odsvojitve izvedenih finančnih instrumentov)
 * D-Div.xml (datoteka namenjena uvozu v obrazec D-Div - Napoved za odmero dohodnine od dividend)
