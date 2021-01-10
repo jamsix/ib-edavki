@@ -14,7 +14,7 @@ from xml.dom import minidom
 
 bsRateXmlUrl = "https://www.bsi.si/_data/tecajnice/dtecbs-l.xml"
 normalAssets = ["STK"]
-derivateAssets = ["CFD", "OPT", "FUT", "FOP"]
+derivateAssets = ["CFD", "OPT", "FUT", "FOP", "WAR"]
 ignoreAssets = ["CASH"]
 
 
@@ -211,6 +211,7 @@ def main():
                         ibTrade.attrib["multiplier"]
                     )
                 """ If trade is an option exercise, tradePrice is set to 0, but closePrice is the one position was settled for """
+                # TODO: handle warrants exercise
                 if (
                     trade["assetCategory"] == "OPT"
                     and ibTrade.attrib["notes"] == "Ex"
@@ -775,7 +776,7 @@ def main():
             Name = xml.etree.ElementTree.SubElement(TItem, "Name").text = trades[0][
                 "description"
             ]
-        if trades[0]["assetCategory"] != "OPT":
+        if trades[0]["assetCategory"] != "OPT" and trades[0]["assetCategory"] != "WAR":
             """ Option descriptions are to long and not accepted by eDavki """
             Code = xml.etree.ElementTree.SubElement(TItem, "Code").text = trades[0][
                 "symbol"
@@ -862,7 +863,7 @@ def main():
             Name = xml.etree.ElementTree.SubElement(TItem, "Name").text = trades[0][
                 "description"
             ]
-        if trades[0]["assetCategory"] != "OPT":
+        if trades[0]["assetCategory"] != "OPT" and trades[0]["assetCategory"] != "WAR":
             """ Option descriptions are to long and not accepted by eDavki """
             Code = xml.etree.ElementTree.SubElement(TItem, "Code").text = trades[0][
                 "symbol"
