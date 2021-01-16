@@ -504,6 +504,7 @@ def main():
         + statementEndDate[6:8]
     )
     xml.etree.ElementTree.SubElement(KDVP, "IsResident").text = "true"
+    xml.etree.ElementTree.SubElement(KDVP, "TelephoneNumber").text = taxpayerConfig["telephoneNumber"]
     xml.etree.ElementTree.SubElement(KDVP, "SecurityCount").text = str(
         len(longNormalTrades)
     )
@@ -513,6 +514,7 @@ def main():
     xml.etree.ElementTree.SubElement(KDVP, "SecurityWithContractCount").text = "0"
     xml.etree.ElementTree.SubElement(KDVP, "SecurityWithContractShortCount").text = "0"
     xml.etree.ElementTree.SubElement(KDVP, "ShareCount").text = "0"
+    xml.etree.ElementTree.SubElement(KDVP, "Email").text = taxpayerConfig["email"]
 
     for securityID in longNormalTrades:
         trades = longNormalTrades[securityID]
