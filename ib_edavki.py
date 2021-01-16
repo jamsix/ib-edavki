@@ -18,6 +18,25 @@ derivateAssets = ["CFD", "OPT", "FUT", "FOP"]
 ignoreAssets = ["CASH"]
 
 
+stockSplits = {
+    'TSLA': [{
+        'date': datetime.datetime(2020, 8, 31),
+        'multiplier': 5
+    }]
+}
+
+
+def getSplitMultiplier(symbol, date):
+    multiplier = 1
+
+    if symbol in stockSplits:
+        for splitData in stockSplits[symbol]:
+            if datetime.datetime.strptime(date, '%Y%m%d') < splitData['date']:
+                multiplier *= splitData['multiplier']
+
+    return multiplier
+
+
 def main():
     if not os.path.isfile("taxpayer.xml"):
         print("Modify taxpayer.xml and add your data first!")
@@ -197,6 +216,13 @@ def main():
                     "ibOrderID": ibTrade.attrib["ibOrderID"],
                     "openCloseIndicator": ibTrade.attrib["openCloseIndicator"],
                 }
+                
+                splitMultiplier = getSplitMultiplier(trade['symbol'], trade['tradeDate'])
+
+                trade['quantity'] *= splitMultiplier
+                trade['tradePrice'] /= splitMultiplier
+
+
                 if ibTrade.attrib["securityID"] != "":
                     trade["securityID"] = ibTrade.attrib["securityID"]
                 if ibTrade.attrib["isin"] != "":
@@ -323,14 +349,13 @@ def main():
                 if "openTransactionIds" not in lastTrade:
                     lastTrade["openTransactionIds"] = {}
                 tid = ibTrade.attrib["transactionID"]
+                
+                splitMultiplier = getSplitMultiplier(ibTrade.attrib["symbol"], ibTrade.attrib['tradeDate'])
+
                 if tid not in lastTrade["openTransactionIds"]:
-                    lastTrade["openTransactionIds"][tid] = float(
-                        ibTrade.attrib["quantity"]
-                    )
+                    lastTrade["openTransactionIds"][tid] = float(ibTrade.attrib["quantity"]) * splitMultiplier
                 else:
-                    lastTrade["openTransactionIds"][tid] += float(
-                        ibTrade.attrib["quantity"]
-                    )
+                    lastTrade["openTransactionIds"][tid] += float(ibTrade.attrib["quantity"]) * splitMultiplier
 
     """ Detect if trades are Normal or Derivates and if they are Opening or Closing positions
         Convert the price to EUR """
