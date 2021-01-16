@@ -122,4 +122,68 @@
         <address>Kejizhongyi Avenue, Hi-tech Park, Nanshan District, Shenzhen, 518057</address>
         <country>CN</country>
     </company>
+    <company>
+        <conid>1447060</conid>
+        <symbol>CCJ</symbol>
+        <name>Cameco Corp</name>
+        <taxNumber>980113090</taxNumber>
+        <address>2121 11th St W, Saskatoon, S7M 1J3</address>
+        <country>CA</country>
+    </company>
+    <company>
+        <conid>6437</conid>
+        <symbol>TGT</symbol>
+        <name>Target Corp</name>
+        <taxNumber>410215170</taxNumber>
+        <address>1000 Nicollet Mall, Minneapolis, Minnesota, 55403</address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>358053635</conid>
+        <symbol>LEVI</symbol>
+        <name>Levi Strauss &amp; Co</name>
+        <taxNumber>940905160</taxNumber>
+        <address>1155 Battery St, San Francisco CA 94111</address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>257775837</conid>
+        <symbol>KL</symbol>
+        <name>Kirkland Lake Gold Ltd</name>
+        <taxNumber>000000000</taxNumber>
+        <address>200 Bay Street, Suite 3120, Toronto ON M5J 2J1, Canada</address>
+        <country>CA</country>
+    </company>
+    <company>
+        <conid>120420959</conid>
+        <symbol>USAC</symbol>
+        <name>Usa Compression Partners Lp</name>
+        <taxNumber>752771546</taxNumber>
+        <address>111 Congress Avenue, Suite 2400, Austin TX 78701</address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>10174</conid>
+        <symbol>NEM</symbol>
+        <name>Newmont Corp</name>
+        <taxNumber>841611629</taxNumber>
+        <address>6363 South Fiddlers Green Circle, Greenwood Village, CO 80111</address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>110322264</conid>
+        <symbol>DHT</symbol>
+        <name>DHT Holdings Inc</name>
+        <taxNumber>980497420</taxNumber>
+        <address>Clarendon House, 2 Church Street, Hamilton HM 11</address>
+        <country>BM</country>
+    </company>
+    <company>
+        <conid>6180</conid>
+        <symbol>LUMN</symbol>
+        <name>CenturyLink Inc</name>
+        <taxNumber>720651161</taxNumber>
+        <address>100 Centurylink Dr, Monroe LA</address>
+        <country>US</country>
+    </company>
 </companies>
