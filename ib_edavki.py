@@ -1110,6 +1110,10 @@ def main():
     else:
         dYear = str(reportYear)
     xml.etree.ElementTree.SubElement(Doh_Div, "Period").text = dYear
+    xml.etree.ElementTree.SubElement(Doh_Div, "EmailAddress").text = taxpayerConfig["email"]
+    xml.etree.ElementTree.SubElement(Doh_Div, "PhoneNumber").text = taxpayerConfig[
+        "telephoneNumber"
+    ]
     xml.etree.ElementTree.SubElement(Doh_Div, "ResidentCountry").text = taxpayerConfig[
         "residentCountry"
     ]
