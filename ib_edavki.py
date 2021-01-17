@@ -39,7 +39,7 @@ def addStockSplits(corporateActions):
             #we have to extract split information from description since IB does not provide
             #any information on what the corporate action is
 
-            multiplier = float(descriptionSearch.group(1)) * float(descriptionSearch.group(2))
+            multiplier = float(descriptionSearch.group(1)) / float(descriptionSearch.group(2))
             symbol = action.attrib["symbol"]
             date = datetime.datetime.strptime(action.attrib["reportDate"], "%Y%m%d")
             if symbol not in stockSplits:
