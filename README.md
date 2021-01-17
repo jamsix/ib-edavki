@@ -40,6 +40,7 @@ Odpri datoteko **taxpayer.xml** in vnesi svoje davčne podatke.
 1. Kot **Date Period** izberi **Custom Date Range**.
 1. Izberi prvi dan v letu za **From Date** in zadnji dan v letu za **To Date**.
 1. Pod **Sections** klikni na **Trades**. Pod Options označi **Executions** in **Closed Lots**. Izberi vse stolpce (**Select All**).
+1. Pod **Sections** klikni na **Corporate Actions**. Izberi vse stolpce (**Select All**).
 1. Pod **Sections** klikni na **Cash Transactions**. Pod Options označi **Dividends**, **Payment in Lieu of Dividends** in **Withholding Tax**. Izberi vse stolpce (**Select All**).
 1. Pod **Sections** klikni na **Financial Instrument Information**. Izberi vse stolpce (**Select All**).
 1. Vse ostale nastavitve pusti tako kot so.
