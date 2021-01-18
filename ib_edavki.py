@@ -760,7 +760,7 @@ def main():
             Type = xml.etree.ElementTree.SubElement(TItem, "Type").text = "02"
             TypeName = xml.etree.ElementTree.SubElement(
                 TItem, "TypeName"
-            ).text = "financne pogodbe na razliko"
+            ).text = "finančne pogodbe na razliko"
         elif trades[0]["assetCategory"] == "OPT":
             Type = xml.etree.ElementTree.SubElement(TItem, "Type").text = "03"
             TypeName = xml.etree.ElementTree.SubElement(
@@ -847,7 +847,7 @@ def main():
             Type = xml.etree.ElementTree.SubElement(TItem, "Type").text = "02"
             TypeName = xml.etree.ElementTree.SubElement(
                 TItem, "TypeName"
-            ).text = "financne pogodbe na razliko"
+            ).text = "finančne pogodbe na razliko"
         elif trades[0]["assetCategory"] == "OPT":
             Type = xml.etree.ElementTree.SubElement(TItem, "Type").text = "03"
             TypeName = xml.etree.ElementTree.SubElement(
