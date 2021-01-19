@@ -21,39 +21,40 @@ ignoreAssets = ["CASH"]
 
 stockSplits = {}
 
+
 def getSplitMultiplier(symbol, date):
     multiplier = 1
 
     if symbol in stockSplits:
         for splitData in stockSplits[symbol]:
-            if datetime.datetime.strptime(date, '%Y%m%d') < splitData['date']:
-                multiplier *= splitData['multiplier']
+            if datetime.datetime.strptime(date, "%Y%m%d") < splitData["date"]:
+                multiplier *= splitData["multiplier"]
 
     return multiplier
+
 
 def addStockSplits(corporateActions):
     for action in corporateActions:
         description = action.attrib["description"]
         descriptionSearch = re.search(r"SPLIT (.+) FOR (.+) \(", description)
         if descriptionSearch is not None:
-            #we have to extract split information from description since IB does not provide
-            #any information on what the corporate action is
+            # we have to extract split information from description since IB does not provide
+            # any information on what the corporate action is
 
-            multiplier = float(descriptionSearch.group(1)) / float(descriptionSearch.group(2))
+            multiplier = float(descriptionSearch.group(1)) / float(
+                descriptionSearch.group(2)
+            )
             symbol = action.attrib["symbol"]
             date = datetime.datetime.strptime(action.attrib["reportDate"], "%Y%m%d")
             if symbol not in stockSplits:
                 stockSplits[symbol] = []
 
-            #check if the same split was added from a different report
+            # check if the same split was added from a different report
             for split in stockSplits[symbol]:
-                if split['date'] == date and split['multiplier'] == multiplier:
+                if split["date"] == date and split["multiplier"] == multiplier:
                     continue
-            
-            stockSplits[symbol].append({
-                'date': date,
-                'multiplier': multiplier
-            })
+
+            stockSplits[symbol].append({"date": date, "multiplier": multiplier})
 
 
 def main():
@@ -239,12 +240,13 @@ def main():
                     "ibOrderID": ibTrade.attrib["ibOrderID"],
                     "openCloseIndicator": ibTrade.attrib["openCloseIndicator"],
                 }
-                
-                splitMultiplier = getSplitMultiplier(trade['symbol'], trade['tradeDate'])
 
-                trade['quantity'] *= splitMultiplier
-                trade['tradePrice'] /= splitMultiplier
+                splitMultiplier = getSplitMultiplier(
+                    trade["symbol"], trade["tradeDate"]
+                )
 
+                trade["quantity"] *= splitMultiplier
+                trade["tradePrice"] /= splitMultiplier
 
                 if ibTrade.attrib["securityID"] != "":
                     trade["securityID"] = ibTrade.attrib["securityID"]
@@ -373,13 +375,19 @@ def main():
                 if "openTransactionIds" not in lastTrade:
                     lastTrade["openTransactionIds"] = {}
                 tid = ibTrade.attrib["transactionID"]
-                
-                splitMultiplier = getSplitMultiplier(ibTrade.attrib["symbol"], ibTrade.attrib['tradeDate'])
+
+                splitMultiplier = getSplitMultiplier(
+                    ibTrade.attrib["symbol"], ibTrade.attrib["tradeDate"]
+                )
 
                 if tid not in lastTrade["openTransactionIds"]:
-                    lastTrade["openTransactionIds"][tid] = float(ibTrade.attrib["quantity"]) * splitMultiplier
+                    lastTrade["openTransactionIds"][tid] = (
+                        float(ibTrade.attrib["quantity"]) * splitMultiplier
+                    )
                 else:
-                    lastTrade["openTransactionIds"][tid] += float(ibTrade.attrib["quantity"]) * splitMultiplier
+                    lastTrade["openTransactionIds"][tid] += (
+                        float(ibTrade.attrib["quantity"]) * splitMultiplier
+                    )
 
     """ Detect if trades are Normal or Derivates and if they are Opening or Closing positions
         Convert the price to EUR """
@@ -553,7 +561,9 @@ def main():
         + statementEndDate[6:8]
     )
     xml.etree.ElementTree.SubElement(KDVP, "IsResident").text = "true"
-    xml.etree.ElementTree.SubElement(KDVP, "TelephoneNumber").text = taxpayerConfig["telephoneNumber"]
+    xml.etree.ElementTree.SubElement(KDVP, "TelephoneNumber").text = taxpayerConfig[
+        "telephoneNumber"
+    ]
     xml.etree.ElementTree.SubElement(KDVP, "SecurityCount").text = str(
         len(longNormalTrades)
     )
@@ -1161,7 +1171,9 @@ def main():
     else:
         dYear = str(reportYear)
     xml.etree.ElementTree.SubElement(Doh_Div, "Period").text = dYear
-    xml.etree.ElementTree.SubElement(Doh_Div, "EmailAddress").text = taxpayerConfig["email"]
+    xml.etree.ElementTree.SubElement(Doh_Div, "EmailAddress").text = taxpayerConfig[
+        "email"
+    ]
     xml.etree.ElementTree.SubElement(Doh_Div, "PhoneNumber").text = taxpayerConfig[
         "telephoneNumber"
     ]
