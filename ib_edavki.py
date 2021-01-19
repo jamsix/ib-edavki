@@ -10,12 +10,50 @@ import copy
 import argparse
 import shutil
 from xml.dom import minidom
+import re
 
 
 bsRateXmlUrl = "https://www.bsi.si/_data/tecajnice/dtecbs-l.xml"
 normalAssets = ["STK"]
 derivateAssets = ["CFD", "OPT", "FUT", "FOP", "WAR"]
 ignoreAssets = ["CASH"]
+
+
+stockSplits = {}
+
+def getSplitMultiplier(symbol, date):
+    multiplier = 1
+
+    if symbol in stockSplits:
+        for splitData in stockSplits[symbol]:
+            if datetime.datetime.strptime(date, '%Y%m%d') < splitData['date']:
+                multiplier *= splitData['multiplier']
+
+    return multiplier
+
+def addStockSplits(corporateActions):
+    for action in corporateActions:
+        description = action.attrib["description"]
+        descriptionSearch = re.search(r"SPLIT (.+) FOR (.+) \(", description)
+        if descriptionSearch is not None:
+            #we have to extract split information from description since IB does not provide
+            #any information on what the corporate action is
+
+            multiplier = float(descriptionSearch.group(1)) / float(descriptionSearch.group(2))
+            symbol = action.attrib["symbol"]
+            date = datetime.datetime.strptime(action.attrib["reportDate"], "%Y%m%d")
+            if symbol not in stockSplits:
+                stockSplits[symbol] = []
+
+            #check if the same split was added from a different report
+            for split in stockSplits[symbol]:
+                if split['date'] == date and split['multiplier'] == multiplier:
+                    continue
+            
+            stockSplits[symbol].append({
+                'date': date,
+                'multiplier': multiplier
+            })
 
 
 def main():
@@ -160,6 +198,10 @@ def main():
         ibSecuritiesInfoList.append(ibXml[0][0].find("SecuritiesInfo"))
         ibFlexStatement = ibXml[0][0]
 
+        corporateActions = ibXml[0][0].find("CorporateActions")
+        if corporateActions is not None:
+            addStockSplits(corporateActions)
+
     if test == True:
         statementStartDate = str(reportYear + testYearDiff) + "0101"
         statementEndDate = str(reportYear + testYearDiff) + "1231"
@@ -197,6 +239,13 @@ def main():
                     "ibOrderID": ibTrade.attrib["ibOrderID"],
                     "openCloseIndicator": ibTrade.attrib["openCloseIndicator"],
                 }
+                
+                splitMultiplier = getSplitMultiplier(trade['symbol'], trade['tradeDate'])
+
+                trade['quantity'] *= splitMultiplier
+                trade['tradePrice'] /= splitMultiplier
+
+
                 if ibTrade.attrib["securityID"] != "":
                     trade["securityID"] = ibTrade.attrib["securityID"]
                 if ibTrade.attrib["isin"] != "":
@@ -207,7 +256,7 @@ def main():
                     trade["description"] = ibTrade.attrib["description"]
                 """ Futures and options have multipliers, i.e. a quantity of 1 with tradePrice 3 and multiplier 100 is actually a future/option for 100 stocks, worth 100 x 3 = 300 """
                 if "multiplier" in ibTrade.attrib:
-                    trade["tradePrice"] = float(ibTrade.attrib["tradePrice"]) * float(
+                    trade["tradePrice"] = trade["tradePrice"] * float(
                         ibTrade.attrib["multiplier"]
                     )
                 """ If trade is an option exercise, tradePrice is set to 0, but closePrice is the one position was settled for """
@@ -324,14 +373,13 @@ def main():
                 if "openTransactionIds" not in lastTrade:
                     lastTrade["openTransactionIds"] = {}
                 tid = ibTrade.attrib["transactionID"]
+                
+                splitMultiplier = getSplitMultiplier(ibTrade.attrib["symbol"], ibTrade.attrib['tradeDate'])
+
                 if tid not in lastTrade["openTransactionIds"]:
-                    lastTrade["openTransactionIds"][tid] = float(
-                        ibTrade.attrib["quantity"]
-                    )
+                    lastTrade["openTransactionIds"][tid] = float(ibTrade.attrib["quantity"]) * splitMultiplier
                 else:
-                    lastTrade["openTransactionIds"][tid] += float(
-                        ibTrade.attrib["quantity"]
-                    )
+                    lastTrade["openTransactionIds"][tid] += float(ibTrade.attrib["quantity"]) * splitMultiplier
 
     """ Detect if trades are Normal or Derivates and if they are Opening or Closing positions
         Convert the price to EUR """
