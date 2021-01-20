@@ -92,6 +92,14 @@
         <country>US</country>
     </company>
     <company>
+        <conid>272093</conid>
+        <symbol>MSFT</symbol>
+        <name>Microsoft Corp</name>
+        <taxNumber>911144442</taxNumber>
+        <address>One Microsoft Way, Redmond, WA 98052-6399</address>
+        <country>US</country>
+    </company>
+    <company>
         <conid>2586162</conid>
         <symbol>MTN</symbol>
         <name>Vail Resorts Inc</name>
