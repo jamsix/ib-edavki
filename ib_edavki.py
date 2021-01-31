@@ -16,7 +16,7 @@ import re
 bsRateXmlUrl = "https://www.bsi.si/_data/tecajnice/dtecbs-l.xml"
 normalAssets = ["STK"]
 derivateAssets = ["CFD", "OPT", "FUT", "FOP", "WAR"]
-ignoreAssets = ["CASH"]
+ignoreAssets = ["CASH", "CMDTY"]
 
 
 stockSplits = {}
