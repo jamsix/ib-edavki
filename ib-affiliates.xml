@@ -1,0 +1,30 @@
+<ibAffiliates>
+   <ibAffiliate>
+      <code>IB-UK</code>
+      <name>Interactive Brokers (U.K.) Ltd.</name>
+      <taxNumber>03958476</taxNumber>
+      <address>Level 20 Heron Tower, 110 Bishopsgate, London EC2N 4AY</address>
+      <country>GB</country>
+   </ibAffiliate>
+   <ibAffiliate>
+      <code>IB-CE</code>
+      <name>Interactive Brokers Central Europe Zrt.</name>
+      <taxNumber>01-10-141029</taxNumber>
+      <address>Madach Imre ut 13-14, Floor 5, Budapest, 1075</address>
+      <country>HU</country>
+   </ibAffiliate>
+   <ibAffiliate>
+      <code>IB-IE</code>
+      <name>Interactive Brokers Ireland Limited</name>
+      <taxNumber>657406</taxNumber>
+      <address>10 Earlsfort Terrace, Dublin 2 D02 T380</address>
+      <country>IE</country>
+   </ibAffiliate>
+   <ibAffiliate>
+      <code>IB-LUX</code>
+      <name>Interactive Brokers Luxembourg SARL</name>
+      <taxNumber>B229091</taxNumber>
+      <address>4 rue Robert Stumper, L-2557 Luxembourg</address>
+      <country>LU</country>
+   </ibAffiliate>
+</ibAffiliates>

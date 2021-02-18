@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name="ib_edavki",
-    version="1.3.0",
+    version="1.4.0",
     py_modules=["ib_edavki"],
     python_requires=">=3",
     entry_points={
