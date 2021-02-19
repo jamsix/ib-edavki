@@ -57,6 +57,29 @@ def addStockSplits(corporateActions):
             stockSplits[symbol].append({"date": date, "multiplier": multiplier})
 
 
+def getCurrencyRate(date, currency, rates):
+    rate = 1.0
+    if date in rates and currency in rates[date]:
+        rate = float(rates[date][currency])
+    else:
+        for i in range(0, 6):
+            date_that_exists = str(int(date) - 1)
+            if date_that_exists in rates and currency in rates[date_that_exists]:
+                rate = float(rates[date][currency])
+                print(
+                    "There is no exchange rate for "
+                    + str(date)
+                    + ", using "
+                    + str(date_that_exists)
+                )
+                break
+            if i == 6:
+                sys.exit(
+                    "Error: There is no exchange rate for " + str(date)
+                )
+    return rate
+
+
 def main():
     if not os.path.isfile("taxpayer.xml"):
         print("Modify taxpayer.xml and add your data first!")
@@ -397,27 +420,7 @@ def main():
             if trade["currency"] == "EUR":
                 trade["tradePriceEUR"] = trade["tradePrice"]
             else:
-                date = trade["tradeDate"]
-                currency = trade["currency"]
-                if date in rates and currency in rates[date]:
-                    rate = float(rates[date][currency])
-                else:
-                    for i in range(0, 6):
-                        date = str(int(date) - 1)
-                        if date in rates and currency in rates[date]:
-                            rate = float(rates[date][currency])
-                            print(
-                                "There is no exchange rate for "
-                                + str(trade["tradeDate"])
-                                + ", using "
-                                + str(date)
-                            )
-                            break
-                        if i == 6:
-                            sys.exit(
-                                "Error: There is no exchange rate for " + str(date)
-                            )
-                trade["tradePriceEUR"] = trade["tradePrice"] / rate
+                trade["tradePriceEUR"] = trade["tradePrice"] / getCurrencyRate(trade["tradeDate"] , trade["currency"], rates)
 
             if (trade["openCloseIndicator"] == "O" and trade["quantity"] > 0) or (
                 trade["openCloseIndicator"] == "C" and trade["quantity"] < 0
@@ -465,6 +468,7 @@ def main():
                         previousTrade["quantity"] = (
                             previousTrade["quantity"] + trade["quantity"]
                         )
+                        previousTrade["tradePriceEUR"] = previousTrade["tradePrice"] / getCurrencyRate(trade['tradeDate'], trade['currency'], rates)
                         tradeExists = True
                         break
             if tradeExists == False:
