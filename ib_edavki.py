@@ -74,9 +74,7 @@ def getCurrencyRate(date, currency, rates):
                 )
                 break
             if i == 6:
-                sys.exit(
-                    "Error: There is no exchange rate for " + str(date)
-                )
+                sys.exit("Error: There is no exchange rate for " + str(date))
     return rate
 
 
@@ -420,7 +418,9 @@ def main():
             if trade["currency"] == "EUR":
                 trade["tradePriceEUR"] = trade["tradePrice"]
             else:
-                trade["tradePriceEUR"] = trade["tradePrice"] / getCurrencyRate(trade["tradeDate"] , trade["currency"], rates)
+                trade["tradePriceEUR"] = trade["tradePrice"] / getCurrencyRate(
+                    trade["tradeDate"], trade["currency"], rates
+                )
 
             if (trade["openCloseIndicator"] == "O" and trade["quantity"] > 0) or (
                 trade["openCloseIndicator"] == "C" and trade["quantity"] < 0
@@ -468,7 +468,11 @@ def main():
                         previousTrade["quantity"] = (
                             previousTrade["quantity"] + trade["quantity"]
                         )
-                        previousTrade["tradePriceEUR"] = previousTrade["tradePrice"] / getCurrencyRate(trade['tradeDate'], trade['currency'], rates)
+                        previousTrade["tradePriceEUR"] = previousTrade[
+                            "tradePrice"
+                        ] / getCurrencyRate(
+                            trade["tradeDate"], trade["currency"], rates
+                        )
                         tradeExists = True
                         break
             if tradeExists == False:
