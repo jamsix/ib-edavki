@@ -465,13 +465,12 @@ def main():
                             previousTrade["quantity"] * previousTrade["tradePrice"]
                             + trade["quantity"] * trade["tradePrice"]
                         ) / (previousTrade["quantity"] + trade["quantity"])
+                        previousTrade["tradePriceEUR"] = (
+                            previousTrade["quantity"] * previousTrade["tradePriceEUR"]
+                            + trade["quantity"] * trade["tradePriceEUR"]
+                        ) / (previousTrade["quantity"] + trade["quantity"])
                         previousTrade["quantity"] = (
                             previousTrade["quantity"] + trade["quantity"]
-                        )
-                        previousTrade["tradePriceEUR"] = previousTrade[
-                            "tradePrice"
-                        ] / getCurrencyRate(
-                            trade["tradeDate"], trade["currency"], rates
                         )
                         tradeExists = True
                         break
