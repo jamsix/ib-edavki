@@ -11,6 +11,7 @@ import argparse
 import shutil
 from xml.dom import minidom
 import re
+from generators import doh_obr
 
 
 bsRateXmlUrl = "https://www.bsi.si/_data/tecajnice/dtecbs-l.xml"
@@ -134,6 +135,8 @@ def main():
 
     if test == True:
         testYearDiff = reportYear - datetime.date.today().year - 1
+    else:
+        testYearDiff = 0
 
     """ Parse taxpayer information from the local taxpayer.xml file """
     taxpayer = xml.etree.ElementTree.parse("taxpayer.xml").getroot()
@@ -212,17 +215,32 @@ def main():
     ibTradesList = []
     ibCashTransactionsList = []
     ibSecuritiesInfoList = []
+    ibEntities = []
     for ibXmlFilename in ibXmlFilenames:
         ibXml = xml.etree.ElementTree.parse(ibXmlFilename).getroot()
-        ibTradesList.append(ibXml[0][0].find("Trades"))
-        """ibPositions = ibXml[0][0].find('OpenPositions')"""
-        ibCashTransactionsList.append(ibXml[0][0].find("CashTransactions"))
-        ibSecuritiesInfoList.append(ibXml[0][0].find("SecuritiesInfo"))
-        ibFlexStatement = ibXml[0][0]
+        ibFlexStatements = ibXml[0]
+        for ibFlexStatement in ibFlexStatements:
+            ibTradesList.append(ibFlexStatement.find("Trades"))
+            ibCashTransactionsList.append(ibFlexStatement.find("CashTransactions"))
+            ibSecuritiesInfoList.append(ibFlexStatement.find("SecuritiesInfo"))
 
-        corporateActions = ibXml[0][0].find("CorporateActions")
-        if corporateActions is not None:
-            addStockSplits(corporateActions)
+            if ibFlexStatement.find("AccountInformation") is not None:
+                for entity in ibEntities:
+                    if entity["accountId"] == ibFlexStatement.find("AccountInformation").get("accountId"):
+                        break
+                else:
+                    ibEntity = {
+                        "accountId": ibFlexStatement.find("AccountInformation").get("accountId"),
+                        "ibEntity": ibFlexStatement.find("AccountInformation").get("ibEntity")
+                    }
+                    ibEntities.append(ibEntity)
+            else:
+                print("Account Information section of flex report is missing for account "
+                    + ibFlexStatement.get("accountId") + " in file " + ibXmlFilename)
+
+            corporateActions = ibFlexStatement.find("CorporateActions")
+            if corporateActions is not None:
+                addStockSplits(corporateActions)
 
     if test == True:
         statementStartDate = str(reportYear + testYearDiff) + "0101"
@@ -1064,7 +1082,7 @@ def main():
                 and ibCashTransaction.attrib["dateTime"].startswith(str(reportYear))
                 and ibCashTransaction.attrib["type"] == "Withholding Tax"
             ):
-                closestDividend = None
+                closestDividend = {}
                 for dividend in dividends:
                     if (
                         dividend["dateTime"][0:8]
@@ -1074,7 +1092,7 @@ def main():
                         < ibCashTransaction.attrib["transactionID"]
                     ):
                         if (
-                            closestDividend is None
+                            not closestDividend
                             or dividend["transactionID"]
                             > closestDividend["transactionID"]
                         ):
@@ -1128,7 +1146,6 @@ def main():
     dividends = mergedDividends
 
     """ Get securities info from IB XML """
-    securities = []
     for ibSecuritiesInfo in ibSecuritiesInfoList:
         if ibSecuritiesInfo is None:
             continue
@@ -1243,6 +1260,15 @@ def main():
         f.write(prettyXmlString)
         print("Doh-Div.xml created")
 
+
+    """ Generate Doh-Obr.xml """
+    doh_obr.generate(taxpayerConfig,
+                     ibEntities,
+                     ibCashTransactionsList,
+                     rates,
+                     reportYear,
+                     test,
+                     testYearDiff)
 
 if __name__ == "__main__":
     main()

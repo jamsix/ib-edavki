@@ -1,8 +1,9 @@
 # InteractiveBrokers -> FURS eDavki konverter
-_Skripta, ki prevede XML poročilo trgovalnih poslov v platformi InteractiveBrokers v XML format primeren za uvoz v obrazce:_
+_Skripta, ki prevede XML poročilo trgovalnih poslov, dividend in obresti Stock Yield Enhancement programa v platformi InteractiveBrokers v XML format primeren za uvoz v obrazce:_
 * _Doh-KDVP - Napoved za odmero dohodnine od dobička od odsvojitve vrednostnih papirjev in drugih deležev ter investicijskih kuponov,_
 * _D-IFI - Napoved za odmero davka od dobička od odsvojitve izvedenih finančnih instrumentov in_
 * _Doh-Div - Napoved za odmero dohodnine od dividend_
+* _Doh-Obr - Napoved za odmero dohodnine od obresti_
 _v eDavkih Finančne uprave_
 
 Poleg pretvorbe vrednosti skripta naredi še konverzijo iz tujih valut v EUR po tečaju Banke Slovenije na dan posla.
@@ -39,9 +40,10 @@ Odpri datoteko **taxpayer.xml** in vnesi svoje davčne podatke.
 1. Vpiši poljuben **Query Name**.
 1. Kot **Date Period** izberi **Custom Date Range**.
 1. Izberi prvi dan v letu za **From Date** in zadnji dan v letu za **To Date**.
+1. Pod **Sections** klikni na **Account Information**. Izberi **IB Entity** in **Account ID**.
 1. Pod **Sections** klikni na **Trades**. Pod Options označi **Executions** in **Closed Lots**. Izberi vse stolpce (**Select All**).
 1. Pod **Sections** klikni na **Corporate Actions**. Izberi vse stolpce (**Select All**).
-1. Pod **Sections** klikni na **Cash Transactions**. Pod Options označi **Dividends**, **Payment in Lieu of Dividends** in **Withholding Tax**. Izberi vse stolpce (**Select All**).
+1. Pod **Sections** klikni na **Cash Transactions**. Pod Options označi **Dividends**, **Payment in Lieu of Dividends**, **Withholding Tax** in **Broker Interest Received**. Izberi vse stolpce (**Select All**).
 1. Pod **Sections** klikni na **Financial Instrument Information**. Izberi vse stolpce (**Select All**).
 1. Vse ostale nastavitve pusti tako kot so.
 1. Na dnu klikni **Save**
@@ -60,6 +62,7 @@ Skripta po uspešni konverziji v lokalnem direktoriju ustvari tri datoteke:
 * Doh-KDVP.xml (datoteka namenjena uvozu v obrazec Doh-KDVP - Napoved za odmero dohodnine od dobička od odsvojitve vrednostnih papirjev in drugih deležev ter investicijskih kuponov)
 * D-IFI.xml (datoteka namenjena uvozu v obrazec D-IFI - Napoved za odmero davka od dobička od odsvojitve izvedenih finančnih instrumentov)
 * D-Div.xml (datoteka namenjena uvozu v obrazec D-Div - Napoved za odmero dohodnine od dividend)
+* Doh-Obr.xml (datoteka namenjena uvozu v obrazec Doh-Obr - Napoved za odmero dohodnine od obresti)
 
 #### -y <leto> (opcijsko)
 Leto za katerega se izdelajo popisni listi. Privzeto trenutno leto.
@@ -73,8 +76,11 @@ eDavki ne omogočajo dodajanje popisnih listov za tekoče leto, temveč le za pr
 Obrazec Doh-Div zahteva dodatne podatke o podjetju, ki je izplačalo dividende (identifikacijska številka, naslov, ...), ki jih v izvirnih podatkih IBja ni. Ob prvi uporabi, skripta prenese datoteki `companies.xml` in `relief-statement.xml`, ki že vsebujeta nekaj podjetij in sporazumov o izogibanju dvojnega obdavčevanja, ostale lahko dodaš sam, ali manjkajoče podatke po uvozu obrazca vneseš v eDavkih.
 *Če boš v `companies.xml` vnesel več novih podjetij, naredi pull request.*
 
+#### Podatki o podružnicah IB za obrazec Doh-Obr
+Obrazec Doh-Obr zahteva dodatne podatke o podružnici IB, ki je izplačevalka obresti Stock Yield Enhancement programa (identifikacijska številka, naziv, naslov, država) in jih v izvirnih podatkih IB-ja ni. Ob prvi uporabi skripta prenese datoteko `ib-affiliates.xml`, ki vsebuje zahtevane podatke za IB United Kingdom, IB Central Europe, IB Ireland in IB Luxembourg, po potrebi pa lahko te podatke spremeniš ali dodaš.
+
 ### Uvoz v eDavke
-1. V meniju **Dokument** klikni **Uvoz**. Izberi eno izmed generiranih datotek (Doh-KDVP.xml, D-IFI, Doh-Div) in jo **Prenesi**.
+1. V meniju **Dokument** klikni **Uvoz**. Izberi eno izmed generiranih datotek (Doh-KDVP.xml, D-IFI.xml, Doh-Div.xml, Doh-Obr.xml) in jo **Prenesi**.
 1. Preveri izpolnjene podatke in dodaj manjkajoče.
 1. Pri obrazcih Doh-KDVP in D-IFI je na seznamu popisnih listov po en popisni list za vsak vrednostni papir (ticker).
 1. Klikni na ime vrednostnega papirja in odpri popisni list.
