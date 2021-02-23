@@ -438,6 +438,25 @@ def main():
                         float(ibTrade.attrib["quantity"]) * splitMultiplier
                     )
 
+    """ If a trade is both closing and opening, i.e. it goes from negative into positive
+        balance or vice versa, split it into one closing and one opening trade """
+    for securityID in trades:
+        xtrades = []
+        for trade in trades[securityID]:
+            if trade["openCloseIndicator"] != "C;O":
+                xtrades.append(trade)
+            else:
+                openSum = 0
+                for openTransactionId in trade["openTransactionIds"]:
+                    openSum += trade["openTransactionIds"][openTransactionId]
+                if abs(trade["quantity"]) != abs(openSum):
+                    closeTrade = trade.copy()
+                    openTrade = trade.copy()
+                    closeTrade["openCloseIndicator"] = "C"
+                    openTrade["openCloseIndicator"] = "O"
+                    closeTrade["quantity"] = -openSum
+                    openTrade["quantity"] = trade["quantity"] - closeTrade["quantity"]
+
     """ Detect if trades are Normal or Derivates and if they are Opening or Closing positions
         Convert the price to EUR """
     for securityID in trades:
