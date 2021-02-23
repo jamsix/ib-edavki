@@ -49,7 +49,7 @@ Odpri datoteko **taxpayer.xml** in vnesi svoje davčne podatke.
 1. Na dnu klikni **Save**
 1. Na dnu klikni **Continue** in nato **Create**.
 1. V pogledu **Reports > Flex Queries** se je pojavil novo narejeni report. Klikni **Run**, shrani XML.
-1. Ponovi postopek za vsako leto trgovanja, če si trgoval v letih 2016, 2017 in 2018, generiraj 3 reporte, po enega za vsako leto.
+1. Ponovi postopek za vsako leto trgovanja, če si trgoval v letih 2016, 2017 in 2018, generiraj 3 reporte, po enega za vsako leto. Za pravilen izračun tujega davka na dividende (Withholding Tax) je potrebno generirati tudi report tekočega leta, saj so nekateri obračuni poročani za nazaj.
 
 ### Konverzija IB poročila v popisne liste primerne za uvoz v eDavke
 
