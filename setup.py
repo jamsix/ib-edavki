@@ -6,7 +6,7 @@ with open("README.md", "r", encoding="utf8") as fh:
 setup(
     name="ib_edavki",
     version="1.4.0",
-    py_modules=["ib_edavki"],
+    py_modules=["ib_edavki", "generators.doh_obr"],
     python_requires=">=3",
     entry_points={
         "console_scripts": ["ib_edavki=ib_edavki:main", "ib-edavki=ib_edavki:main"]
