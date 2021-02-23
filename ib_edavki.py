@@ -226,17 +226,27 @@ def main():
 
             if ibFlexStatement.find("AccountInformation") is not None:
                 for entity in ibEntities:
-                    if entity["accountId"] == ibFlexStatement.find("AccountInformation").get("accountId"):
+                    if entity["accountId"] == ibFlexStatement.find(
+                        "AccountInformation"
+                    ).get("accountId"):
                         break
                 else:
                     ibEntity = {
-                        "accountId": ibFlexStatement.find("AccountInformation").get("accountId"),
-                        "ibEntity": ibFlexStatement.find("AccountInformation").get("ibEntity")
+                        "accountId": ibFlexStatement.find("AccountInformation").get(
+                            "accountId"
+                        ),
+                        "ibEntity": ibFlexStatement.find("AccountInformation").get(
+                            "ibEntity"
+                        ),
                     }
                     ibEntities.append(ibEntity)
             else:
-                print("Account Information section of flex report is missing for account "
-                    + ibFlexStatement.get("accountId") + " in file " + ibXmlFilename)
+                print(
+                    "Account Information section of flex report is missing for account "
+                    + ibFlexStatement.get("accountId")
+                    + " in file "
+                    + ibXmlFilename
+                )
 
             corporateActions = ibFlexStatement.find("CorporateActions")
             if corporateActions is not None:
@@ -1260,15 +1270,17 @@ def main():
         f.write(prettyXmlString)
         print("Doh-Div.xml created")
 
-
     """ Generate Doh-Obr.xml """
-    doh_obr.generate(taxpayerConfig,
-                     ibEntities,
-                     ibCashTransactionsList,
-                     rates,
-                     reportYear,
-                     test,
-                     testYearDiff)
+    doh_obr.generate(
+        taxpayerConfig,
+        ibEntities,
+        ibCashTransactionsList,
+        rates,
+        reportYear,
+        test,
+        testYearDiff,
+    )
+
 
 if __name__ == "__main__":
     main()
