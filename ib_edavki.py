@@ -449,13 +449,19 @@ def main():
                 openSum = 0
                 for openTransactionId in trade["openTransactionIds"]:
                     openSum += trade["openTransactionIds"][openTransactionId]
-                if abs(trade["quantity"]) != abs(openSum):
+                if abs(trade["quantity"]) == abs(openSum):
+                    xtrades.append(trade)
+                else:
                     closeTrade = trade.copy()
                     openTrade = trade.copy()
                     closeTrade["openCloseIndicator"] = "C"
                     openTrade["openCloseIndicator"] = "O"
                     closeTrade["quantity"] = -openSum
                     openTrade["quantity"] = trade["quantity"] - closeTrade["quantity"]
+                    del openTrade["openTransactionIds"]
+                    xtrades.append(closeTrade)
+                    xtrades.append(openTrade)
+        trades[securityID] = xtrades
 
     """ Detect if trades are Normal or Derivates and if they are Opening or Closing positions
         Convert the price to EUR """
@@ -480,7 +486,6 @@ def main():
                 trade["assetType"] = "normal"
             elif trade["assetCategory"] in derivateAssets:
                 trade["assetType"] = "derivate"
-
     """ Filter trades to only include those that closed in the parameter year and trades that opened the closing position """
     yearTrades = {}
     for securityID in trades:
@@ -492,7 +497,10 @@ def main():
                 if securityID not in yearTrades:
                     yearTrades[securityID] = []
                 for xtrade in trades[securityID]:
-                    if xtrade["transactionID"] in trade["openTransactionIds"]:
+                    if (
+                        xtrade["openCloseIndicator"] == "O"
+                        and xtrade["transactionID"] in trade["openTransactionIds"]
+                    ):
                         ctrade = copy.copy(xtrade)
                         tid = ctrade["transactionID"]
                         ctrade["quantity"] = trade["openTransactionIds"][tid]
@@ -507,7 +515,11 @@ def main():
             tradeExists = False
             if securityID in mergedTrades:
                 for previousTrade in mergedTrades[securityID]:
-                    if previousTrade["ibOrderID"] == trade["ibOrderID"]:
+                    if (
+                        previousTrade["ibOrderID"] == trade["ibOrderID"]
+                        and previousTrade["openCloseIndicator"]
+                        == trade["openCloseIndicator"]
+                    ):
                         previousTrade["tradePrice"] = (
                             previousTrade["quantity"] * previousTrade["tradePrice"]
                             + trade["quantity"] * trade["tradePrice"]
