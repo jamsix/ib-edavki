@@ -1113,27 +1113,9 @@ def main():
                 if dividend["currency"] == "EUR":
                     dividend["amountEUR"] = dividend["amount"]
                 else:
-                    date = dividend["dateTime"][0:8]
-                    currency = dividend["currency"]
-                    if date in rates and currency in rates[date]:
-                        rate = float(rates[date][currency])
-                    else:
-                        for i in range(0, 6):
-                            date = str(int(date) - 1)
-                            if date in rates and currency in rates[date]:
-                                rate = float(rates[date][currency])
-                                print(
-                                    "There is no exchange rate for "
-                                    + str(dividend["dateTime"][0:8])
-                                    + ", using "
-                                    + str(date)
-                                )
-                                break
-                            if i == 6:
-                                sys.exit(
-                                    "Error: There is no exchange rate for " + str(date)
-                                )
-                    dividend["amountEUR"] = dividend["amount"] / rate
+                    dividend["amountEUR"] = dividend["amount"] / getCurrencyRate(
+                        dividend["dateTime"][0:8], dividend["currency"], rates
+                    )
                 dividends.append(dividend)
         for ibCashTransaction in ibCashTransactions:
             if (
@@ -1162,28 +1144,13 @@ def main():
                     if ibCashTransaction.attrib["currency"] == "EUR":
                         closestDividend["taxEUR"] += closestDividendTax
                     else:
-                        date = ibCashTransaction.attrib["dateTime"][0:8]
-                        currency = ibCashTransaction.attrib["currency"]
-                        if date in rates and currency in rates[date]:
-                            rate = float(rates[date][currency])
-                        else:
-                            for i in range(0, 6):
-                                date = str(int(date) - 1)
-                                if date in rates and currency in rates[date]:
-                                    rate = float(rates[date][currency])
-                                    print(
-                                        "There is no exchange rate for "
-                                        + str(ibCashTransaction.attrib["dateTime"][0:8])
-                                        + ", using "
-                                        + str(date)
-                                    )
-                                    break
-                                if i == 6:
-                                    sys.exit(
-                                        "Error: There is no exchange rate for "
-                                        + str(date)
-                                    )
-                        closestDividend["taxEUR"] += closestDividendTax / rate
+                        closestDividend[
+                            "taxEUR"
+                        ] += closestDividendTax / getCurrencyRate(
+                            ibCashTransaction.attrib["dateTime"][0:8],
+                            ibCashTransaction.attrib["currency"],
+                            rates,
+                        )
 
     """ Merge multiple dividends or payments in lieu of dividents on the same day from the same company into a single entry """
     mergedDividends = []
