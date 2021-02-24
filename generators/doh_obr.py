@@ -37,12 +37,13 @@ def getIbEntityCode(ibEntities, accountId):
     for ibEntity in ibEntities:
         if (ibEntity["accountId"] == accountId):
             return ibEntity["ibEntity"]
-        else:
-            print("IB Entity for account "
-                + accountId + " "
-                + "not found in flex statement. "
-                + "Check your report settings.")
-            return None
+    
+    print("IB Entity for account "
+        + accountId + " "
+        + "not found in flex statement. "
+        + "Check your report settings.")
+    
+    return None
 
 """ Get interest from IB XML """
 def generate(taxpayerConfig,
