@@ -1157,10 +1157,10 @@ def main():
                         ):
                             closestDividend = dividend
                 if closestDividend:
-                    closestDividend["tax"] = -float(ibCashTransaction.attrib["amount"])
+                    closestDividendTax = -float(ibCashTransaction.attrib["amount"])
                     """ Convert amount to EUR """
                     if ibCashTransaction.attrib["currency"] == "EUR":
-                        closestDividend["taxEUR"] = closestDividend["tax"]
+                        closestDividend["taxEUR"] += closestDividendTax
                     else:
                         date = ibCashTransaction.attrib["dateTime"][0:8]
                         currency = ibCashTransaction.attrib["currency"]
@@ -1183,7 +1183,7 @@ def main():
                                         "Error: There is no exchange rate for "
                                         + str(date)
                                     )
-                        closestDividend["taxEUR"] = closestDividend["tax"] / rate
+                        closestDividend["taxEUR"] += closestDividendTax / rate
 
     """ Merge multiple dividends or payments in lieu of dividents on the same day from the same company into a single entry """
     mergedDividends = []
