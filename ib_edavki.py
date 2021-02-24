@@ -59,27 +59,29 @@ def addStockSplits(corporateActions):
 
 
 """ Gets the currency rate for a given date and currency. If no rate exists for a given
-    date, it returns the last value on the last previous day on which the rate exists """
+    date, it returns the last value on the last previous day on which the rate exists
+"""
 
 
-def getCurrencyRate(date, currency, rates):
-    rate = 1.0
-    if date in rates and currency in rates[date]:
-        rate = float(rates[date][currency])
+def getCurrencyRate(dateStr, currency, rates):
+    if dateStr in rates and currency in rates[dateStr]:
+        rate = float(rates[dateStr][currency])
     else:
-        for i in range(0, 6):
-            date_that_exists = str(int(date) - 1)
-            if date_that_exists in rates and currency in rates[date_that_exists]:
-                rate = float(rates[date_that_exists][currency])
+        date = datetime.datetime.strptime(dateStr, "%Y%m%d")
+        for i in range(1, 10):
+            lastWorkingDate = date - datetime.timedelta(days=i)
+            lastWorkingDateStr = lastWorkingDate.strftime("%Y%m%d")
+            if lastWorkingDateStr in rates and currency in rates[lastWorkingDateStr]:
+                rate = float(rates[lastWorkingDateStr][currency])
                 print(
                     "There is no exchange rate for "
-                    + str(date)
+                    + str(dateStr)
                     + ", using "
-                    + str(date_that_exists)
+                    + str(lastWorkingDateStr)
                 )
                 break
-            if i == 6:
-                sys.exit("Error: There is no exchange rate for " + str(date))
+            if i >= 9:
+                sys.exit("Error: There is no exchange rate for " + str(dateStr))
     return rate
 
 
