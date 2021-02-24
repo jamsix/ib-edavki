@@ -824,10 +824,13 @@ def main():
     prettyXmlString = minidom.parseString(xmlString).toprettyxml(indent="\t")
     with open("Doh-KDVP.xml", "w", encoding="utf-8") as f:
         f.write(prettyXmlString)
-        print(
-            "Doh-KDVP.xml created (includes trades from years %s)"
-            % ", ".join(sorted(tradeYearsInNormalReport))
-        )
+        if tradeYearsInNormalReport:
+            print(
+                "Doh-KDVP.xml created (includes trades from years %s)"
+                % ", ".join(sorted(tradeYearsInNormalReport))
+            )
+        else:
+            print("Doh-KDVP.xml created (includes no trades)")
 
     """ Generate the files for Derivates """
     envelope = xml.etree.ElementTree.Element(
@@ -1068,10 +1071,13 @@ def main():
     prettyXmlString = minidom.parseString(xmlString).toprettyxml(indent="\t")
     with open("D-IFI.xml", "w", encoding="utf-8") as f:
         f.write(prettyXmlString)
-        print(
-            "D-IFI.xml created (includes trades from years %s)"
-            % ", ".join(sorted(tradeYearsInDerivateReport))
-        )
+        if tradeYearsInDerivateReport:
+            print(
+                "D-IFI.xml created (includes trades from years %s)"
+                % ", ".join(sorted(tradeYearsInDerivateReport))
+            )
+        else:
+            print("D-IFI.xml created (includes no trades)")
 
     """ Get dividends from IB XML """
     dividends = []
