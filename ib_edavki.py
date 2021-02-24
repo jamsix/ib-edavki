@@ -645,6 +645,7 @@ def main():
     xml.etree.ElementTree.SubElement(KDVP, "ShareCount").text = "0"
     xml.etree.ElementTree.SubElement(KDVP, "Email").text = taxpayerConfig["email"]
 
+    tradeYearsInNormalReport = set()
     for securityID in longNormalTrades:
         trades = longNormalTrades[securityID]
         KDVPItem = xml.etree.ElementTree.SubElement(Doh_KDVP, "KDVPItem")
@@ -688,6 +689,7 @@ def main():
                 tradeYear = int(trade["tradeDate"][0:4]) + testYearDiff
             else:
                 tradeYear = int(trade["tradeDate"][0:4])
+            tradeYearsInNormalReport.add(str(tradeYear))
             Row = xml.etree.ElementTree.SubElement(Securities, "Row")
             ID = xml.etree.ElementTree.SubElement(Row, "ID").text = str(n)
             if trade["quantity"] > 0:
@@ -774,6 +776,7 @@ def main():
                 tradeYear = int(trade["tradeDate"][0:4]) + testYearDiff
             else:
                 tradeYear = int(trade["tradeDate"][0:4])
+            tradeYearsInNormalReport.add(str(tradeYear))
             Row = xml.etree.ElementTree.SubElement(SecuritiesShort, "Row")
             ID = xml.etree.ElementTree.SubElement(Row, "ID").text = str(n)
             if trade["quantity"] > 0:
@@ -819,7 +822,10 @@ def main():
     prettyXmlString = minidom.parseString(xmlString).toprettyxml(indent="\t")
     with open("Doh-KDVP.xml", "w", encoding="utf-8") as f:
         f.write(prettyXmlString)
-        print("Doh-KDVP.xml created")
+        print(
+            "Doh-KDVP.xml created (includes trades from years %s)"
+            % ", ".join(sorted(tradeYearsInNormalReport))
+        )
 
     """ Generate the files for Derivates """
     envelope = xml.etree.ElementTree.Element(
@@ -876,6 +882,7 @@ def main():
     ]
     xml.etree.ElementTree.SubElement(difi, "Email").text = taxpayerConfig["email"]
 
+    tradeYearsInDerivateReport = set()
     n = 0
     for securityID in longDerivateTrades:
         trades = longDerivateTrades[securityID]
@@ -925,6 +932,7 @@ def main():
                 tradeYear = int(trade["tradeDate"][0:4]) + testYearDiff
             else:
                 tradeYear = int(trade["tradeDate"][0:4])
+            tradeYearsInDerivateReport.add(str(tradeYear))
             TSubItem = xml.etree.ElementTree.SubElement(TItem, "TSubItem")
             if trade["quantity"] > 0:
                 PurchaseSale = xml.etree.ElementTree.SubElement(TSubItem, "Purchase")
@@ -1012,6 +1020,7 @@ def main():
                 tradeYear = int(trade["tradeDate"][0:4]) + testYearDiff
             else:
                 tradeYear = int(trade["tradeDate"][0:4])
+            tradeYearsInDerivateReport.add(str(tradeYear))
             TShortSubItem = xml.etree.ElementTree.SubElement(TItem, "TShortSubItem")
             if trade["quantity"] > 0:
                 PurchaseSale = xml.etree.ElementTree.SubElement(
@@ -1057,7 +1066,10 @@ def main():
     prettyXmlString = minidom.parseString(xmlString).toprettyxml(indent="\t")
     with open("D-IFI.xml", "w", encoding="utf-8") as f:
         f.write(prettyXmlString)
-        print("D-IFI.xml created")
+        print(
+            "D-IFI.xml created (includes trades from years %s)"
+            % ", ".join(sorted(tradeYearsInDerivateReport))
+        )
 
     """ Get dividends from IB XML """
     dividends = []
