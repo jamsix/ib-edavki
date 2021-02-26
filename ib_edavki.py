@@ -904,7 +904,7 @@ def main():
             TypeName = xml.etree.ElementTree.SubElement(
                 TItem, "TypeName"
             ).text = "finančne pogodbe na razliko"
-        elif trades[0]["assetCategory"] == "OPT":
+        elif trades[0]["assetCategory"] in ["OPT", "FOP"]:
             Type = xml.etree.ElementTree.SubElement(TItem, "Type").text = "03"
             TypeName = xml.etree.ElementTree.SubElement(
                 TItem, "TypeName"
