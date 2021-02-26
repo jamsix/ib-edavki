@@ -194,4 +194,508 @@
         <address>100 Centurylink Dr, Monroe LA</address>
         <country>US</country>
     </company>
+    <company>
+        <symbol>O</symbol>
+        <name>Realty Income</name>
+        <taxNumber>330580106</taxNumber>
+        <address>11995 El Camino Real San Diego, CA </address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>PBA</symbol>
+        <name>Pembina Pipeline Corp</name>
+        <taxNumber>980131760</taxNumber>
+        <address>4000, 585 - 8th Avenue S.W. Calgary, Alberta T2P 1G1</address>
+        <country>CA</country>
+    </company>
+    <company>
+        <symbol>RDS A</symbol>
+        <name>Royal Dutch Shell</name>
+        <taxNumber>522074528</taxNumber>
+        <address>Carel van Bylandtlaan 16, 2596 HR The Hague</address>
+        <country>NL</country>
+    </company>
+    <company>
+        <symbol>DLR</symbol>
+        <name>Digital Realty Trust, Inc.</name>
+        <taxNumber>260081711</taxNumber>
+        <address>Four Embarcadero Center, Suite 3200, San Francisco, CA 94111</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>ESS</symbol>
+        <name>Essex Property Trust, Inc.</name>
+        <taxNumber>770369576</taxNumber>
+        <address>1100 Park Place, Suite 200, San Mateo, CA 94403</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>FRT</symbol>
+        <name>Federal Realty Investment Trust</name>
+        <taxNumber>520782497</taxNumber>
+        <address>1626 East Jefferson Street, Rockville, MD 20852-4041</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>SLG</symbol>
+        <name>Sl Green Realty Corp</name>
+        <taxNumber>133956775</taxNumber>
+        <address>420 Lexington Avenue, New York, NY 10170</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>SRC</symbol>
+        <name>Spirit Realty Capital, Inc.</name>
+        <taxNumber>201676382</taxNumber>
+        <address>2727 North Harwood Street, Suite 300, Dallas, TX 75201</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>STOR</symbol>
+        <name>Store Capital Corp</name>
+        <taxNumber>452280254</taxNumber>
+        <address>8377 East Hartford Drive, Suite 100, Scottsdale, AZ 85255</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>WPC</symbol>
+        <name>W. P. Carey Inc.</name>
+        <taxNumber>133912578</taxNumber>
+        <address>50 Rockefeller Plaza, New York, NY 10020</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>IRT</symbol>
+        <name>Independence Realty Trust, Inc.</name>
+        <taxNumber>264567130</taxNumber>
+        <address>1835 Market Street, Suite 2601, Philadelphia, PA 19103</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>CM</symbol>
+        <name>Canadian Imperial Bank Of Commerce</name>
+        <taxNumber>131942440</taxNumber>
+        <address>425 Lexington Avenue, 425 Lexington Avenue, New York, NY 10017</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>BNS</symbol>
+        <name>Bank Of Nova Scotia</name>
+        <taxNumber>134941099</taxNumber>
+        <address>44 King Street West, Scotia Plaza 8th Fl., Toronto, A6 M5H 1H1</address>
+        <country>CA</country>
+    </company>
+    <company>
+        <symbol>JPM</symbol>
+        <name>Jpmorgan Chase &amp; Co</name>
+        <taxNumber>132624428</taxNumber>
+        <address>383 Madison Avenue, New York, NY 10017</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>TD</symbol>
+        <name>Toronto Dominion Bank</name>
+        <taxNumber>135640479</taxNumber>
+        <address>66 Wellington Street West, 12th Floor, Td Tower, Toronto, Ontario, A6 M5K 1A2</address>
+        <country>CA</country>
+    </company>
+    <company>
+        <symbol>CPB</symbol>
+        <name>Campbell Soup Co</name>
+        <taxNumber>210419870</taxNumber>
+        <address>Campbell Pl, Camden, NJ 08103</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>VZ</symbol>
+        <name>Verizon Communications Inc</name>
+        <taxNumber>232259884</taxNumber>
+        <address>1095 Avenue Of The Americas, New York, NY 10036</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>NHI</symbol>
+        <name>National Health Investors Inc</name>
+        <taxNumber>621470956</taxNumber>
+        <address>222 Robert Rose Drive, Murfreesboro, TN 37129</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>EPD</symbol>
+        <name>Enterprise Products Partners L.p.</name>
+        <taxNumber>760568219</taxNumber>
+        <address>1100 Louisiana 10th Floor, Houston, TX 77002</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>ABBV</symbol>
+        <name>Abbvie Inc.</name>
+        <taxNumber>320375147</taxNumber>
+        <address>1 North Waukegan Road, North Chicago, IL 60064</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>NNN</symbol>
+        <name>National Retail Properties, Inc.</name>
+        <taxNumber>561431377</taxNumber>
+        <address>450 S Orange Ave, Suite 900, Orlando, FL 32801</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>KMI</symbol>
+        <name>Kinder Morgan, Inc.</name>
+        <taxNumber>260238387</taxNumber>
+        <address>1001 Louisiana Street, Suite 1000, Houston, TX 77002</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>PG</symbol>
+        <name>Procter &amp; Gamble Co</name>
+        <taxNumber>310411980</taxNumber>
+        <address>One Procter &amp; Gamble Plaza, Cincinnati, OH 45202</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>UNM</symbol>
+        <name>Unum Group</name>
+        <taxNumber>621598430</taxNumber>
+        <address>1 Fountain Square, Chattanooga, TN 37402</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>BMO</symbol>
+        <name>Bank Of Montreal Europe Plc</name>
+        <taxNumber>980392985</taxNumber>
+        <address>2 Harbourmaster Place, Ifsc, Dublin 1, L2 D01 X5P3</address>
+        <country>IE</country>
+    </company>
+    <company>
+        <symbol>ENB</symbol>
+        <name>Enbridge Energy Partners Lp</name>
+        <taxNumber>391715850</taxNumber>
+        <address>5400 Westheimer Court, Houston, TX 77056</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>PFE</symbol>
+        <name>Pfizer Inc</name>
+        <taxNumber>135315170</taxNumber>
+        <address>235 E 42nd St, New York, NY 10017</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>MAC</symbol>
+        <name>Macerich Co</name>
+        <taxNumber>954448705</taxNumber>
+        <address>401 Wilshire Blvd, Ste 700, Santa Monica, CA 90401</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>CVX</symbol>
+        <name>Chevron Corp</name>
+        <taxNumber>940890210</taxNumber>
+        <address>6001 Bollinger Canyon Road, San Ramon, CA 94583</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>RTX</symbol>
+        <name>Raytheon Co</name>
+        <taxNumber>951778500</taxNumber>
+        <address>870 Winter Street, Waltham, MA 02451-1449</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>XOM</symbol>
+        <name>Exxon Mobil Corp</name>
+        <taxNumber>135409005</taxNumber>
+        <address>5959 Las Colinas Blvd, Irving, TX 75039-2298</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>ED</symbol>
+        <name>Consolidated Edison Inc</name>
+        <taxNumber>133965100</taxNumber>
+        <address>4 Irving Place, New York, NY 10003</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>LMT</symbol>
+        <name>Lockheed Martin Corp</name>
+        <taxNumber>521893632</taxNumber>
+        <address>6801 Rockledge Dr, Bethesda, MD 20817</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>GILD</symbol>
+        <name>Gilead Sciences Inc</name>
+        <taxNumber>94-3047598</taxNumber>
+        <address>333 Lakeside Dr, Foster City, CA 94404</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>CCI</symbol>
+        <name>Crown Castle International Corp</name>
+        <taxNumber>760470458</taxNumber>
+        <address>1220 Augusta Drive, Suite 600, Houston, TX 77057</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>PEP</symbol>
+        <name>Pepsico Inc</name>
+        <taxNumber>131584302</taxNumber>
+        <address>700 Anderson Hill Rd, Purchase, NY 10577</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>RPT PRD</symbol>
+        <name>Rpt Realty</name>
+        <taxNumber>136908486</taxNumber>
+        <address>19 W 44th Street, Suite 1002, New York, NY 10036</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>STX</symbol>
+        <name>Seagate Technology Plc</name>
+        <taxNumber>980648577</taxNumber>
+        <address>38/39 Fitzwilliam Square, Dublin 2, L2 00000</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>MPW</symbol>
+        <name>Medical Properties Trust, Llc</name>
+        <taxNumber>341985135</taxNumber>
+        <address>1000 Urban Center Drive, Suite 501, Birmingham, AL 35242</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>AVB</symbol>
+        <name>Avalonbay Communities Inc</name>
+        <taxNumber>770404318</taxNumber>
+        <address>671 N. Glebe Road, Suite 800, Arlington, VA 22203</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>SRE</symbol>
+        <name>Sempra Energy</name>
+        <taxNumber>330732627</taxNumber>
+        <address>488 8th Avenue, P O Box 129400, San Diego, CA 92101</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>TOT</symbol>
+        <name>TOTAL SE</name>
+        <taxNumber>9542051180</taxNumber>
+        <address>Tour Coupole - 2, place Jean Millier - 92078 Paris La Défense Cedex – France</address>
+        <country>FR</country>
+    </company>
+    <company>
+        <symbol>T</symbol>
+        <name>At&amp;t Inc.</name>
+        <taxNumber>431301883</taxNumber>
+        <address>208 S. Akard St, Attn : James Lacy, Dallas, TX 75202</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>ACN</symbol>
+        <name>Accenture Plc</name>
+        <taxNumber>980627530</taxNumber>
+        <address>1 Grand Canal Square, Grand Canal Harbour, Dublin L2, D2</address>
+        <country>IE</country>
+    </company>
+    <company>
+        <symbol>GD</symbol>
+        <name>General Dynamics Corp</name>
+        <taxNumber>131673581</taxNumber>
+        <address>11011 Sunset Hills Rd, Reston, VA 20190</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>OKE</symbol>
+        <name>Oneok Inc</name>
+        <taxNumber>731520922</taxNumber>
+        <address>100 West 5th St, Tulsa, OK 74103</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>BTI</symbol>
+        <name>British American Tobacco p.l.c.</name>
+        <taxNumber>239136950</taxNumber>
+        <address>REGENTS PARK ROAD, MILLBROOK, SOUTHAMPTON, SO15 8TL</address>
+        <country>GB</country>
+    </company>
+    <company>
+        <symbol>AWR</symbol>
+        <name>American States Water Co</name>
+        <taxNumber>954676679</taxNumber>
+        <address>630 E Foothill Blvd, San Dimas, CA 91773-9016</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>SO</symbol>
+        <name>Southern Co</name>
+        <taxNumber>580690070</taxNumber>
+        <address>30 Ivan Allen Jr. Blvd., N.w., Atlanta, GA 30308</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>VLO</symbol>
+        <name>Valero Energy Corp</name>
+        <taxNumber>741244795</taxNumber>
+        <address>530 Mccullough Ave, San Antonio, TX 78215</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>IBM</symbol>
+        <name>International Business Machines Corp</name>
+        <taxNumber>130871985</taxNumber>
+        <address>1 New Orchard Road, Armonk, NY 10504</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>SWKS</symbol>
+        <name>Skyworks Solutions, Inc.</name>
+        <taxNumber>042302115</taxNumber>
+        <address>20 Sylvan Road, Woburn, MA 01801</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>NEE</symbol>
+        <name>Nextera Energy Inc</name>
+        <taxNumber>592449419</taxNumber>
+        <address>700 Universe Blvd, Juno Beach, FL 33408</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>HD</symbol>
+        <name>Home Depot, Inc.</name>
+        <taxNumber>953261426</taxNumber>
+        <address>2455 Paces Ferry Road, Atlanta, GA 30339-4024</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>AVGO</symbol>
+        <name>Broadcom Inc.</name>
+        <taxNumber>352617337</taxNumber>
+        <address>1320 Ridder Park Drive, San Jose, CA 95131</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>HPE</symbol>
+        <name>Hewlett Packard Enterprise Co</name>
+        <taxNumber>473298624</taxNumber>
+        <address>6280 America Center Drive, San Jose, CA 95002</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>ORCL</symbol>
+        <name>Oracle Corp</name>
+        <taxNumber>542185193</taxNumber>
+        <address>500 Oracle Parkway, Mail Stop 5 Op 7, Redwood City, CA 94065</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>ET</symbol>
+        <name>Energy Transfer Lp</name>
+        <taxNumber>300108820</taxNumber>
+        <address>8111 Westchester Drive, Suite 600, Dallas, TX 75225</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>APA</symbol>
+        <name>Apache Corp</name>
+        <taxNumber>410747868</taxNumber>
+        <address>2000 Post Oak Blvd, Ste 100, Houston, TX 77056-4400</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>WRK</symbol>
+        <name>Westrock Co</name>
+        <taxNumber>371880617</taxNumber>
+        <address>1000 Abernathy Road Ne, Atlanta, GA 30328</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>WELL</symbol>
+        <name>Welltower Inc.</name>
+        <taxNumber>341096634</taxNumber>
+        <address>4500 Dorr Street, Toledo, OH 43615</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>WFC</symbol>
+        <name>Wells Fargo &amp; Company</name>
+        <taxNumber>410449260</taxNumber>
+        <address>420 Montgomery Street, San Francisco, CA 94163</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>IVZ</symbol>
+        <name>Invesco Ltd.</name>
+        <taxNumber>980557567</taxNumber>
+        <address>1555 Peachtree Street Ne, Suite 1800, Atlanta, GA 30309</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>ADM</symbol>
+        <name>Archer-daniels-midland Co</name>
+        <taxNumber>410129150</taxNumber>
+        <address>77 W. Wacker Dr., Chicago, IL 60601</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>MPC</symbol>
+        <name>Marathon Petroleum Corp</name>
+        <taxNumber>271284632</taxNumber>
+        <address>539 South Main Street, Findlay, OH 45840-3229</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>AIG</symbol>
+        <name>American International Group Inc</name>
+        <taxNumber>132592361</taxNumber>
+        <address>175 Water Street, New York, NY 10038</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>OMC</symbol>
+        <name>Omnicom Group Inc.</name>
+        <taxNumber>131514814</taxNumber>
+        <address>437 Madison Ave, New York, NY 10022</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>TSM</symbol>
+        <name>Taiwan Semiconductor Manufacturing Company Limited</name>
+        <taxNumber>-</taxNumber>
+        <address>Hsinchu Science Park No. 8, Li-Hsin Road 6 Hsinchu 300-78</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>SPG</symbol>
+        <name>Simon Property Group Inc</name>
+        <taxNumber>046268599</taxNumber>
+        <address>225 West Washington Street, Indianapolis, IN 46204-3438</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>NYMT</symbol>
+        <name>New York Mortgage Trust Inc</name>
+        <taxNumber>470934168</taxNumber>
+        <address>90 Park Avenue, New York, NY 10016</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>CIM</symbol>
+        <name>Chimera Investment Corp</name>
+        <taxNumber>260630461</taxNumber>
+        <address>520 Madison Avenue, 32nd Floor, New York, NY 10022</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>FL</symbol>
+        <name>Foot Locker, Inc.</name>
+        <taxNumber>133513936</taxNumber>
+        <address>Foot Locker, Inc., 330 West 34th Street, New York, NY 10001</address>
+        <country>US</country>
+    </company>
 </companies>
