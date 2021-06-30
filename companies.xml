@@ -698,4 +698,46 @@
         <address>Foot Locker, Inc., 330 West 34th Street, New York, NY 10001</address>
         <country>US</country>
     </company>
+    <company>
+        <symbol>VWRD</symbol>
+        <name>Vanguard FTSE All-World UCITS ETF</name>
+        <taxNumber>00B3RBWM25</taxNumber>
+        <address>70 Sir John Rogerson's Quay Dublin 2 Ireland</address>
+        <country>IE</country>
+    </company>
+    <company>
+        <symbol>VXUS</symbol>
+        <name>Vanguard Total International Stock ETF</name>
+        <taxNumber>9219097683</taxNumber>
+        <address>P.O. Box 1110, Valley Forge, 19482-1110</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>VTI</symbol>
+        <name>Vanguard Total Stock Market ETF</name>
+        <taxNumber>9229087690</taxNumber>
+        <address>P.O. Box 1110, Valley Forge, 19482-1110</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>VEU</symbol>
+        <name>Vanguard FTSE All-World ex-US ETF</name>
+        <taxNumber>9220427754</taxNumber>
+        <address>P.O. Box 1110, Valley Forge, 19482-1110</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>BND</symbol>
+        <name>Vanguard Total Bond Market ETF</name>
+        <taxNumber>9219378356</taxNumber>
+        <address>P.O. Box 1110, Valley Forge, 19482-1110</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>BNDX</symbol>
+        <name>Vanguard Total International Bond ETF</name>
+        <taxNumber>92203J4076</taxNumber>
+        <address>P.O. Box 1110, Valley Forge, 19482-1110</address>
+        <country>US</country>
+    </company>
 </companies>
