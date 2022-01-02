@@ -3,6 +3,8 @@ import sys
 import xml.etree.ElementTree
 import os.path
 from xml.dom import minidom
+import datetime
+from pytz import timezone
 
 """ Fetch ib-affiliates.xml from GitHub if it doesn't exist and use the data for Doh-Obr.xml """
 def getIbAffiliateInfo(ibEntities, accountId):
@@ -45,6 +47,20 @@ def getIbEntityCode(ibEntities, accountId):
     
     return None
 
+""" Convert EST quasi-dateTime string to CE(S)T dateTime object """
+def getLocalDateTime(dateTime):
+    dateTime = dateTime.replace(';', '')
+    eastern_tz = timezone('US/Eastern')
+    ljubljana_tz = timezone('Europe/Ljubljana')
+
+    try:
+        est_time = eastern_tz.localize(datetime.datetime.strptime(dateTime, "%Y%m%d%H%M%S"))
+    except ValueError:
+        est_time = eastern_tz.localize(datetime.datetime.strptime(dateTime, "%Y%m%d"))
+
+    ljubljana_time = est_time.astimezone(ljubljana_tz)
+    return ljubljana_time
+
 """ Get interest from IB XML """
 def generate(taxpayerConfig,
              ibEntities,
@@ -60,7 +76,7 @@ def generate(taxpayerConfig,
         for ibCashTransaction in ibCashTransactions:
             if (
                 ibCashTransaction.tag == "CashTransaction"
-                and ibCashTransaction.get("dateTime").startswith(str(reportYear))
+                and getLocalDateTime(ibCashTransaction.get("dateTime")).year == reportYear
                 and ibCashTransaction.get("type")
                 in ["Broker Interest Received"]
             ):
@@ -69,7 +85,7 @@ def generate(taxpayerConfig,
                     "currency": ibCashTransaction.get("currency"),
                     "amount": float(ibCashTransaction.get("amount")),
                     "description": ibCashTransaction.get("description"),
-                    "dateTime": ibCashTransaction.get("dateTime"),
+                    "dateTime": getLocalDateTime(ibCashTransaction.get("dateTime")),
                     "tax": 0,
                     "taxEUR": 0,
                 }
@@ -78,7 +94,7 @@ def generate(taxpayerConfig,
                 if interest["currency"] == "EUR":
                     interest["amountEUR"] = interest["amount"]
                 else:
-                    date = interest["dateTime"][0:8]
+                    date = interest["dateTime"].strftime("%Y%m%d")
                     currency = interest["currency"]
                     if date in rates and currency in rates[date]:
                         rate = float(rates[date][currency])
@@ -89,7 +105,7 @@ def generate(taxpayerConfig,
                                 rate = float(rates[date][currency])
                                 print(
                                     "There is no exchange rate for "
-                                    + str(interest["dateTime"][0:8])
+                                    + str(interest["dateTime"].strftime("%Y%m%d"))
                                     + ", using "
                                     + str(date)
                                 )
@@ -106,7 +122,7 @@ def generate(taxpayerConfig,
     for interest in interests:
         merged = False
         for mergedInterest in mergedInterests:
-            if interest["dateTime"][0:8] == mergedInterest["dateTime"][0:8]:
+            if interest["dateTime"].strftime("%Y%m%d") == mergedInterest["dateTime"].strftime("%Y%m%d"):
                 mergedInterest["amountEUR"] = (
                     mergedInterest["amountEUR"] + interest["amountEUR"]
                 )
@@ -171,7 +187,7 @@ def generate(taxpayerConfig,
         "residentCountry"
     ]
 
-    interests = sorted(interests, key=lambda k: k["dateTime"][0:8])
+    interests = sorted(interests, key=lambda k: k["dateTime"].strftime("%Y%m%d"))
     for interest in interests:
         if round(interest["amountEUR"], 2) <= 0:
             continue
@@ -180,7 +196,7 @@ def generate(taxpayerConfig,
         ibAffiliateInfo = getIbAffiliateInfo(ibEntities, interest["accountId"])
 
         xml.etree.ElementTree.SubElement(Interest, "Date").text = (
-            dYear + "-" + interest["dateTime"][4:6] + "-" + interest["dateTime"][6:8]
+            dYear + "-" + interest["dateTime"].strftime("%m-$d")
         )
         xml.etree.ElementTree.SubElement(
             Interest, "IdentificationNumber"

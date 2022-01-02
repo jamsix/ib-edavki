@@ -11,6 +11,7 @@ import argparse
 import shutil
 from xml.dom import minidom
 import re
+from pytz import timezone
 from generators import doh_obr
 
 
@@ -28,7 +29,7 @@ def getSplitMultiplier(symbol, date):
 
     if symbol in stockSplits:
         for splitData in stockSplits[symbol]:
-            if datetime.datetime.strptime(date, "%Y%m%d") < splitData["date"]:
+            if date < splitData["date"]:
                 multiplier *= splitData["multiplier"]
 
     return multiplier
@@ -46,7 +47,7 @@ def addStockSplits(corporateActions):
                 descriptionSearch.group(2)
             )
             symbol = action.attrib["symbol"]
-            date = datetime.datetime.strptime(action.attrib["reportDate"], "%Y%m%d")
+            date = getLocalDateTime(action.attrib["dateTime"]).date()
             if symbol not in stockSplits:
                 stockSplits[symbol] = []
 
@@ -84,6 +85,19 @@ def getCurrencyRate(dateStr, currency, rates):
                 sys.exit("Error: There is no exchange rate for " + str(dateStr))
     return rate
 
+""" Convert EST quasi-dateTime string to CE(S)T dateTime object """
+def getLocalDateTime(dateTime):
+    dateTime = dateTime.replace(';', '')
+    eastern_tz = timezone('US/Eastern')
+    ljubljana_tz = timezone('Europe/Ljubljana')
+
+    try:
+        est_time = eastern_tz.localize(datetime.datetime.strptime(dateTime, "%Y%m%d%H%M%S"))
+    except ValueError:
+        est_time = eastern_tz.localize(datetime.datetime.strptime(dateTime, "%Y%m%d"))
+
+    ljubljana_time = est_time.astimezone(ljubljana_tz)
+    return ljubljana_time
 
 def main():
     if not os.path.isfile("taxpayer.xml"):
@@ -277,10 +291,7 @@ def main():
                 continue
 
             if ibTrade.tag == "Trade":
-                try:
-                    time = ibTrade.attrib["tradeTime"]
-                except KeyError:
-                    time = "0"
+                localDateTime = getLocalDateTime(ibTrade.attrib["dateTime"])
                 trade = {
                     "conid": ibTrade.attrib["conid"],
                     "symbol": ibTrade.attrib["symbol"],
@@ -289,15 +300,15 @@ def main():
                     "tradePrice": float(ibTrade.attrib["tradePrice"]),
                     "quantity": float(ibTrade.attrib["quantity"]),
                     "buySell": ibTrade.attrib["buySell"],
-                    "tradeDate": ibTrade.attrib["tradeDate"],
-                    "tradeTime": time,
+                    "tradeDate": localDateTime.strftime("%Y%m%d"),
+                    "tradeTime": localDateTime.strftime("%H%M%S"),
                     "transactionID": ibTrade.attrib["transactionID"],
                     "ibOrderID": ibTrade.attrib["ibOrderID"],
                     "openCloseIndicator": ibTrade.attrib["openCloseIndicator"],
                 }
 
                 splitMultiplier = getSplitMultiplier(
-                    trade["symbol"], trade["tradeDate"]
+                    trade["symbol"], localDateTime.date()
                 )
 
                 trade["quantity"] *= splitMultiplier
@@ -432,7 +443,7 @@ def main():
                 tid = ibTrade.attrib["transactionID"]
 
                 splitMultiplier = getSplitMultiplier(
-                    ibTrade.attrib["symbol"], ibTrade.attrib["tradeDate"]
+                    ibTrade.attrib["symbol"], localDateTime.date()
                 )
 
                 if tid not in lastTrade["openTransactionIds"]:
@@ -1087,7 +1098,7 @@ def main():
         for ibCashTransaction in ibCashTransactions:
             if (
                 ibCashTransaction.tag == "CashTransaction"
-                and ibCashTransaction.attrib["dateTime"].startswith(str(reportYear))
+                and getLocalDateTime(ibCashTransaction.attrib["dateTime"]).year == reportYear
                 and ibCashTransaction.attrib["type"]
                 in ["Dividends", "Payment In Lieu Of Dividends"]
             ):
@@ -1098,7 +1109,7 @@ def main():
                     "amount": float(ibCashTransaction.attrib["amount"]),
                     "symbol": ibCashTransaction.attrib["symbol"],
                     "description": ibCashTransaction.attrib["description"],
-                    "dateTime": ibCashTransaction.attrib["dateTime"],
+                    "dateTime": getLocalDateTime(ibCashTransaction.attrib["dateTime"]),
                     "transactionID": ibCashTransaction.attrib["transactionID"],
                     "tax": 0,
                     "taxEUR": 0,
@@ -1120,20 +1131,20 @@ def main():
                     dividend["amountEUR"] = dividend["amount"]
                 else:
                     dividend["amountEUR"] = dividend["amount"] / getCurrencyRate(
-                        dividend["dateTime"][0:8], dividend["currency"], rates
+                        dividend["dateTime"].strftime("%Y%m%d"), dividend["currency"], rates
                     )
                 dividends.append(dividend)
         for ibCashTransaction in ibCashTransactions:
             if (
                 ibCashTransaction.tag == "CashTransaction"
-                and ibCashTransaction.attrib["dateTime"].startswith(str(reportYear))
+                and getLocalDateTime(ibCashTransaction.attrib["dateTime"]).year == reportYear
                 and ibCashTransaction.attrib["type"] == "Withholding Tax"
             ):
                 closestDividend = {}
                 for dividend in dividends:
                     if (
-                        dividend["dateTime"][0:8]
-                        == ibCashTransaction.attrib["dateTime"][0:8]
+                        dividend["dateTime"].strftime("%Y%m%d")
+                        == getLocalDateTime(ibCashTransaction.attrib["dateTime"]).strftime("%Y%m%d")
                         and dividend["symbol"] == ibCashTransaction.attrib["symbol"]
                         and dividend["transactionID"]
                         < ibCashTransaction.attrib["transactionID"]
@@ -1153,7 +1164,7 @@ def main():
                         closestDividend[
                             "taxEUR"
                         ] += closestDividendTax / getCurrencyRate(
-                            ibCashTransaction.attrib["dateTime"][0:8],
+                            getLocalDateTime(ibCashTransaction.attrib["dateTime"]).strftime("%Y%m%d"),
                             ibCashTransaction.attrib["currency"],
                             rates,
                         )
@@ -1163,7 +1174,7 @@ def main():
     for dividend in dividends:
         merged = False
         for mergedDividend in mergedDividends:
-            if dividend["dateTime"][0:8] == mergedDividend["dateTime"][0:8] and (
+            if dividend["dateTime"].strftime("%Y%m%d") == mergedDividend["dateTime"].strftime("%Y%m%d") and (
                 dividend["securityID"] == mergedDividend["securityID"]
                 or dividend["symbol"] == mergedDividend["symbol"]
             ):
@@ -1240,13 +1251,13 @@ def main():
         "isResident"
     ]
 
-    dividends = sorted(dividends, key=lambda k: k["dateTime"][0:8])
+    dividends = sorted(dividends, key=lambda k: k["dateTime"].strftime("%Y%m%d"))
     for dividend in dividends:
         if round(dividend["amountEUR"], 2) <= 0:
             continue
         Dividend = xml.etree.ElementTree.SubElement(body, "Dividend")
         xml.etree.ElementTree.SubElement(Dividend, "Date").text = (
-            dYear + "-" + dividend["dateTime"][4:6] + "-" + dividend["dateTime"][6:8]
+            dYear + "-" + dividend["dateTime"].strftime("%m") + "-" + dividend["dateTime"].strftime("%d")
         )
         if "taxNumber" in dividend:
             xml.etree.ElementTree.SubElement(
