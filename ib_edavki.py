@@ -276,11 +276,19 @@ def main():
             if ibTrade.attrib["assetCategory"] in ignoreAssets:
                 continue
 
-            if ibTrade.tag == "Trade":
+            """ dateTime is now the primary parameter, but old reports only have tradeDate and sometimes tradeTime """
+            try:
+                dateTime = ibTrade.attrib["dateTime"].split(";")
+                date = dateTime[0]
+                time = dateTime[1]
+            except:
+                date = ibTrade.attrib["tradeDate"]
                 try:
                     time = ibTrade.attrib["tradeTime"]
                 except KeyError:
                     time = "0"
+
+            if ibTrade.tag == "Trade":
                 trade = {
                     "conid": ibTrade.attrib["conid"],
                     "symbol": ibTrade.attrib["symbol"],
@@ -289,7 +297,7 @@ def main():
                     "tradePrice": float(ibTrade.attrib["tradePrice"]),
                     "quantity": float(ibTrade.attrib["quantity"]),
                     "buySell": ibTrade.attrib["buySell"],
-                    "tradeDate": ibTrade.attrib["tradeDate"],
+                    "tradeDate": date,
                     "tradeTime": time,
                     "transactionID": ibTrade.attrib["transactionID"],
                     "ibOrderID": ibTrade.attrib["ibOrderID"],
@@ -431,9 +439,7 @@ def main():
                     lastTrade["openTransactionIds"] = {}
                 tid = ibTrade.attrib["transactionID"]
 
-                splitMultiplier = getSplitMultiplier(
-                    ibTrade.attrib["symbol"], ibTrade.attrib["tradeDate"]
-                )
+                splitMultiplier = getSplitMultiplier(ibTrade.attrib["symbol"], date)
 
                 if tid not in lastTrade["openTransactionIds"]:
                     lastTrade["openTransactionIds"][tid] = (
