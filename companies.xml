@@ -76,6 +76,14 @@
         <country>US</country>
     </company>
     <company>
+        <conid>271308</conid>
+        <symbol>LRCX</symbol>
+        <name>Lam Research Corp</name>
+        <taxNumber>942634797</taxNumber>
+        <address>4650 Cushing Parkway, Fremont, CA 94538</address>
+        <country>US</country>
+    </company>
+    <company>
         <conid>9408</conid>
         <symbol>MCD</symbol>
         <name>Mcdonald's Corp</name>
@@ -108,6 +116,14 @@
         <country>US</country>
     </company>
     <company>
+        <conid>9939</conid>
+        <symbol>MU</symbol>
+        <name>Micron Technology Inc</name>
+        <taxNumber>751618004</taxNumber>
+        <address>8000 South Federal Way, Boise, ID 83716-9632</address>
+        <country>US</country>
+    </company>
+    <company>
         <symbol>NTAP</symbol>
         <name>NetApp, Inc.</name>
         <taxNumber>770307520</taxNumber>
@@ -123,12 +139,52 @@
         <country>CN</country>
     </company>
     <company>
+        <conid>755883</conid>
+        <symbol>NYT</symbol>
+        <name>The New York Times Company</name>
+        <taxNumber>131102020</taxNumber>
+        <address>620 Eighth Avenue, New York, NY 10018</address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>2852762</conid>
+        <symbol>RIO</symbol>
+        <name>Rio Tinto Plc</name>
+        <taxNumber>00719885</taxNumber>
+        <address>6 St James's Square, London SW1Y 4AD</address>
+        <country>GB</country>
+    </company>
+    <company>
+        <conid>360308912</conid>
+        <symbol>SBER</symbol>
+        <name>Sberbank of Russia PJSC</name>
+        <taxNumber>7707083893</taxNumber>
+        <address>19 Vavilova Street, Moscow 117997</address>
+        <country>RU</country>
+    </company>
+    <company>
+        <conid>755883</conid>
+        <symbol>SSRM</symbol>
+        <name>SSR Mining Inc</name>
+        <taxNumber>00135455</taxNumber>
+        <address>1055 Dunsmuir Street, Vancouver, BC V7X 1G4</address>
+        <country>CA</country>
+    </company>
+    <company>
         <conid>55279376</conid>
         <symbol>TCEHY</symbol>
         <name>Tencent Holdings Ltd</name>
         <taxNumber>88032Q10</taxNumber>
         <address>Kejizhongyi Avenue, Hi-tech Park, Nanshan District, Shenzhen, 518057</address>
         <country>CN</country>
+    </company>
+    <company>
+        <conid>13024</conid>
+        <symbol>TTC</symbol>
+        <name>Toro Co</name>
+        <taxNumber>410580470</taxNumber>
+        <address>8111 Lyndale Avenue South, Bloomington, MN 55420-1196</address>
+        <country>US</country>
     </company>
     <company>
         <conid>1447060</conid>
