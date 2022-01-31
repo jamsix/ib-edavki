@@ -482,13 +482,6 @@
         <country>US</country>
     </company>
     <company>
-        <symbol>TOT</symbol>
-        <name>TOTAL SE</name>
-        <taxNumber>9542051180</taxNumber>
-        <address>Tour Coupole - 2, place Jean Millier - 92078 Paris La Défense Cedex – France</address>
-        <country>FR</country>
-    </company>
-    <company>
         <symbol>T</symbol>
         <name>At&amp;t Inc.</name>
         <taxNumber>431301883</taxNumber>
@@ -740,4 +733,153 @@
         <address>P.O. Box 1110, Valley Forge, 19482-1110</address>
         <country>US</country>
     </company>
+    <company>
+        <symbol>MRK</symbol>
+        <name>Merck &amp; Co., Inc.</name>
+        <taxNumber>221918501</taxNumber>
+        <address>2000 GALLOPING HILL ROAD K5 3155M, KENILWORTH, NJ, 070331310</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>MO</symbol>
+        <name>Altria Group Inc</name>
+        <taxNumber>133260245</taxNumber>
+        <address>6601 West Broad Street, Richmond, VA 23230</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>UBA</symbol>
+        <name>Urstadt Biddle Properties Inc</name>
+        <taxNumber>042458042</taxNumber>
+        <address>321 Railroad Avenue, Greenwich, CT 06830</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>BGS</symbol>
+        <name>B&amp;G Foods, Inc.</name>
+        <taxNumber>133918742</taxNumber>
+        <address>Four Gatehall Drive Suite 110 Parsippany, NJ 07054</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>AMT</symbol>
+        <name>American Tower Corp</name>
+        <taxNumber>650723837</taxNumber>
+        <address>116 Huntington Ave, Boston, MA 02116</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>CLX</symbol>
+        <name>Clorox Co</name>
+        <taxNumber>310595760</taxNumber>
+        <address>1221 Broadway Oakland, CA 94612-1888</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>SWX</symbol>
+        <name>Southwest Gas Holdings Inc</name>
+        <taxNumber>813881866</taxNumber>
+        <address>C/o Southwest Gas Corporation, 5241 Spring Mountain Road, Las Vegas, NV 89150-0002</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>AMGN</symbol>
+        <name>Amgen, Inc.</name>
+        <taxNumber>953540776</taxNumber>
+        <address>One Amgen Center Drive, Thousand Oaks, CA 91320</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>QCOM</symbol>
+        <name>QUALCOMM, Inc.</name>
+        <taxNumber>453157787</taxNumber>
+        <address>5775 Morehouse Drive, San Diego, CA 92121</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>SWCH</symbol>
+        <name>Switch Inc</name>
+        <taxNumber>821883953</taxNumber>
+        <address>7135 South Decatur Boulevard, Las Vegas, NV 89118</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>UGI</symbol>
+        <name>UGI Corporation</name>
+        <taxNumber>232668356</taxNumber>
+        <address>460 N Gulph Rd, P O Box 858, King Of Prussia, PA 19406</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>KMB</symbol>
+        <name>Kimberly Clark Corp</name>
+        <taxNumber>390394230</taxNumber>
+        <address>351 Phelps Drive, Irving, TX 75038</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>BMY</symbol>
+        <name>Bristol-Myers Squibb Co</name>
+        <taxNumber>220790350</taxNumber>
+        <address>430 E. 29th Street, 14 Floor, New York, NY 10016</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>OHI</symbol>
+        <name>Omega Healthcare Investors Inc</name>
+        <taxNumber>383041398</taxNumber>
+        <address>303 International Circle,, Suite 200, Hunt Valley, MD 21030</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>VTRS</symbol>
+        <name>Viatris Inc</name>
+        <taxNumber>83436429</taxNumber>
+        <address>1000 Mylan Blvd Canonsburg, PA 15317</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>TOT</symbol>
+        <name>Total SE</name>
+        <taxNumber>9542051180</taxNumber>
+        <address>Tour Coupole - 2, place Jean Millier - 92078 Paris La Défense Cedex – France</address>
+        <country>FR</country>
+    </company>
+    <company>
+        <symbol>TTE</symbol>
+        <name>TotalEnergies SE</name>
+        <taxNumber>9542051180</taxNumber>
+        <address>Tour Coupole - 2, place Jean Millier - 92078 Paris La Défense Cedex – France</address>
+        <country>FR</country>
+    </company>
+    <company>
+        <symbol>CI</symbol>
+        <name>Cigna Corp</name>
+        <taxNumber>824991898</taxNumber>
+        <address>900 Cottage Grove Road, Bloomfield, CT 06002</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>AQN</symbol>
+        <name>Algonquin Power &amp; Utilities Corp</name>
+        <taxNumber>980406902</taxNumber>
+        <address>2845 Bristol Circle, Oakville, A6 L6H 7H7</address>
+        <country>CA</country>
+    </company>
+    <company>
+        <symbol>HRL</symbol>
+        <name>Hormel Foods Corp</name>
+        <taxNumber>132599675</taxNumber>
+        <address>1 Hormel Place, Austin, MN 55912</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>PNW</symbol>
+        <name>Pinnacle West Capital Corporation</name>
+        <taxNumber>860512431</taxNumber>
+        <address>400 North Fifth Street, Ms8695, Phoenix, AZ 85004</address>
+        <country>US</country>
+    </company>
+
+
 </companies>
