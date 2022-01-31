@@ -1164,24 +1164,30 @@ def main():
                             rates,
                         )
 
-    """ Merge multiple dividends or payments in lieu of dividents on the same day from the same company into a single entry """
-    mergedDividends = []
-    for dividend in dividends:
-        merged = False
-        for mergedDividend in mergedDividends:
-            if dividend["dateTime"][0:8] == mergedDividend["dateTime"][0:8] and (
-                dividend["securityID"] == mergedDividend["securityID"]
-                or dividend["symbol"] == mergedDividend["symbol"]
-            ):
-                mergedDividend["amountEUR"] = (
-                    mergedDividend["amountEUR"] + dividend["amountEUR"]
-                )
-                mergedDividend["taxEUR"] = mergedDividend["taxEUR"] + dividend["taxEUR"]
-                merged = True
-                break
-        if merged == False:
-            mergedDividends.append(dividend)
-    dividends = mergedDividends
+    """ Dividends can be reversed. If there is a reversal, remove both the reversal
+        and the original dividend.
+        There is no unique identificator that binds a reversal to a dividend, the
+        assumption is that reversal amount, date and securityID match the reversed
+        dividend.
+    """
+    for reversal in dividends[:]:
+        if reversal["amount"] < 0:
+            for dividend in dividends[:]:
+                if (
+                    dividend["dateTime"][0:8] == reversal["dateTime"][0:8]
+                    and float(dividend["amount"]) == -float(reversal["amount"])
+                    and (
+                        dividend["securityID"] == reversal["securityID"]
+                        or dividend["symbol"] == reversal["symbol"]
+                    )
+                ):
+                    print(
+                        "%s %s dividend of %s has been reversed, removing."
+                        % (dividend["symbol"], dividend["dateTime"], dividend["amount"])
+                    )
+                    dividends.remove(dividend)
+                    dividends.remove(reversal)
+                    break
 
     """ Get securities info from IB XML """
     for ibSecuritiesInfo in ibSecuritiesInfoList:
