@@ -1148,7 +1148,14 @@ def main():
                         potentiallyMatchingDividends.append(dividend)
 
                 if len(potentiallyMatchingDividends) == 0:
-                    print("Huh, this tax has no matching dividend?")
+                    print(
+                        "Cannot find a matching dividend for %s (%s) of %s."
+                        % (
+                            ibCashTransaction.attrib["description"],
+                            ibCashTransaction.attrib["dateTime"],
+                            ibCashTransaction.attrib["amount"],
+                        )
+                    )
                 elif len(potentiallyMatchingDividends) == 1:
                     closestDividend = potentiallyMatchingDividends[0]
                 else:
