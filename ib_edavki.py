@@ -1170,9 +1170,9 @@ def main():
         assumption is that reversal amount, date and securityID match the reversed
         dividend.
     """
-    for reversal in dividends[:]:
+    for reversal in dividends.copy():
         if reversal["amount"] < 0:
-            for dividend in dividends[:]:
+            for dividend in dividends.copy():
                 if (
                     dividend["dateTime"][0:8] == reversal["dateTime"][0:8]
                     and float(dividend["amount"]) == -float(reversal["amount"])
