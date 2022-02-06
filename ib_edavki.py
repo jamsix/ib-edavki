@@ -12,6 +12,7 @@ import shutil
 from xml.dom import minidom
 import re
 from generators import doh_obr
+from difflib import SequenceMatcher
 
 
 bsRateXmlUrl = "https://www.bsi.si/_data/tecajnice/dtecbs-l.xml"
@@ -1113,7 +1114,7 @@ def main():
                 if dividend["securityID"] == "":
                     dividend["securityID"] = dividend["conid"]
                 if companies and dividend["symbol"] in companies:
-                    dividend["description"] = companies[dividend["symbol"]]["name"]
+                    dividend["name"] = companies[dividend["symbol"]]["name"]
                     dividend["taxNumber"] = companies[dividend["symbol"]]["taxNumber"]
                     dividend["address"] = companies[dividend["symbol"]]["address"]
                     dividend["country"] = companies[dividend["symbol"]]["country"]
@@ -1135,7 +1136,7 @@ def main():
                 and ibCashTransaction.attrib["dateTime"].startswith(str(reportYear))
                 and ibCashTransaction.attrib["type"] == "Withholding Tax"
             ):
-                closestDividend = {}
+                potentiallyMatchingDividends = []
                 for dividend in dividends:
                     if (
                         dividend["dateTime"][0:8]
@@ -1144,25 +1145,50 @@ def main():
                         and dividend["transactionID"]
                         < ibCashTransaction.attrib["transactionID"]
                     ):
-                        if (
-                            not closestDividend
-                            or dividend["transactionID"]
-                            > closestDividend["transactionID"]
-                        ):
-                            closestDividend = dividend
-                if closestDividend:
-                    closestDividendTax = -float(ibCashTransaction.attrib["amount"])
-                    """ Convert amount to EUR """
-                    if ibCashTransaction.attrib["currency"] == "EUR":
-                        closestDividend["taxEUR"] += closestDividendTax
-                    else:
-                        closestDividend[
-                            "taxEUR"
-                        ] += closestDividendTax / getCurrencyRate(
-                            ibCashTransaction.attrib["dateTime"][0:8],
-                            ibCashTransaction.attrib["currency"],
-                            rates,
+                        potentiallyMatchingDividends.append(dividend)
+
+                if len(potentiallyMatchingDividends) == 0:
+                    print(
+                        "Cannot find a matching dividend for %s (%s) of %s."
+                        % (
+                            ibCashTransaction.attrib["description"],
+                            ibCashTransaction.attrib["dateTime"],
+                            ibCashTransaction.attrib["amount"],
                         )
+                    )
+                elif len(potentiallyMatchingDividends) == 1:
+                    closestDividend = potentiallyMatchingDividends[0]
+                else:
+                    """There are multiple dividends that potentially match the given
+                    tax. Unfortunately there is no reference that would point the
+                    tax entry to a dividend entry so we employ a simple string
+                    matching trick and find the dividend with a description that is
+                    the closest to the tax description.
+                    """
+                    closestDividend = potentiallyMatchingDividends[0]
+                    bestMatchLen = 0
+                    for dividend in potentiallyMatchingDividends:
+                        taxDescription = ibCashTransaction.attrib["description"]
+                        dividendDescription = dividend["description"]
+                        match = SequenceMatcher(
+                            None, taxDescription, dividendDescription
+                        ).find_longest_match(
+                            0, len(taxDescription), 0, len(dividendDescription)
+                        )
+                        if match.size > bestMatchLen:
+                            bestMatchLen = match.size
+                            closestDividend = dividend
+
+                closestDividendTax = -float(ibCashTransaction.attrib["amount"])
+                """ Convert amount to EUR """
+                if ibCashTransaction.attrib["currency"] == "EUR":
+                    closestDividend["taxEUR"] += closestDividendTax
+                else:
+                    closestDividend["taxEUR"] += closestDividendTax / getCurrencyRate(
+                        ibCashTransaction.attrib["dateTime"][0:8],
+                        ibCashTransaction.attrib["currency"],
+                        rates,
+                    )
 
     """ Dividends can be reversed. If there is a reversal, remove both the reversal
         and the original dividend.
@@ -1170,9 +1196,9 @@ def main():
         assumption is that reversal amount, date and securityID match the reversed
         dividend.
     """
-    for reversal in dividends[:]:
+    for reversal in dividends.copy():
         if reversal["amount"] < 0:
-            for dividend in dividends[:]:
+            for dividend in dividends.copy():
                 if (
                     dividend["dateTime"][0:8] == reversal["dateTime"][0:8]
                     and float(dividend["amount"]) == -float(reversal["amount"])
@@ -1197,7 +1223,7 @@ def main():
             if ibSecurityInfo.attrib["conid"]:
                 for dividend in dividends:
                     if ibSecurityInfo.attrib["conid"] == dividend["conid"]:
-                        dividend["description"] = ibSecurityInfo.attrib["description"]
+                        dividend["name"] = ibSecurityInfo.attrib["description"]
 
     """ Generate Doh-Div.xml """
     envelope = xml.etree.ElementTree.Element(
@@ -1264,9 +1290,9 @@ def main():
             xml.etree.ElementTree.SubElement(
                 Dividend, "PayerIdentificationNumber"
             ).text = dividend["taxNumber"]
-        if "description" in dividend:
+        if "name" in dividend:
             xml.etree.ElementTree.SubElement(Dividend, "PayerName").text = dividend[
-                "description"
+                "name"
             ]
         else:
             xml.etree.ElementTree.SubElement(Dividend, "PayerName").text = dividend[
