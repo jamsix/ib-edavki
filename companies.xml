@@ -8,6 +8,14 @@
         <country>US</country>
     </company>
     <company>
+        <conid>52424577</conid>
+        <symbol>ATVI</symbol>
+        <name>Activision Blizzard Inc</name>
+        <taxNumber>954803544</taxNumber>
+        <address>3100 Ocean Park Blvd, Santa Monica, CA 90405</address>
+        <country>US</country>
+    </company> 
+    <company>
         <conid>10098</conid>
         <symbol>BAC</symbol>
         <name>Bank of America Corporation</name>
