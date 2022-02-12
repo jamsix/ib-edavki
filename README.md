@@ -34,7 +34,7 @@ Odpri datoteko **taxpayer.xml** in vnesi svoje davčne podatke.
 
 ### Izvoz poročila v platformi InteractiveBrokers
 
-1. V meniju **Reports** odpri **Flex Queries**
+1. V meniju **Performance & Statements** pod **Reports** odpri **Flex Queries**
 1. Desno od napisa Activity Flex Query kliknite + za kreiranje novega poročila.
 1. Vpiši poljuben **Query Name**
 1. Pod **Sections** klikni na **Account Information**. Izberi **IB Entity** in **Account ID** in potem na dnu Save.
