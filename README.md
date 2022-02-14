@@ -34,22 +34,21 @@ Odpri datoteko **taxpayer.xml** in vnesi svoje davčne podatke.
 
 ### Izvoz poročila v platformi InteractiveBrokers
 
-1. V meniju **Reports** odpri **Flex Queries**
-1. Na desni strani ob **Custom Flex Queries** klikni ikono za konfiguracijo (Configure).
-1. V **Activity Flex Query Templates** klikni **+** (Create).
-1. Vpiši poljuben **Query Name**.
-1. Kot **Date Period** izberi **Custom Date Range**.
-1. Izberi prvi dan v letu za **From Date** in zadnji dan v letu za **To Date**.
-1. Pod **Sections** klikni na **Account Information**. Izberi **IB Entity** in **Account ID**.
+1. V meniju **Performance & Statements** pod **Reports** odpri **Flex Queries**
+1. Desno od napisa Activity Flex Query kliknite + za kreiranje novega poročila.
+1. Vpiši poljuben **Query Name**
+1. Pod **Sections** klikni na **Account Information**. Izberi **IB Entity** in **Account ID** in potem na dnu Save.
 1. Pod **Sections** klikni na **Trades**. Pod Options označi **Executions** in **Closed Lots**. Izberi vse stolpce (**Select All**).
 1. Pod **Sections** klikni na **Corporate Actions**. Izberi vse stolpce (**Select All**).
 1. Pod **Sections** klikni na **Cash Transactions**. Pod Options označi **Dividends**, **Payment in Lieu of Dividends**, **Withholding Tax** in **Broker Interest Received**. Izberi vse stolpce (**Select All**).
 1. Pod **Sections** klikni na **Financial Instrument Information**. Izberi vse stolpce (**Select All**).
-1. Vse ostale nastavitve pusti tako kot so.
-1. Na dnu klikni **Save**
-1. Na dnu klikni **Continue** in nato **Create**.
-1. V pogledu **Reports > Flex Queries** se je pojavil novo narejeni report. Klikni **Run**, shrani XML.
+1. Vse ostale nastavitve pusti tako kot so (datumske nastavitve bomo spreminjali ob zaganjanju poročila).
+1. Na dnu klikni **Continue** in nato **Create**, za tem bo treba še enkrat **Ok** in bomo nazaj na oknu **Flex Queries**.
+1. V pogledu **Reports > Flex Queries** se je pod **Activity Flex Query** pojavila nova vrstica s tvojim novim poročilom.
+1. Poročilo zaženeš s klikom na puščico v desno poleg imena poročila. Tam sedaj spremeniš **Period** na **Custom Date Range** in spodaj ta rang nastaviš na prvi in zadnji dan leta za katerega generiraš (če katerega od datumov ni možno izbrati, beri spodnjo opombo glede Brexita). Potem samo poženi poročilo in dobiš datoteko.
 1. Ponovi postopek za vsako leto trgovanja, če si trgoval v letih 2016, 2017 in 2018, generiraj 3 reporte, po enega za vsako leto. Za pravilen izračun tujega davka na dividende (Withholding Tax) je potrebno generirati tudi report tekočega leta, saj so nekateri obračuni poročani za nazaj.
+
+Ker se je z 2021 zaradi Brexita večino evropskih IBKR računov premaknilo (oziroma realno so se računi ukinili in novi kreirali) iz Londona v eno izmed evropskih podružnic lahko naletiš na težave pri izvozu podatkov. Na strani **Reports** je desno od tega v modrem še številka tvojega računa. Če jo klikneš se odpre meni kjer lahko izbiraš za kateri račun želiš poročila, po defaultu sicer ne kaže ukinjenih računov, vendar če klikneš na filter lahko to spremeniš, da se pokaže tudi ukinjen račun. Potem pa obkljukaš še tistega in klikneš **Continue**. Sedaj boš poleg naslova **Reports** videl dve številki računov, in tudi podatki bodo iz obeh.
 
 ### Konverzija IB poročila v popisne liste primerne za uvoz v eDavke
 
