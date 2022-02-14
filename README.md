@@ -44,7 +44,7 @@ Odpri datoteko **taxpayer.xml** in vnesi svoje davčne podatke.
 1. Pod **Sections** klikni na **Financial Instrument Information**. Izberi vse stolpce (**Select All**).
 1. Vse ostale nastavitve pusti tako kot so (datumske nastavitve bomo spreminjali ob zaganjanju poročila).
 1. Na dnu klikni **Continue** in nato **Create**, za tem bo treba še enkrat **Ok** in bomo nazaj na oknu **Flex Queries**.
-1. V pogledu **Reports > Flex Queries** se je pod **Activity Flex Query** pojavila nova vrstica z vašim novim poročilom.
+1. V pogledu **Reports > Flex Queries** se je pod **Activity Flex Query** pojavila nova vrstica s tvojim novim poročilom.
 1. Poročilo zaženemo z klikom na puščico desno v poleg imena poročila. Tam sedaj spremenimo **Period** na **Custom Date Range** in spodaj ta rang nastavimo na prvi in zadnji dan leta za katerega generiramo. Potem pa samo poženi poročilo in dobiš datoteko.
 1. Ponovi postopek za vsako leto trgovanja, če si trgoval v letih 2016, 2017 in 2018, generiraj 3 reporte, po enega za vsako leto. Za pravilen izračun tujega davka na dividende (Withholding Tax) je potrebno generirati tudi report tekočega leta, saj so nekateri obračuni poročani za nazaj.
 
