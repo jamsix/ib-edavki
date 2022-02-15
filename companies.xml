@@ -725,7 +725,7 @@
         <name>Taiwan Semiconductor Manufacturing Company Limited</name>
         <taxNumber>-</taxNumber>
         <address>Hsinchu Science Park No. 8, Li-Hsin Road 6 Hsinchu 300-78</address>
-        <country>US</country>
+        <country>TW</country>
     </company>
     <company>
         <symbol>SPG</symbol>
@@ -944,6 +944,60 @@
         <address>400 North Fifth Street, Ms8695, Phoenix, AZ 85004</address>
         <country>US</country>
     </company>
-
-
+       <company>
+        <conid>NVDA</conid>
+        <symbol>NVDA</symbol>
+        <name>NVIDIA</name>
+        <taxNumber>943177549</taxNumber>
+        <address>2788 San Tomas Expy, Santa Clara, CA 95051, United States</address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>INTU</conid>
+        <symbol>INTU</symbol>
+        <name>INTUIT</name>
+        <taxNumber>770034661</taxNumber>
+        <address>2700 Coast Avenue Mountain View, CA 94043 USA</address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>MA</conid>
+        <symbol>MA</symbol>
+        <name>MASTERCARD</name>
+        <taxNumber>134172551</taxNumber>
+        <address>2000 Purchase Street, Purchase, NY 10577</address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>INRG</conid>
+        <symbol>INRG</symbol>
+        <name>ISHARES GLOBAL CLEAN ENERGY</name>
+        <taxNumber>8227552</taxNumber>
+        <address>BlackRock Asset Management Ireland - ETF 1st Floor 2 Ballsbridge Park Dublin 4 Dublin D04 YW83 Ireland</address>
+        <country>IE</country>
+    </company>
+    <company>
+        <conid>WD</conid>
+        <symbol>WD</symbol>
+        <name>WALKER DUNLOP INC</name>
+        <taxNumber>800312140</taxNumber>
+        <address>7501 WISCONSIN AVENUE SUITE 1200E, BETHESDA, Maryland, 20814, United States</address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>LOB</conid>
+        <symbol>LOB</symbol>
+        <name>LIVE OAK BANCSHARES INC</name>
+        <taxNumber>264596286</taxNumber>
+        <address> 1741 Tiburon Dr Wilmington, NC, 28403-6244 United State</address>
+        <country>US</country>
+    </company>
+    <company>
+    <conid>KNSL</conid>        
+    <symbol>KNSL</symbol>
+        <name>KINSALE CAPITAL GROUP INC</name>
+        <taxNumber>980624968</taxNumber>
+        <address>2035 Maywill Street, Suite 100, Richmond, VA 23230</address>
+        <country>US</country>
+    </company>
 </companies>
