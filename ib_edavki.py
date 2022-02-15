@@ -1122,6 +1122,9 @@ def main():
                         dividend["reliefStatement"] = companies[dividend["symbol"]][
                             "reliefStatement"
                         ]
+                else:
+                    print("No companies.xml entry for " + dividend["symbol"])
+
                 """ Convert amount to EUR """
                 if dividend["currency"] == "EUR":
                     dividend["amountEUR"] = dividend["amount"]
