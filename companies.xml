@@ -251,6 +251,14 @@
         <country>BM</country>
     </company>
     <company>
+        <conid>6604153</conid>
+        <symbol>NAT</symbol>
+        <name>NORDIC AMERICAN TANKERS LTD</name>
+        <taxNumber>980500048</taxNumber>
+        <address>LOM Building, 27 Reid Street, Hamilton, HM 11</address>
+        <country>BM</country>
+    </company>
+    <company>
         <conid>6180</conid>
         <symbol>LUMN</symbol>
         <name>CenturyLink Inc</name>
@@ -278,6 +286,14 @@
         <taxNumber>522074528</taxNumber>
         <address>Carel van Bylandtlaan 16, 2596 HR The Hague</address>
         <country>NL</country>
+    </company>
+    <company>
+        <conid>120643511</conid>
+        <symbol>CONE</symbol>
+        <name>CyrusOne Inc</name>
+        <taxNumber>274286158</taxNumber>
+        <address>2101 Cedar Springs Road, Suite 900, Dallas, TX 75201</address>
+        <country>US</country>
     </company>
     <company>
         <symbol>DLR</symbol>
@@ -368,6 +384,14 @@
         <name>Campbell Soup Co</name>
         <taxNumber>210419870</taxNumber>
         <address>Campbell Pl, Camden, NJ 08103</address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>199169586</conid>
+        <symbol>KHC</symbol>
+        <name>Kraft Heinz Co</name>
+        <taxNumber>462078182</taxNumber>
+        <address>One Ppg Place, Pittsburgh, Pennsylvania 15222</address>
         <country>US</country>
     </company>
     <company>
@@ -1002,5 +1026,85 @@
         <taxNumber>980624968</taxNumber>
         <address>2035 Maywill Street, Suite 100, Richmond, VA 23230</address>
         <country>US</country>
+    </company>
+    <company>
+        <conid>7089</conid>
+        <symbol>FCX</symbol>
+        <name>Freeport Mcmoran Inc</name>
+        <taxNumber>742480931</taxNumber>
+        <address>333 North Central Avenue, Phoenix, Arizona</address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>48834358</conid>
+        <symbol>BTG</symbol>
+        <name>B2gold Corp</name>
+        <taxNumber>832608129</taxNumber>
+        <address>Suite 3400, Park Place 666 Burrard Street, Vancouver</address>
+        <country>CA</country>
+    </company>
+    <company>
+        <conid>274836867</conid>
+        <symbol>WPM</symbol>
+        <name>Wheaton Precious Metals Corp.</name>
+        <taxNumber>980459455</taxNumber>
+        <address>3500-1021 West Hastings Street, Vancouver</address>
+        <country>CA</country>
+    </company>
+    <company>
+        <conid>8823</conid>
+        <symbol>KGC</symbol>
+        <name>Kinross Gold Corporation</name>
+        <taxNumber>650430083</taxNumber>
+        <address>25 York Street, 17th Floor, Toronto, Ontario M5J 2V5</address>
+        <country>CA</country>
+    </company>
+    <company>
+        <conid>51069466</conid>
+        <symbol>FRES</symbol>
+        <name>Fresnillo PLC</name>
+        <taxNumber>MFR971117KU1</taxNumber>
+        <address>Calz. Legaria No. 549, Torre 2, Piso 11 10 de Abril, Miguel Hidalgo México, CIUDAD DE MEXICO, 11250 Mexico</address>
+        <country>MX</country>
+    </company>
+    <company>
+        <conid>6857605</conid>
+        <symbol>GFI</symbol>
+        <name>Gold Fields Ltd</name>
+        <taxNumber>9160035607</taxNumber>
+        <address>150 Helen Rd. Sandown, Sandton 2196 South Africa</address>
+        <country>ZA</country>
+    </company>
+    <company>
+        <conid>4812805</conid>
+        <symbol>HMY</symbol>
+        <name>Harmony Gold Mining</name>
+        <taxNumber>9240012600</taxNumber>
+        <address>Randfontein Office park, Randfontein, South Africa</address>
+        <country>ZA</country>
+    </company>
+    <company>
+        <conid>441986547</conid>
+        <symbol>JAGGF</symbol>
+        <name>Jaguar Mining Inc</name>
+        <taxNumber>980396253</taxNumber>
+        <address>First Canadian Place, 100 King Street West, 56th Flr., Toronto, Ontario M5X 1C9</address>
+        <country>CA</country>
+    </company>
+    <company>
+        <conid>441986553</conid>
+        <symbol>JAG</symbol>
+        <name>Jaguar Mining Inc</name>
+        <taxNumber>980396253</taxNumber>
+        <address>First Canadian Place, 100 King Street West, 56th Flr., Toronto, Ontario M5X 1C9</address>
+        <country>CA</country>
+    </company>
+    <company>
+        <conid>4205</conid>
+        <symbol>AEM</symbol>
+        <name>Agnico Eagle Mines Ltd</name>
+        <taxNumber>841493125</taxNumber>
+        <address>145 King Street East, Suite 400, Toronto, Ontario M5C 2Y7</address>
+        <country>CA</country>
     </company>
 </companies>
