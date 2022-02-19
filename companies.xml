@@ -371,6 +371,7 @@
         <country>US</country>
     </company>
     <company>
+        <conid>4901</conid>
         <symbol>VZ</symbol>
         <name>Verizon Communications Inc</name>
         <taxNumber>232259884</taxNumber>
@@ -378,6 +379,7 @@
         <country>US</country>
     </company>
     <company>
+        <conid>10245</conid>
         <symbol>NHI</symbol>
         <name>National Health Investors Inc</name>
         <taxNumber>621470956</taxNumber>
@@ -385,6 +387,7 @@
         <country>US</country>
     </company>
     <company>
+        <conid>6607910</conid>
         <symbol>EPD</symbol>
         <name>Enterprise Products Partners L.p.</name>
         <taxNumber>760568219</taxNumber>
@@ -993,8 +996,8 @@
         <country>US</country>
     </company>
     <company>
-    <conid>KNSL</conid>        
-    <symbol>KNSL</symbol>
+        <conid>242140470</conid>
+        <symbol>KNSL</symbol>
         <name>KINSALE CAPITAL GROUP INC</name>
         <taxNumber>980624968</taxNumber>
         <address>2035 Maywill Street, Suite 100, Richmond, VA 23230</address>
