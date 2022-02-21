@@ -269,6 +269,17 @@ def main():
     """ Dictionary of stock trade arrays, each key represents one securityID """
     trades = {}
 
+    """
+        IB is PITA in terms of unique security ID, old outputs and some asset types only have conid,
+        same assets have ISIN but had none in the past, euro ETFs can have different symbols but same ISIN.
+        Code below merges trades based on these IDs in the order of ISIN > CUSIP > securityID > CONID > Symbol
+    """
+    tradesByIsin = {}
+    tradesByCusip = {}
+    tradesBySecurityId = {}
+    tradesByConid = {}
+    tradesBySymbol = {}
+
     """ Get trades from IB XML and sort them by securityID """
     for ibTrades in ibTradesList:
         if ibTrades is None:
@@ -304,6 +315,12 @@ def main():
                     "ibOrderID": ibTrade.attrib["ibOrderID"],
                     "openCloseIndicator": ibTrade.attrib["openCloseIndicator"],
                 }
+                if len(ibTrade.attrib["isin"]) > 0:
+                    trade["isin"] = ibTrade.attrib["isin"]
+                if len(ibTrade.attrib["cusip"]) > 0:
+                    trade["cusip"] = ibTrade.attrib["cusip"]
+                if len(ibTrade.attrib["securityID"]) > 0:
+                    trade["securityID"] = ibTrade.attrib["securityID"]
 
                 splitMultiplier = getSplitMultiplier(
                     trade["symbol"], trade["tradeDate"]
@@ -340,100 +357,26 @@ def main():
 
                 lastTrade = trade
 
-                """
-                    IB is PITA in terms of unique security ID, old outputs and some asset types only have conid,
-                    same assets have ISIN but had none in the past, euro ETFs can have different symbols but same ISIN.
-                    Code below merges trades based on these IDs in the order of ISIN > CUSIP > securityID > CONID > Symbol
-                """
-                match = False
-                securityID = None
                 if "isin" in trade:
-                    securityID = trade["isin"]
-                    for xSecurityID in trades:
-                        for xtrade in trades[xSecurityID]:
-                            if "isin" in xtrade and xtrade["isin"] == trade["isin"]:
-                                trades[xSecurityID].append(trade)
-                                if xSecurityID != securityID:
-                                    trades[securityID] = trades[xSecurityID]
-                                    trades.pop(xSecurityID)
-                                match = True
-                                break
-                        if match:
-                            break
-                    if match:
-                        continue
-                if "cusip" in trade:
-                    if not securityID:
-                        securityID = trade["cusip"]
-                    for xSecurityID in trades:
-                        for xtrade in trades[xSecurityID]:
-                            if "cusip" in xtrade and xtrade["cusip"] == trade["cusip"]:
-                                trades[xSecurityID].append(trade)
-                                if xSecurityID != securityID:
-                                    trades[securityID] = trades[xSecurityID]
-                                    trades.pop(xSecurityID)
-                                match = True
-                                break
-                        if match:
-                            break
-                    if match:
-                        continue
-                if "securityID" in trade:
-                    if not securityID:
-                        securityID = trade["securityID"]
-                    for xSecurityID in trades:
-                        for xtrade in trades[xSecurityID]:
-                            if (
-                                "securityID" in xtrade
-                                and xtrade["securityID"] == trade["securityID"]
-                            ):
-                                trades[xSecurityID].append(trade)
-                                if xSecurityID != securityID:
-                                    trades[securityID] = trades[xSecurityID]
-                                    trades.pop(xSecurityID)
-                                match = True
-                                break
-                        if match:
-                            break
-                    if match:
-                        continue
-                if "conid" in trade:
-                    if not securityID:
-                        securityID = trade["conid"]
-                    for xSecurityID in trades:
-                        for xtrade in trades[xSecurityID]:
-                            if "conid" in xtrade and xtrade["conid"] == trade["conid"]:
-                                trades[xSecurityID].append(trade)
-                                if xSecurityID != securityID:
-                                    trades[securityID] = trades[xSecurityID]
-                                    trades.pop(xSecurityID)
-                                match = True
-                                break
-                        if match:
-                            break
-                    if match:
-                        continue
-                if "symbol" in trade:
-                    if not securityID:
-                        securityID = trade["symbol"]
-                    for xSecurityID in trades:
-                        for xtrade in trades[xSecurityID]:
-                            if (
-                                "symbol" in xtrade
-                                and xtrade["symbol"] == trade["symbol"]
-                            ):
-                                trades[xSecurityID].append(trade)
-                                if xSecurityID != securityID:
-                                    trades[securityID] = trades[xSecurityID]
-                                    trades.pop(xSecurityID)
-                                match = True
-                                break
-                        if match:
-                            break
-                    if match:
-                        continue
-
-                trades[securityID] = [trade]
+                    if trade["isin"] not in tradesByIsin:
+                        tradesByIsin[trade["isin"]] = []
+                    tradesByIsin[trade["isin"]].append(trade)
+                elif "cusip" in trade:
+                    if trade["cusip"] not in tradesByCusip:
+                        tradesByCusip[trade["cusip"]] = []
+                    tradesByCusip[trade["cusip"]].append(trade)
+                elif "securityID" in trade:
+                    if trade["securityID"] not in tradesBySecurityId:
+                        tradesBySecurityId[trade["securityID"]] = []
+                    tradesBySecurityId[trade["securityID"]].append(trade)
+                elif "conid" in trade:
+                    if trade["conid"] not in tradesByConid:
+                        tradesByConid[trade["conid"]] = []
+                    tradesByConid[trade["conid"]].append(trade)
+                elif "symbol" in trade:
+                    if trade["symbol"] not in tradesBySymbol:
+                        tradesBySymbol[trade["symbol"]] = []
+                    tradesBySymbol[trade["symbol"]].append(trade)
 
             elif ibTrade.tag == "Lot" and lastTrade != None:
                 if "openTransactionIds" not in lastTrade:
@@ -450,6 +393,61 @@ def main():
                     lastTrade["openTransactionIds"][tid] += (
                         float(ibTrade.attrib["quantity"]) * splitMultiplier
                     )
+
+    """
+        Merge tradesByIsin, tradesByCusip, tradesBySecurityId, tradesByConid  and tradesBySymbol
+        into a single trades Dict with keys in the following order of precedence:
+        ISIN > CUSIP > securityID > CONID > Symbol
+    """
+    trades = tradesByIsin
+    for cusip in tradesByCusip:
+        match = False
+        for id in trades:
+            for trade in trades[id]:
+                if "cusip" in trade and cusip == trade["cusip"]:
+                    trades[id] += tradesByCusip[cusip]
+                    match = True
+                    break
+            if match == True:
+                break
+        if match == False:
+            trades[cusip] = tradesByCusip[cusip]
+    for securityId in tradesBySecurityId:
+        match = False
+        for id in trades:
+            for trade in trades[id]:
+                if "securityID" in trade and securityId == trade["securityID"]:
+                    trades[id] += tradesBySecurityId[securityId]
+                    match = True
+                    break
+            if match == True:
+                break
+        if match == False:
+            trades[securityID] = tradesBySecurityId[securityId]
+    for conid in tradesByConid:
+        match = False
+        for id in trades:
+            for trade in trades[id]:
+                if "conid" in trade and conid == trade["conid"]:
+                    trades[id] += tradesByConid[conid]
+                    match = True
+                    break
+            if match == True:
+                break
+        if match == False:
+            trades[conid] = tradesByConid[conid]
+    for symbol in tradesBySymbol:
+        match = False
+        for id in trades:
+            for trade in trades[id]:
+                if "symbol" in trade and symbol == trade["symbol"]:
+                    trades[id] += tradesBySymbol[symbol]
+                    match = True
+                    break
+            if match == True:
+                break
+        if match == False:
+            trades[symbol] = tradesBySymbol[symbol]
 
     """ If a trade is both closing and opening, i.e. it goes from negative into positive
         balance or vice versa, split it into one closing and one opening trade """
