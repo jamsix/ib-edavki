@@ -14,13 +14,13 @@ Davki so resna stvar. Avtor(ji) skripte si prizadevam(o) za natančno in ažurno
 uporabljam(o) za napovedi davkov. Kljub temu ne izključujem(o) možnosti napak, ki lahko vodijo v napačno oddajo davčne
 napovedi. Za pravilnost davčne napovedi si odgovoren sam in avtor(ji) skripte za njo ne prevzema(mo) nobene odgovornosti.
 
-Če ti je skripta prihranila nekaj ur, se mi lahko oddolžiš z [vabilom na kosilo](mailto:primoz@outlook.com?subject=[ib-edavki]%20Vabilo%20na%20kosilo).
+Če ti je skripta prihranila nekaj ur, se mi lahko oddolžiš s [kosilom](https://github.com/sponsors/jamsix).
 
 ## Uporaba
 
 ### Namestitev skripte
 
-Na računalniku imej **python 3**.
+Na računalniku imej [zadnjo verzijo Python 3](https://www.python.org/downloads/) in [git](https://git-scm.com/downloads).
 
 ```
 pip install --upgrade git+https://github.com/jamsix/ib-edavki.git
@@ -53,7 +53,7 @@ Ker se je z 2021 zaradi Brexita večino evropskih IBKR računov premaknilo (ozir
 ### Konverzija IB poročila v popisne liste primerne za uvoz v eDavke
 
 ```
-ib-edavki [-h] [-y report-year] [-t] ib-xml-file-2016 [ib-xml-file-2017] [ib-xml-file-2018]
+ib-edavki [-h] [-y report-year] [-t] ib-xml-file-2021 [ib-xml-file-2020] [ib-xml-file-2019]
 ```
 Kot argument dodaj reporte za vsa leta trgovanja.
 
