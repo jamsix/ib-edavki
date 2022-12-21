@@ -34,17 +34,17 @@ Odpri datoteko **taxpayer.xml** in vnesi svoje davčne podatke.
 
 ### Izvoz poročila v platformi InteractiveBrokers
 
-1. V meniju **Performance & Statements** pod **Reports** odpri **Flex Queries**
-1. Desno od napisa Activity Flex Query kliknite + za kreiranje novega poročila.
+1. V meniju **Performance & reports** odpri **Flex Queries**
+1. Desno od napisa *Activity Flex Query* kliknite *+* za kreiranje novega poročila.
 1. Vpiši poljuben **Query Name**
 1. Pod **Sections** klikni na **Account Information**. Izberi **IB Entity** in **Account ID** in potem na dnu Save.
-1. Pod **Sections** klikni na **Trades**. Pod Options označi **Executions** in **Closed Lots**. Izberi vse stolpce (**Select All**).
-1. Pod **Sections** klikni na **Corporate Actions**. Izberi vse stolpce (**Select All**).
-1. Pod **Sections** klikni na **Cash Transactions**. Pod Options označi **Dividends**, **Payment in Lieu of Dividends**, **Withholding Tax** in **Broker Interest Received**. Izberi vse stolpce (**Select All**).
-1. Pod **Sections** klikni na **Financial Instrument Information**. Izberi vse stolpce (**Select All**).
+1. Pod **Sections** klikni na **Trades**. Pod Options označi **Executions** in **Closed Lots**. Izberi vse vrstice (**Select All**).
+1. Pod **Sections** klikni na **Corporate Actions**. Izberi vse vrstice (**Select All**).
+1. Pod **Sections** klikni na **Cash Transactions**. Pod Options označi **Dividends**, **Payment in Lieu of Dividends**, **Withholding Tax** in **Broker Interest Received**. Izberi vse vrstice (**Select All**).
+1. Pod **Sections** klikni na **Financial Instrument Information**. Izberi vse vrstice (**Select All**).
 1. Vse ostale nastavitve pusti tako kot so (datumske nastavitve bomo spreminjali ob zaganjanju poročila).
 1. Na dnu klikni **Continue** in nato **Create**, za tem bo treba še enkrat **Ok** in bomo nazaj na oknu **Flex Queries**.
-1. V pogledu **Reports > Flex Queries** se je pod **Activity Flex Query** pojavila nova vrstica s tvojim novim poročilom.
+1. V pogledu **Performance & Reports > Flex Queries** se je pod **Activity Flex Query** pojavila nova vrstica s tvojim novim poročilom.
 1. Poročilo zaženeš s klikom na puščico v desno poleg imena poročila. Tam sedaj spremeniš **Period** na **Custom Date Range** in spodaj ta rang nastaviš na prvi in zadnji dan leta za katerega generiraš (če katerega od datumov ni možno izbrati, beri spodnjo opombo glede Brexita). Potem samo poženi poročilo in dobiš datoteko.
 1. Ponovi postopek za vsako leto trgovanja, če si trgoval v letih 2016, 2017 in 2018, generiraj 3 reporte, po enega za vsako leto. Za pravilen izračun tujega davka na dividende (Withholding Tax) je potrebno generirati tudi report tekočega leta, saj so nekateri obračuni poročani za nazaj.
 
