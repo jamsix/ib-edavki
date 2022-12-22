@@ -14,7 +14,9 @@ Davki so resna stvar. Avtor(ji) skripte si prizadevam(o) za natančno in ažurno
 uporabljam(o) za napovedi davkov. Kljub temu ne izključujem(o) možnosti napak, ki lahko vodijo v napačno oddajo davčne
 napovedi. Za pravilnost davčne napovedi si odgovoren sam in avtor(ji) skripte za njo ne prevzema(mo) nobene odgovornosti.
 
-Če ti je skripta prihranila nekaj ur, se mi lahko oddolžiš s [kosilom](https://github.com/sponsors/jamsix).
+Če ti je skripta prihranila nekaj ur, nam največ veselja narediš s tem, da nekaj dobička podariš v dober namen. Slikaj priloženo QR kodo s svojo priljubljeno bančno aplikacijo ali klikni na njo:
+
+[![ib-edavki / ZPM donacija](https://www.zpmmoste.net/wp-content/uploads/2021/10/Popravljena-koda-300x300.png)](https://www.zpmmoste.net/donatorji/)
 
 ## Uporaba
 
