@@ -29,7 +29,7 @@ pip install --upgrade git+https://github.com/jamsix/ib-edavki.git
 ```
 
 ```
-ib-edavki
+ib_edavki
 ```
 
 Odpri datoteko **taxpayer.xml** in vnesi svoje davčne podatke.
@@ -55,9 +55,12 @@ Ker se je z 2021 zaradi Brexita večino evropskih IBKR računov premaknilo (ozir
 ### Konverzija IB poročila v popisne liste primerne za uvoz v eDavke
 
 ```
-ib-edavki [-h] [-y report-year] [-t] ib-xml-file-2021 [ib-xml-file-2020] [ib-xml-file-2019]
+ib_edavki [-h] [-y report-year] [-t] ib-xml-file-2021 [ib-xml-file-2020] [ib-xml-file-2019]
 ```
-Kot argument dodaj reporte za vsa leta trgovanja.
+Kot argument dodaj reporte za vsa leta trgovanja, npr:
+```
+ib_edavki ib-export-2020.xml ib-export-2021.xml ib-export-2022.xml
+```
 
 Skripta po uspešni konverziji v lokalnem direktoriju ustvari tri datoteke:
 * Doh-KDVP.xml (datoteka namenjena uvozu v obrazec Doh-KDVP - Napoved za odmero dohodnine od dobička od odsvojitve vrednostnih papirjev in drugih deležev ter investicijskih kuponov)
