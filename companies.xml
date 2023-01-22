@@ -1107,4 +1107,32 @@
         <address>145 King Street East, Suite 400, Toronto, Ontario M5C 2Y7</address>
         <country>CA</country>
     </company>
+    <company>
+        <symbol>COST</symbol>
+        <name>Costco Wholesale Corporation</name>
+        <taxNumber>911223280</taxNumber>
+        <address>999 Lake Dr, ISSAQUAH WA 98027-United States</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>VICI</symbol>
+        <name>Vici Properties Inc.</name>
+        <taxNumber>814177147</taxNumber>
+        <address>535 Madison Avenue, 20th Floor, New York</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>SBUX</symbol>
+        <name>Starbucks Corp</name>
+        <taxNumber>911325671</taxNumber>
+        <address>P O Box 34067, Seattle, Washington</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>IBKR</symbol>
+        <name>Interactive Brokers Group, Inc.</name>
+        <taxNumber>300390693</taxNumber>
+        <address>1 Pickwick Plz, GREENWICH CT, 06830</address>
+        <country>US</country>
+    </company>
 </companies>
