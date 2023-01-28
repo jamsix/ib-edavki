@@ -317,6 +317,13 @@
         <country>US</country>
     </company>
     <company>
+        <symbol>FRT.OLD</symbol>
+        <name>Federal Realty Investment Trust</name>
+        <taxNumber>520782497</taxNumber>
+        <address>1626 East Jefferson Street, Rockville, MD 20852-4041</address>
+        <country>US</country>
+    </company>
+    <company>
         <symbol>SLG</symbol>
         <name>Sl Green Realty Corp</name>
         <taxNumber>133956775</taxNumber>
@@ -1134,5 +1141,89 @@
         <taxNumber>300390693</taxNumber>
         <address>1 Pickwick Plz, GREENWICH CT, 06830</address>
         <country>US</country>
+    </company>
+    <company>
+        <symbol>1234</symbol>
+        <name>China Lilang Ltd</name>
+        <taxNumber></taxNumber>
+        <address>Rm 3402 34/F LIPPO CTR TWR ONE 89 QUEENSWAY Admiralty Hong Kong</address>
+        <country>HK</country>
+    </company>
+    <company>
+        <symbol>APAM</symbol>
+        <name>Artisan Partners Asset Management Inc</name>
+        <taxNumber>450969585</taxNumber>
+        <address>875 E. Wisconsin Avenue Suite 800 Milwaukee Wisconsin 53202</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>V</symbol>
+        <name>Visa Inc.</name>
+        <taxNumber>260267673</taxNumber>
+        <address>P.o. Box 8999 San Francisco California 94128-8999</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>UL</symbol>
+        <name>UNILEVER PLC</name>
+        <taxNumber>243359756</taxNumber>
+        <address>PO BOX 68 ATTENTION VAT TEAM ROTTERDAM LONDON EC4P 4BQ</address>
+        <country>GB</country>
+    </company>
+    <company>
+        <symbol>WHR</symbol>
+        <name>Whirlpool Corporation</name>
+        <taxNumber>381490038</taxNumber>
+        <address>Whirlpool Cntr 2000 M 63 Benton Harbor Michigan 49022-2692</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>BLK</symbol>
+        <name>Blackrock Inc.</name>
+        <taxNumber>320174431</taxNumber>
+        <address>55 East 52nd Street New York New York 10055</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>TROW</symbol>
+        <name>Price T Rowe Group Inc</name>
+        <taxNumber>522264646</taxNumber>
+        <address>100 East Pratt Street Baltimore Maryland 21289-0320</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>BBY</symbol>
+        <name>Best Buy Co Inc</name>
+        <taxNumber>410907483</taxNumber>
+        <address>7601 Penn Ave South Richfield Minnesota 55423</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>C</symbol>
+        <name>Citigroup Inc</name>
+        <taxNumber>521568099</taxNumber>
+        <address>388 Greenwich Street New York New York 10013</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>SWK</symbol>
+        <name>Stanley Black &amp; Decker, Inc.</name>
+        <taxNumber>060548860</taxNumber>
+        <address>1000 Stanley Dr New Britain Connecticut 06053</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>ALLY</symbol>
+        <name>Ally Financial Inc</name>
+        <taxNumber>380572512</taxNumber>
+        <address>Ally Detroit Center 500 Woodward Ave. Floor 10 Detroit Michigan 48226</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>AQNU</symbol>
+        <name>Algonquin Power and Utilities Units</name>
+        <taxNumber>980406902</taxNumber>
+        <address>2845 Bristol Circle Oakville A6 L6H 7H7</address>
+        <country>CA</country>
     </company>
 </companies>
