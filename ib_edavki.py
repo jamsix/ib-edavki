@@ -1,19 +1,19 @@
 #!/usr/bin/python
 
-import urllib.request
-import sys
-import xml.etree.ElementTree
-import datetime
-import os
-import glob
-import copy
 import argparse
-import shutil
-from xml.dom import minidom
+import copy
+import datetime
+import glob
+import os
 import re
-from generators import doh_obr
+import sys
+import urllib.request
+import xml.etree.ElementTree
+from collections import defaultdict
 from difflib import SequenceMatcher
+from xml.dom import minidom
 
+from generators import doh_obr
 
 bsRateXmlUrl = "https://www.bsi.si/_data/tecajnice/dtecbs-l.xml"
 normalAssets = ["STK"]
@@ -21,16 +21,19 @@ derivateAssets = ["CFD", "OPT", "FUT", "FOP", "WAR"]
 ignoreAssets = ["CASH", "CMDTY"]
 
 
-stockSplits = {}
+stockSplits = defaultdict(list)
 
 
-def getSplitMultiplier(symbol, date):
+def getSplitMultiplier(symbol, isin, date):
     multiplier = 1
+    key = f"{symbol}:{isin}"
 
-    if symbol in stockSplits:
-        for splitData in stockSplits[symbol]:
-            if datetime.datetime.strptime(date, "%Y%m%d") < splitData["date"]:
-                multiplier *= splitData["multiplier"]
+    if key not in stockSplits:
+        return multiplier
+
+    for splitData in stockSplits[key]:
+        if datetime.datetime.strptime(date, "%Y%m%d") < splitData["date"]:
+            multiplier *= splitData["multiplier"]
 
     return multiplier
 
@@ -47,16 +50,16 @@ def addStockSplits(corporateActions):
                 descriptionSearch.group(2)
             )
             symbol = action.attrib["symbol"]
+            isin = action.attrib["isin"]
+            key = f"{symbol}:{isin}"
             date = datetime.datetime.strptime(action.attrib["reportDate"], "%Y%m%d")
-            if symbol not in stockSplits:
-                stockSplits[symbol] = []
 
             # check if the same split was added from a different report
-            for split in stockSplits[symbol]:
+            for split in stockSplits[key]:
                 if split["date"] == date and split["multiplier"] == multiplier:
                     continue
 
-            stockSplits[symbol].append({"date": date, "multiplier": multiplier})
+            stockSplits[key].append({"date": date, "multiplier": multiplier})
 
 
 """ Gets the currency rate for a given date and currency. If no rate exists for a given
@@ -208,7 +211,6 @@ def main():
             os.remove(file)
         urllib.request.urlretrieve(bsRateXmlUrl, bsRateXmlFilename)
     bsRateXml = xml.etree.ElementTree.parse(bsRateXmlFilename).getroot()
-    bsRates = bsRateXml.find("DtecBS")
 
     rates = {}
     for d in bsRateXml:
@@ -266,9 +268,6 @@ def main():
         statementStartDate = str(reportYear) + "0101"
         statementEndDate = str(reportYear) + "1231"
 
-    """ Dictionary of stock trade arrays, each key represents one securityID """
-    trades = {}
-
     """
         IB is PITA in terms of unique security ID, old outputs and some asset types only have conid,
         same assets have ISIN but had none in the past, euro ETFs can have different symbols but same ISIN.
@@ -323,7 +322,7 @@ def main():
                     trade["securityID"] = ibTrade.attrib["securityID"]
 
                 splitMultiplier = getSplitMultiplier(
-                    trade["symbol"], trade["tradeDate"]
+                    trade["symbol"], trade["isin"], trade["tradeDate"]
                 )
 
                 trade["quantity"] *= splitMultiplier
@@ -383,7 +382,9 @@ def main():
                     lastTrade["openTransactionIds"] = {}
                 tid = ibTrade.attrib["transactionID"]
 
-                splitMultiplier = getSplitMultiplier(ibTrade.attrib["symbol"], date)
+                splitMultiplier = getSplitMultiplier(
+                    ibTrade.attrib["symbol"], ibTrade.attrib["isin"], date
+                )
 
                 if tid not in lastTrade["openTransactionIds"]:
                     lastTrade["openTransactionIds"][tid] = (
@@ -412,18 +413,18 @@ def main():
                 break
         if match == False:
             trades[cusip] = tradesByCusip[cusip]
-    for securityId in tradesBySecurityId:
+    for securityID in tradesBySecurityId:
         match = False
         for id in trades:
             for trade in trades[id]:
-                if "securityID" in trade and securityId == trade["securityID"]:
-                    trades[id] += tradesBySecurityId[securityId]
+                if "securityID" in trade and securityID == trade["securityID"]:
+                    trades[id] += tradesBySecurityId[securityID]
                     match = True
                     break
             if match == True:
                 break
         if match == False:
-            trades[securityID] = tradesBySecurityId[securityId]
+            trades[securityID] = tradesBySecurityId[securityID]
     for conid in tradesByConid:
         match = False
         for id in trades:
@@ -477,7 +478,6 @@ def main():
     """ Detect if trades are Normal or Derivates and if they are Opening or Closing positions
         Convert the price to EUR """
     for securityID in trades:
-        beforeTradePosition = 0
         for trade in trades[securityID]:
             if trade["currency"] == "EUR":
                 trade["tradePriceEUR"] = trade["tradePrice"]
@@ -924,7 +924,7 @@ def main():
                 "description"
             ]
         if trades[0]["assetCategory"] != "OPT" and trades[0]["assetCategory"] != "WAR":
-            """ Option descriptions are to long and not accepted by eDavki """
+            """Option descriptions are to long and not accepted by eDavki"""
             Code = xml.etree.ElementTree.SubElement(TItem, "Code").text = trades[0][
                 "symbol"
             ][:10]
@@ -1012,7 +1012,7 @@ def main():
                 "description"
             ]
         if trades[0]["assetCategory"] != "OPT" and trades[0]["assetCategory"] != "WAR":
-            """ Option descriptions are to long and not accepted by eDavki """
+            """Option descriptions are to long and not accepted by eDavki"""
             Code = xml.etree.ElementTree.SubElement(TItem, "Code").text = trades[0][
                 "symbol"
             ][:10]
