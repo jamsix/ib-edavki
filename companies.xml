@@ -1226,4 +1226,11 @@
         <address>2845 Bristol Circle Oakville A6 L6H 7H7</address>
         <country>CA</country>
     </company>
+    <company>
+        <symbol>TMO</symbol>
+        <name>Thermo Fisher Scientific Inc</name>
+        <taxNumber>042209186</taxNumber>
+        <address>168 Third Avenue Waltham Massachusetts 02451</address>
+        <country>US</country>
+    </company>
 </companies>
