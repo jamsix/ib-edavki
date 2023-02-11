@@ -24,9 +24,9 @@ ignoreAssets = ["CASH", "CMDTY"]
 stockSplits = defaultdict(list)
 
 
-def getSplitMultiplier(symbol, isin, date):
+def getSplitMultiplier(symbol, conid, date):
     multiplier = 1
-    key = f"{symbol}:{isin}"
+    key = f"{symbol}:{conid}"
 
     if key not in stockSplits:
         return multiplier
@@ -50,8 +50,8 @@ def addStockSplits(corporateActions):
                 descriptionSearch.group(2)
             )
             symbol = action.attrib["symbol"]
-            isin = action.attrib["isin"]
-            key = f"{symbol}:{isin}"
+            conid = action.attrib["conid"]
+            key = f"{symbol}:{conid}"
             date = datetime.datetime.strptime(action.attrib["reportDate"], "%Y%m%d")
 
             # check if the same split was added from a different report
@@ -322,7 +322,7 @@ def main():
                     trade["securityID"] = ibTrade.attrib["securityID"]
 
                 splitMultiplier = getSplitMultiplier(
-                    trade["symbol"], trade["isin"], trade["tradeDate"]
+                    trade["symbol"], trade["conid"], trade["tradeDate"]
                 )
 
                 trade["quantity"] *= splitMultiplier
@@ -383,7 +383,7 @@ def main():
                 tid = ibTrade.attrib["transactionID"]
 
                 splitMultiplier = getSplitMultiplier(
-                    ibTrade.attrib["symbol"], ibTrade.attrib["isin"], date
+                    ibTrade.attrib["symbol"], ibTrade.attrib["conid"], date
                 )
 
                 if tid not in lastTrade["openTransactionIds"]:
