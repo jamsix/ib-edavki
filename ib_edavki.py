@@ -68,6 +68,8 @@ def addStockSplits(corporateActions):
 
 
 def getCurrencyRate(dateStr, currency, rates):
+    if currency == "CNH":
+        currency = "CNY"
     if dateStr in rates and currency in rates[dateStr]:
         rate = float(rates[dateStr][currency])
     else:
