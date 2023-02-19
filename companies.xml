@@ -1010,6 +1010,22 @@
         <address>BlackRock Asset Management Ireland - ETF 1st Floor 2 Ballsbridge Park Dublin 4 Dublin D04 YW83 Ireland</address>
         <country>IE</country>
     </company>
+        <company>
+        <conid>385549212</conid>
+        <symbol>IGLE</symbol>
+        <name>BlackRock Asset Management Ireland Limited (ISHARES GLOBAL GOV BND-EURHD)</name>
+        <taxNumber>227552</taxNumber>
+        <address>1st floor, 2 Ballsbridge Park, Ballsbridge Dublin 4, Dublin D04 YW83</address>
+        <country>IE</country>
+    </company>
+    <company>
+        <conid>202153350</conid>
+        <symbol>HYLD</symbol>
+        <name>BlackRock Asset Management Ireland Limited (ISHARES GLOBAL HY CORP-DISTR)</name>
+        <taxNumber>227552</taxNumber>
+        <address>1st floor, 2 Ballsbridge Park, Ballsbridge Dublin 4, Dublin D04 YW83</address>
+        <country>IE</country>
+    </company>
     <company>
         <conid>WD</conid>
         <symbol>WD</symbol>
