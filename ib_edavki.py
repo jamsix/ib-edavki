@@ -1088,6 +1088,8 @@ def main():
 
     """ Get dividends from IB XML """
     dividends = []
+    missingCompanies = set()
+
     for ibCashTransactions in ibCashTransactionsList:
         if ibCashTransactions is None:
             continue
@@ -1113,6 +1115,7 @@ def main():
                 dividend["securityID"] = ibCashTransaction.attrib["securityID"]
                 if dividend["securityID"] == "":
                     dividend["securityID"] = dividend["conid"]
+
                 if companies and dividend["symbol"] in companies:
                     dividend["name"] = companies[dividend["symbol"]]["name"]
                     dividend["taxNumber"] = companies[dividend["symbol"]]["taxNumber"]
@@ -1122,6 +1125,9 @@ def main():
                         dividend["reliefStatement"] = companies[dividend["symbol"]][
                             "reliefStatement"
                         ]
+                else:
+                    missingCompanies.add((dividend["conid"], dividend["symbol"]))
+
                 """ Convert amount to EUR """
                 if dividend["currency"] == "EUR":
                     dividend["amountEUR"] = dividend["amount"]
@@ -1130,6 +1136,7 @@ def main():
                         dividend["dateTime"][0:8], dividend["currency"], rates
                     )
                 dividends.append(dividend)
+
         for ibCashTransaction in ibCashTransactions:
             if (
                 ibCashTransaction.tag == "CashTransaction"
@@ -1189,6 +1196,12 @@ def main():
                         ibCashTransaction.attrib["currency"],
                         rates,
                     )
+
+    if len(missingCompanies) > 0:
+        explanation = "companies.xml is missing the following symbols (conids): " 
+        missing = map(lambda x: x[1] + " (" + x[0] + ")", missingCompanies)
+        readme = " - more info: https://github.com/jamsix/ib-edavki#dodatni-podatki-o-podjetju-za-obrazec-doh-div-opcijsko"
+        print(explanation + ", ".join(missing) + readme)
 
     """ Dividends can be reversed. If there is a reversal, remove both the reversal
         and the original dividend.
