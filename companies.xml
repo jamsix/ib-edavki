@@ -14,9 +14,9 @@
         <taxNumber>954803544</taxNumber>
         <address>3100 Ocean Park Blvd, Santa Monica, CA 90405</address>
         <country>US</country>
-    </company> 
+    </company>
     <company>
-        <conid>10098</conid>
+    <conid>10098</conid>
         <symbol>BAC</symbol>
         <name>Bank of America Corporation</name>
         <taxNumber>941687665</taxNumber>
@@ -1247,6 +1247,97 @@
         <name>Thermo Fisher Scientific Inc</name>
         <taxNumber>042209186</taxNumber>
         <address>168 Third Avenue Waltham Massachusetts 02451</address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>318336</conid>
+        <symbol>USOI</symbol>
+        <name>CREDIT SUISSE X-LINKS CRUDE OIL SHARES COVEREDCALL ETNS</name>
+        <taxNumber>050546650</taxNumber>
+        <address>Eleven Madison Avenue, New York, NY 10010</address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>1163165</conid>
+        <symbol>COP</symbol>
+        <name>ConocoPhillips</name>
+        <taxNumber>010562944</taxNumber>
+        <address>925 North Eldridge Parkway, Houston, TX 77079-2703</address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>1020569</conid>
+        <symbol>IRM</symbol>
+        <name>Iron Mountain Incorporated</name>
+        <taxNumber>232588479</taxNumber>
+        <address>One Federal Street, Boston, MA 02110</address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>1121788</conid>
+        <symbol>GRMN</symbol>
+        <name>Garmin Ltd</name>
+        <taxNumber>980229227</taxNumber>
+        <address>1200 E. 151st St. Olathe, KS 66062-3426</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>TDS</symbol>
+        <name>Telephone and Data Systems, Inc.</name>
+        <taxNumber>363930160</taxNumber>
+        <address>30 North LaSalle Street, Suite 4000, Chicago, IL 60602</address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>320187</conid>
+        <symbol>NKE</symbol>
+        <name>Nike, Inc.</name>
+        <taxNumber>930584541</taxNumber>
+        <address>One Bowerman Drive, Beaverton, OR 97005-6453</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>NTDOY</symbol>
+        <name>Nintendo Of America Inc.</name>
+        <taxNumber>133024042</taxNumber>
+        <address>4600 150th Avenue Ne, Redmond, Washington, 98052</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>KO</symbol>
+        <name>The Coca-Cola Company</name>
+        <taxNumber>876272550</taxNumber>
+        <address>One Coca-Cola Plaza, Atlanta, GA 30313</address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>1109357</conid>
+        <symbol>EXC</symbol>
+        <name>Exelon Corporation</name>
+        <taxNumber>232990190</taxNumber>
+        <address>10 South Dearborn Street, 54th Floor PO Box 805398, Chicago, IL 60680-5379</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>CEG</symbol>
+        <name>Constellation Energy Corporation</name>
+        <taxNumber>871210716</taxNumber>
+        <address>1310 Point Street, Baltimore, MD 21231-3380</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>LLY</symbol>
+        <name>Eli Lilly and Company</name>
+        <taxNumber>136032849</taxNumber>
+        <address>Lilly Corporate Center, Indianapolis, IN 46285</address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>764065</conid>
+        <symbol>CLF</symbol>
+        <name>Cleveland-Cliffs Inc.</name>
+        <taxNumber>341464672</taxNumber>
+        <address>200 Public Square, Suite 3300, Cleveland, OH 44114-2315</address>
         <country>US</country>
     </company>
 </companies>
