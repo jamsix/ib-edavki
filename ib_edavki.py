@@ -189,7 +189,7 @@ def main():
     if not os.path.isfile("relief-statements.xml"):
         urllib.request.urlretrieve(
             "https://github.com/jamsix/ib-edavki/raw/master/relief-statements.xml",
-            "treaties.xml",
+            "relief-statements.xml",
         )
     if os.path.isfile("relief-statements.xml"):
         statements = xml.etree.ElementTree.parse("relief-statements.xml").getroot()
