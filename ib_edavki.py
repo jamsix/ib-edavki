@@ -499,6 +499,9 @@ def main():
                 trade["assetType"] = "normal"
             elif trade["assetCategory"] in derivateAssets:
                 trade["assetType"] = "derivate"
+            else:
+                sys.exit("Error: unknown asset type: %s" % trade["assetCategory"])
+
     """ Filter trades to only include those that closed in the parameter year and trades that opened the closing position """
     yearTrades = {}
     for securityID in trades:
