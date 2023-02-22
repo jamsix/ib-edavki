@@ -1340,4 +1340,84 @@
         <address>200 Public Square, Suite 3300, Cleveland, OH 44114-2315</address>
         <country>US</country>
     </company>
+    <company>
+        <conid>423920215</conid>
+        <symbol>SII</symbol>
+        <name>Sprott Inc.</name>
+        <taxNumber>820056216</taxNumber>
+        <address>Royal Bank Plaza, South Tower, 200 Bay Street Suite 2600, Toronto, Ontario  M5J 2J1</address>
+        <country>CA</country>
+    </company>
+    <company>
+        <conid>34471161</conid>
+        <symbol>JVA</symbol>
+        <name>Coffee Holding Co. Inc.</name>
+        <taxNumber>112238111</taxNumber>
+        <address>3475 Victory Boulevard, Staten Island, New York 10314</address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>41855679</conid>
+        <symbol>AG</symbol>
+        <name>First Majestic Silver Corp.</name>
+        <taxNumber>105549406</taxNumber>
+        <address>925 West Georgia Street, Suite 1800, Vancouver, British Columbia, Canada, V6C 3L2</address>
+        <country>CA</country>
+    </company>
+    <company>
+        <conid>6604203</conid>
+        <symbol>AVD</symbol>
+        <name>AMERICAN VANGUARD CORP</name>
+        <taxNumber>952588080</taxNumber>
+        <address>4695 MACARTHUR COURT, NEWPORT BEACH, CALIFORNIA 92660</address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>4816190</conid>
+        <symbol>PAAS</symbol>
+        <name>Pan American Silver Corp.</name>
+        <taxNumber>1147717608</taxNumber>
+        <address>1500-625 HOWE STREET VANCOUVER BC CANADA V6C 2T6</address>
+        <country>CA</country>
+    </company>
+    <company>
+        <conid>220580491</conid>
+        <symbol>FRO</symbol>
+        <name>Frontline Ltd</name>
+        <taxNumber>980459426</taxNumber>
+        <address>Par-la-Ville Place, 14 Par-la-Ville Road, Hamilton, HM 08, Bermuda</address>
+        <country>BM</country>
+    </company>
+    <company>
+        <conid>320227565</conid>
+        <symbol>PDBC</symbol>
+        <name>Invesco Optimum Yield Diversified Commodity Strategy No K-1 ETF</name>
+        <taxNumber>326042243</taxNumber>
+        <address>3500 LACEY ROAD SUITE 700 DOWNERS GROVE IL 60515</address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>33202307</conid>
+        <symbol>ULH</symbol>
+        <name>Universal Logistics Holdings Inc</name>
+        <taxNumber>383640097</taxNumber>
+        <address>12755 E. Nine Mile Road, Warren MI</address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>4817403</conid>
+        <symbol>RGLD</symbol>
+        <name>Royal Gold Inc</name>
+        <taxNumber>840835164</taxNumber>
+        <address>1144 15th Street, Suite 2500, Denver, CO</address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>141973363</conid>
+        <symbol>EPV</symbol>
+        <name>ProShares UltraShort FTSE Europe ETF</name>
+        <taxNumber>876284802</taxNumber>
+        <address>7272 Wisconsin Avenue 21st Floor, Bethesda, Maryland 20814</address>
+        <country>US</country>
+    </company>
 </companies>
