@@ -17,7 +17,7 @@ from generators import doh_obr
 
 bsRateXmlUrl = "https://www.bsi.si/_data/tecajnice/dtecbs-l.xml"
 normalAssets = ["STK"]
-derivateAssets = ["CFD", "OPT", "FUT", "FOP", "WAR"]
+derivateAssets = ["CFD", "FXCFD", "OPT", "FUT", "FOP", "WAR"]
 ignoreAssets = ["CASH", "CMDTY"]
 
 
@@ -499,6 +499,9 @@ def main():
                 trade["assetType"] = "normal"
             elif trade["assetCategory"] in derivateAssets:
                 trade["assetType"] = "derivate"
+            else:
+                sys.exit("Error: unknown asset type: %s" % trade["assetCategory"])
+
     """ Filter trades to only include those that closed in the parameter year and trades that opened the closing position """
     yearTrades = {}
     for securityID in trades:
@@ -906,7 +909,7 @@ def main():
             TypeName = xml.etree.ElementTree.SubElement(
                 TItem, "TypeName"
             ).text = "terminska pogodba"
-        elif trades[0]["assetCategory"] == "CFD":
+        elif trades[0]["assetCategory"] in ["CFD", "FXCFD"]:
             Type = xml.etree.ElementTree.SubElement(TItem, "Type").text = "02"
             TypeName = xml.etree.ElementTree.SubElement(
                 TItem, "TypeName"
@@ -994,7 +997,7 @@ def main():
             TypeName = xml.etree.ElementTree.SubElement(
                 TItem, "TypeName"
             ).text = "terminska pogodba"
-        elif trades[0]["assetCategory"] == "CFD":
+        elif trades[0]["assetCategory"] in ["CFD", "FXCFD"]:
             Type = xml.etree.ElementTree.SubElement(TItem, "Type").text = "02"
             TypeName = xml.etree.ElementTree.SubElement(
                 TItem, "TypeName"
