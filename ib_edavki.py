@@ -17,7 +17,7 @@ from difflib import SequenceMatcher
 
 bsRateXmlUrl = "https://www.bsi.si/_data/tecajnice/dtecbs-l.xml"
 normalAssets = ["STK"]
-derivateAssets = ["CFD", "OPT", "FUT", "FOP", "WAR"]
+derivateAssets = ["CFD", "FXCFD", "OPT", "FUT", "FOP", "WAR"]
 ignoreAssets = ["CASH", "CMDTY"]
 
 
@@ -906,7 +906,7 @@ def main():
             TypeName = xml.etree.ElementTree.SubElement(
                 TItem, "TypeName"
             ).text = "terminska pogodba"
-        elif trades[0]["assetCategory"] == "CFD":
+        elif trades[0]["assetCategory"] in ["CFD", "FXCFD"]:
             Type = xml.etree.ElementTree.SubElement(TItem, "Type").text = "02"
             TypeName = xml.etree.ElementTree.SubElement(
                 TItem, "TypeName"
@@ -994,7 +994,7 @@ def main():
             TypeName = xml.etree.ElementTree.SubElement(
                 TItem, "TypeName"
             ).text = "terminska pogodba"
-        elif trades[0]["assetCategory"] == "CFD":
+        elif trades[0]["assetCategory"] in ["CFD", "FXCFD"]:
             Type = xml.etree.ElementTree.SubElement(TItem, "Type").text = "02"
             TypeName = xml.etree.ElementTree.SubElement(
                 TItem, "TypeName"
