@@ -2012,4 +2012,12 @@
         <address>56 Neil Rd, Singapore 088830</address>
         <country>SG</country>
     </company>
+        <company>
+        <conid>13379</conid>
+        <symbol>WM</symbol>
+        <name>Waste Management</name>
+        <taxNumber>73-1309529</taxNumber>
+        <address>800 Capitol Street,HOUSTON,TX 77002</address>
+        <country>US</country>
+    </company>
 </companies>
