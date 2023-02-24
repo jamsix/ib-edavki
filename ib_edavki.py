@@ -1303,6 +1303,9 @@ def main():
             dYear + "-" + dividend["dateTime"][4:6] + "-" + dividend["dateTime"][6:8]
         )
         if "taxNumber" in dividend:
+            if dividend["taxNumber"] is not None and len(dividend["taxNumber"]) > 12:
+                dividend["taxNumber"] = re.sub(r'[^a-zA-Z0-9]+', "", dividend["taxNumber"])[0:12]
+
             xml.etree.ElementTree.SubElement(
                 Dividend, "PayerIdentificationNumber"
             ).text = dividend["taxNumber"]
