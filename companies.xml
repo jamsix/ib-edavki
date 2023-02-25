@@ -2012,4 +2012,12 @@
         <address>56 Neil Rd, Singapore 088830</address>
         <country>SG</country>
     </company>
+    <company>
+        <conid>117589399</conid>
+        <symbol>ASML</symbol>
+        <name>ASML Holding N.V.</name>
+        <taxNumber>NL803441526B01</taxNumber>
+        <address>De Run 6501 5504 DR, Veldhoven, Noord-Brabant</address>
+        <country>NL</country>
+    </company>
 </companies>
