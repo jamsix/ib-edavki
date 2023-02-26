@@ -1145,6 +1145,7 @@ def main():
                 ibCashTransaction.tag == "CashTransaction"
                 and ibCashTransaction.attrib["dateTime"].startswith(str(reportYear))
                 and ibCashTransaction.attrib["type"] == "Withholding Tax"
+                and ibCashTransaction.attrib["conid"] != ""
             ):
                 potentiallyMatchingDividends = []
                 for dividend in dividends:
