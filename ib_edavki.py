@@ -343,18 +343,6 @@ def main():
                     trade["tradePrice"] = trade["tradePrice"] * float(
                         ibTrade.attrib["multiplier"]
                     )
-                """ If trade is an option exercise, tradePrice is set to 0, but closePrice is the one position was settled for """
-                # TODO: handle warrants exercise
-                if (
-                    trade["assetCategory"] == "OPT"
-                    and ibTrade.attrib["notes"] == "Ex"
-                    and ibTrade.attrib["closePrice"] != ""
-                ):
-                    trade["tradePrice"] = ibTrade.attrib["closePrice"]
-                    if "multiplier" in ibTrade.attrib:
-                        trade["tradePrice"] = float(
-                            ibTrade.attrib["closePrice"]
-                        ) * float(ibTrade.attrib["multiplier"])
 
                 lastTrade = trade
 
