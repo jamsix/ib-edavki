@@ -2028,4 +2028,108 @@
         <address>De Run 6501 5504 DR, Veldhoven, Noord-Brabant</address>
         <country>NL</country>
     </company>
+    <company>
+        <conid>2585323</conid>
+        <symbol>MTB</symbol>
+        <name>M&amp;T Bank Corporation</name>
+        <taxNumber>16-0968385</taxNumber>
+        <address>One M&amp;t Plaza 5th Floor, Buffalo, NY 14203</address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>181387075</conid>
+        <symbol>MDT</symbol>
+        <name>Medtronic Plc</name>
+        <taxNumber>981183488</taxNumber>
+        <address>20 On Hatch, Lower Hatch Street, Dublin, L2 2</address>
+        <country>IE</country>
+    </company>
+    <company>
+        <conid>13865082</conid>
+        <symbol>PRU</symbol>
+        <name>Prudential Financial Inc</name>
+        <taxNumber>22-3703799</taxNumber>
+        <address>751 Broad St, Newark, NJ 07102</address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>13096</conid>
+        <symbol>TXN</symbol>
+        <name>Texas Instruments Inc</name>
+        <taxNumber>75-0289970</taxNumber>
+        <address>P.o. Box 660199, Dallas, TX 75266</address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>4227</conid>
+        <symbol>AFL</symbol>
+        <name>Aflac Inc</name>
+        <taxNumber>58-1167100</taxNumber>
+        <address>1932 Wynnton Rd, Columbus, GA 31999</address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>7616</conid>
+        <symbol>GIS</symbol>
+        <name>General Mills Inc</name>
+        <taxNumber>41-0274440</taxNumber>
+        <address>Number One General Mills Blvd, Minneapolis, MN 55426</address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>12259</conid>
+        <symbol>SNA</symbol>
+        <name>Snap On Inc</name>
+        <taxNumber>39-0622040</taxNumber>
+        <address>2801 80th Street, Kenosha, WI 53143</address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>13824</conid>
+        <symbol>WMT</symbol>
+        <name>Walmart Inc</name>
+        <taxNumber>71-0415188</taxNumber>
+        <address>702 Southwest 8th St, Bentonville, AR 72716</address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>3655502</conid>
+        <symbol>CTBI</symbol>
+        <name>Community Bankers Trust Corp</name>
+        <taxNumber>20-2652949</taxNumber>
+        <address>9954 Mayland Drive, Suite 2100, Richmond, VA 23233</address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>7745</conid>
+        <symbol>GPC</symbol>
+        <name>Genuine Parts Co</name>
+        <taxNumber>58-0254510</taxNumber>
+        <address>2999 Wildwood Parkway, Atlanta, GA 30339</address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>5407</conid>
+        <symbol>CAH</symbol>
+        <name>Cardinal Health Inc</name>
+        <taxNumber>31-0958666</taxNumber>
+        <address>7000 Cardinal Place, Dublin, OH 43017</address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>182880167</conid>
+        <symbol>ES</symbol>
+        <name>Eversource Energy</name>
+        <taxNumber>04-2147929</taxNumber>
+        <address>300 Cadwell Drive, Springfield, MA 01104</address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>34029360</conid>
+        <symbol>EXSAd</symbol>
+        <name>iShares STOXX Europe 600 UCITS ETF</name>
+        <taxNumber>0002635307</taxNumber>
+        <address>BlackRock Asset Management Deutschland AG, Lenbachplatz 1, D-80333 München</address>
+        <country>DE</country>
+    </company>
 </companies>
