@@ -1,5 +1,13 @@
 <companies>
     <company>
+        <conid>13013300</conid>
+        <symbol>APC</symbol>
+        <name>Apple Inc</name>
+        <taxNumber>942404110</taxNumber>
+        <address>1 Infinite Loop, Cupertino, CA 95014</address>
+        <country>US</country>
+    </company>
+    <company>
         <conid>265598</conid>
         <symbol>AAPL</symbol>
         <name>Apple Inc</name>
@@ -77,6 +85,7 @@
         <country>US</country>
     </company>
     <company>
+      <conid>12973838</conid>
         <symbol>JNJ</symbol>
         <name>Johnson &amp; Johnson</name>
         <taxNumber>221024240</taxNumber>
@@ -105,6 +114,14 @@
         <name>3M Company</name>
         <taxNumber>043205742</taxNumber>
         <address>3m Center 224-2w-15, St. Paul, MN 55144-1000</address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>12178239</conid>
+        <symbol>MSF</symbol>
+        <name>Microsoft Corp</name>
+        <taxNumber>911144442</taxNumber>
+        <address>One Microsoft Way, Redmond, WA 98052-6399</address>
         <country>US</country>
     </company>
     <company>
@@ -790,6 +807,14 @@
         <country>US</country>
     </company>
     <company>
+        <conid>128884495</conid>
+        <symbol>VUSA</symbol>
+        <name>Vanguard S&amp;P 500 UCITS ETF</name>
+        <taxNumber>00B3XXRP09</taxNumber>
+        <address>70 Sir John Rogerson's Quay Dublin 2 Ireland</address>
+        <country>IE</country>
+    </company>
+    <company>
         <symbol>VWRD</symbol>
         <name>Vanguard FTSE All-World UCITS ETF</name>
         <taxNumber>00B3RBWM25</taxNumber>
@@ -1304,6 +1329,7 @@
         <country>US</country>
     </company>
     <company>
+        <conid>8894</conid>
         <symbol>KO</symbol>
         <name>The Coca-Cola Company</name>
         <taxNumber>876272550</taxNumber>

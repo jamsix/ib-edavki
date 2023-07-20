@@ -1141,8 +1141,8 @@ def main():
                         dividend["dateTime"][0:8]
                         == ibCashTransaction.attrib["dateTime"][0:8]
                         and dividend["symbol"] == ibCashTransaction.attrib["symbol"]
-                        and dividend["transactionID"]
-                        < ibCashTransaction.attrib["transactionID"]
+                        and int(dividend["transactionID"])
+                        < int(ibCashTransaction.attrib["transactionID"])
                     ):
                         potentiallyMatchingDividends.append(dividend)
 
