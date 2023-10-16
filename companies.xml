@@ -2158,4 +2158,12 @@
         <address>BlackRock Asset Management Deutschland AG, Lenbachplatz 1, D-80333 München</address>
         <country>DE</country>
     </company>
+    <company>
+        <conid>450564070</conid>
+        <symbol>TTCFQ</symbol>
+        <name>Tattooed Chef, Inc.</name>
+        <taxNumber>825457906</taxNumber>
+        <address>6305 Alondra Boulevard, Paramount, CA 90723</address>
+        <country>US</country>
+    </company>
 </companies>
