@@ -2182,4 +2182,12 @@
         <address>1701 E Mossy Oaks Road, Spring, TX 77389</address>
         <country>US</country>
     </company>
+    <company>
+        <conid>629043863</conid>
+        <symbol>KVUE</symbol>
+        <name>Kenvue Inc</name>
+        <taxNumber>88-1032011</taxNumber>
+        <address>199 Grandview Road, Skillman, NJ 08558</address>
+        <country>US</country>
+    </company>
 </companies>
