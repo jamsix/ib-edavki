@@ -62,7 +62,7 @@ Kot argument dodaj reporte za vsa leta trgovanja, npr:
 ib_edavki ib-export-2020.xml ib-export-2021.xml ib-export-2022.xml
 ```
 
-Skripta po uspešni konverziji v lokalnem direktoriju ustvari tri datoteke:
+Skripta po uspešni konverziji v lokalnem direktoriju ustvari štiri datoteke:
 * Doh-KDVP.xml (datoteka namenjena uvozu v obrazec Doh-KDVP - Napoved za odmero dohodnine od dobička od odsvojitve vrednostnih papirjev in drugih deležev ter investicijskih kuponov)
 * D-IFI.xml (datoteka namenjena uvozu v obrazec D-IFI - Napoved za odmero davka od dobička od odsvojitve izvedenih finančnih instrumentov)
 * D-Div.xml (datoteka namenjena uvozu v obrazec D-Div - Napoved za odmero dohodnine od dividend)
