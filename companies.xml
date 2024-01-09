@@ -2190,4 +2190,156 @@
         <address>199 Grandview Road, Skillman, NJ 08558</address>
         <country>US</country>
     </company>
+    <company>
+        <conid>755810</conid>
+        <symbol>NHC</symbol>
+        <name>National HealthCare Corporation</name>
+        <taxNumber>52-2057472</taxNumber>
+        <address>100 Vine Street, Murfreesboro, Tennessee 37130</address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>95980853</conid>
+        <symbol>GNE</symbol>
+        <name>Genie Energy Ltd.</name>
+        <taxNumber>45-2069276</taxNumber>
+        <address>520 Broad Street, Newark, New Jersey</address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>320106069</conid>
+        <symbol>EVRG</symbol>
+        <name>Evergy, Inc.</name>
+        <taxNumber>82-2733395</taxNumber>
+        <address>1200 Main Street, Kansas City, Missouri</address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>5026984</conid>
+        <symbol>LNT</symbol>
+        <name>Alliant Energy Corp</name>
+        <taxNumber>39-1380265</taxNumber>
+        <address>4902 North Biltmore Lane, Madison, Wisconsin</address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>3141362</conid>
+        <symbol>BHE</symbol>
+        <name>Benchmark Electronics Inc</name>
+        <taxNumber>74-2211011</taxNumber>
+        <address>56 South Rockford Drive, Tempe, Arizona</address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>5811</conid>
+        <symbol>CMC</symbol>
+        <name>Commercial Metals Co</name>
+        <taxNumber>75-0725338</taxNumber>
+        <address>6565 N. Macarthur Blvd., Irving, Texas</address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>156106386</conid>
+        <symbol>CCS</symbol>
+        <name>Century Communities, Inc.</name>
+        <taxNumber>68-0521411</taxNumber>
+        <address>8390 E. Crescent Pkwy., Greenwood Village, Colorado</address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>10120</conid>
+        <symbol>NC</symbol>
+        <name>Nacco Industries Inc</name>
+        <taxNumber>34-1505819</taxNumber>
+        <address>5875 Landerbrook Dr, Cleveland, Ohio</address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>756607</conid>
+        <symbol>SGC</symbol>
+        <name>Superior Group Of Companies, Inc.</name>
+        <taxNumber>11-1385670</taxNumber>
+        <address>10055 Seminole Blvd, Seminole, Florida</address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>6845274</conid>
+        <symbol>TAIT</symbol>
+        <name>Taitron Components Inc</name>
+        <taxNumber>95-4249240</taxNumber>
+        <address>28040 West Harrison Parkway, Valencia, California</address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>8093</conid>
+        <symbol>CNP</symbol>
+        <name>Centerpoint Energy Inc</name>
+        <taxNumber>74-0694415</taxNumber>
+        <address>1111 Louisiana St., Houston, Texas</address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>4157</conid>
+        <symbol>ADI</symbol>
+        <name>Analog Devices Inc</name>
+        <taxNumber>04-2348234</taxNumber>
+        <address>One Analog Way, Wilmington, Massachusetts</address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>10557</conid>
+        <symbol>NUE</symbol>
+        <name>Nucor Corp</name>
+        <taxNumber>13-1860817</taxNumber>
+        <address>1915 Rexford Rd, Charlotte, North Carolina</address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>244164913</conid>
+        <symbol>JCI</symbol>
+        <name>Johnson Controls International Plc</name>
+        <taxNumber>98-0390500</taxNumber>
+        <address>One Albert Quay, Albert Quay, Cork</address>
+        <country>IRL</country>
+    </company>
+    <company>
+        <conid>9462</conid>
+        <symbol>MDC</symbol>
+        <name>Mdc Holdings, Llc</name>
+        <taxNumber>26-4624724</taxNumber>
+        <address>106 Staton Court, Greenville, North Carolina</address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>502252263</conid>
+        <symbol>BBWI</symbol>
+        <name>Bath and Body Works, Inc.</name>
+        <taxNumber>31-1029810</taxNumber>
+        <address>Three Limited Pkwy, P O Box 16000, Columbus</address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>113599091</conid>
+        <symbol>MDLZ</symbol>
+        <name>Mondelez International, Inc.</name>
+        <taxNumber>52-2284372</taxNumber>
+        <address>905 West Fulton Market, Chicago, Illinois</address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>4726244</conid>
+        <symbol>AMKR</symbol>
+        <name>Amkor Technology, Inc.</name>
+        <taxNumber>23-1722724</taxNumber>
+        <address>2045 East Innovation Circle, Tempe, Arizona</address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>8772</conid>
+        <symbol>KBH</symbol>
+        <name>Kb Home</name>
+        <taxNumber>95-3666267</taxNumber>
+        <address>10990 Wilshire Blvd, Los Angeles, California</address>
+        <country>US</country>
+    </company>
 </companies>
