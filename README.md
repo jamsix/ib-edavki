@@ -84,7 +84,7 @@ Obrazec Doh-Div zahteva dodatne podatke o podjetju, ki je izplačalo dividende (
 Obrazec Doh-Obr zahteva dodatne podatke o podružnici IB, ki je izplačevalka obresti Stock Yield Enhancement programa (identifikacijska številka, naziv, naslov, država) in jih v izvirnih podatkih IB-ja ni. Ob prvi uporabi skripta prenese datoteko `ib-affiliates.xml`, ki vsebuje zahtevane podatke za IB United Kingdom, IB Central Europe, IB Ireland in IB Luxembourg, po potrebi pa lahko te podatke spremeniš ali dodaš.
 
 ### Uvoz v eDavke
->**Pozor**: Obrazec Doh-Div v eDavkih omogoča tudi uvoz podatkov v CSV obliki. `ib-edavki` ne generirajo obrazca Doh-Div v CSV obliki. Namesto uvoza CSV datoteke, se posluži uvoza XML datoteke, kot je opisan zgoraj.
+>**Pozor**: Obrazec Doh-Div v eDavkih omogoča tudi uvoz podatkov v CSV obliki. `ib-edavki` ne generirajo obrazca Doh-Div v CSV obliki. Namesto uvoza CSV datoteke, se posluži uvoza XML datoteke, kot je opisan v nadaljevanju.
 
 ![Dokumenti > Uvoz](readme-uvoz.png)
 
