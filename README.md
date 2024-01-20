@@ -85,7 +85,9 @@ Obrazec Doh-Obr zahteva dodatne podatke o podružnici IB, ki je izplačevalka ob
 
 ### Uvoz v eDavke
 >**Pozor**: Obrazec Doh-Div v eDavkih omogoča tudi uvoz podatkov v CSV obliki. `ib-edavki` ne generirajo obrazca Doh-Div v CSV obliki. Namesto uvoza CSV datoteke, se posluži uvoza XML datoteke, kot je opisan zgoraj.
+
 ![Dokumenti > Uvoz](readme-uvoz.png)
+
 1. V meniju **Dokument** klikni **Uvoz**. Izberi eno izmed generiranih datotek (Doh-KDVP.xml, D-IFI.xml, Doh-Div.xml, Doh-Obr.xml) in jo **Prenesi**.
 1. Preveri izpolnjene podatke in dodaj manjkajoče.
 1. Pri obrazcih Doh-KDVP in D-IFI je na seznamu popisnih listov po en popisni list za vsak vrednostni papir (ticker).
