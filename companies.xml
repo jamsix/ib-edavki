@@ -2342,4 +2342,12 @@
         <address>10990 Wilshire Blvd, Los Angeles, California</address>
         <country>US</country>
     </company>
+    <company>
+        <conid>588392767</conid>
+        <symbol>P911d</symbol>
+        <name>Dr. Ing. h.c. F. Porsche AG</name>
+        <taxNumber>147799625</taxNumber>
+        <address>Porscheplatz 1, D-70435 Stuttgart</address>
+        <country>DE</country>
+    </company>
 </companies>
