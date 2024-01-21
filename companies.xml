@@ -2350,4 +2350,25 @@
         <address>Porscheplatz 1, D-70435 Stuttgart</address>
         <country>DE</country>
     </company>
+    <company>
+        <symbol>SGPI</symbol>
+        <name>S&p Global Inc.</name>
+        <taxNumber>13-1026995</taxNumber>
+        <address>55 Water Street, New York, New York</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>UNP</symbol>
+        <name>Union Pacific Corp</name>
+        <taxNumber>13-2626465</taxNumber>
+        <address>1400 Douglas Street, Omaha, Nebraska</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>CP</symbol>
+        <name>Canadian Pacific Railway Ltd/cn</name>
+        <taxNumber>98-0355078</taxNumber>
+        <address>7550 Ogden Dale Road S.e., Calgary Alberta, A0</address>
+        <country>US</country>
+    </company>           
 </companies>
