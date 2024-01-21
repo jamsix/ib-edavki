@@ -1,36 +1,39 @@
 #!/usr/bin/python
 
-import urllib.request
-import sys
-import xml.etree.ElementTree
-import datetime
-import os
-import glob
-import copy
 import argparse
-import shutil
-from xml.dom import minidom
+import copy
+import datetime
+import glob
+import os
 import re
-from generators import doh_obr
+import sys
+import urllib.request
+import xml.etree.ElementTree
+from collections import defaultdict
 from difflib import SequenceMatcher
+from xml.dom import minidom
 
+from generators import doh_obr
 
 bsRateXmlUrl = "https://www.bsi.si/_data/tecajnice/dtecbs-l.xml"
 normalAssets = ["STK"]
-derivateAssets = ["CFD", "OPT", "FUT", "FOP", "WAR"]
+derivateAssets = ["CFD", "FXCFD", "OPT", "FUT", "FOP", "WAR"]
 ignoreAssets = ["CASH", "CMDTY"]
 
 
-stockSplits = {}
+stockSplits = defaultdict(list)
 
 
-def getSplitMultiplier(symbol, date):
+def getSplitMultiplier(symbol, conid, date):
     multiplier = 1
+    key = f"{symbol}:{conid}"
 
-    if symbol in stockSplits:
-        for splitData in stockSplits[symbol]:
-            if datetime.datetime.strptime(date, "%Y%m%d") < splitData["date"]:
-                multiplier *= splitData["multiplier"]
+    if key not in stockSplits:
+        return multiplier
+
+    for splitData in stockSplits[key]:
+        if datetime.datetime.strptime(date, "%Y%m%d") < splitData["date"]:
+            multiplier *= splitData["multiplier"]
 
     return multiplier
 
@@ -47,16 +50,16 @@ def addStockSplits(corporateActions):
                 descriptionSearch.group(2)
             )
             symbol = action.attrib["symbol"]
+            conid = action.attrib["conid"]
+            key = f"{symbol}:{conid}"
             date = datetime.datetime.strptime(action.attrib["reportDate"], "%Y%m%d")
-            if symbol not in stockSplits:
-                stockSplits[symbol] = []
 
             # check if the same split was added from a different report
-            for split in stockSplits[symbol]:
+            for split in stockSplits[key]:
                 if split["date"] == date and split["multiplier"] == multiplier:
                     continue
 
-            stockSplits[symbol].append({"date": date, "multiplier": multiplier})
+            stockSplits[key].append({"date": date, "multiplier": multiplier})
 
 
 """ Gets the currency rate for a given date and currency. If no rate exists for a given
@@ -65,6 +68,8 @@ def addStockSplits(corporateActions):
 
 
 def getCurrencyRate(dateStr, currency, rates):
+    if currency == "CNH":
+        currency = "CNY"
     if dateStr in rates and currency in rates[dateStr]:
         rate = float(rates[dateStr][currency])
     else:
@@ -184,7 +189,7 @@ def main():
     if not os.path.isfile("relief-statements.xml"):
         urllib.request.urlretrieve(
             "https://github.com/jamsix/ib-edavki/raw/master/relief-statements.xml",
-            "treaties.xml",
+            "relief-statements.xml",
         )
     if os.path.isfile("relief-statements.xml"):
         statements = xml.etree.ElementTree.parse("relief-statements.xml").getroot()
@@ -208,7 +213,6 @@ def main():
             os.remove(file)
         urllib.request.urlretrieve(bsRateXmlUrl, bsRateXmlFilename)
     bsRateXml = xml.etree.ElementTree.parse(bsRateXmlFilename).getroot()
-    bsRates = bsRateXml.find("DtecBS")
 
     rates = {}
     for d in bsRateXml:
@@ -266,9 +270,6 @@ def main():
         statementStartDate = str(reportYear) + "0101"
         statementEndDate = str(reportYear) + "1231"
 
-    """ Dictionary of stock trade arrays, each key represents one securityID """
-    trades = {}
-
     """
         IB is PITA in terms of unique security ID, old outputs and some asset types only have conid,
         same assets have ISIN but had none in the past, euro ETFs can have different symbols but same ISIN.
@@ -323,7 +324,7 @@ def main():
                     trade["securityID"] = ibTrade.attrib["securityID"]
 
                 splitMultiplier = getSplitMultiplier(
-                    trade["symbol"], trade["tradeDate"]
+                    trade["symbol"], trade["conid"], trade["tradeDate"]
                 )
 
                 trade["quantity"] *= splitMultiplier
@@ -342,18 +343,6 @@ def main():
                     trade["tradePrice"] = trade["tradePrice"] * float(
                         ibTrade.attrib["multiplier"]
                     )
-                """ If trade is an option exercise, tradePrice is set to 0, but closePrice is the one position was settled for """
-                # TODO: handle warrants exercise
-                if (
-                    trade["assetCategory"] == "OPT"
-                    and ibTrade.attrib["notes"] == "Ex"
-                    and ibTrade.attrib["closePrice"] != ""
-                ):
-                    trade["tradePrice"] = ibTrade.attrib["closePrice"]
-                    if "multiplier" in ibTrade.attrib:
-                        trade["tradePrice"] = float(
-                            ibTrade.attrib["closePrice"]
-                        ) * float(ibTrade.attrib["multiplier"])
 
                 lastTrade = trade
 
@@ -383,7 +372,9 @@ def main():
                     lastTrade["openTransactionIds"] = {}
                 tid = ibTrade.attrib["transactionID"]
 
-                splitMultiplier = getSplitMultiplier(ibTrade.attrib["symbol"], date)
+                splitMultiplier = getSplitMultiplier(
+                    ibTrade.attrib["symbol"], ibTrade.attrib["conid"], date
+                )
 
                 if tid not in lastTrade["openTransactionIds"]:
                     lastTrade["openTransactionIds"][tid] = (
@@ -412,18 +403,18 @@ def main():
                 break
         if match == False:
             trades[cusip] = tradesByCusip[cusip]
-    for securityId in tradesBySecurityId:
+    for securityID in tradesBySecurityId:
         match = False
         for id in trades:
             for trade in trades[id]:
-                if "securityID" in trade and securityId == trade["securityID"]:
-                    trades[id] += tradesBySecurityId[securityId]
+                if "securityID" in trade and securityID == trade["securityID"]:
+                    trades[id] += tradesBySecurityId[securityID]
                     match = True
                     break
             if match == True:
                 break
         if match == False:
-            trades[securityID] = tradesBySecurityId[securityId]
+            trades[securityID] = tradesBySecurityId[securityID]
     for conid in tradesByConid:
         match = False
         for id in trades:
@@ -477,7 +468,6 @@ def main():
     """ Detect if trades are Normal or Derivates and if they are Opening or Closing positions
         Convert the price to EUR """
     for securityID in trades:
-        beforeTradePosition = 0
         for trade in trades[securityID]:
             if trade["currency"] == "EUR":
                 trade["tradePriceEUR"] = trade["tradePrice"]
@@ -497,6 +487,9 @@ def main():
                 trade["assetType"] = "normal"
             elif trade["assetCategory"] in derivateAssets:
                 trade["assetType"] = "derivate"
+            else:
+                sys.exit("Error: unknown asset type: %s" % trade["assetCategory"])
+
     """ Filter trades to only include those that closed in the parameter year and trades that opened the closing position """
     yearTrades = {}
     for securityID in trades:
@@ -904,7 +897,7 @@ def main():
             TypeName = xml.etree.ElementTree.SubElement(
                 TItem, "TypeName"
             ).text = "terminska pogodba"
-        elif trades[0]["assetCategory"] == "CFD":
+        elif trades[0]["assetCategory"] in ["CFD", "FXCFD"]:
             Type = xml.etree.ElementTree.SubElement(TItem, "Type").text = "02"
             TypeName = xml.etree.ElementTree.SubElement(
                 TItem, "TypeName"
@@ -924,7 +917,7 @@ def main():
                 "description"
             ]
         if trades[0]["assetCategory"] != "OPT" and trades[0]["assetCategory"] != "WAR":
-            """ Option descriptions are to long and not accepted by eDavki """
+            """Option descriptions are to long and not accepted by eDavki"""
             Code = xml.etree.ElementTree.SubElement(TItem, "Code").text = trades[0][
                 "symbol"
             ][:10]
@@ -992,7 +985,7 @@ def main():
             TypeName = xml.etree.ElementTree.SubElement(
                 TItem, "TypeName"
             ).text = "terminska pogodba"
-        elif trades[0]["assetCategory"] == "CFD":
+        elif trades[0]["assetCategory"] in ["CFD", "FXCFD"]:
             Type = xml.etree.ElementTree.SubElement(TItem, "Type").text = "02"
             TypeName = xml.etree.ElementTree.SubElement(
                 TItem, "TypeName"
@@ -1012,7 +1005,7 @@ def main():
                 "description"
             ]
         if trades[0]["assetCategory"] != "OPT" and trades[0]["assetCategory"] != "WAR":
-            """ Option descriptions are to long and not accepted by eDavki """
+            """Option descriptions are to long and not accepted by eDavki"""
             Code = xml.etree.ElementTree.SubElement(TItem, "Code").text = trades[0][
                 "symbol"
             ][:10]
@@ -1086,6 +1079,8 @@ def main():
 
     """ Get dividends from IB XML """
     dividends = []
+    missingCompanies = set()
+
     for ibCashTransactions in ibCashTransactionsList:
         if ibCashTransactions is None:
             continue
@@ -1111,6 +1106,7 @@ def main():
                 dividend["securityID"] = ibCashTransaction.attrib["securityID"]
                 if dividend["securityID"] == "":
                     dividend["securityID"] = dividend["conid"]
+
                 if companies and dividend["symbol"] in companies:
                     dividend["name"] = companies[dividend["symbol"]]["name"]
                     dividend["taxNumber"] = companies[dividend["symbol"]]["taxNumber"]
@@ -1120,6 +1116,9 @@ def main():
                         dividend["reliefStatement"] = companies[dividend["symbol"]][
                             "reliefStatement"
                         ]
+                else:
+                    missingCompanies.add((dividend["conid"], dividend["symbol"]))
+
                 """ Convert amount to EUR """
                 if dividend["currency"] == "EUR":
                     dividend["amountEUR"] = dividend["amount"]
@@ -1128,11 +1127,13 @@ def main():
                         dividend["dateTime"][0:8], dividend["currency"], rates
                     )
                 dividends.append(dividend)
+
         for ibCashTransaction in ibCashTransactions:
             if (
                 ibCashTransaction.tag == "CashTransaction"
                 and ibCashTransaction.attrib["dateTime"].startswith(str(reportYear))
                 and ibCashTransaction.attrib["type"] == "Withholding Tax"
+                and ibCashTransaction.attrib["conid"] != ""
             ):
                 potentiallyMatchingDividends = []
                 for dividend in dividends:
@@ -1140,8 +1141,8 @@ def main():
                         dividend["dateTime"][0:8]
                         == ibCashTransaction.attrib["dateTime"][0:8]
                         and dividend["symbol"] == ibCashTransaction.attrib["symbol"]
-                        and dividend["transactionID"]
-                        < ibCashTransaction.attrib["transactionID"]
+                        and int(dividend["transactionID"])
+                        < int(ibCashTransaction.attrib["transactionID"])
                     ):
                         potentiallyMatchingDividends.append(dividend)
 
@@ -1187,6 +1188,12 @@ def main():
                         ibCashTransaction.attrib["currency"],
                         rates,
                     )
+
+    if len(missingCompanies) > 0:
+        explanation = "companies.xml is missing the following symbols (conids): " 
+        missing = map(lambda x: x[1] + " (" + x[0] + ")", missingCompanies)
+        readme = " - more info: https://github.com/jamsix/ib-edavki#dodatni-podatki-o-podjetju-za-obrazec-doh-div-opcijsko"
+        print(explanation + ", ".join(missing) + readme)
 
     """ Dividends can be reversed. If there is a reversal, remove both the reversal
         and the original dividend.
@@ -1285,6 +1292,9 @@ def main():
             dYear + "-" + dividend["dateTime"][4:6] + "-" + dividend["dateTime"][6:8]
         )
         if "taxNumber" in dividend:
+            if dividend["taxNumber"] is not None and len(dividend["taxNumber"]) > 12:
+                dividend["taxNumber"] = re.sub(r'[^a-zA-Z0-9]+', "", dividend["taxNumber"])[0:12]
+
             xml.etree.ElementTree.SubElement(
                 Dividend, "PayerIdentificationNumber"
             ).text = dividend["taxNumber"]

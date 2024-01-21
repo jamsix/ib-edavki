@@ -29,7 +29,7 @@ pip install --upgrade git+https://github.com/jamsix/ib-edavki.git
 ```
 
 ```
-ib-edavki
+ib_edavki
 ```
 
 Odpri datoteko **taxpayer.xml** in vnesi svoje davčne podatke.
@@ -55,11 +55,14 @@ Ker se je z 2021 zaradi Brexita večino evropskih IBKR računov premaknilo (ozir
 ### Konverzija IB poročila v popisne liste primerne za uvoz v eDavke
 
 ```
-ib-edavki [-h] [-y report-year] [-t] ib-xml-file-2021 [ib-xml-file-2020] [ib-xml-file-2019]
+ib_edavki [-h] [-y report-year] [-t] ib-xml-file-2021 [ib-xml-file-2020] [ib-xml-file-2019]
 ```
-Kot argument dodaj reporte za vsa leta trgovanja.
+Kot argument dodaj reporte za vsa leta trgovanja, npr:
+```
+ib_edavki ib-export-2020.xml ib-export-2021.xml ib-export-2022.xml
+```
 
-Skripta po uspešni konverziji v lokalnem direktoriju ustvari tri datoteke:
+Skripta po uspešni konverziji v lokalnem direktoriju ustvari štiri datoteke:
 * Doh-KDVP.xml (datoteka namenjena uvozu v obrazec Doh-KDVP - Napoved za odmero dohodnine od dobička od odsvojitve vrednostnih papirjev in drugih deležev ter investicijskih kuponov)
 * D-IFI.xml (datoteka namenjena uvozu v obrazec D-IFI - Napoved za odmero davka od dobička od odsvojitve izvedenih finančnih instrumentov)
 * D-Div.xml (datoteka namenjena uvozu v obrazec D-Div - Napoved za odmero dohodnine od dividend)
@@ -81,6 +84,10 @@ Obrazec Doh-Div zahteva dodatne podatke o podjetju, ki je izplačalo dividende (
 Obrazec Doh-Obr zahteva dodatne podatke o podružnici IB, ki je izplačevalka obresti Stock Yield Enhancement programa (identifikacijska številka, naziv, naslov, država) in jih v izvirnih podatkih IB-ja ni. Ob prvi uporabi skripta prenese datoteko `ib-affiliates.xml`, ki vsebuje zahtevane podatke za IB United Kingdom, IB Central Europe, IB Ireland in IB Luxembourg, po potrebi pa lahko te podatke spremeniš ali dodaš.
 
 ### Uvoz v eDavke
+>**Pozor**: Obrazec Doh-Div v eDavkih omogoča tudi uvoz podatkov v CSV obliki. `ib-edavki` ne generirajo obrazca Doh-Div v CSV obliki. Namesto uvoza CSV datoteke, se posluži uvoza XML datoteke, kot je opisan v nadaljevanju.
+
+![Dokumenti > Uvoz](readme-uvoz.png)
+
 1. V meniju **Dokument** klikni **Uvoz**. Izberi eno izmed generiranih datotek (Doh-KDVP.xml, D-IFI.xml, Doh-Div.xml, Doh-Obr.xml) in jo **Prenesi**.
 1. Preveri izpolnjene podatke in dodaj manjkajoče.
 1. Pri obrazcih Doh-KDVP in D-IFI je na seznamu popisnih listov po en popisni list za vsak vrednostni papir (ticker).
