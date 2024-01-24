@@ -256,7 +256,7 @@
         <symbol>NEM</symbol>
         <name>Newmont Corp</name>
         <taxNumber>841611629</taxNumber>
-        <address>6363 South Fiddlers Green Circle, Greenwood Village, CO 80111</address>
+        <address>6900 E Layton Avenue Suite 700 Denver, CO 80237</address>
         <country>US</country>
     </company>
     <company>
@@ -2370,5 +2370,45 @@
         <taxNumber>98-0355078</taxNumber>
         <address>7550 Ogden Dale Road S.e., Calgary Alberta, A0</address>
         <country>US</country>
-    </company>           
+    </company>
+    <company>
+        <conid>275241</conid>
+        <symbol>TM</symbol>
+        <name>Toyota Motor Corporation</name>
+        <taxNumber>US8923313071</taxNumber>
+        <address>1 Toyota-Cho, Toyota City, Aichi Prefecture 471-8571</address>
+        <country>JP</country>
+    </company>
+    <company>
+        <conid>282449256</conid>
+        <symbol>RUI</symbol>
+        <name>Rubis</name>
+        <taxNumber>FR0013269123</taxNumber>
+        <address>46, rue BoissiEre, Paris 75116</address>
+        <country>FR</country>
+    </company>
+    <company>
+        <conid>12460</conid>
+        <symbol>STM</symbol>
+        <name>STMicroelectronics N.V.</name>
+        <taxNumber>US8610121027</taxNumber>
+        <address>39, Chemin du Champ des Filles C. P. 21 Geneva</address>
+        <country>NL</country>
+    </company>
+    <company>
+        <conid>2950378</conid>
+        <symbol>ACOMO</symbol>
+        <name>Acomo N.V.</name>
+        <taxNumber>NL0000313286</taxNumber>
+        <address>WTC, Beursplein 37, 21st floor, Rotterdam 3011 AA</address>
+        <country>NL</country>
+    </company>
+    <company>
+        <conid>7855</conid>
+        <symbol>GTY</symbol>
+        <name>Getty Realty Corp.</name>
+        <taxNumber>US3742971092</taxNumber>
+        <address>2 Jericho Plaza, Suite 110, Jericho, New York, 11753-1681</address>
+        <country>US</country>
+    </company>
 </companies>
