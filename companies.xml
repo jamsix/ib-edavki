@@ -2371,4 +2371,36 @@
         <address>7550 Ogden Dale Road S.e., Calgary Alberta, A0</address>
         <country>US</country>
     </company>           
+    <company>
+        <conid>60581038</conid>
+        <symbol>VALE</symbol>
+        <name>VALE SA-SP ADR</name>
+        <taxNumber></taxNumber>
+        <address></address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>39204349</conid>
+        <symbol>KALU</symbol>
+        <name>KAISER ALUMINUM CORP</name>
+        <taxNumber>94-3030279</taxNumber>
+        <address>Franklin, 1550 W McEwen Dr #500</address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>275405</conid>
+        <symbol>TSN</symbol>
+        <name>TYSON FOODS INC-CL A</name>
+        <taxNumber>71-0225165</taxNumber>
+        <address>2200 Don Tyson Parkway, Springdale, AR 72762-6999</address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>13440</conid>
+        <symbol>VFC</symbol>
+        <name>V F Corp</name>
+        <taxNumber>23-1180120</taxNumber>
+        <address>1551 Wewatta Street, Denver, CO, 80202</address>
+        <country>US</country>
+    </company>
 </companies>
