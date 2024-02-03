@@ -2370,5 +2370,12 @@
         <taxNumber>98-0355078</taxNumber>
         <address>7550 Ogden Dale Road S.e., Calgary Alberta, A0</address>
         <country>US</country>
-    </company>           
+    </company>
+    <company>
+        <symbol>ZIM</symbol>
+        <name>ZIM Integrated Shipping Services Ltd.</name>
+        <taxNumber>520015041</taxNumber>
+        <address>9 Andrei Sakharov St., P.O. Box 15067, Haifa 3190500, Israel </address>
+        <country>IL</country>
+    </company>        
 </companies>
