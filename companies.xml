@@ -1052,6 +1052,22 @@
         <country>IE</country>
     </company>
     <company>
+        <conid>74991935</conid>
+        <symbol>EXVM</symbol>
+        <name>BlackRock Asset Management Ireland Limited (iShares eb.rexx Government Germany 0-1yr UCITS ETF)</name>
+        <taxNumber>8227552</taxNumber>
+        <address>1st floor, 2 Ballsbridge Park, Ballsbridge Dublin 4, Dublin D04 YW83</address>
+        <country>IE</country>
+    </company>
+    <company>
+        <conid>68489974</conid>
+        <symbol>IBTM</symbol>
+        <name>BlackRock Asset Management Ireland Limited (ISHARES USD TREASURY 7-10Y)</name>
+        <taxNumber>8227552</taxNumber>
+        <address>1st Floor 2 Ballsbridge Park Dublin 4 Dublin D04 YW83 Ireland</address>
+        <country>IE</country>
+    </company>
+    <company>
         <conid>WD</conid>
         <symbol>WD</symbol>
         <name>WALKER DUNLOP INC</name>
@@ -1593,6 +1609,38 @@
     <company>
         <conid>544925226</conid>
         <symbol>SHELL.RTS</symbol>
+        <name>Shell plc</name>
+        <taxNumber>GB 235 7632 55</taxNumber>
+        <address>York Road Shell Centre London, SE1 7NA</address>
+        <country>GB</country>
+    </company>
+    <company>
+        <conid>647304314</conid>
+        <symbol>SHELL.DVR</symbol>
+        <name>Shell plc</name>
+        <taxNumber>GB 235 7632 55</taxNumber>
+        <address>York Road Shell Centre London, SE1 7NA</address>
+        <country>GB</country>
+    </company>
+    <company>
+        <conid>666005248</conid>
+        <symbol>SHELL.DRH</symbol>
+        <name>Shell plc</name>
+        <taxNumber>GB 235 7632 55</taxNumber>
+        <address>York Road Shell Centre London, SE1 7NA</address>
+        <country>GB</country>
+    </company>
+    <company>
+        <conid>63151008</conid>
+        <symbol>SHELL.DVD</symbol>
+        <name>Shell plc</name>
+        <taxNumber>GB 235 7632 55</taxNumber>
+        <address>York Road Shell Centre London, SE1 7NA</address>
+        <country>GB</country>
+    </company>
+    <company>
+        <conid>614215023</conid>
+        <symbol>SHELL.DRI</symbol>
         <name>Shell plc</name>
         <taxNumber>GB 235 7632 55</taxNumber>
         <address>York Road Shell Centre London, SE1 7NA</address>
@@ -2157,5 +2205,341 @@
         <taxNumber>0002635307</taxNumber>
         <address>BlackRock Asset Management Deutschland AG, Lenbachplatz 1, D-80333 München</address>
         <country>DE</country>
+    </company>
+    <company>
+        <conid>450564070</conid>
+        <symbol>TTCFQ</symbol>
+        <name>Tattooed Chef, Inc.</name>
+        <taxNumber>825457906</taxNumber>
+        <address>6305 Alondra Boulevard, Paramount, CA 90723</address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>13272</conid>
+        <symbol>UNH</symbol>
+        <name>Unitedhealth Group Inc</name>
+        <taxNumber>41-1321939</taxNumber>
+        <address>9900 Bren Road East, Minneapolis, MN 55343</address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>209411801</conid>
+        <symbol>HPQ</symbol>
+        <name>Hewlett Packard Enterprise Co</name>
+        <taxNumber>47-3298624</taxNumber>
+        <address>1701 E Mossy Oaks Road, Spring, TX 77389</address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>629043863</conid>
+        <symbol>KVUE</symbol>
+        <name>Kenvue Inc</name>
+        <taxNumber>88-1032011</taxNumber>
+        <address>199 Grandview Road, Skillman, NJ 08558</address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>755810</conid>
+        <symbol>NHC</symbol>
+        <name>National HealthCare Corporation</name>
+        <taxNumber>52-2057472</taxNumber>
+        <address>100 Vine Street, Murfreesboro, Tennessee 37130</address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>95980853</conid>
+        <symbol>GNE</symbol>
+        <name>Genie Energy Ltd.</name>
+        <taxNumber>45-2069276</taxNumber>
+        <address>520 Broad Street, Newark, New Jersey</address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>320106069</conid>
+        <symbol>EVRG</symbol>
+        <name>Evergy, Inc.</name>
+        <taxNumber>82-2733395</taxNumber>
+        <address>1200 Main Street, Kansas City, Missouri</address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>5026984</conid>
+        <symbol>LNT</symbol>
+        <name>Alliant Energy Corp</name>
+        <taxNumber>39-1380265</taxNumber>
+        <address>4902 North Biltmore Lane, Madison, Wisconsin</address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>3141362</conid>
+        <symbol>BHE</symbol>
+        <name>Benchmark Electronics Inc</name>
+        <taxNumber>74-2211011</taxNumber>
+        <address>56 South Rockford Drive, Tempe, Arizona</address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>5811</conid>
+        <symbol>CMC</symbol>
+        <name>Commercial Metals Co</name>
+        <taxNumber>75-0725338</taxNumber>
+        <address>6565 N. Macarthur Blvd., Irving, Texas</address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>156106386</conid>
+        <symbol>CCS</symbol>
+        <name>Century Communities, Inc.</name>
+        <taxNumber>68-0521411</taxNumber>
+        <address>8390 E. Crescent Pkwy., Greenwood Village, Colorado</address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>10120</conid>
+        <symbol>NC</symbol>
+        <name>Nacco Industries Inc</name>
+        <taxNumber>34-1505819</taxNumber>
+        <address>5875 Landerbrook Dr, Cleveland, Ohio</address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>756607</conid>
+        <symbol>SGC</symbol>
+        <name>Superior Group Of Companies, Inc.</name>
+        <taxNumber>11-1385670</taxNumber>
+        <address>10055 Seminole Blvd, Seminole, Florida</address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>6845274</conid>
+        <symbol>TAIT</symbol>
+        <name>Taitron Components Inc</name>
+        <taxNumber>95-4249240</taxNumber>
+        <address>28040 West Harrison Parkway, Valencia, California</address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>8093</conid>
+        <symbol>CNP</symbol>
+        <name>Centerpoint Energy Inc</name>
+        <taxNumber>74-0694415</taxNumber>
+        <address>1111 Louisiana St., Houston, Texas</address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>4157</conid>
+        <symbol>ADI</symbol>
+        <name>Analog Devices Inc</name>
+        <taxNumber>04-2348234</taxNumber>
+        <address>One Analog Way, Wilmington, Massachusetts</address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>10557</conid>
+        <symbol>NUE</symbol>
+        <name>Nucor Corp</name>
+        <taxNumber>13-1860817</taxNumber>
+        <address>1915 Rexford Rd, Charlotte, North Carolina</address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>244164913</conid>
+        <symbol>JCI</symbol>
+        <name>Johnson Controls International Plc</name>
+        <taxNumber>98-0390500</taxNumber>
+        <address>One Albert Quay, Albert Quay, Cork</address>
+        <country>IRL</country>
+    </company>
+    <company>
+        <conid>9462</conid>
+        <symbol>MDC</symbol>
+        <name>Mdc Holdings, Llc</name>
+        <taxNumber>26-4624724</taxNumber>
+        <address>106 Staton Court, Greenville, North Carolina</address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>502252263</conid>
+        <symbol>BBWI</symbol>
+        <name>Bath and Body Works, Inc.</name>
+        <taxNumber>31-1029810</taxNumber>
+        <address>Three Limited Pkwy, P O Box 16000, Columbus</address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>113599091</conid>
+        <symbol>MDLZ</symbol>
+        <name>Mondelez International, Inc.</name>
+        <taxNumber>52-2284372</taxNumber>
+        <address>905 West Fulton Market, Chicago, Illinois</address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>4726244</conid>
+        <symbol>AMKR</symbol>
+        <name>Amkor Technology, Inc.</name>
+        <taxNumber>23-1722724</taxNumber>
+        <address>2045 East Innovation Circle, Tempe, Arizona</address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>8772</conid>
+        <symbol>KBH</symbol>
+        <name>Kb Home</name>
+        <taxNumber>95-3666267</taxNumber>
+        <address>10990 Wilshire Blvd, Los Angeles, California</address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>588392767</conid>
+        <symbol>P911d</symbol>
+        <name>Dr. Ing. h.c. F. Porsche AG</name>
+        <taxNumber>147799625</taxNumber>
+        <address>Porscheplatz 1, D-70435 Stuttgart</address>
+        <country>DE</country>
+    </company>
+    <company>
+        <symbol>SPGI</symbol>
+        <name>S and P Global Inc.</name>
+        <taxNumber>13-1026995</taxNumber>
+        <address>55 Water Street, New York, New York</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>UNP</symbol>
+        <name>Union Pacific Corp</name>
+        <taxNumber>13-2626465</taxNumber>
+        <address>1400 Douglas Street, Omaha, Nebraska</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>CP</symbol>
+        <name>Canadian Pacific Railway Ltd/cn</name>
+        <taxNumber>98-0355078</taxNumber>
+        <address>7550 Ogden Dale Road S.e., Calgary Alberta, A0</address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>60581038</conid>
+        <symbol>VALE</symbol>
+        <name>VALE SA-SP ADR</name>
+        <taxNumber>33.592.510/0001-54</taxNumber>
+        <address>Praia de Botafogo 186, Botafogo, 22250-145 Rio de Janeiro, RJ</address>
+        <country>BR</country>
+    </company>
+    <company>
+        <conid>39204349</conid>
+        <symbol>KALU</symbol>
+        <name>KAISER ALUMINUM CORP</name>
+        <taxNumber>94-3030279</taxNumber>
+        <address>Franklin, 1550 W McEwen Dr #500</address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>275405</conid>
+        <symbol>TSN</symbol>
+        <name>TYSON FOODS INC-CL A</name>
+        <taxNumber>71-0225165</taxNumber>
+        <address>2200 Don Tyson Parkway, Springdale, AR 72762-6999</address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>13440</conid>
+        <symbol>VFC</symbol>
+        <name>V F Corp</name>
+        <taxNumber>23-1180120</taxNumber>
+        <address>1551 Wewatta Street, Denver, CO, 80202</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>ZIM</symbol>
+        <name>ZIM Integrated Shipping Services Ltd.</name>
+        <taxNumber>520015041</taxNumber>
+        <address>9 Andrei Sakharov St., P.O. Box 15067, Haifa 3190500, Israel</address>
+        <country>IL</country>
+    </company>
+    <company>
+        <conid>424737148</conid>
+        <symbol>SWBI</symbol>
+        <name>SMITH &amp; WESSON BRANDS INC</name>
+        <taxNumber>87-0543688</taxNumber>
+        <address>2100 Roosevelt Avenue Springfield, MA</address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>45210327</conid>
+        <symbol>DRD</symbol>
+        <name>DRDGOLD Limited</name>
+        <taxNumber>4210110070</taxNumber>
+        <address>Constantia Office Park, Cnr 14th Avenue and Hendrik Potgieter Road, Cycad House, Building 17, Ground Floor, Weltevreden Park 1709, Johannesburg</address>
+        <country>ZA</country>
+    </company>
+    <company>
+        <conid>228954</conid>
+        <symbol>ROG</symbol>
+        <name>Roche Holding AG</name>
+        <taxNumber>CHE-101.602.521</taxNumber>
+        <address>Grenzacherstrasse 124, 4058 Basel</address>
+        <country>CH</country>
+    </company>
+    <company>
+        <conid>29816328</conid>
+        <symbol>IES</symbol>
+        <name>Intesa Sanpaolo SPA</name>
+        <taxNumber>IT11991500015</taxNumber>
+        <address>Piazza San Carlo 156, Torino, 10121</address>
+        <country>CH</country>
+    </company>
+    <company>
+        <conid>12723</conid>
+        <symbol>TEO</symbol>
+        <name>Telecom Argentina SA</name>
+        <taxNumber>30-63945373-8</taxNumber>
+        <address>Avda. Alicia Moreau de Justo 50, Ciudad Autónoma de Buenos Aires</address>
+        <country>AR</country>
+    </company>
+    <company>
+        <conid>30314159</conid>
+        <symbol>TNE5d</symbol>
+        <name>Telefonica SA</name>
+        <taxNumber>A28015865</taxNumber>
+        <address>The Comunicacion round 34, 28050 Madrid</address>
+        <country>ES</country>
+    </company>
+    <company>
+        <conid>573136108</conid>
+        <symbol>HLN</symbol>
+        <name>Haleon PLC</name>
+        <taxNumber>13691224</taxNumber>
+        <address>Building 5, First Floor, The Heights, Weybridge, Surrey, England, KT13 0NY</address>
+        <country>GB</country>
+    </company>
+    <company>
+        <symbol>PRMW</symbol>
+        <name>Primo Water Corporation</name>
+        <taxNumber>980154711</taxNumber>
+        <address>4221 W. Boy Scout Blvd., Suite 400, Tampa, FL 33607</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>GTN</symbol>
+        <name>Gray Television, Inc.</name>
+        <taxNumber>580285030</taxNumber>
+        <address>4370 Peachtree Road, NE, Suite 400, Atlanta, GA 30319</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>RDN</symbol>
+        <name>Radian Group</name>
+        <taxNumber>232691170</taxNumber>
+        <address>1500 Market Street, Philadelphia, PA 19102</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>LEA</symbol>
+        <name>Lear Corporation</name>
+        <taxNumber>133386776</taxNumber>
+        <address>21557 Telegraph Road, Southfield, MI 48033</address>
+        <country>US</country>
     </company>
 </companies>
