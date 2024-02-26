@@ -1052,6 +1052,22 @@
         <country>IE</country>
     </company>
     <company>
+        <conid>74991935</conid>
+        <symbol>EXVM</symbol>
+        <name>BlackRock Asset Management Ireland Limited (iShares eb.rexx Government Germany 0-1yr UCITS ETF)</name>
+        <taxNumber>8227552</taxNumber>
+        <address>1st floor, 2 Ballsbridge Park, Ballsbridge Dublin 4, Dublin D04 YW83</address>
+        <country>IE</country>
+    </company>
+    <company>
+        <conid>68489974</conid>
+        <symbol>IBTM</symbol>
+        <name>BlackRock Asset Management Ireland Limited (ISHARES USD TREASURY 7-10Y)</name>
+        <taxNumber>8227552</taxNumber>
+        <address>1st Floor 2 Ballsbridge Park Dublin 4 Dublin D04 YW83 Ireland</address>
+        <country>IE</country>
+    </company>
+    <company>
         <conid>WD</conid>
         <symbol>WD</symbol>
         <name>WALKER DUNLOP INC</name>
@@ -1593,6 +1609,38 @@
     <company>
         <conid>544925226</conid>
         <symbol>SHELL.RTS</symbol>
+        <name>Shell plc</name>
+        <taxNumber>GB 235 7632 55</taxNumber>
+        <address>York Road Shell Centre London, SE1 7NA</address>
+        <country>GB</country>
+    </company>
+    <company>
+        <conid>647304314</conid>
+        <symbol>SHELL.DVR</symbol>
+        <name>Shell plc</name>
+        <taxNumber>GB 235 7632 55</taxNumber>
+        <address>York Road Shell Centre London, SE1 7NA</address>
+        <country>GB</country>
+    </company>
+    <company>
+        <conid>666005248</conid>
+        <symbol>SHELL.DRH</symbol>
+        <name>Shell plc</name>
+        <taxNumber>GB 235 7632 55</taxNumber>
+        <address>York Road Shell Centre London, SE1 7NA</address>
+        <country>GB</country>
+    </company>
+    <company>
+        <conid>63151008</conid>
+        <symbol>SHELL.DVD</symbol>
+        <name>Shell plc</name>
+        <taxNumber>GB 235 7632 55</taxNumber>
+        <address>York Road Shell Centre London, SE1 7NA</address>
+        <country>GB</country>
+    </company>
+    <company>
+        <conid>614215023</conid>
+        <symbol>SHELL.DRI</symbol>
         <name>Shell plc</name>
         <taxNumber>GB 235 7632 55</taxNumber>
         <address>York Road Shell Centre London, SE1 7NA</address>
@@ -2419,6 +2467,54 @@
         <country>US</country>
     </company>
     <company>
+        <conid>45210327</conid>
+        <symbol>DRD</symbol>
+        <name>DRDGOLD Limited</name>
+        <taxNumber>4210110070</taxNumber>
+        <address>Constantia Office Park, Cnr 14th Avenue and Hendrik Potgieter Road, Cycad House, Building 17, Ground Floor, Weltevreden Park 1709, Johannesburg</address>
+        <country>ZA</country>
+    </company>
+    <company>
+        <conid>228954</conid>
+        <symbol>ROG</symbol>
+        <name>Roche Holding AG</name>
+        <taxNumber>CHE-101.602.521</taxNumber>
+        <address>Grenzacherstrasse 124, 4058 Basel</address>
+        <country>CH</country>
+    </company>
+    <company>
+        <conid>29816328</conid>
+        <symbol>IES</symbol>
+        <name>Intesa Sanpaolo SPA</name>
+        <taxNumber>IT11991500015</taxNumber>
+        <address>Piazza San Carlo 156, Torino, 10121</address>
+        <country>CH</country>
+    </company>
+    <company>
+        <conid>12723</conid>
+        <symbol>TEO</symbol>
+        <name>Telecom Argentina SA</name>
+        <taxNumber>30-63945373-8</taxNumber>
+        <address>Avda. Alicia Moreau de Justo 50, Ciudad Autónoma de Buenos Aires</address>
+        <country>AR</country>
+    </company>
+    <company>
+        <conid>30314159</conid>
+        <symbol>TNE5d</symbol>
+        <name>Telefonica SA</name>
+        <taxNumber>A28015865</taxNumber>
+        <address>The Comunicacion round 34, 28050 Madrid</address>
+        <country>ES</country>
+    </company>
+    <company>
+        <conid>573136108</conid>
+        <symbol>HLN</symbol>
+        <name>Haleon PLC</name>
+        <taxNumber>13691224</taxNumber>
+        <address>Building 5, First Floor, The Heights, Weybridge, Surrey, England, KT13 0NY</address>
+        <country>GB</country>
+    </company>
+    <company>
         <symbol>PRMW</symbol>
         <name>Primo Water Corporation</name>
         <taxNumber>980154711</taxNumber>
@@ -2446,5 +2542,4 @@
         <address>21557 Telegraph Road, Southfield, MI 48033</address>
         <country>US</country>
     </company>
-
 </companies>
