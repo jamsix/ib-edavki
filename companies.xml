@@ -2370,7 +2370,7 @@
         <taxNumber>98-0355078</taxNumber>
         <address>7550 Ogden Dale Road S.e., Calgary Alberta, A0</address>
         <country>US</country>
-    </company>        
+    </company>
     <company>
         <conid>60581038</conid>
         <symbol>VALE</symbol>
@@ -2418,4 +2418,33 @@
         <address>2100 Roosevelt Avenue Springfield, MA</address>
         <country>US</country>
     </company>
+    <company>
+        <symbol>PRMW</symbol>
+        <name>Primo Water Corporation</name>
+        <taxNumber>980154711</taxNumber>
+        <address>4221 W. Boy Scout Blvd., Suite 400, Tampa, FL 33607</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>GTN</symbol>
+        <name>Gray Television, Inc.</name>
+        <taxNumber>580285030</taxNumber>
+        <address>4370 Peachtree Road, NE, Suite 400, Atlanta, GA 30319</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>RDN</symbol>
+        <name>Radian Group</name>
+        <taxNumber>232691170</taxNumber>
+        <address>1500 Market Street, Philadelphia, PA 19102</address>
+        <country>US</country>
+    </company>
+    <company>
+        <symbol>LEA</symbol>
+        <name>Lear Corporation</name>
+        <taxNumber>133386776</taxNumber>
+        <address>21557 Telegraph Road, Southfield, MI 48033</address>
+        <country>US</country>
+    </company>
+
 </companies>
