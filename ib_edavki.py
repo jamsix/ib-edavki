@@ -16,7 +16,7 @@ from xml.dom import minidom
 from generators import doh_obr
 
 bsRateXmlUrl = "https://www.bsi.si/_data/tecajnice/dtecbs-l.xml"
-normalAssets = ["STK"]
+normalAssets = ["STK", "FUND"]
 derivateAssets = ["CFD", "FXCFD", "OPT", "FUT", "FOP", "WAR"]
 ignoreAssets = ["CASH", "CMDTY"]
 
@@ -467,6 +467,7 @@ def main():
 
     """ Detect if trades are Normal or Derivates and if they are Opening or Closing positions
         Convert the price to EUR """
+    removed_security_ids = defaultdict(lambda: set())
     for securityID in trades:
         for trade in trades[securityID]:
             if trade["currency"] == "EUR":
@@ -488,7 +489,19 @@ def main():
             elif trade["assetCategory"] in derivateAssets:
                 trade["assetType"] = "derivate"
             else:
-                sys.exit("Error: unknown asset type: %s" % trade["assetCategory"])
+                removed_security_ids[securityID].add(trade["assetCategory"])
+                # sys.exit("Error: unknown asset type: %s" % trade["assetCategory"])
+    if removed_security_ids:
+        print(
+            "WARNING: We are skipping the following securities because their assetCategories are currently not supported\n"
+            "         YOU NEED TO HANDLE THEM MANUALLY!"""
+        )
+        for securityID, assetCategories in removed_security_ids.items():
+            trades.pop(securityID, None)
+            print("         %s: " % securityID, end="")
+            for assetCategory in assetCategories:
+                print(" %s" % assetCategory, end=", ")
+            print()
 
     """ Filter trades to only include those that closed in the parameter year and trades that opened the closing position """
     yearTrades = {}
