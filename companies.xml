@@ -2590,4 +2590,30 @@
         <address>21557 Telegraph Road, Southfield, MI 48033</address>
         <country>US</country>
     </company>
+    <company>
+        <symbol>BEId</symbol>
+        <name>BEIERSDORF AG</name>
+        <address>Beiersdorf AG Unnastrasse 48 20245 Hamburg Germany.</address>
+        <country>DE</country>
+    </company>
+    <company>
+        <symbol>AC</symbol>
+        <name>Accor Group</name>
+        <taxNumber>FR0000120404</taxNumber>
+        <address>82, rue Henri Farman - 92130 Issy-les-Moulineaux - France.</address>
+        <country>FR</country>
+    </company>
+    <company>
+        <symbol>OMV</symbol>
+        <name>OMV</name>
+        <address>Trabrennstraße 6-8 1020 Dunaj</address>
+        <country>AT</country>
+    </company>
+    <company>
+        <symbol>VAS</symbol>
+        <name>VOESTALPINE</name>
+        <taxNumber>ATU 36905408</taxNumber>
+        <address>voestalpine-Straße 3 4020 Linz</address>
+        <country>AT</country>
+    </company>
 </companies>
