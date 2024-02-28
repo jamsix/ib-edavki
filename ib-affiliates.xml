@@ -27,4 +27,11 @@
       <address>4 rue Robert Stumper, L-2557 Luxembourg</address>
       <country>LU</country>
    </ibAffiliate>
+   <ibAffiliate>
+      <code>IBLLC-US</code>
+      <name>Interactive Brokers LLC</name>
+      <taxNumber>133863700</taxNumber>
+      <address>One Pickwick Plaza, Greenwich, CT 06830 USA</address>
+      <country>US</country>
+   </ibAffiliate>
 </ibAffiliates>
