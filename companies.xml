@@ -196,6 +196,22 @@
         <country>RU</country>
     </company>
     <company>
+        <conid>604409899</conid>
+        <symbol>SDIV</symbol>
+        <name>GLOBAL X SUPERDIVIDEND ETF</name>
+        <taxNumber>451988407</taxNumber>
+        <address>605 THIRD AVENUE NEW YORK, NY 10158</address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>12268</conid>
+        <symbol>SONY</symbol>
+        <name>Sony Group Corp</name>
+        <taxNumber>5010401067252</taxNumber>
+        <address>1-7-1, Konan MINATO-KU TKY 108-0075 JPN</address>
+        <country>JP</country>
+    </company>
+    <company>
         <conid>284632520</conid>
         <symbol>SSRM</symbol>
         <name>SSR Mining Inc</name>
@@ -299,6 +315,14 @@
         <country>US</country>
     </company>
     <company>
+        <conid>490414355</conid>
+        <symbol>OGN</symbol>
+        <name>ORGANON &amp; CO</name>
+        <taxNumber>464838035</taxNumber>
+        <address>30 Hudson Street, Fl 33, JERSEY CITY NJ, 07302</address>
+        <country>US</country>
+    </company>
+    <company>
         <symbol>PBA</symbol>
         <name>Pembina Pipeline Corp</name>
         <taxNumber>980131760</taxNumber>
@@ -333,6 +357,14 @@
         <taxNumber>770369576</taxNumber>
         <address>1100 Park Place, Suite 200, San Mateo, CA 94403</address>
         <country>US</country>
+    </company>
+    <company>
+        <conid>579809677</conid>
+        <symbol>ERUS.ESC</symbol>
+        <name>iShares MSCI Russia ETF</name>
+        <taxNumber>8227552</taxNumber>
+        <address>BlackRock Asset Management Ireland - ETF 1st Floor 2 Ballsbridge Park Dublin 4 Dublin D04 YW83 Ireland</address>
+        <country>IE</country>
     </company>
     <company>
         <symbol>FRT</symbol>
@@ -1344,6 +1376,14 @@
         <taxNumber>930584541</taxNumber>
         <address>One Bowerman Drive, Beaverton, OR 97005-6453</address>
         <country>US</country>
+    </company>
+    <company>
+        <conid>661513</conid>
+        <symbol>NOK</symbol>
+        <name>NOKIA CORP</name>
+        <taxNumber>01120389</taxNumber>
+        <address>KARAKAARI 7, P O BOX 226, ESPOO FINLAND, Finland, 02610</address>
+        <country>FI</country>
     </company>
     <company>
         <symbol>NTDOY</symbol>
