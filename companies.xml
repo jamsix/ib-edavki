@@ -1,4 +1,12 @@
 <companies>
+  <company>
+      <conid>389541685</conid>
+      <symbol>005222141</symbol>
+      <name> ALLIANZ GLOBAL INV (LU) ALLIANZ EURO CASH "A" (EUR) INC </name>
+      <address> State Street Bank International GmbH - Luxembourg Branch </address>
+      <country>LU</country>
+      <taxNumber>DE 815 001 893</taxNumber>
+  </company>
     <company>
         <conid>13013300</conid>
         <symbol>APC</symbol>
