@@ -62,7 +62,7 @@ def generate(taxpayerConfig,
                 ibCashTransaction.tag == "CashTransaction"
                 and ibCashTransaction.get("dateTime").startswith(str(reportYear))
                 and ibCashTransaction.get("type")
-                in ["Broker Interest Received"]
+                in ["Broker Interest Received", "Broker Fees"]
             ):
                 interest = {
                     "accountId": ibCashTransaction.get("accountId"),
