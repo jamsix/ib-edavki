@@ -16,7 +16,7 @@ from xml.dom import minidom
 from generators import doh_obr
 
 bsRateXmlUrl = "https://www.bsi.si/_data/tecajnice/dtecbs-l.xml"
-normalAssets = ["STK"]
+normalAssets = ["STK", "FUND"]
 derivateAssets = ["CFD", "FXCFD", "OPT", "FUT", "FOP", "WAR"]
 ignoreAssets = ["CASH", "CMDTY"]
 
