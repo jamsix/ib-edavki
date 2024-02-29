@@ -2593,6 +2593,7 @@
     <company>
         <symbol>BEId</symbol>
         <name>BEIERSDORF AG</name>
+        <taxNumber>DE118513961</taxNumber>
         <address>Beiersdorf AG Unnastrasse 48 20245 Hamburg Germany.</address>
         <country>DE</country>
     </company>
@@ -2606,6 +2607,7 @@
     <company>
         <symbol>OMV</symbol>
         <name>OMV</name>
+        <taxNumber>ATU14189108</taxNumber>
         <address>Trabrennstraße 6-8 1020 Dunaj</address>
         <country>AT</country>
     </company>
