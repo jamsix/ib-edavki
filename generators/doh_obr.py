@@ -23,7 +23,6 @@ def getIbAffiliateInfo(ibEntities, accountId):
                     "address": affiliate.find("address").text,
                     "country": affiliate.find("country").text,
                 }
-
     return {
         "code": "",
         "name": "",
