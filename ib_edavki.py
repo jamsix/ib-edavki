@@ -116,7 +116,7 @@ def main():
     parser.add_argument(
         "ibXmlFiles",
         metavar="ib-xml-file",
-        help="InteractiveBrokers XML ouput file(s) (see README.md on how to generate one)",
+        help="InteractiveBrokers XML output file(s) (see README.md on how to generate one)",
         nargs="+",
     )
     parser.add_argument(

@@ -23,13 +23,14 @@ def getIbAffiliateInfo(ibEntities, accountId):
                     "address": affiliate.find("address").text,
                     "country": affiliate.find("country").text,
                 }
-        return {
-            "code": "",
-            "name": "",
-            "taxNumber": "",
-            "address": "",
-            "country": "",
-        }
+
+    return {
+        "code": "",
+        "name": "",
+        "taxNumber": "",
+        "address": "",
+        "country": "",
+    }
 
 """ Get the IB entity matching account id """
 def getIbEntityCode(ibEntities, accountId):
