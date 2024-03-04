@@ -2540,11 +2540,11 @@
     </company>
     <company>
         <conid>29816328</conid>
-        <symbol>IES</symbol>
+        <symbol>ISP</symbol>
         <name>Intesa Sanpaolo SPA</name>
         <taxNumber>IT11991500015</taxNumber>
         <address>Piazza San Carlo 156, Torino, 10121</address>
-        <country>CH</country>
+        <country>IT</country>
     </company>
     <company>
         <conid>12723</conid>
@@ -2620,10 +2620,10 @@
         <country>AT</country>
     </company>
     <company>
-        <symbol>VAS</symbol>
-        <name>VOESTALPINE</name>
+        <symbol>VOE</symbol>
+        <name>Voestalpine AG</name>
         <taxNumber>ATU 36905408</taxNumber>
-        <address>voestalpine-Straße 3 4020 Linz</address>
+        <address>Voestalpine-Straße 3 4020 Linz</address>
         <country>AT</country>
     </company>
 </companies>
