@@ -280,7 +280,7 @@
         <symbol>NEM</symbol>
         <name>Newmont Corp</name>
         <taxNumber>841611629</taxNumber>
-        <address>6363 South Fiddlers Green Circle, Greenwood Village, CO 80111</address>
+        <address>6900 E Layton Avenue Suite 700 Denver, CO 80237</address>
         <country>US</country>
     </company>
     <company>
@@ -2465,6 +2465,14 @@
         <name>Canadian Pacific Railway Ltd/cn</name>
         <taxNumber>98-0355078</taxNumber>
         <address>7550 Ogden Dale Road S.e., Calgary Alberta, A0</address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>7855</conid>
+        <symbol>GTY</symbol>
+        <name>Getty Realty Corp.</name>
+        <taxNumber>113412575</taxNumber>
+        <address>292 Madison Avenue, 9th Floor, New York, NY 10017-6318, United States</address>
         <country>US</country>
     </company>
     <company>
