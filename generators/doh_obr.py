@@ -23,14 +23,13 @@ def getIbAffiliateInfo(ibEntities, accountId):
                     "address": affiliate.find("address").text,
                     "country": affiliate.find("country").text,
                 }
-            else:
-                return {
-                    "code": "",
-                    "name": "",
-                    "taxNumber": "",
-                    "address": "",
-                    "country": "",
-                }
+    return {
+        "code": "",
+        "name": "",
+        "taxNumber": "",
+        "address": "",
+        "country": "",
+    }
 
 """ Get the IB entity matching account id """
 def getIbEntityCode(ibEntities, accountId):
@@ -62,7 +61,7 @@ def generate(taxpayerConfig,
                 ibCashTransaction.tag == "CashTransaction"
                 and ibCashTransaction.get("dateTime").startswith(str(reportYear))
                 and ibCashTransaction.get("type")
-                in ["Broker Interest Received"]
+                in ["Broker Interest Received", "Broker Fees"]
             ):
                 interest = {
                     "accountId": ibCashTransaction.get("accountId"),
