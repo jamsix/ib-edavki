@@ -1141,6 +1141,7 @@ def main():
                     )
                 dividends.append(dividend)
 
+        missing_dividends_for_witholding_tax = defaultdict(lambda: set())
         for ibCashTransaction in ibCashTransactions:
             if (
                 ibCashTransaction.tag == "CashTransaction"
@@ -1160,14 +1161,10 @@ def main():
                         potentiallyMatchingDividends.append(dividend)
 
                 if len(potentiallyMatchingDividends) == 0:
-                    print(
-                        "Cannot find a matching dividend for %s (%s) of %s."
-                        % (
-                            ibCashTransaction.attrib["description"],
-                            ibCashTransaction.attrib["dateTime"],
-                            ibCashTransaction.attrib["amount"],
-                        )
-                    )
+                    missing_dividends_for_witholding_tax[
+                            ibCashTransaction.attrib["symbol"]].add(
+                                    ibCashTransaction.attrib["transactionID"])
+                    continue
                 elif len(potentiallyMatchingDividends) == 1:
                     closestDividend = potentiallyMatchingDividends[0]
                 else:
@@ -1201,9 +1198,27 @@ def main():
                         ibCashTransaction.attrib["currency"],
                         rates,
                     )
+        if missing_dividends_for_witholding_tax:
+            print(
+                    "=============================================================================\n"
+                    "CRITICAL ERROR IN THE INPUT DATA!\n"
+                    "=============================================================================\n"
+                    "Witholding tax transactions exist, that do not have a corresponding dividend.\n"
+                    "This is either because:\n"
+                    "  * you forgot to include exporting of dividends in the flex form, or\n"
+                    "  * dividend and witholding tax were not processed in the same year\n"
+                    "    and your input data does not cover one of those years\n\n"
+                    "Errors:"
+                  )
+            for symbol, transactionIDs in missing_dividends_for_witholding_tax.items():
+                print("        %s: " % symbol, end="")
+                for id in transactionIDs:
+                    print(" %s" % id, end=", ")
+                print()
+            sys.exit("Aborting")
 
     if len(missingCompanies) > 0:
-        explanation = "companies.xml is missing the following symbols (conids): " 
+        explanation = "companies.xml is missing the following symbols (conids): "
         missing = map(lambda x: x[1] + " (" + x[0] + ")", missingCompanies)
         readme = " - more info: https://github.com/jamsix/ib-edavki#dodatni-podatki-o-podjetju-za-obrazec-doh-div-opcijsko"
         print(explanation + ", ".join(missing) + readme)
