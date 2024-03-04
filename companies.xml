@@ -2539,14 +2539,6 @@
         <country>CH</country>
     </company>
     <company>
-        <conid>29816328</conid>
-        <symbol>IES</symbol>
-        <name>Intesa Sanpaolo SPA</name>
-        <taxNumber>IT11991500015</taxNumber>
-        <address>Piazza San Carlo 156, Torino, 10121</address>
-        <country>CH</country>
-    </company>
-    <company>
         <conid>12723</conid>
         <symbol>TEO</symbol>
         <name>Telecom Argentina SA</name>
@@ -2617,13 +2609,6 @@
         <name>OMV</name>
         <taxNumber>ATU14189108</taxNumber>
         <address>Trabrennstraße 6-8 1020 Dunaj</address>
-        <country>AT</country>
-    </company>
-    <company>
-        <symbol>VAS</symbol>
-        <name>VOESTALPINE</name>
-        <taxNumber>ATU 36905408</taxNumber>
-        <address>voestalpine-Straße 3 4020 Linz</address>
         <country>AT</country>
     </company>
 </companies>
