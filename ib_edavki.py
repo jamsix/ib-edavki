@@ -7,7 +7,7 @@ import glob
 import os
 import re
 import sys
-import urllib.request
+import requests
 import xml.etree.ElementTree
 from collections import defaultdict
 from difflib import SequenceMatcher
@@ -19,6 +19,7 @@ bsRateXmlUrl = "https://www.bsi.si/_data/tecajnice/dtecbs-l.xml"
 normalAssets = ["STK", "FUND"]
 derivateAssets = ["CFD", "FXCFD", "OPT", "FUT", "FOP", "WAR"]
 ignoreAssets = ["CASH", "CMDTY"]
+userAgent = 'ib-edavki'
 
 
 stockSplits = defaultdict(list)
@@ -166,13 +167,14 @@ def main():
         "isResident": taxpayer.find("isResident").text,
     }
 
-    """ Fetch companies.xml from GitHub if it doesn't exist and use the data for Doh-Div.xml """
+    """ Fetch companies.xml from GitHub if it doesn't exist or hasn't been updated for a month and use the data for Doh-Div.xml """
     companies = {}
-    if not os.path.isfile("companies.xml"):
-        urllib.request.urlretrieve(
+    if not os.path.isfile("companies.xml") or datetime.datetime.fromtimestamp(os.path.getctime("companies.xml")) < (datetime.datetime.now() - datetime.timedelta(days=30)):
+        r = requests.get(
             "https://github.com/jamsix/ib-edavki/raw/master/companies.xml",
-            "companies.xml",
+            headers={"User-Agent": userAgent}
         )
+        open("companies.xml", 'wb').write(r.content)
     if os.path.isfile("companies.xml"):
         cmpns = xml.etree.ElementTree.parse("companies.xml").getroot()
         for company in cmpns:
@@ -185,12 +187,13 @@ def main():
             }
             companies[c["symbol"]] = c
 
-    """ Fetch relief-statements.xml from GitHub if it doesn't exist and use the data for Doh-Div.xml """
-    if not os.path.isfile("relief-statements.xml"):
-        urllib.request.urlretrieve(
+    """ Fetch relief-statements.xml from GitHub if it doesn't exist or hasn't been updated for a month and use the data for Doh-Div.xml """
+    if not os.path.isfile("relief-statements.xml")  or datetime.datetime.fromtimestamp(os.path.getctime("relief-statements.xml")) < (datetime.datetime.now() - datetime.timedelta(days=30)):
+        r = requests.get(
             "https://github.com/jamsix/ib-edavki/raw/master/relief-statements.xml",
-            "relief-statements.xml",
+            headers={"User-Agent": userAgent}
         )
+        open("relief-statements.xml", 'wb').write(r.content)
     if os.path.isfile("relief-statements.xml"):
         statements = xml.etree.ElementTree.parse("relief-statements.xml").getroot()
         for statement in statements:
@@ -211,7 +214,8 @@ def main():
     if not os.path.isfile(bsRateXmlFilename):
         for file in glob.glob("bsrate-*.xml"):
             os.remove(file)
-        urllib.request.urlretrieve(bsRateXmlUrl, bsRateXmlFilename)
+        r = requests.get(bsRateXmlUrl, headers={"User-Agent": userAgent})
+        open(bsRateXmlFilename, 'wb').write(r.content)
     bsRateXml = xml.etree.ElementTree.parse(bsRateXmlFilename).getroot()
 
     rates = {}
