@@ -51,7 +51,7 @@ Odpri datoteko **taxpayer.xml** in vnesi svoje davčne podatke.
 1. Ponovi postopek za vsako leto trgovanja, če si trgoval v letih 2016, 2017 in 2018, generiraj 3 reporte, po enega za vsako leto. Za pravilen izračun tujega davka na dividende (Withholding Tax) je potrebno generirati tudi report tekočega leta, saj so nekateri obračuni poročani za nazaj.
 
 **Pozor**:
-Pred 2021 smo slovenske stranke IBKR imele račun na britanski podružnici IBUK. 2021 so bili naši računi večinoma prenešeni na madžarsko podružnico IBCE, v sredini leta 2024 pa iz madžarske na irsko podružnico IBIE. Pri migraciji smo uporabniki obdržali uporabniško ime, toda dobili smo nov IBKR račun (Uxxxxxxx). Zato je pomembno, da pri izdelavi poročila izberemo vse račune, ki so bili aktivni v izbranem letu.
+Pred 2021 smo slovenske stranke IBKR imele račun na britanski podružnici IBUK. 2021 so bili naši računi večinoma preneseni na madžarsko podružnico IBCE, v sredini leta 2024 pa iz madžarske na irsko podružnico IBIE. Pri migraciji smo uporabniki obdržali uporabniško ime, toda dobili smo nov IBKR račun (Uxxxxxxx). Zato je pomembno, da pri izdelavi poročila izberemo vse račune, ki so bili aktivni v izbranem letu.
 
 Na strani **Reports** je desno od številke računa v modrem ovalu gumb **Select Account(s)**. S klikom nanj se odpre meni kjer lahko izbiraš za kateri račun želiš poročila. Privzeto računi, ki niso več aktivni niso prikazani, zato klikni na ikono za filtriranje in označi vse tipe računov: Open, Closed in Migrated. Sedaj izbereš vse račune in klikneš **Continue**. Poleg naslova **Reports** boš nato videl vse številke računov, prav tako pa bodo podatki v poročilu sedaj iz vseh računov.
 
