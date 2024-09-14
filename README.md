@@ -50,7 +50,10 @@ Odpri datoteko **taxpayer.xml** in vnesi svoje davčne podatke.
 1. Poročilo zaženeš s klikom na puščico v desno poleg imena poročila. Tam sedaj spremeniš **Period** na **Custom Date Range** in spodaj ta rang nastaviš na prvi in zadnji dan leta za katerega generiraš (če katerega od datumov ni možno izbrati, beri spodnjo opombo glede Brexita). Potem samo poženi poročilo in dobiš datoteko.
 1. Ponovi postopek za vsako leto trgovanja, če si trgoval v letih 2016, 2017 in 2018, generiraj 3 reporte, po enega za vsako leto. Za pravilen izračun tujega davka na dividende (Withholding Tax) je potrebno generirati tudi report tekočega leta, saj so nekateri obračuni poročani za nazaj.
 
-Ker se je z 2021 zaradi Brexita večino evropskih IBKR računov premaknilo (oziroma realno so se računi ukinili in novi kreirali) iz Londona v eno izmed evropskih podružnic lahko naletiš na težave pri izvozu podatkov. Na strani **Reports** je desno od tega v modrem še številka tvojega računa. Če jo klikneš se odpre meni kjer lahko izbiraš za kateri račun želiš poročila, po defaultu sicer ne kaže ukinjenih računov, vendar če klikneš na filter lahko to spremeniš, da se pokaže tudi ukinjen račun. Potem pa obkljukaš še tistega in klikneš **Continue**. Sedaj boš poleg naslova **Reports** videl dve številki računov, in tudi podatki bodo iz obeh.
+**Pozor**:
+Pred 2021 smo slovenske stranke IBKR imele račun na britanski podružnici IBUK. 2021 so bili naši računi večinoma preneseni na madžarsko podružnico IBCE, v sredini leta 2024 pa iz madžarske na irsko podružnico IBIE. Pri migraciji smo uporabniki obdržali uporabniško ime, toda dobili smo nov IBKR račun (Uxxxxxxx). Zato je pomembno, da pri izdelavi poročila izberemo vse račune, ki so bili aktivni v izbranem letu.
+
+Na strani **Reports** je desno od številke računa v modrem ovalu gumb **Select Account(s)**. S klikom nanj se odpre meni kjer lahko izbiraš za kateri račun želiš poročila. Privzeto računi, ki niso več aktivni niso prikazani, zato klikni na ikono za filtriranje in označi vse tipe računov: Open, Closed in Migrated. Sedaj izbereš vse račune in klikneš **Continue**. Poleg naslova **Reports** boš nato videl vse številke računov, prav tako pa bodo podatki v poročilu sedaj iz vseh računov.
 
 ### Konverzija IB poročila v popisne liste primerne za uvoz v eDavke
 
