@@ -1,12 +1,53 @@
 <companies>
-  <company>
-      <conid>389541685</conid>
-      <symbol>005222141</symbol>
-      <name> ALLIANZ GLOBAL INV (LU) ALLIANZ EURO CASH "A" (EUR) INC </name>
-      <address> State Street Bank International GmbH - Luxembourg Branch </address>
-      <country>LU</country>
-      <taxNumber>DE 815 001 893</taxNumber>
-  </company>
+    <company>
+        <conid>271826666</conid>
+        <symbol>FUSD</symbol>
+        <name>Fidelity US Quality Income-Inc</name>
+        <taxNumber></taxNumber>
+        <address>Fidelity International, Georges Quay House, 43 Townsend Street, Dublin 2,
+            Ireland</address>
+        <country>IE</country>
+    </company>
+    <company>
+        <conid>279156979</conid>
+        <symbol>QDVX</symbol>
+        <name>iShares MSCI Europe Quality Dividend UCITS ETF</name>
+        <taxNumber></taxNumber>
+        <address>1st Floor, 2 Ballsbridge Park, Ballsbridge, Dublin 4, D04 YW83, Ireland</address>
+        <country>IE</country>
+    </company>
+    <company>
+        <conid>407387241</conid>
+        <symbol>5MVW</symbol>
+        <name>iShares MSCI WD Energy-USD D</name>
+        <taxNumber>IE00BJ5JP105</taxNumber>
+        <address>1st Floor, 2 Ballsbridge Park, Ballsbridge, Dublin 4, D04 YW83, Ireland</address>
+        <country>IE</country>
+    </company>
+    <company>
+        <conid>32596680</conid>
+        <symbol>AMD</symbol>
+        <name>Advanced Micro Devices</name>
+        <taxNumber>941692300</taxNumber>
+        <address>2485 Augustine Drive, Santa Clara, CA 95054, USA</address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>13104788</conid>
+        <symbol>NVD</symbol>
+        <name>NVIDIA Corporation</name>
+        <taxNumber>943177549</taxNumber>
+        <address>2788 San Tomas Expressway, Santa Clara, CA 95051, USA</address>
+        <country>US</country>
+    </company>
+    <company>
+        <conid>389541685</conid>
+        <symbol>005222141</symbol>
+        <name> ALLIANZ GLOBAL INV (LU) ALLIANZ EURO CASH "A" (EUR) INC </name>
+        <address> State Street Bank International GmbH - Luxembourg Branch </address>
+        <country>LU</country>
+        <taxNumber>DE 815 001 893</taxNumber>
+    </company>
     <company>
         <conid>13013300</conid>
         <symbol>APC</symbol>
@@ -32,7 +73,7 @@
         <country>US</country>
     </company>
     <company>
-    <conid>10098</conid>
+        <conid>10098</conid>
         <symbol>BAC</symbol>
         <name>Bank of America Corporation</name>
         <taxNumber>941687665</taxNumber>
@@ -93,7 +134,7 @@
         <country>US</country>
     </company>
     <company>
-      <conid>12973838</conid>
+        <conid>12973838</conid>
         <symbol>JNJ</symbol>
         <name>Johnson &amp; Johnson</name>
         <taxNumber>221024240</taxNumber>
@@ -168,7 +209,8 @@
         <symbol>NTES</symbol>
         <name>NetEase Inc</name>
         <taxNumber>64110W102</taxNumber>
-        <address>Zhongguancun Software Park (Phase II), No. 10 Xibeiwang East Road, Haidian District, Beijing, 100193</address>
+        <address>Zhongguancun Software Park (Phase II), No. 10 Xibeiwang East Road, Haidian
+            District, Beijing, 100193</address>
         <country>CN</country>
     </company>
     <company>
@@ -363,7 +405,8 @@
         <symbol>ERUS.ESC</symbol>
         <name>iShares MSCI Russia ETF</name>
         <taxNumber>8227552</taxNumber>
-        <address>BlackRock Asset Management Ireland - ETF 1st Floor 2 Ballsbridge Park Dublin 4 Dublin D04 YW83 Ireland</address>
+        <address>BlackRock Asset Management Ireland - ETF 1st Floor 2 Ballsbridge Park Dublin 4
+            Dublin D04 YW83 Ireland</address>
         <country>IE</country>
     </company>
     <company>
@@ -1043,7 +1086,7 @@
         <address>400 North Fifth Street, Ms8695, Phoenix, AZ 85004</address>
         <country>US</country>
     </company>
-       <company>
+    <company>
         <conid>NVDA</conid>
         <symbol>NVDA</symbol>
         <name>NVIDIA</name>
@@ -1072,10 +1115,11 @@
         <symbol>INRG</symbol>
         <name>ISHARES GLOBAL CLEAN ENERGY</name>
         <taxNumber>8227552</taxNumber>
-        <address>BlackRock Asset Management Ireland - ETF 1st Floor 2 Ballsbridge Park Dublin 4 Dublin D04 YW83 Ireland</address>
+        <address>BlackRock Asset Management Ireland - ETF 1st Floor 2 Ballsbridge Park Dublin 4
+            Dublin D04 YW83 Ireland</address>
         <country>IE</country>
     </company>
-        <company>
+    <company>
         <conid>385549212</conid>
         <symbol>IGLE</symbol>
         <name>BlackRock Asset Management Ireland Limited (ISHARES GLOBAL GOV BND-EURHD)</name>
@@ -1094,7 +1138,8 @@
     <company>
         <conid>74991935</conid>
         <symbol>EXVM</symbol>
-        <name>BlackRock Asset Management Ireland Limited (iShares eb.rexx Government Germany 0-1yr UCITS ETF)</name>
+        <name>BlackRock Asset Management Ireland Limited (iShares eb.rexx Government Germany 0-1yr
+            UCITS ETF)</name>
         <taxNumber>8227552</taxNumber>
         <address>1st floor, 2 Ballsbridge Park, Ballsbridge Dublin 4, Dublin D04 YW83</address>
         <country>IE</country>
@@ -1168,7 +1213,8 @@
         <symbol>FRES</symbol>
         <name>Fresnillo PLC</name>
         <taxNumber>MFR971117KU1</taxNumber>
-        <address>Calz. Legaria No. 549, Torre 2, Piso 11 10 de Abril, Miguel Hidalgo México, CIUDAD DE MEXICO, 11250 Mexico</address>
+        <address>Calz. Legaria No. 549, Torre 2, Piso 11 10 de Abril, Miguel Hidalgo México, CIUDAD
+            DE MEXICO, 11250 Mexico</address>
         <country>MX</country>
     </company>
     <company>
@@ -1435,7 +1481,7 @@
         <symbol>SII</symbol>
         <name>Sprott Inc.</name>
         <taxNumber>820056216</taxNumber>
-        <address>Royal Bank Plaza, South Tower, 200 Bay Street Suite 2600, Toronto, Ontario  M5J 2J1</address>
+        <address>Royal Bank Plaza, South Tower, 200 Bay Street Suite 2600, Toronto, Ontario M5J 2J1</address>
         <country>CA</country>
     </company>
     <company>
@@ -1587,7 +1633,8 @@
         <symbol>EWL</symbol>
         <name>iShares MSCI Switzerland ETF</name>
         <taxNumber>IE8227552C</taxNumber>
-        <address>BlackRock Asset Management Ireland - ETF 1st Floor 2 Ballsbridge Park Dublin 4 Dublin D04 YW83 Ireland</address>
+        <address>BlackRock Asset Management Ireland - ETF 1st Floor 2 Ballsbridge Park Dublin 4
+            Dublin D04 YW83 Ireland</address>
         <country>IE</country>
     </company>
     <company>
@@ -1619,7 +1666,8 @@
         <symbol>SBSW</symbol>
         <name>Sibanye Stillwater Ltd</name>
         <taxNumber>9723 182 169</taxNumber>
-        <address>Ground Floor, Bridgeview House, Constantia Office Park, Cnr 14th Avenue &amp; Hendrik Potgieter Road, Lakeview Ave, Weltevredenpark, 1709</address>
+        <address>Ground Floor, Bridgeview House, Constantia Office Park, Cnr 14th Avenue &amp;
+            Hendrik Potgieter Road, Lakeview Ave, Weltevredenpark, 1709</address>
         <country>ZA</country>
     </company>
     <company>
@@ -1819,7 +1867,8 @@
         <symbol>ITUB</symbol>
         <name>Itau Unibanco SA</name>
         <taxNumber>60701190/0001-04</taxNumber>
-        <address>Praça Alfredo Egydio de Souza Aranha, n. 100, Torre Olavo Setúbal, São Paulo/SP, CEP 04344-902</address>
+        <address>Praça Alfredo Egydio de Souza Aranha, n. 100, Torre Olavo Setúbal, São Paulo/SP,
+            CEP 04344-902</address>
         <country>BR</country>
     </company>
     <company>
@@ -1867,7 +1916,8 @@
         <symbol>TKC</symbol>
         <name>Turkcell İletişim Hizmetleri AS</name>
         <taxNumber>8770013406</taxNumber>
-        <address>Turkcell Küçükyalı Plaza, Aydınevler Mahallesi İnönü Caddesi No:20 Küçükyalı Ofispark, İnönü Cd. No:20 D:B Blok, 34854 Maltepe/İstanbul</address>
+        <address>Turkcell Küçükyalı Plaza, Aydınevler Mahallesi İnönü Caddesi No:20 Küçükyalı
+            Ofispark, İnönü Cd. No:20 D:B Blok, 34854 Maltepe/İstanbul</address>
         <country>TR</country>
     </company>
     <company>
@@ -1931,7 +1981,8 @@
         <symbol>EWP</symbol>
         <name>ISHARES MSCI SPAIN ETF</name>
         <taxNumber>8227552</taxNumber>
-        <address>BlackRock Asset Management Ireland - ETF 1st Floor 2 Ballsbridge Park Dublin 4 Dublin D04 YW83 Ireland</address>
+        <address>BlackRock Asset Management Ireland - ETF 1st Floor 2 Ballsbridge Park Dublin 4
+            Dublin D04 YW83 Ireland</address>
         <country>IE</country>
     </company>
     <company>
@@ -1971,7 +2022,8 @@
         <symbol>EWI</symbol>
         <name>ISHARES MSCI ITALY ETF</name>
         <taxNumber>8227552</taxNumber>
-        <address>BlackRock Asset Management Ireland - ETF 1st Floor 2 Ballsbridge Park Dublin 4 Dublin D04 YW83 Ireland</address>
+        <address>BlackRock Asset Management Ireland - ETF 1st Floor 2 Ballsbridge Park Dublin 4
+            Dublin D04 YW83 Ireland</address>
         <country>IE</country>
     </company>
     <company>
@@ -2527,7 +2579,8 @@
         <symbol>DRD</symbol>
         <name>DRDGOLD Limited</name>
         <taxNumber>4210110070</taxNumber>
-        <address>Constantia Office Park, Cnr 14th Avenue and Hendrik Potgieter Road, Cycad House, Building 17, Ground Floor, Weltevreden Park 1709, Johannesburg</address>
+        <address>Constantia Office Park, Cnr 14th Avenue and Hendrik Potgieter Road, Cycad House,
+            Building 17, Ground Floor, Weltevreden Park 1709, Johannesburg</address>
         <country>ZA</country>
     </company>
     <company>
