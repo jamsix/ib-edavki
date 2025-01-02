@@ -2666,4 +2666,18 @@
         <address>Voestalpine-Straße 3 4020 Linz</address>
         <country>AT</country>
     </company>
+    <company>
+        <symbol>GOOG</symbol>
+        <name>Alphabet Inc.</name>
+        <taxNumber>61-1767919</taxNumber>
+        <address>1600 Amphitheatre Parkway, Mountain View, CA 94043</address>
+        <country>US</country>
+    </company>  
+    <company>
+        <symbol>GOOGL</symbol>
+        <name>Alphabet Inc.</name>
+        <taxNumber>61-1767919</taxNumber>
+        <address>1600 Amphitheatre Parkway, Mountain View, CA 94043</address>
+        <country>US</country>
+    </company>          
 </companies>
