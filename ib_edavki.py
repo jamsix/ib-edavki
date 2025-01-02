@@ -169,7 +169,9 @@ def main():
 
     """ Fetch companies.xml from GitHub if it doesn't exist or hasn't been updated for a month and use the data for Doh-Div.xml """
     companies = {}
-    if not os.path.isfile("companies.xml") or datetime.datetime.fromtimestamp(os.path.getctime("companies.xml")) < (datetime.datetime.now() - datetime.timedelta(days=30)):
+
+    # ZIGA: Is check for old file really needed? 
+    if not os.path.isfile("companies.xml"): # or datetime.datetime.fromtimestamp(os.path.getctime("companies.xml")) < (datetime.datetime.now() - datetime.timedelta(days=30)):
         r = requests.get(
             "https://github.com/jamsix/ib-edavki/raw/master/companies.xml",
             headers={"User-Agent": userAgent}
