@@ -2672,12 +2672,26 @@
         <taxNumber>61-1767919</taxNumber>
         <address>1600 Amphitheatre Parkway, Mountain View, CA 94043</address>
         <country>US</country>
-    </company>  
+    </company>
     <company>
         <symbol>GOOGL</symbol>
         <name>Alphabet Inc.</name>
         <taxNumber>61-1767919</taxNumber>
         <address>1600 Amphitheatre Parkway, Mountain View, CA 94043</address>
         <country>US</country>
-    </company>          
+    </company>
+    <company>
+        <symbol>KRK</symbol>
+        <name>Krka d. d.</name>
+        <taxNumber>SI82646716</taxNumber>
+        <address>Šmarješka cesta 6, 8501 Novo mesto</address>
+        <country>SI</country>
+    </company>
+    <company>
+        <symbol>NLB</symbol>
+        <name>NLB d.d.</name>
+        <taxNumber>SI91132550</taxNumber>
+        <address>Trg republike 2, 1000 Ljubljana</address>
+        <country>SI</country>
+    </company>
 </companies>
