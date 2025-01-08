@@ -2,9 +2,12 @@ import urllib.request
 import sys
 import xml.etree.ElementTree
 import os.path
+from difflib import SequenceMatcher
 from xml.dom import minidom
 
 """ Fetch ib-affiliates.xml from GitHub if it doesn't exist and use the data for Doh-Obr.xml """
+
+
 def getIbAffiliateInfo(ibEntities, accountId):
     ibAffiliateCode = getIbEntityCode(ibEntities, accountId)
     if not os.path.isfile("ib-affiliates.xml"):
@@ -31,31 +34,43 @@ def getIbAffiliateInfo(ibEntities, accountId):
         "country": "",
     }
 
+
 """ Get the IB entity matching account id """
+
+
 def getIbEntityCode(ibEntities, accountId):
     for ibEntity in ibEntities:
-        if (ibEntity["accountId"] == accountId):
+        if ibEntity["accountId"] == accountId:
             return ibEntity["ibEntity"]
-    
-    print("IB Entity for account "
-        + accountId + " "
+
+    print(
+        "IB Entity for account "
+        + accountId
+        + " "
         + "not found in flex statement. "
-        + "Check your report settings.")
-    
+        + "Check your report settings."
+    )
+
     return None
 
+
 """ Get interest from IB XML """
-def generate(taxpayerConfig,
-             ibEntities,
-             ibCashTransactionsList,
-             rates,
-             reportYear,
-             test,
-             testYearDiff):
+
+
+def generate(
+    taxpayerConfig,
+    ibEntities,
+    ibCashTransactionsList,
+    rates,
+    reportYear,
+    test,
+    testYearDiff,
+):
     interests = []
     for ibCashTransactions in ibCashTransactionsList:
         if ibCashTransactions is None:
             continue
+
         for ibCashTransaction in ibCashTransactions:
             if (
                 ibCashTransaction.tag == "CashTransaction"
@@ -69,38 +84,96 @@ def generate(taxpayerConfig,
                     "amount": float(ibCashTransaction.get("amount")),
                     "description": ibCashTransaction.get("description"),
                     "dateTime": ibCashTransaction.get("dateTime"),
+                    "transactionID": int(ibCashTransaction.get("transactionID")),
                     "tax": 0,
-                    "taxEUR": 0,
                 }
-
-                """ Convert amount to EUR """
-                if interest["currency"] == "EUR":
-                    interest["amountEUR"] = interest["amount"]
-                else:
-                    date = interest["dateTime"][0:8]
-                    currency = interest["currency"]
-                    if date in rates and currency in rates[date]:
-                        rate = float(rates[date][currency])
-                    else:
-                        for i in range(0, 6):
-                            date = str(int(date) - 1)
-                            if date in rates and currency in rates[date]:
-                                rate = float(rates[date][currency])
-                                print(
-                                    "There is no exchange rate for "
-                                    + str(interest["dateTime"][0:8])
-                                    + ", using "
-                                    + str(date)
-                                )
-                                break
-                            if i == 6:
-                                sys.exit(
-                                    "Error: There is no exchange rate for " + str(date)
-                                )
-                    interest["amountEUR"] = interest["amount"] / rate
                 interests.append(interest)
 
-    """ Merge multiple dividends or payments in lieu of dividents on the same day from the same company into a single entry """
+        for ibCashTransaction in ibCashTransactions:
+            if (
+                ibCashTransaction.tag == "CashTransaction"
+                and ibCashTransaction.attrib["dateTime"].startswith(str(reportYear))
+                and ibCashTransaction.attrib["type"] == "Withholding Tax"
+                and ibCashTransaction.attrib["conid"] == ""
+            ):
+                potentiallyMatchingInterests = []
+                for interest in interests:
+                    if (
+                        interest["tax"] == 0
+                        and interest["dateTime"][0:8]
+                        == ibCashTransaction.attrib["dateTime"][0:8]
+                        and interest["currency"] == ibCashTransaction.attrib["currency"]
+                        and int(interest["transactionID"])
+                        < int(ibCashTransaction.attrib["transactionID"])
+                        and interest["amount"]
+                        * float(ibCashTransaction.attrib["amount"])
+                        < 0
+                    ):
+                        potentiallyMatchingInterests.append(interest)
+
+                if len(potentiallyMatchingInterests) == 0:
+                    print(
+                        "WARNING: Cannot find a matching interest for %s - %s."
+                        % (
+                            ibCashTransaction.attrib["description"],
+                            ibCashTransaction.attrib["amount"],
+                        )
+                    )
+                    continue
+                elif len(potentiallyMatchingInterests) == 1:
+                    closestInterest = potentiallyMatchingInterests[0]
+                else:
+                    """There are multiple interests that potentially match the given
+                    tax. Unfortunately there is no reference that would point the
+                    tax entry to an interests entry so we employ a simple string
+                    matching trick and find the interests with a description that is
+                    the closest to the tax description.
+                    """
+                    closestInterest = potentiallyMatchingInterests[0]
+                    bestMatchLen = 0
+                    for interest in potentiallyMatchingInterests:
+                        taxDescription = ibCashTransaction.attrib["description"]
+                        interestDescription = interest["description"]
+                        match = SequenceMatcher(
+                            None, taxDescription, interestDescription
+                        ).find_longest_match(
+                            0, len(taxDescription), 0, len(interestDescription)
+                        )
+                        if match.size > bestMatchLen:
+                            bestMatchLen = match.size
+                            closestInterest = interest
+
+                closestInterestTax = -float(ibCashTransaction.attrib["amount"])
+                closestInterest["tax"] += closestInterestTax
+
+    """ Convert to EUR """
+    for interest in interests:
+        if interest["currency"] == "EUR":
+            interest["amountEUR"] = interest["amount"]
+            interest["taxEUR"] = interest["tax"]
+        else:
+            date = interest["dateTime"][0:8]
+            currency = interest["currency"]
+            if date in rates and currency in rates[date]:
+                rate = float(rates[date][currency])
+            else:
+                for i in range(0, 6):
+                    date = str(int(date) - 1)
+                    if date in rates and currency in rates[date]:
+                        rate = float(rates[date][currency])
+                        print(
+                            "There is no exchange rate for "
+                            + str(interest["dateTime"][0:8])
+                            + ", using "
+                            + str(date)
+                        )
+                        break
+                    if i == 6:
+                        sys.exit("Error: There is no exchange rate for " + str(date))
+            interest["amountEUR"] = interest["amount"] / rate
+            interest["taxEUR"] = interest["tax"] / rate
+
+    """ Merge multiple interests on the same day from the same company into a single entry """
     mergedInterests = []
     for interest in interests:
         merged = False
@@ -156,16 +229,13 @@ def generate(taxpayerConfig,
         xml.etree.ElementTree.SubElement(Doh_Obr, "DocumentWorkflowID").text = "I"
     else:
         xml.etree.ElementTree.SubElement(Doh_Obr, "DocumentWorkflowID").text = "O"
-    xml.etree.ElementTree.SubElement(Doh_Obr, "Email").text = taxpayerConfig[
-        "email"
-    ]
+    xml.etree.ElementTree.SubElement(Doh_Obr, "Email").text = taxpayerConfig["email"]
     xml.etree.ElementTree.SubElement(Doh_Obr, "TelephoneNumber").text = taxpayerConfig[
         "telephoneNumber"
     ]
-    xml.etree.ElementTree.SubElement(Doh_Obr, "ResidentOfRepublicOfSlovenia"
-    ).text = taxpayerConfig[
-        "isResident"
-    ]
+    xml.etree.ElementTree.SubElement(
+        Doh_Obr, "ResidentOfRepublicOfSlovenia"
+    ).text = taxpayerConfig["isResident"]
     xml.etree.ElementTree.SubElement(Doh_Obr, "Country").text = taxpayerConfig[
         "residentCountry"
     ]
