@@ -168,8 +168,8 @@ def main():
     }
 
     """ Fetch companies.xml from GitHub if it doesn't exist locally or hasn't been updated for a week, and merge it with the local copy """
-    companies = {}
-    if not os.path.isfile("companies.xml") or datetime.datetime.fromtimestamp(os.path.getctime("companies.xml")) < (datetime.datetime.now() - datetime.timedelta(weeks=1)):
+    companies = []
+    if not os.path.isfile("companies.xml") or datetime.datetime.fromtimestamp(os.path.getctime("companies.xml")) < (datetime.datetime.now() - datetime.timedelta(seconds=1)):
         r = requests.get(
             "https://github.com/jamsix/ib-edavki/raw/master/companies.xml",
             headers={"User-Agent": userAgent}
@@ -185,7 +185,17 @@ def main():
             }
             if company.find("conid") is not None:
                 c["conid"] = company.find("conid").text
-            companies[c["symbol"]] = c
+                for x in companies:
+                    if "conid" in x and x["conid"] == c["conid"]:
+                        break
+                else:
+                    companies.append(c)
+                continue
+            for x in companies:
+                if x["symbol"] == c["symbol"]:
+                    break
+            else:
+                companies.append(c)
     if os.path.isfile("companies.xml"):
         cmpns = xml.etree.ElementTree.parse("companies.xml").getroot()
         for company in cmpns:
@@ -198,18 +208,28 @@ def main():
             }
             if company.find("conid") is not None:
                 c["conid"] = company.find("conid").text
-            companies[c["symbol"]] = c
-    companies = dict(sorted(companies.items()))
+                for x in companies:
+                    if "conid" in x and x["conid"] == c["conid"]:
+                        break
+                else:
+                    companies.append(c)
+                continue
+            for x in companies:
+                if x["symbol"] == c["symbol"]:
+                    break
+            else:
+                companies.append(c)
+    companies.sort(key=lambda x: x["symbol"])
     cs = xml.etree.ElementTree.Element("companies")
-    for symbol in companies:
+    for company in companies:
         c = xml.etree.ElementTree.SubElement(cs, "company")
-        if "conid" in companies[symbol]:
-            xml.etree.ElementTree.SubElement(c, "conid").text = companies[symbol]["conid"]
-        xml.etree.ElementTree.SubElement(c, "symbol").text = companies[symbol]["symbol"]
-        xml.etree.ElementTree.SubElement(c, "name").text = companies[symbol]["name"]
-        xml.etree.ElementTree.SubElement(c, "taxNumber").text = companies[symbol]["taxNumber"]
-        xml.etree.ElementTree.SubElement(c, "address").text = companies[symbol]["address"]
-        xml.etree.ElementTree.SubElement(c, "country").text = companies[symbol]["country"]
+        if "conid" in company:
+            xml.etree.ElementTree.SubElement(c, "conid").text = company["conid"]
+        xml.etree.ElementTree.SubElement(c, "symbol").text = company["symbol"]
+        xml.etree.ElementTree.SubElement(c, "name").text = company["name"]
+        xml.etree.ElementTree.SubElement(c, "taxNumber").text = company["taxNumber"]
+        xml.etree.ElementTree.SubElement(c, "address").text = company["address"]
+        xml.etree.ElementTree.SubElement(c, "country").text = company["country"]
     tree = xml.etree.ElementTree.ElementTree(cs)
     xml.etree.ElementTree.indent(tree)
     tree.write("companies.xml")
@@ -224,9 +244,9 @@ def main():
     if os.path.isfile("relief-statements.xml"):
         statements = xml.etree.ElementTree.parse("relief-statements.xml").getroot()
         for statement in statements:
-            for symbol in companies:
-                if companies[symbol]["country"] == statement.find("country").text:
-                    companies[symbol]["reliefStatement"] = statement.find(
+            for company in companies:
+                if company["country"] == statement.find("country").text:
+                    company["reliefStatement"] = statement.find(
                         "statement"
                     ).text
 
@@ -1151,15 +1171,22 @@ def main():
                 if dividend["securityID"] == "":
                     dividend["securityID"] = dividend["conid"]
 
-                if companies and dividend["symbol"] in companies:
-                    dividend["name"] = companies[dividend["symbol"]]["name"]
-                    dividend["taxNumber"] = companies[dividend["symbol"]]["taxNumber"]
-                    dividend["address"] = companies[dividend["symbol"]]["address"]
-                    dividend["country"] = companies[dividend["symbol"]]["country"]
-                    if "reliefStatement" in companies[dividend["symbol"]]:
-                        dividend["reliefStatement"] = companies[dividend["symbol"]][
-                            "reliefStatement"
-                        ]
+                company = None
+                for x in companies:
+                    if "conid" in x and x["conid"] == dividend["conid"]:
+                        company = x
+                else:
+                    for x in companies:
+                        if x["symbol"] == dividend["symbol"]:
+                            company = x
+
+                if company is not None:
+                    dividend["name"] = company["name"]
+                    dividend["taxNumber"] = company["taxNumber"]
+                    dividend["address"] = company["address"]
+                    dividend["country"] = company["country"]
+                    if "reliefStatement" in company:
+                        dividend["reliefStatement"] = company["reliefStatement"]
                 else:
                     missingCompanies.add((dividend["conid"], dividend["symbol"]))
 
