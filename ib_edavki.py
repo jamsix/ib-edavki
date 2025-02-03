@@ -167,14 +167,25 @@ def main():
         "isResident": taxpayer.find("isResident").text,
     }
 
-    """ Fetch companies.xml from GitHub if it doesn't exist or hasn't been updated for a month and use the data for Doh-Div.xml """
+    """ Fetch companies.xml from GitHub if it doesn't exist locally or hasn't been updated for a week, and merge it with the local copy """
     companies = {}
-    if not os.path.isfile("companies.xml") or datetime.datetime.fromtimestamp(os.path.getctime("companies.xml")) < (datetime.datetime.now() - datetime.timedelta(days=30)):
+    if not os.path.isfile("companies.xml") or datetime.datetime.fromtimestamp(os.path.getctime("companies.xml")) < (datetime.datetime.now() - datetime.timedelta(weeks=1)):
         r = requests.get(
             "https://github.com/jamsix/ib-edavki/raw/master/companies.xml",
             headers={"User-Agent": userAgent}
         )
-        open("companies.xml", 'wb').write(r.content)
+        cmpns = xml.etree.ElementTree.ElementTree(xml.etree.ElementTree.fromstring(r.content)).getroot()
+        for company in cmpns:
+            c = {
+                "symbol": company.find("symbol").text,
+                "name": company.find("name").text,
+                "taxNumber": company.find("taxNumber").text,
+                "address": company.find("address").text,
+                "country": company.find("country").text,
+            }
+            if company.find("conid") is not None:
+                c["conid"] = company.find("conid").text
+            companies[c["symbol"]] = c
     if os.path.isfile("companies.xml"):
         cmpns = xml.etree.ElementTree.parse("companies.xml").getroot()
         for company in cmpns:
@@ -185,7 +196,23 @@ def main():
                 "address": company.find("address").text,
                 "country": company.find("country").text,
             }
+            if company.find("conid") is not None:
+                c["conid"] = company.find("conid").text
             companies[c["symbol"]] = c
+    companies = dict(sorted(companies.items()))
+    cs = xml.etree.ElementTree.Element("companies")
+    for symbol in companies:
+        c = xml.etree.ElementTree.SubElement(cs, "company")
+        if "conid" in companies[symbol]:
+            xml.etree.ElementTree.SubElement(c, "conid").text = companies[symbol]["conid"]
+        xml.etree.ElementTree.SubElement(c, "symbol").text = companies[symbol]["symbol"]
+        xml.etree.ElementTree.SubElement(c, "name").text = companies[symbol]["name"]
+        xml.etree.ElementTree.SubElement(c, "taxNumber").text = companies[symbol]["taxNumber"]
+        xml.etree.ElementTree.SubElement(c, "address").text = companies[symbol]["address"]
+        xml.etree.ElementTree.SubElement(c, "country").text = companies[symbol]["country"]
+    tree = xml.etree.ElementTree.ElementTree(cs)
+    xml.etree.ElementTree.indent(tree)
+    tree.write("companies.xml")
 
     """ Fetch relief-statements.xml from GitHub if it doesn't exist or hasn't been updated for a month and use the data for Doh-Div.xml """
     if not os.path.isfile("relief-statements.xml")  or datetime.datetime.fromtimestamp(os.path.getctime("relief-statements.xml")) < (datetime.datetime.now() - datetime.timedelta(days=30)):
