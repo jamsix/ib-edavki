@@ -1019,6 +1019,14 @@
     <country>US</country>
   </company>
   <company>
+    <conid>909054</conid>
+    <symbol>GSK</symbol>
+    <name>GSK Plc</name>
+    <taxNumber>GB239820839</taxNumber>
+    <address>980 Great West Rd, London TW8 9GS</address>
+    <country>GB</country>
+  </company>
+  <company>
     <conid>574757089</conid>
     <symbol>GSK</symbol>
     <name>GSK Plc</name>
@@ -1284,14 +1292,6 @@
   <company>
     <conid>117901235</conid>
     <symbol>K2LU</symbol>
-    <name>ARA LOGOS LOGISTICS TRUST</name>
-    <taxNumber>200919331H</taxNumber>
-    <address>50 Collyer Quay, #05-05 OUE Bayfront, Singapore 049321</address>
-    <country>SG</country>
-  </company>
-  <company>
-    <conid>117901235</conid>
-    <symbol>K2LU.OLD</symbol>
     <name>ARA LOGOS LOGISTICS TRUST</name>
     <taxNumber>200919331H</taxNumber>
     <address>50 Collyer Quay, #05-05 OUE Bayfront, Singapore 049321</address>
@@ -1698,6 +1698,14 @@
     <country>CN</country>
   </company>
   <company>
+    <conid>9541698</conid>
+    <symbol>NTES</symbol>
+    <name>NetEase Inc</name>
+    <taxNumber>64110W102</taxNumber>
+    <address>Zhongguancun Software Park (Phase II), No. 10 Xibeiwang East Road, Haidian District, Beijing, 100193</address>
+    <country>CN</country>
+  </company>
+  <company>
     <conid>10557</conid>
     <symbol>NUE</symbol>
     <name>Nucor Corp</name>
@@ -1817,6 +1825,14 @@
     <taxNumber>147799625</taxNumber>
     <address>Porscheplatz 1, D-70435 Stuttgart</address>
     <country>DE</country>
+  </company>
+  <company>
+    <conid>4816190</conid>
+    <symbol>PAAS</symbol>
+    <name>Pan American Silver Corp.</name>
+    <taxNumber>1147717608</taxNumber>
+    <address>1500-625 HOWE STREET VANCOUVER BC CANADA V6C 2T6</address>
+    <country>CA</country>
   </company>
   <company>
     <conid>14893065</conid>
@@ -1974,6 +1990,14 @@
     <taxNumber>951778500</taxNumber>
     <address>870 Winter Street, Waltham, MA 02451-1449</address>
     <country>US</country>
+  </company>
+  <company>
+    <conid>29612249</conid>
+    <symbol>SAN</symbol>
+    <name>Sanofi SA</name>
+    <taxNumber>FR88395030844</taxNumber>
+    <address>46 Av. de la Grande Arm&#233;e, 75017 Paris</address>
+    <country>FR</country>
   </company>
   <company>
     <conid>12442</conid>
@@ -2258,14 +2282,6 @@
     <country>US</country>
   </company>
   <company>
-    <conid>55279376</conid>
-    <symbol>TCEHY</symbol>
-    <name>Tencent Holdings Ltd</name>
-    <taxNumber>88032Q10</taxNumber>
-    <address>Kejizhongyi Avenue, Hi-tech Park, Nanshan District, Shenzhen, 518057</address>
-    <country>CN</country>
-  </company>
-  <company>
     <symbol>TD</symbol>
     <name>Toronto Dominion Bank</name>
     <taxNumber>135640479</taxNumber>
@@ -2325,14 +2341,6 @@
     <taxNumber>042209186</taxNumber>
     <address>168 Third Avenue Waltham Massachusetts 02451</address>
     <country>US</country>
-  </company>
-  <company>
-    <conid>30314159</conid>
-    <symbol>TNE5d</symbol>
-    <name>Telefonica SA</name>
-    <taxNumber>A28015865</taxNumber>
-    <address>The Comunicacion round 34, 28050 Madrid</address>
-    <country>ES</country>
   </company>
   <company>
     <symbol>TOT</symbol>
