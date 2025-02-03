@@ -169,12 +169,8 @@ def main():
 
     """ Fetch companies.xml from GitHub if it doesn't exist locally or hasn't been updated for a week, and merge it with the local copy """
     companies = []
-    if not os.path.isfile("companies.xml") or datetime.datetime.fromtimestamp(os.path.getctime("companies.xml")) < (datetime.datetime.now() - datetime.timedelta(seconds=1)):
-        r = requests.get(
-            "https://github.com/jamsix/ib-edavki/raw/master/companies.xml",
-            headers={"User-Agent": userAgent}
-        )
-        cmpns = xml.etree.ElementTree.ElementTree(xml.etree.ElementTree.fromstring(r.content)).getroot()
+    if os.path.isfile("companies.xml"):
+        cmpns = xml.etree.ElementTree.parse("companies.xml").getroot()
         for company in cmpns:
             c = {
                 "symbol": company.find("symbol").text,
@@ -196,8 +192,12 @@ def main():
                     break
             else:
                 companies.append(c)
-    if os.path.isfile("companies.xml"):
-        cmpns = xml.etree.ElementTree.parse("companies.xml").getroot()
+    if not os.path.isfile("companies.xml") or datetime.datetime.fromtimestamp(os.path.getctime("companies.xml")) < (datetime.datetime.now() - datetime.timedelta(seconds=1)):
+        r = requests.get(
+            "https://github.com/jamsix/ib-edavki/raw/master/companies.xml",
+            headers={"User-Agent": userAgent}
+        )
+        cmpns = xml.etree.ElementTree.ElementTree(xml.etree.ElementTree.fromstring(r.content)).getroot()
         for company in cmpns:
             c = {
                 "symbol": company.find("symbol").text,
