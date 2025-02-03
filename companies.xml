@@ -2708,4 +2708,11 @@
         <address>No. 1, Zijin Avenue, Shanghang County, Longyan, Fujian, 364200</address>
         <country>CN</country>
     </company>
+    <company>
+        <symbol>META</symbol>
+        <name>Meta Platforms, Inc.</name>
+        <taxNumber>20-1665019</taxNumber>
+        <address>1 META WAY, MENLO PARK, CA, 94025</address>
+        <country>US</country>
+    </company>
 </companies>
