@@ -192,7 +192,7 @@ def main():
                     break
             else:
                 companies.append(c)
-    if not os.path.isfile("companies.xml") or datetime.datetime.fromtimestamp(os.path.getctime("companies.xml")) < (datetime.datetime.now() - datetime.timedelta(seconds=1)):
+    if not os.path.isfile("companies.xml") or datetime.datetime.fromtimestamp(os.path.getctime("companies.xml")) < (datetime.datetime.now() - datetime.timedelta(weeks=1)):
         r = requests.get(
             "https://github.com/jamsix/ib-edavki/raw/master/companies.xml",
             headers={"User-Agent": userAgent}
