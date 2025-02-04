@@ -169,36 +169,17 @@ def main():
 
     """ Fetch companies.xml from GitHub if it doesn't exist locally or hasn't been updated for a week, and merge it with the local copy """
     companies = []
+    companiesXmls = []
     if os.path.isfile("companies.xml"):
-        cmpns = xml.etree.ElementTree.parse("companies.xml").getroot()
-        for company in cmpns:
-            c = {
-                "symbol": company.find("symbol").text,
-                "name": company.find("name").text,
-                "taxNumber": company.find("taxNumber").text,
-                "address": company.find("address").text,
-                "country": company.find("country").text,
-            }
-            if company.find("conid") is not None:
-                c["conid"] = company.find("conid").text
-                for x in companies:
-                    if "conid" in x and x["conid"] == c["conid"]:
-                        break
-                else:
-                    companies.append(c)
-                continue
-            for x in companies:
-                if x["symbol"] == c["symbol"]:
-                    break
-            else:
-                companies.append(c)
+        companiesXmls.append(xml.etree.ElementTree.parse("companies.xml").getroot())
     if not os.path.isfile("companies.xml") or datetime.datetime.fromtimestamp(os.path.getctime("companies.xml")) < (datetime.datetime.now() - datetime.timedelta(weeks=1)):
-        r = requests.get(
-            "https://github.com/jamsix/ib-edavki/raw/master/companies.xml",
-            headers={"User-Agent": userAgent}
-        )
-        cmpns = xml.etree.ElementTree.ElementTree(xml.etree.ElementTree.fromstring(r.content)).getroot()
-        for company in cmpns:
+        try:
+            r = requests.get("https://github.com/jamsix/ib-edavki/raw/master/companies.xml", headers={"User-Agent": userAgent})
+            companiesXmls.append(xml.etree.ElementTree.ElementTree(xml.etree.ElementTree.fromstring(r.content)).getroot())
+        except:
+            pass
+    for cs in companiesXmls:
+        for company in cs:
             c = {
                 "symbol": company.find("symbol").text,
                 "name": company.find("name").text,
@@ -219,20 +200,21 @@ def main():
                     break
             else:
                 companies.append(c)
-    companies.sort(key=lambda x: x["symbol"])
-    cs = xml.etree.ElementTree.Element("companies")
-    for company in companies:
-        c = xml.etree.ElementTree.SubElement(cs, "company")
-        if "conid" in company:
-            xml.etree.ElementTree.SubElement(c, "conid").text = company["conid"]
-        xml.etree.ElementTree.SubElement(c, "symbol").text = company["symbol"]
-        xml.etree.ElementTree.SubElement(c, "name").text = company["name"]
-        xml.etree.ElementTree.SubElement(c, "taxNumber").text = company["taxNumber"]
-        xml.etree.ElementTree.SubElement(c, "address").text = company["address"]
-        xml.etree.ElementTree.SubElement(c, "country").text = company["country"]
-    tree = xml.etree.ElementTree.ElementTree(cs)
-    xml.etree.ElementTree.indent(tree)
-    tree.write("companies.xml")
+    if len(companies) > 0:
+        companies.sort(key=lambda x: x["symbol"])
+        cs = xml.etree.ElementTree.Element("companies")
+        for company in companies:
+            c = xml.etree.ElementTree.SubElement(cs, "company")
+            if "conid" in company:
+                xml.etree.ElementTree.SubElement(c, "conid").text = company["conid"]
+            xml.etree.ElementTree.SubElement(c, "symbol").text = company["symbol"]
+            xml.etree.ElementTree.SubElement(c, "name").text = company["name"]
+            xml.etree.ElementTree.SubElement(c, "taxNumber").text = company["taxNumber"]
+            xml.etree.ElementTree.SubElement(c, "address").text = company["address"]
+            xml.etree.ElementTree.SubElement(c, "country").text = company["country"]
+        tree = xml.etree.ElementTree.ElementTree(cs)
+        xml.etree.ElementTree.indent(tree)
+        tree.write("companies.xml")
 
     """ Fetch relief-statements.xml from GitHub if it doesn't exist or hasn't been updated for a month and use the data for Doh-Div.xml """
     if not os.path.isfile("relief-statements.xml")  or datetime.datetime.fromtimestamp(os.path.getctime("relief-statements.xml")) < (datetime.datetime.now() - datetime.timedelta(days=30)):
