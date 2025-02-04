@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf8") as fh:
 
 setup(
     name="ib_edavki",
-    version="1.4.7",
+    version="1.4.8",
     py_modules=["ib_edavki", "generators.doh_obr"],
     python_requires=">=3",
     install_requires=["requests"],

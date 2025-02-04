@@ -167,12 +167,12 @@ def main():
         "isResident": taxpayer.find("isResident").text,
     }
 
-    """ Fetch companies.xml from GitHub if it doesn't exist locally or hasn't been updated for a week, and merge it with the local copy """
+    """ Fetch companies.xml from GitHub if it doesn't exist locally or hasn't been updated for a day, and merge it with the local copy """
     companies = []
     companiesXmls = []
     if os.path.isfile("companies.xml"):
         companiesXmls.append(xml.etree.ElementTree.parse("companies.xml").getroot())
-    if not os.path.isfile("companies.xml") or datetime.datetime.fromtimestamp(os.path.getctime("companies.xml")) < (datetime.datetime.now() - datetime.timedelta(seconds=1)):
+    if not os.path.isfile("companies.xml") or datetime.datetime.fromtimestamp(os.path.getctime("companies.xml")) < (datetime.datetime.now() - datetime.timedelta(days=1)):
         try:
             r = requests.get("https://github.com/jamsix/ib-edavki/raw/master/companies.xml", headers={"User-Agent": userAgent})
             companiesXmls.append(xml.etree.ElementTree.ElementTree(xml.etree.ElementTree.fromstring(r.content)).getroot())
