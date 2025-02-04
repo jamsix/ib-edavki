@@ -218,6 +218,14 @@
     <country>US</country>
   </company>
   <company>
+    <isin>US0126531013</isin>
+    <symbol>ALB</symbol>
+    <name>Albemarle Corporation</name>
+    <taxNumber>54-1692118</taxNumber>
+    <address>4250 Congress Street, Suite 900, Charlotte, NC 28209</address>
+    <country>US</country>
+  </company>
+  <company>
     <isin />
     <symbol>ALLY</symbol>
     <name>Ally Financial Inc</name>
@@ -821,6 +829,14 @@
     <taxNumber>4210110070</taxNumber>
     <address>Constantia Office Park, Cnr 14th Avenue and Hendrik Potgieter Road, Weltevreden Park 1709, Johannesburg</address>
     <country>ZA</country>
+  </company>
+  <company>
+    <isin>US25179M1036</isin>
+    <symbol>DVN</symbol>
+    <name>Devon Energy Corporation</name>
+    <taxNumber>73-1567067</taxNumber>
+    <address>333 West Sheridan Avenue, Oklahoma City, OK 73102-5015</address>
+    <country>US</country>
   </company>
   <company>
     <isin />
@@ -1704,6 +1720,14 @@
     <country>IE</country>
   </company>
   <company>
+    <isin>US30303M1027</isin>
+    <symbol>META</symbol>
+    <name>Meta Platforms, Inc.</name>
+    <taxNumber>20-1665019</taxNumber>
+    <address>1 META WAY, MENLO PARK, CA, 94025</address>
+    <country>US</country>
+  </company>
+  <company>
     <isin />
     <conid>9720</conid>
     <symbol>MMM</symbol>
@@ -2233,6 +2257,14 @@
     <name>Rpt Realty</name>
     <taxNumber>136908486</taxNumber>
     <address>19 W 44th Street, Suite 1002, New York, NY 10036</address>
+    <country>US</country>
+  </company>
+  <company>
+    <isin>US75281A1097</isin>
+    <symbol>RRC</symbol>
+    <name>Range Resources Corporation</name>
+    <taxNumber>34-1312571</taxNumber>
+    <address>100 Throckmorton Street, Suite 1200, Fort Worth, TX 76102</address>
     <country>US</country>
   </company>
   <company>
@@ -2772,6 +2804,22 @@
     <name>Union Pacific Corp</name>
     <taxNumber>13-2626465</taxNumber>
     <address>1400 Douglas Street, Omaha, Nebraska</address>
+    <country>US</country>
+  </company>
+  <company>
+    <isin>US37954Y8710</isin>
+    <symbol>URA</symbol>
+    <name>SEI Investments Distribution Co.</name>
+    <taxNumber>23-1707341</taxNumber>
+    <address>1 Freedom Valley Drive, Oaks, PA, 19456</address>
+    <country>US</country>
+  </company>
+  <company>
+    <isin>US85208P3038</isin>
+    <symbol>URNM</symbol>
+    <name>Sprott Funds Trust</name>
+    <taxNumber>811-23382</taxNumber>
+    <address>320 Post Road, Suite 230, Darien, CT 06820</address>
     <country>US</country>
   </company>
   <company>
