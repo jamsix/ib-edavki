@@ -172,7 +172,7 @@ def main():
     companiesXmls = []
     if os.path.isfile("companies.xml"):
         companiesXmls.append(xml.etree.ElementTree.parse("companies.xml").getroot())
-    if not os.path.isfile("companies.xml") or datetime.datetime.fromtimestamp(os.path.getctime("companies.xml")) < (datetime.datetime.now() - datetime.timedelta(weeks=1)):
+    if not os.path.isfile("companies.xml") or datetime.datetime.fromtimestamp(os.path.getctime("companies.xml")) < (datetime.datetime.now() - datetime.timedelta(seconds=1)):
         try:
             r = requests.get("https://github.com/jamsix/ib-edavki/raw/master/companies.xml", headers={"User-Agent": userAgent})
             companiesXmls.append(xml.etree.ElementTree.ElementTree(xml.etree.ElementTree.fromstring(r.content)).getroot())
@@ -181,16 +181,39 @@ def main():
     for cs in companiesXmls:
         for company in cs:
             c = {
-                "symbol": company.find("symbol").text,
-                "name": company.find("name").text,
-                "taxNumber": company.find("taxNumber").text,
-                "address": company.find("address").text,
-                "country": company.find("country").text,
+                "isin": "",
+                "symbol": company.find("symbol").text.strip(),
+                "name": company.find("name").text.strip(),
+                "taxNumber": "",
+                "address": company.find("address").text.strip(),
+                "country": company.find("country").text.strip(),
+                "conid": None,
             }
-            if company.find("conid") is not None:
-                c["conid"] = company.find("conid").text
+            if company.find("isin") is not None and company.find("isin").text is not None:
+                c["isin"] = company.find("isin").text.strip()
+            if company.find("taxNumber") is not None and company.find("taxNumber").text is not None:
+                c["taxNumber"] = company.find("taxNumber").text.strip()
+            if company.find("conid") is not None and company.find("conid").text is not None:
+                c["conid"] = company.find("conid").text.strip()
+            if c["isin"] != "":
                 for x in companies:
-                    if "conid" in x and x["conid"] == c["conid"]:
+                    if x["isin"] != "" and x["isin"] == c["isin"]:
+                        break
+                    elif x["isin"] == "" and c["conid"] is not None and x["conid"] == c["conid"]:
+                        x["isin"] = c["isin"]
+                        break
+                    elif x["isin"] == "" and c["symbol"] is not None and x["symbol"] == c["symbol"] and x["name"] == c["name"]:
+                        x["isin"] = c["isin"]
+                        break
+                else:
+                    companies.append(c)
+                continue
+            if c["conid"] is not None:
+                for x in companies:
+                    if x["conid"] is not None and x["conid"] == c["conid"]:
+                        break
+                    elif x["conid"] is None and c["symbol"] is not None and x["symbol"] == c["symbol"] and x["name"] == c["name"]:
+                        x["conid"] = c["conid"]
                         break
                 else:
                     companies.append(c)
@@ -205,7 +228,8 @@ def main():
         cs = xml.etree.ElementTree.Element("companies")
         for company in companies:
             c = xml.etree.ElementTree.SubElement(cs, "company")
-            if "conid" in company:
+            xml.etree.ElementTree.SubElement(c, "isin").text = company["isin"]
+            if company["conid"] is not None and company["conid"] != "":
                 xml.etree.ElementTree.SubElement(c, "conid").text = company["conid"]
             xml.etree.ElementTree.SubElement(c, "symbol").text = company["symbol"]
             xml.etree.ElementTree.SubElement(c, "name").text = company["name"]
@@ -1149,18 +1173,24 @@ def main():
                     "tax": 0,
                     "taxEUR": 0,
                 }
+                if ibCashTransaction.attrib.get("isin") is not None:
+                    dividend["isin"] = ibCashTransaction.attrib["isin"]
                 dividend["securityID"] = ibCashTransaction.attrib["securityID"]
                 if dividend["securityID"] == "":
                     dividend["securityID"] = dividend["conid"]
 
                 company = None
                 for x in companies:
-                    if "conid" in x and x["conid"] == dividend["conid"]:
+                    if "isin" in x and x["isin"] != "" and "isin" in dividend and x["isin"] == dividend["isin"]:
                         company = x
                 else:
                     for x in companies:
-                        if x["symbol"] == dividend["symbol"]:
+                        if "conid" in x and x["conid"] == dividend["conid"]:
                             company = x
+                    else:
+                        for x in companies:
+                            if x["symbol"] == dividend["symbol"]:
+                                company = x
 
                 if company is not None:
                     dividend["name"] = company["name"]

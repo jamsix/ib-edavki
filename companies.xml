@@ -1,13 +1,15 @@
 <companies>
   <company>
+    <isin />
     <conid>389541685</conid>
     <symbol>005222141</symbol>
-    <name> ALLIANZ GLOBAL INV (LU) ALLIANZ EURO CASH "A" (EUR) INC </name>
+    <name>ALLIANZ GLOBAL INV (LU) ALLIANZ EURO CASH "A" (EUR) INC</name>
     <taxNumber>DE815001893</taxNumber>
     <address>State Street Bank International GmbH - Luxembourg Branch</address>
     <country>LU</country>
   </company>
   <company>
+    <isin />
     <conid>1616393</conid>
     <symbol>101</symbol>
     <name>Hang Lung Properties Ltd</name>
@@ -16,6 +18,7 @@
     <country>HK</country>
   </company>
   <company>
+    <isin />
     <symbol>1234</symbol>
     <name>China Lilang Ltd</name>
     <taxNumber />
@@ -23,6 +26,7 @@
     <country>HK</country>
   </company>
   <company>
+    <isin />
     <conid>59754535</conid>
     <symbol>215</symbol>
     <name>Hutchison Telecommunications HK Hld Ltd</name>
@@ -31,6 +35,7 @@
     <country>HK</country>
   </company>
   <company>
+    <isin />
     <conid>1616510</conid>
     <symbol>23</symbol>
     <name>Bank of East Asia Ltd</name>
@@ -39,6 +44,7 @@
     <country>HK</country>
   </company>
   <company>
+    <isin />
     <conid>128356142</conid>
     <symbol>2386</symbol>
     <name>SINOPEC Engineering Group Co Ltd</name>
@@ -47,6 +53,7 @@
     <country>CN</country>
   </company>
   <company>
+    <isin />
     <conid>4116485</conid>
     <symbol>315</symbol>
     <name>SmarTone Telecommunications Holdings Ltd</name>
@@ -55,6 +62,7 @@
     <country>HK</country>
   </company>
   <company>
+    <isin />
     <conid>92214835</conid>
     <symbol>5JS</symbol>
     <name>Indofood Agri Resources Ltd</name>
@@ -63,6 +71,7 @@
     <country>SG</country>
   </company>
   <company>
+    <isin />
     <conid>407387241</conid>
     <symbol>5MVW</symbol>
     <name>iShares MSCI WD Energy-USD D</name>
@@ -71,6 +80,7 @@
     <country>IE</country>
   </company>
   <company>
+    <isin />
     <symbol>601899</symbol>
     <name>Zijin Mining Group Company Limited</name>
     <taxNumber>91350000157987632G</taxNumber>
@@ -78,6 +88,7 @@
     <country>CN</country>
   </company>
   <company>
+    <isin />
     <conid>42446165</conid>
     <symbol>659</symbol>
     <name>NWS Holdings Ltd</name>
@@ -86,6 +97,7 @@
     <country>HK</country>
   </company>
   <company>
+    <isin />
     <conid>46636681</conid>
     <symbol>857</symbol>
     <name>Petrochina Co Ltd</name>
@@ -94,6 +106,7 @@
     <country>CN</country>
   </company>
   <company>
+    <isin />
     <conid>12150119</conid>
     <symbol>883</symbol>
     <name>CNOOC Ltd</name>
@@ -102,6 +115,7 @@
     <country>HK</country>
   </company>
   <company>
+    <isin />
     <conid>3408229</conid>
     <symbol>941</symbol>
     <name>China Mobile Ltd</name>
@@ -110,6 +124,7 @@
     <country>CN</country>
   </company>
   <company>
+    <isin />
     <conid>96736993</conid>
     <symbol>A7RU</symbol>
     <name>Keppel Infrastructure Trust</name>
@@ -118,6 +133,7 @@
     <country>SG</country>
   </company>
   <company>
+    <isin />
     <conid>265598</conid>
     <symbol>AAPL</symbol>
     <name>Apple Inc</name>
@@ -126,6 +142,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>ABBV</symbol>
     <name>Abbvie Inc.</name>
     <taxNumber>320375147</taxNumber>
@@ -133,6 +150,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>AC</symbol>
     <name>Accor Group</name>
     <taxNumber>FR0000120404</taxNumber>
@@ -140,6 +158,7 @@
     <country>FR</country>
   </company>
   <company>
+    <isin />
     <symbol>ACN</symbol>
     <name>Accenture Plc</name>
     <taxNumber>980627530</taxNumber>
@@ -147,6 +166,7 @@
     <country>IE</country>
   </company>
   <company>
+    <isin />
     <conid>4157</conid>
     <symbol>ADI</symbol>
     <name>Analog Devices Inc</name>
@@ -155,6 +175,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>ADM</symbol>
     <name>Archer-daniels-midland Co</name>
     <taxNumber>410129150</taxNumber>
@@ -162,6 +183,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>4205</conid>
     <symbol>AEM</symbol>
     <name>Agnico Eagle Mines Ltd</name>
@@ -170,6 +192,7 @@
     <country>CA</country>
   </company>
   <company>
+    <isin />
     <conid>4227</conid>
     <symbol>AFL</symbol>
     <name>Aflac Inc</name>
@@ -178,6 +201,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>41855679</conid>
     <symbol>AG</symbol>
     <name>First Majestic Silver Corp.</name>
@@ -186,6 +210,7 @@
     <country>CA</country>
   </company>
   <company>
+    <isin />
     <symbol>AIG</symbol>
     <name>American International Group Inc</name>
     <taxNumber>132592361</taxNumber>
@@ -193,6 +218,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>ALLY</symbol>
     <name>Ally Financial Inc</name>
     <taxNumber>380572512</taxNumber>
@@ -200,6 +226,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>32596680</conid>
     <symbol>AMD</symbol>
     <name>Advanced Micro Devices</name>
@@ -208,6 +235,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>AMGN</symbol>
     <name>Amgen, Inc.</name>
     <taxNumber>953540776</taxNumber>
@@ -215,6 +243,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>4726244</conid>
     <symbol>AMKR</symbol>
     <name>Amkor Technology, Inc.</name>
@@ -223,6 +252,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>AMT</symbol>
     <name>American Tower Corp</name>
     <taxNumber>650723837</taxNumber>
@@ -230,6 +260,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>45743607</conid>
     <symbol>AOI</symbol>
     <name>Africa Oil Corp</name>
@@ -238,6 +269,7 @@
     <country>CA</country>
   </company>
   <company>
+    <isin />
     <symbol>APA</symbol>
     <name>Apache Corp</name>
     <taxNumber>410747868</taxNumber>
@@ -245,6 +277,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>APAM</symbol>
     <name>Artisan Partners Asset Management Inc</name>
     <taxNumber>450969585</taxNumber>
@@ -252,6 +285,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>13013300</conid>
     <symbol>APC</symbol>
     <name>Apple Inc</name>
@@ -260,6 +294,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>AQN</symbol>
     <name>Algonquin Power &amp; Utilities Corp</name>
     <taxNumber>980406902</taxNumber>
@@ -267,6 +302,7 @@
     <country>CA</country>
   </company>
   <company>
+    <isin />
     <symbol>AQNU</symbol>
     <name>Algonquin Power and Utilities Units</name>
     <taxNumber>980406902</taxNumber>
@@ -274,6 +310,7 @@
     <country>CA</country>
   </company>
   <company>
+    <isin />
     <conid>117589399</conid>
     <symbol>ASML</symbol>
     <name>ASML Holding N.V.</name>
@@ -282,6 +319,7 @@
     <country>NL</country>
   </company>
   <company>
+    <isin />
     <conid>52424577</conid>
     <symbol>ATVI</symbol>
     <name>Activision Blizzard Inc</name>
@@ -290,6 +328,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>4656</conid>
     <symbol>AU</symbol>
     <name>AngloGold Ashanti Ltd</name>
@@ -298,6 +337,7 @@
     <country>AU</country>
   </company>
   <company>
+    <isin />
     <conid>26985516</conid>
     <symbol>AUY</symbol>
     <name>Yamana Gold Inc</name>
@@ -306,6 +346,7 @@
     <country>CA</country>
   </company>
   <company>
+    <isin />
     <symbol>AVB</symbol>
     <name>Avalonbay Communities Inc</name>
     <taxNumber>770404318</taxNumber>
@@ -313,6 +354,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>6604203</conid>
     <symbol>AVD</symbol>
     <name>AMERICAN VANGUARD CORP</name>
@@ -321,6 +363,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>AVGO</symbol>
     <name>Broadcom Inc.</name>
     <taxNumber>352617337</taxNumber>
@@ -328,6 +371,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>AWR</symbol>
     <name>American States Water Co</name>
     <taxNumber>954676679</taxNumber>
@@ -335,6 +379,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>10098</conid>
     <symbol>BAC</symbol>
     <name>Bank of America Corporation</name>
@@ -343,6 +388,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>908931</conid>
     <symbol>BATS</symbol>
     <name>British American Tobacco plc</name>
@@ -351,6 +397,7 @@
     <country>GB</country>
   </company>
   <company>
+    <isin />
     <conid>28213000</conid>
     <symbol>BBD</symbol>
     <name>Banco Bradesco SA</name>
@@ -359,6 +406,7 @@
     <country>BR</country>
   </company>
   <company>
+    <isin />
     <conid>502252263</conid>
     <symbol>BBWI</symbol>
     <name>Bath and Body Works, Inc.</name>
@@ -367,6 +415,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>BBY</symbol>
     <name>Best Buy Co Inc</name>
     <taxNumber>410907483</taxNumber>
@@ -374,6 +423,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>BEId</symbol>
     <name>BEIERSDORF AG</name>
     <taxNumber>DE118513961</taxNumber>
@@ -381,6 +431,7 @@
     <country>DE</country>
   </company>
   <company>
+    <isin />
     <symbol>BGS</symbol>
     <name>B&amp;G Foods, Inc.</name>
     <taxNumber>133918742</taxNumber>
@@ -388,6 +439,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>3141362</conid>
     <symbol>BHE</symbol>
     <name>Benchmark Electronics Inc</name>
@@ -396,6 +448,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>4986</conid>
     <symbol>BHP</symbol>
     <name>BHP GROUP LTD</name>
@@ -404,6 +457,7 @@
     <country>AU</country>
   </company>
   <company>
+    <isin />
     <symbol>BLK</symbol>
     <name>Blackrock Inc.</name>
     <taxNumber>320174431</taxNumber>
@@ -411,6 +465,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>38551985</conid>
     <symbol>BMA</symbol>
     <name>Banco Macro SA</name>
@@ -419,6 +474,7 @@
     <country>AR</country>
   </company>
   <company>
+    <isin />
     <symbol>BMO</symbol>
     <name>Bank Of Montreal Europe Plc</name>
     <taxNumber>980392985</taxNumber>
@@ -426,6 +482,7 @@
     <country>IE</country>
   </company>
   <company>
+    <isin />
     <conid>14094</conid>
     <symbol>BMWd</symbol>
     <name>Bayerische Motoren Werke AG</name>
@@ -434,6 +491,7 @@
     <country>DE</country>
   </company>
   <company>
+    <isin />
     <symbol>BMY</symbol>
     <name>Bristol-Myers Squibb Co</name>
     <taxNumber>220790350</taxNumber>
@@ -441,6 +499,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>29612111</conid>
     <symbol>BN</symbol>
     <name>Danone SA</name>
@@ -449,6 +508,7 @@
     <country>FR</country>
   </company>
   <company>
+    <isin />
     <symbol>BND</symbol>
     <name>Vanguard Total Bond Market ETF</name>
     <taxNumber>9219378356</taxNumber>
@@ -456,6 +516,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>BNDX</symbol>
     <name>Vanguard Total International Bond ETF</name>
     <taxNumber>92203J4076</taxNumber>
@@ -463,6 +524,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>BNS</symbol>
     <name>Bank Of Nova Scotia</name>
     <taxNumber>134941099</taxNumber>
@@ -470,6 +532,7 @@
     <country>CA</country>
   </company>
   <company>
+    <isin />
     <conid>5171</conid>
     <symbol>BP</symbol>
     <name>BP Plc</name>
@@ -478,6 +541,7 @@
     <country>GB</country>
   </company>
   <company>
+    <isin />
     <conid>508626121</conid>
     <symbol>BTCS</symbol>
     <name>BTCS Inc</name>
@@ -486,6 +550,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>48834358</conid>
     <symbol>BTG</symbol>
     <name>B2gold Corp</name>
@@ -494,6 +559,7 @@
     <country>CA</country>
   </company>
   <company>
+    <isin />
     <symbol>BTI</symbol>
     <name>British American Tobacco p.l.c.</name>
     <taxNumber>239136950</taxNumber>
@@ -501,6 +567,7 @@
     <country>GB</country>
   </company>
   <company>
+    <isin />
     <conid>1715014</conid>
     <symbol>BVN</symbol>
     <name>Cia de Minas Buenaventura SA</name>
@@ -509,6 +576,7 @@
     <country>PE</country>
   </company>
   <company>
+    <isin />
     <symbol>C</symbol>
     <name>Citigroup Inc</name>
     <taxNumber>521568099</taxNumber>
@@ -516,6 +584,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>5407</conid>
     <symbol>CAH</symbol>
     <name>Cardinal Health Inc</name>
@@ -524,6 +593,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>CCI</symbol>
     <name>Crown Castle International Corp</name>
     <taxNumber>760470458</taxNumber>
@@ -531,6 +601,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>1447060</conid>
     <symbol>CCJ</symbol>
     <name>Cameco Corp</name>
@@ -539,6 +610,7 @@
     <country>CA</country>
   </company>
   <company>
+    <isin />
     <conid>156106386</conid>
     <symbol>CCS</symbol>
     <name>Century Communities, Inc.</name>
@@ -547,6 +619,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>CEG</symbol>
     <name>Constellation Energy Corporation</name>
     <taxNumber>871210716</taxNumber>
@@ -554,6 +627,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>99690164</conid>
     <symbol>CEY</symbol>
     <name>Centamin Plc</name>
@@ -562,6 +636,7 @@
     <country>JE</country>
   </company>
   <company>
+    <isin />
     <conid>77111381</conid>
     <symbol>CGG</symbol>
     <name>China Gold International Resources Corp Ltd</name>
@@ -570,6 +645,7 @@
     <country>CA</country>
   </company>
   <company>
+    <isin />
     <symbol>CI</symbol>
     <name>Cigna Corp</name>
     <taxNumber>824991898</taxNumber>
@@ -577,6 +653,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>CIM</symbol>
     <name>Chimera Investment Corp</name>
     <taxNumber>260630461</taxNumber>
@@ -584,6 +661,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>764065</conid>
     <symbol>CLF</symbol>
     <name>Cleveland-Cliffs Inc.</name>
@@ -592,6 +670,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>CLX</symbol>
     <name>Clorox Co</name>
     <taxNumber>310595760</taxNumber>
@@ -599,6 +678,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>CM</symbol>
     <name>Canadian Imperial Bank Of Commerce</name>
     <taxNumber>131942440</taxNumber>
@@ -606,6 +686,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>5811</conid>
     <symbol>CMC</symbol>
     <name>Commercial Metals Co</name>
@@ -614,6 +695,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>45127739</conid>
     <symbol>CME</symbol>
     <name>CME Group Inc</name>
@@ -622,6 +704,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>8093</conid>
     <symbol>CNP</symbol>
     <name>Centerpoint Energy Inc</name>
@@ -630,6 +713,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>120643511</conid>
     <symbol>CONE</symbol>
     <name>CyrusOne Inc</name>
@@ -638,6 +722,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>1163165</conid>
     <symbol>COP</symbol>
     <name>ConocoPhillips</name>
@@ -646,6 +731,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>COST</symbol>
     <name>Costco Wholesale Corporation</name>
     <taxNumber>911223280</taxNumber>
@@ -653,6 +739,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>CP</symbol>
     <name>Canadian Pacific Railway Ltd/cn</name>
     <taxNumber>98-0355078</taxNumber>
@@ -660,6 +747,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>CPB</symbol>
     <name>Campbell Soup Co</name>
     <taxNumber>210419870</taxNumber>
@@ -667,6 +755,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>29612141</conid>
     <symbol>CS</symbol>
     <name>AXA SA</name>
@@ -675,6 +764,7 @@
     <country>FR</country>
   </company>
   <company>
+    <isin />
     <symbol>CSCO</symbol>
     <name>Cisco Systems Inc</name>
     <taxNumber>770059951</taxNumber>
@@ -682,6 +772,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>3655502</conid>
     <symbol>CTBI</symbol>
     <name>Community Bankers Trust Corp</name>
@@ -690,6 +781,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>CVX</symbol>
     <name>Chevron Corp</name>
     <taxNumber>940890210</taxNumber>
@@ -697,6 +789,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>110322264</conid>
     <symbol>DHT</symbol>
     <name>DHT Holdings Inc</name>
@@ -705,6 +798,7 @@
     <country>BM</country>
   </company>
   <company>
+    <isin />
     <symbol>DIS</symbol>
     <name>The Walt Disney Company</name>
     <taxNumber>830940635</taxNumber>
@@ -712,6 +806,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>DLR</symbol>
     <name>Digital Realty Trust, Inc.</name>
     <taxNumber>260081711</taxNumber>
@@ -719,6 +814,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>45210327</conid>
     <symbol>DRD</symbol>
     <name>DRDGOLD Limited</name>
@@ -727,6 +823,7 @@
     <country>ZA</country>
   </company>
   <company>
+    <isin />
     <symbol>ED</symbol>
     <name>Consolidated Edison Inc</name>
     <taxNumber>133965100</taxNumber>
@@ -734,6 +831,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>ENB</symbol>
     <name>Enbridge Energy Partners Lp</name>
     <taxNumber>391715850</taxNumber>
@@ -741,6 +839,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>6607910</conid>
     <symbol>EPD</symbol>
     <name>Enterprise Products Partners L.p.</name>
@@ -749,6 +848,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>141973363</conid>
     <symbol>EPV</symbol>
     <name>ProShares UltraShort FTSE Europe ETF</name>
@@ -757,6 +857,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>579809677</conid>
     <symbol>ERUS.ESC</symbol>
     <name>iShares MSCI Russia ETF</name>
@@ -765,6 +866,7 @@
     <country>IE</country>
   </company>
   <company>
+    <isin />
     <conid>182880167</conid>
     <symbol>ES</symbol>
     <name>Eversource Energy</name>
@@ -773,6 +875,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>ESS</symbol>
     <name>Essex Property Trust, Inc.</name>
     <taxNumber>770369576</taxNumber>
@@ -780,6 +883,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>ET</symbol>
     <name>Energy Transfer Lp</name>
     <taxNumber>300108820</taxNumber>
@@ -787,6 +891,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>EURN</symbol>
     <name>Euronav NV</name>
     <taxNumber>0546943111</taxNumber>
@@ -794,6 +899,7 @@
     <country>BE</country>
   </company>
   <company>
+    <isin />
     <conid>320106069</conid>
     <symbol>EVRG</symbol>
     <name>Evergy, Inc.</name>
@@ -802,6 +908,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>253190540</conid>
     <symbol>EWI</symbol>
     <name>ISHARES MSCI ITALY ETF</name>
@@ -810,6 +917,7 @@
     <country>IE</country>
   </company>
   <company>
+    <isin />
     <conid>2586589</conid>
     <symbol>EWL</symbol>
     <name>iShares MSCI Switzerland ETF</name>
@@ -818,6 +926,7 @@
     <country>IE</country>
   </company>
   <company>
+    <isin />
     <conid>2586596</conid>
     <symbol>EWP</symbol>
     <name>ISHARES MSCI SPAIN ETF</name>
@@ -826,6 +935,7 @@
     <country>IE</country>
   </company>
   <company>
+    <isin />
     <conid>1109357</conid>
     <symbol>EXC</symbol>
     <name>Exelon Corporation</name>
@@ -834,6 +944,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>34029360</conid>
     <symbol>EXSAd</symbol>
     <name>iShares STOXX Europe 600 UCITS ETF</name>
@@ -842,6 +953,7 @@
     <country>DE</country>
   </company>
   <company>
+    <isin />
     <conid>74991935</conid>
     <symbol>EXVM</symbol>
     <name>BlackRock Asset Management Ireland Limited (iShares eb.rexx Government Germany 0-1yr UCITS ETF)</name>
@@ -850,6 +962,7 @@
     <country>IE</country>
   </company>
   <company>
+    <isin />
     <conid>9599491</conid>
     <symbol>F</symbol>
     <name>Ford Motor Company</name>
@@ -858,6 +971,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>47990698</conid>
     <symbol>F34</symbol>
     <name>Wilmar International Ltd</name>
@@ -866,6 +980,7 @@
     <country>SG</country>
   </company>
   <company>
+    <isin />
     <conid>7089</conid>
     <symbol>FCX</symbol>
     <name>Freeport Mcmoran Inc</name>
@@ -874,6 +989,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>FL</symbol>
     <name>Foot Locker, Inc.</name>
     <taxNumber>133513936</taxNumber>
@@ -881,6 +997,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>69238858</conid>
     <symbol>FNV</symbol>
     <name>Franco-Nevada Corporation</name>
@@ -889,6 +1006,7 @@
     <country>CA</country>
   </company>
   <company>
+    <isin />
     <conid>51069466</conid>
     <symbol>FRES</symbol>
     <name>Fresnillo PLC</name>
@@ -897,6 +1015,7 @@
     <country>MX</country>
   </company>
   <company>
+    <isin />
     <conid>220580491</conid>
     <symbol>FRO</symbol>
     <name>Frontline Ltd</name>
@@ -905,6 +1024,7 @@
     <country>BM</country>
   </company>
   <company>
+    <isin />
     <symbol>FRT</symbol>
     <name>Federal Realty Investment Trust</name>
     <taxNumber>520782497</taxNumber>
@@ -912,6 +1032,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>FRT.OLD</symbol>
     <name>Federal Realty Investment Trust</name>
     <taxNumber>520782497</taxNumber>
@@ -919,6 +1040,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>462304864</conid>
     <symbol>FTCO</symbol>
     <name>Fortitude Gold Corp</name>
@@ -927,6 +1049,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>271826666</conid>
     <symbol>FUSD</symbol>
     <name>Fidelity US Quality Income-Inc</name>
@@ -935,6 +1058,7 @@
     <country>IE</country>
   </company>
   <company>
+    <isin />
     <symbol>GD</symbol>
     <name>General Dynamics Corp</name>
     <taxNumber>131673581</taxNumber>
@@ -942,6 +1066,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>6857605</conid>
     <symbol>GFI</symbol>
     <name>Gold Fields Ltd</name>
@@ -950,6 +1075,7 @@
     <country>ZA</country>
   </company>
   <company>
+    <isin />
     <symbol>GILD</symbol>
     <name>Gilead Sciences Inc</name>
     <taxNumber>94-3047598</taxNumber>
@@ -957,6 +1083,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>7616</conid>
     <symbol>GIS</symbol>
     <name>General Mills Inc</name>
@@ -965,6 +1092,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>95980853</conid>
     <symbol>GNE</symbol>
     <name>Genie Energy Ltd.</name>
@@ -973,6 +1101,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>611060</conid>
     <symbol>GOLD</symbol>
     <name>Barrick Gold Corporation</name>
@@ -981,6 +1110,7 @@
     <country>CA</country>
   </company>
   <company>
+    <isin />
     <symbol>GOOG</symbol>
     <name>Alphabet Inc.</name>
     <taxNumber>61-1767919</taxNumber>
@@ -988,6 +1118,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>GOOGL</symbol>
     <name>Alphabet Inc.</name>
     <taxNumber>61-1767919</taxNumber>
@@ -995,6 +1126,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>40743577</conid>
     <symbol>GORO</symbol>
     <name>Gold Resource Corp</name>
@@ -1003,6 +1135,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>7745</conid>
     <symbol>GPC</symbol>
     <name>Genuine Parts Co</name>
@@ -1011,6 +1144,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>1121788</conid>
     <symbol>GRMN</symbol>
     <name>Garmin Ltd</name>
@@ -1019,6 +1153,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>909054</conid>
     <symbol>GSK</symbol>
     <name>GSK Plc</name>
@@ -1027,6 +1162,7 @@
     <country>GB</country>
   </company>
   <company>
+    <isin />
     <conid>574757089</conid>
     <symbol>GSK</symbol>
     <name>GSK Plc</name>
@@ -1035,6 +1171,7 @@
     <country>GB</country>
   </company>
   <company>
+    <isin />
     <symbol>GTN</symbol>
     <name>Gray Television, Inc.</name>
     <taxNumber>580285030</taxNumber>
@@ -1042,6 +1179,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>7855</conid>
     <symbol>GTY</symbol>
     <name>Getty Realty Corp.</name>
@@ -1050,6 +1188,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>HD</symbol>
     <name>Home Depot, Inc.</name>
     <taxNumber>953261426</taxNumber>
@@ -1057,6 +1196,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>8027</conid>
     <symbol>HL</symbol>
     <name>Hecla Mining Co</name>
@@ -1065,6 +1205,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>573136108</conid>
     <symbol>HLN</symbol>
     <name>Haleon PLC</name>
@@ -1073,6 +1214,7 @@
     <country>GB</country>
   </company>
   <company>
+    <isin />
     <conid>4812805</conid>
     <symbol>HMY</symbol>
     <name>Harmony Gold Mining</name>
@@ -1081,6 +1223,7 @@
     <country>ZA</country>
   </company>
   <company>
+    <isin />
     <conid>41957241</conid>
     <symbol>HOC</symbol>
     <name>Hochschild Mining Plc</name>
@@ -1089,6 +1232,7 @@
     <country>GB</country>
   </company>
   <company>
+    <isin />
     <symbol>HPE</symbol>
     <name>Hewlett Packard Enterprise Co</name>
     <taxNumber>473298624</taxNumber>
@@ -1096,6 +1240,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>209411801</conid>
     <symbol>HPQ</symbol>
     <name>Hewlett Packard Enterprise Co</name>
@@ -1104,6 +1249,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>HRL</symbol>
     <name>Hormel Foods Corp</name>
     <taxNumber>132599675</taxNumber>
@@ -1111,6 +1257,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>202153350</conid>
     <symbol>HYLD</symbol>
     <name>BlackRock Asset Management Ireland Limited (ISHARES GLOBAL HY CORP-DISTR)</name>
@@ -1119,6 +1266,7 @@
     <country>IE</country>
   </company>
   <company>
+    <isin />
     <symbol>IBKR</symbol>
     <name>Interactive Brokers Group, Inc.</name>
     <taxNumber>300390693</taxNumber>
@@ -1126,6 +1274,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>IBM</symbol>
     <name>International Business Machines Corp</name>
     <taxNumber>130871985</taxNumber>
@@ -1133,6 +1282,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>68489974</conid>
     <symbol>IBTM</symbol>
     <name>BlackRock Asset Management Ireland Limited (ISHARES USD TREASURY 7-10Y)</name>
@@ -1141,6 +1291,7 @@
     <country>IE</country>
   </company>
   <company>
+    <isin />
     <conid>385549212</conid>
     <symbol>IGLE</symbol>
     <name>BlackRock Asset Management Ireland Limited (ISHARES GLOBAL GOV BND-EURHD)</name>
@@ -1149,6 +1300,7 @@
     <country>IE</country>
   </company>
   <company>
+    <isin />
     <conid>42469783</conid>
     <symbol>IGO</symbol>
     <name>IGO Ltd</name>
@@ -1157,6 +1309,7 @@
     <country>AU</country>
   </company>
   <company>
+    <isin />
     <conid>2117419</conid>
     <symbol>IMB</symbol>
     <name>Imperial Brands Plc</name>
@@ -1165,6 +1318,7 @@
     <country>GB</country>
   </company>
   <company>
+    <isin />
     <conid>240601748</conid>
     <symbol>INN1d</symbol>
     <name>ING Groep NV</name>
@@ -1173,6 +1327,7 @@
     <country>NL</country>
   </company>
   <company>
+    <isin />
     <conid>INRG</conid>
     <symbol>INRG</symbol>
     <name>ISHARES GLOBAL CLEAN ENERGY</name>
@@ -1181,6 +1336,7 @@
     <country>IE</country>
   </company>
   <company>
+    <isin />
     <conid>270639</conid>
     <symbol>INTC</symbol>
     <name>Intel Corp</name>
@@ -1189,6 +1345,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>INTU</conid>
     <symbol>INTU</symbol>
     <name>INTUIT</name>
@@ -1197,6 +1354,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>1020569</conid>
     <symbol>IRM</symbol>
     <name>Iron Mountain Incorporated</name>
@@ -1205,6 +1363,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>IRT</symbol>
     <name>Independence Realty Trust, Inc.</name>
     <taxNumber>264567130</taxNumber>
@@ -1212,6 +1371,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>29816328</conid>
     <symbol>ISP</symbol>
     <name>Intesa Sanpaolo SPA</name>
@@ -1220,6 +1380,7 @@
     <country>IT</country>
   </company>
   <company>
+    <isin />
     <conid>58996617</conid>
     <symbol>ITUB</symbol>
     <name>Itau Unibanco SA</name>
@@ -1228,6 +1389,7 @@
     <country>BR</country>
   </company>
   <company>
+    <isin />
     <symbol>IVZ</symbol>
     <name>Invesco Ltd.</name>
     <taxNumber>980557567</taxNumber>
@@ -1235,6 +1397,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>117901244</conid>
     <symbol>J91U</symbol>
     <name>ESR-Logos REIT</name>
@@ -1243,6 +1406,7 @@
     <country>SG</country>
   </company>
   <company>
+    <isin />
     <conid>441986553</conid>
     <symbol>JAG</symbol>
     <name>Jaguar Mining Inc</name>
@@ -1251,6 +1415,7 @@
     <country>CA</country>
   </company>
   <company>
+    <isin />
     <conid>441986547</conid>
     <symbol>JAGGF</symbol>
     <name>Jaguar Mining Inc</name>
@@ -1259,6 +1424,7 @@
     <country>CA</country>
   </company>
   <company>
+    <isin />
     <conid>244164913</conid>
     <symbol>JCI</symbol>
     <name>Johnson Controls International Plc</name>
@@ -1267,6 +1433,7 @@
     <country>IRL</country>
   </company>
   <company>
+    <isin />
     <conid>12973838</conid>
     <symbol>JNJ</symbol>
     <name>Johnson &amp; Johnson</name>
@@ -1275,6 +1442,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>JPM</symbol>
     <name>Jpmorgan Chase &amp; Co</name>
     <taxNumber>132624428</taxNumber>
@@ -1282,6 +1450,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>34471161</conid>
     <symbol>JVA</symbol>
     <name>Coffee Holding Co. Inc.</name>
@@ -1290,6 +1459,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>117901235</conid>
     <symbol>K2LU</symbol>
     <name>ARA LOGOS LOGISTICS TRUST</name>
@@ -1298,6 +1468,7 @@
     <country>SG</country>
   </company>
   <company>
+    <isin />
     <conid>39204349</conid>
     <symbol>KALU</symbol>
     <name>KAISER ALUMINUM CORP</name>
@@ -1306,6 +1477,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>8772</conid>
     <symbol>KBH</symbol>
     <name>Kb Home</name>
@@ -1314,6 +1486,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>8823</conid>
     <symbol>KGC</symbol>
     <name>Kinross Gold Corporation</name>
@@ -1322,6 +1495,7 @@
     <country>CA</country>
   </company>
   <company>
+    <isin />
     <conid>199169586</conid>
     <symbol>KHC</symbol>
     <name>Kraft Heinz Co</name>
@@ -1330,6 +1504,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>257775837</conid>
     <symbol>KL</symbol>
     <name>Kirkland Lake Gold Ltd</name>
@@ -1338,6 +1513,7 @@
     <country>CA</country>
   </company>
   <company>
+    <isin />
     <symbol>KMB</symbol>
     <name>Kimberly Clark Corp</name>
     <taxNumber>390394230</taxNumber>
@@ -1345,6 +1521,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>KMI</symbol>
     <name>Kinder Morgan, Inc.</name>
     <taxNumber>260238387</taxNumber>
@@ -1352,6 +1529,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>242140470</conid>
     <symbol>KNSL</symbol>
     <name>KINSALE CAPITAL GROUP INC</name>
@@ -1360,6 +1538,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>8894</conid>
     <symbol>KO</symbol>
     <name>The Coca-Cola Company</name>
@@ -1368,6 +1547,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>KRK</symbol>
     <name>Krka d. d.</name>
     <taxNumber>SI82646716</taxNumber>
@@ -1375,6 +1555,7 @@
     <country>SI</country>
   </company>
   <company>
+    <isin />
     <conid>629043863</conid>
     <symbol>KVUE</symbol>
     <name>Kenvue Inc</name>
@@ -1383,6 +1564,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>LEA</symbol>
     <name>Lear Corporation</name>
     <taxNumber>133386776</taxNumber>
@@ -1390,6 +1572,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>358053635</conid>
     <symbol>LEVI</symbol>
     <name>Levi Strauss &amp; Co</name>
@@ -1398,6 +1581,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>LLY</symbol>
     <name>Eli Lilly and Company</name>
     <taxNumber>136032849</taxNumber>
@@ -1405,6 +1589,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>LMT</symbol>
     <name>Lockheed Martin Corp</name>
     <taxNumber>521893632</taxNumber>
@@ -1412,6 +1597,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>5026984</conid>
     <symbol>LNT</symbol>
     <name>Alliant Energy Corp</name>
@@ -1420,14 +1606,16 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>LOB</conid>
     <symbol>LOB</symbol>
     <name>LIVE OAK BANCSHARES INC</name>
     <taxNumber>264596286</taxNumber>
-    <address> 1741 Tiburon Dr Wilmington, NC, 28403-6244 United State</address>
+    <address>1741 Tiburon Dr Wilmington, NC, 28403-6244 United State</address>
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>271308</conid>
     <symbol>LRCX</symbol>
     <name>Lam Research Corp</name>
@@ -1436,6 +1624,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>6180</conid>
     <symbol>LUMN</symbol>
     <name>CenturyLink Inc</name>
@@ -1444,6 +1633,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>MA</conid>
     <symbol>MA</symbol>
     <name>MASTERCARD</name>
@@ -1452,6 +1642,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>MAC</symbol>
     <name>Macerich Co</name>
     <taxNumber>954448705</taxNumber>
@@ -1459,6 +1650,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>9358</conid>
     <symbol>MAR</symbol>
     <name>Marriott International Inc</name>
@@ -1467,6 +1659,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>29622935</conid>
     <symbol>MBGd</symbol>
     <name>Mercedes-Benz Group AG</name>
@@ -1475,6 +1668,7 @@
     <country>DE</country>
   </company>
   <company>
+    <isin />
     <conid>9408</conid>
     <symbol>MCD</symbol>
     <name>Mcdonald's Corp</name>
@@ -1483,6 +1677,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>9462</conid>
     <symbol>MDC</symbol>
     <name>Mdc Holdings, Llc</name>
@@ -1491,6 +1686,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>113599091</conid>
     <symbol>MDLZ</symbol>
     <name>Mondelez International, Inc.</name>
@@ -1499,6 +1695,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>181387075</conid>
     <symbol>MDT</symbol>
     <name>Medtronic Plc</name>
@@ -1507,6 +1704,7 @@
     <country>IE</country>
   </company>
   <company>
+    <isin />
     <conid>9720</conid>
     <symbol>MMM</symbol>
     <name>3M Company</name>
@@ -1515,6 +1713,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>MO</symbol>
     <name>Altria Group Inc</name>
     <taxNumber>133260245</taxNumber>
@@ -1522,6 +1721,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>MPC</symbol>
     <name>Marathon Petroleum Corp</name>
     <taxNumber>271284632</taxNumber>
@@ -1529,6 +1729,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>MPW</symbol>
     <name>Medical Properties Trust, Llc</name>
     <taxNumber>341985135</taxNumber>
@@ -1536,6 +1737,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>MRK</symbol>
     <name>Merck &amp; Co., Inc.</name>
     <taxNumber>221918501</taxNumber>
@@ -1543,6 +1745,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>12178239</conid>
     <symbol>MSF</symbol>
     <name>Microsoft Corp</name>
@@ -1551,6 +1754,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>272093</conid>
     <symbol>MSFT</symbol>
     <name>Microsoft Corp</name>
@@ -1559,6 +1763,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>2585323</conid>
     <symbol>MTB</symbol>
     <name>M&amp;T Bank Corporation</name>
@@ -1567,6 +1772,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>2586162</conid>
     <symbol>MTN</symbol>
     <name>Vail Resorts Inc</name>
@@ -1575,6 +1781,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>9939</conid>
     <symbol>MU</symbol>
     <name>Micron Technology Inc</name>
@@ -1583,6 +1790,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>6604153</conid>
     <symbol>NAT</symbol>
     <name>NORDIC AMERICAN TANKERS LTD</name>
@@ -1591,6 +1799,7 @@
     <country>BM</country>
   </company>
   <company>
+    <isin />
     <conid>10120</conid>
     <symbol>NC</symbol>
     <name>Nacco Industries Inc</name>
@@ -1599,6 +1808,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>11289568</conid>
     <symbol>NCM</symbol>
     <name>Newcrest Mining Ltd</name>
@@ -1607,6 +1817,7 @@
     <country>AU</country>
   </company>
   <company>
+    <isin />
     <symbol>NEE</symbol>
     <name>Nextera Energy Inc</name>
     <taxNumber>592449419</taxNumber>
@@ -1614,6 +1825,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>10174</conid>
     <symbol>NEM</symbol>
     <name>Newmont Corp</name>
@@ -1622,6 +1834,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>755810</conid>
     <symbol>NHC</symbol>
     <name>National HealthCare Corporation</name>
@@ -1630,6 +1843,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>10245</conid>
     <symbol>NHI</symbol>
     <name>National Health Investors Inc</name>
@@ -1638,6 +1852,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>320187</conid>
     <symbol>NKE</symbol>
     <name>Nike, Inc.</name>
@@ -1646,6 +1861,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>NLB</symbol>
     <name>NLB d.d.</name>
     <taxNumber>SI91132550</taxNumber>
@@ -1653,6 +1869,7 @@
     <country>SI</country>
   </company>
   <company>
+    <isin />
     <symbol>NNN</symbol>
     <name>National Retail Properties, Inc.</name>
     <taxNumber>561431377</taxNumber>
@@ -1660,6 +1877,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>661513</conid>
     <symbol>NOK</symbol>
     <name>NOKIA CORP</name>
@@ -1668,6 +1886,7 @@
     <country>FI</country>
   </company>
   <company>
+    <isin />
     <conid>1615110</conid>
     <symbol>NOVN</symbol>
     <name>Novartis AG</name>
@@ -1676,6 +1895,7 @@
     <country>CH</country>
   </company>
   <company>
+    <isin />
     <symbol>NTAP</symbol>
     <name>NetApp, Inc.</name>
     <taxNumber>770307520</taxNumber>
@@ -1683,6 +1903,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>NTDOY</symbol>
     <name>Nintendo Of America Inc.</name>
     <taxNumber>133024042</taxNumber>
@@ -1690,6 +1911,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>55279376</conid>
     <symbol>NTES</symbol>
     <name>NetEase Inc</name>
@@ -1698,14 +1920,7 @@
     <country>CN</country>
   </company>
   <company>
-    <conid>9541698</conid>
-    <symbol>NTES</symbol>
-    <name>NetEase Inc</name>
-    <taxNumber>64110W102</taxNumber>
-    <address>Zhongguancun Software Park (Phase II), No. 10 Xibeiwang East Road, Haidian District, Beijing, 100193</address>
-    <country>CN</country>
-  </company>
-  <company>
+    <isin />
     <conid>10557</conid>
     <symbol>NUE</symbol>
     <name>Nucor Corp</name>
@@ -1714,6 +1929,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>13104788</conid>
     <symbol>NVD</symbol>
     <name>NVIDIA Corporation</name>
@@ -1722,6 +1938,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>NVDA</conid>
     <symbol>NVDA</symbol>
     <name>NVIDIA</name>
@@ -1730,6 +1947,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>NYMT</symbol>
     <name>New York Mortgage Trust Inc</name>
     <taxNumber>470934168</taxNumber>
@@ -1737,6 +1955,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>755883</conid>
     <symbol>NYT</symbol>
     <name>The New York Times Company</name>
@@ -1745,13 +1964,15 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>O</symbol>
     <name>Realty Income</name>
     <taxNumber>330580106</taxNumber>
-    <address>11995 El Camino Real San Diego, CA </address>
+    <address>11995 El Camino Real San Diego, CA</address>
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>119890783</conid>
     <symbol>O2Dd</symbol>
     <name>Telef&#243;nica Deutschland Holding AG</name>
@@ -1760,6 +1981,7 @@
     <country>DE</country>
   </company>
   <company>
+    <isin />
     <conid>490414355</conid>
     <symbol>OGN</symbol>
     <name>ORGANON &amp; CO</name>
@@ -1768,6 +1990,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>OHI</symbol>
     <name>Omega Healthcare Investors Inc</name>
     <taxNumber>383041398</taxNumber>
@@ -1775,6 +1998,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>OKE</symbol>
     <name>Oneok Inc</name>
     <taxNumber>731520922</taxNumber>
@@ -1782,6 +2006,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>OMC</symbol>
     <name>Omnicom Group Inc.</name>
     <taxNumber>131514814</taxNumber>
@@ -1789,6 +2014,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>OMV</symbol>
     <name>OMV</name>
     <taxNumber>ATU14189108</taxNumber>
@@ -1796,6 +2022,7 @@
     <country>AT</country>
   </company>
   <company>
+    <isin />
     <conid>156955487</conid>
     <symbol>OR</symbol>
     <name>Osisko Gold Royalties Ltd</name>
@@ -1804,6 +2031,7 @@
     <country>CA</country>
   </company>
   <company>
+    <isin />
     <conid>29612252</conid>
     <symbol>ORA</symbol>
     <name>Orange</name>
@@ -1812,6 +2040,7 @@
     <country>FR</country>
   </company>
   <company>
+    <isin />
     <symbol>ORCL</symbol>
     <name>Oracle Corp</name>
     <taxNumber>542185193</taxNumber>
@@ -1819,6 +2048,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>588392767</conid>
     <symbol>P911d</symbol>
     <name>Dr. Ing. h.c. F. Porsche AG</name>
@@ -1827,6 +2057,7 @@
     <country>DE</country>
   </company>
   <company>
+    <isin />
     <conid>4816190</conid>
     <symbol>PAAS</symbol>
     <name>Pan American Silver Corp.</name>
@@ -1835,6 +2066,7 @@
     <country>CA</country>
   </company>
   <company>
+    <isin />
     <conid>14893065</conid>
     <symbol>PAAS</symbol>
     <name>Pan American Silver Corp.</name>
@@ -1843,6 +2075,7 @@
     <country>CA</country>
   </company>
   <company>
+    <isin />
     <symbol>PBA</symbol>
     <name>Pembina Pipeline Corp</name>
     <taxNumber>980131760</taxNumber>
@@ -1850,6 +2083,7 @@
     <country>CA</country>
   </company>
   <company>
+    <isin />
     <conid>199971960</conid>
     <symbol>PBBd</symbol>
     <name>Deutsche Pfandbriefbank AG</name>
@@ -1858,6 +2092,7 @@
     <country>DE</country>
   </company>
   <company>
+    <isin />
     <conid>10828168</conid>
     <symbol>PBR</symbol>
     <name>Petroleo Brasileiro SA</name>
@@ -1866,6 +2101,7 @@
     <country>BR</country>
   </company>
   <company>
+    <isin />
     <conid>320227565</conid>
     <symbol>PDBC</symbol>
     <name>Invesco Optimum Yield Diversified Commodity Strategy No K-1 ETF</name>
@@ -1874,6 +2110,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>PEP</symbol>
     <name>Pepsico Inc</name>
     <taxNumber>131584302</taxNumber>
@@ -1881,6 +2118,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>PFE</symbol>
     <name>Pfizer Inc</name>
     <taxNumber>135315170</taxNumber>
@@ -1888,6 +2126,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>PG</symbol>
     <name>Procter &amp; Gamble Co</name>
     <taxNumber>310411980</taxNumber>
@@ -1895,6 +2134,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>PNW</symbol>
     <name>Pinnacle West Capital Corporation</name>
     <taxNumber>860512431</taxNumber>
@@ -1902,6 +2142,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>PRMW</symbol>
     <name>Primo Water Corporation</name>
     <taxNumber>980154711</taxNumber>
@@ -1909,6 +2150,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>13865082</conid>
     <symbol>PRU</symbol>
     <name>Prudential Financial Inc</name>
@@ -1917,6 +2159,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>QCOM</symbol>
     <name>QUALCOMM, Inc.</name>
     <taxNumber>453157787</taxNumber>
@@ -1924,6 +2167,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>279156979</conid>
     <symbol>QDVX</symbol>
     <name>iShares MSCI Europe Quality Dividend UCITS ETF</name>
@@ -1932,6 +2176,7 @@
     <country>IE</country>
   </company>
   <company>
+    <isin />
     <symbol>RDN</symbol>
     <name>Radian Group</name>
     <taxNumber>232691170</taxNumber>
@@ -1939,6 +2184,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>RDS A</symbol>
     <name>Royal Dutch Shell</name>
     <taxNumber>522074528</taxNumber>
@@ -1946,6 +2192,7 @@
     <country>NL</country>
   </company>
   <company>
+    <isin />
     <conid>30314140</conid>
     <symbol>REPe</symbol>
     <name>Repsol SA</name>
@@ -1954,6 +2201,7 @@
     <country>ES</country>
   </company>
   <company>
+    <isin />
     <conid>4817403</conid>
     <symbol>RGLD</symbol>
     <name>Royal Gold Inc</name>
@@ -1962,6 +2210,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>2852762</conid>
     <symbol>RIO</symbol>
     <name>Rio Tinto Plc</name>
@@ -1970,6 +2219,7 @@
     <country>GB</country>
   </company>
   <company>
+    <isin />
     <conid>228954</conid>
     <symbol>ROG</symbol>
     <name>Roche Holding AG</name>
@@ -1978,6 +2228,7 @@
     <country>CH</country>
   </company>
   <company>
+    <isin />
     <symbol>RPT PRD</symbol>
     <name>Rpt Realty</name>
     <taxNumber>136908486</taxNumber>
@@ -1985,6 +2236,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>RTX</symbol>
     <name>Raytheon Co</name>
     <taxNumber>951778500</taxNumber>
@@ -1992,6 +2244,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>29612249</conid>
     <symbol>SAN</symbol>
     <name>Sanofi SA</name>
@@ -2000,6 +2253,7 @@
     <country>FR</country>
   </company>
   <company>
+    <isin />
     <conid>12442</conid>
     <symbol>SAN</symbol>
     <name>Banco Santander SA</name>
@@ -2008,6 +2262,7 @@
     <country>ES</country>
   </company>
   <company>
+    <isin />
     <conid>360308912</conid>
     <symbol>SBER</symbol>
     <name>Sberbank of Russia PJSC</name>
@@ -2016,6 +2271,7 @@
     <country>RU</country>
   </company>
   <company>
+    <isin />
     <conid>404364696</conid>
     <symbol>SBSW</symbol>
     <name>Sibanye Stillwater Ltd</name>
@@ -2024,6 +2280,7 @@
     <country>ZA</country>
   </company>
   <company>
+    <isin />
     <symbol>SBUX</symbol>
     <name>Starbucks Corp</name>
     <taxNumber>911325671</taxNumber>
@@ -2031,6 +2288,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>3985158</conid>
     <symbol>SCMN</symbol>
     <name>Swisscom AG</name>
@@ -2039,6 +2297,7 @@
     <country>CH</country>
   </company>
   <company>
+    <isin />
     <conid>604409899</conid>
     <symbol>SDIV</symbol>
     <name>GLOBAL X SUPERDIVIDEND ETF</name>
@@ -2047,6 +2306,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>756607</conid>
     <symbol>SGC</symbol>
     <name>Superior Group Of Companies, Inc.</name>
@@ -2055,6 +2315,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>578803986</conid>
     <symbol>SHELL.DIV</symbol>
     <name>Shell plc</name>
@@ -2063,6 +2324,7 @@
     <country>GB</country>
   </company>
   <company>
+    <isin />
     <conid>666005248</conid>
     <symbol>SHELL.DRH</symbol>
     <name>Shell plc</name>
@@ -2071,6 +2333,7 @@
     <country>GB</country>
   </company>
   <company>
+    <isin />
     <conid>614215023</conid>
     <symbol>SHELL.DRI</symbol>
     <name>Shell plc</name>
@@ -2079,6 +2342,7 @@
     <country>GB</country>
   </company>
   <company>
+    <isin />
     <conid>63151008</conid>
     <symbol>SHELL.DVD</symbol>
     <name>Shell plc</name>
@@ -2087,6 +2351,7 @@
     <country>GB</country>
   </company>
   <company>
+    <isin />
     <conid>596695682</conid>
     <symbol>SHELL.DVO</symbol>
     <name>Shell plc</name>
@@ -2095,6 +2360,7 @@
     <country>GB</country>
   </company>
   <company>
+    <isin />
     <conid>647304314</conid>
     <symbol>SHELL.DVR</symbol>
     <name>Shell plc</name>
@@ -2103,6 +2369,7 @@
     <country>GB</country>
   </company>
   <company>
+    <isin />
     <conid>562595593</conid>
     <symbol>SHELL.RT</symbol>
     <name>Shell plc</name>
@@ -2111,6 +2378,7 @@
     <country>GB</country>
   </company>
   <company>
+    <isin />
     <conid>544925226</conid>
     <symbol>SHELL.RTS</symbol>
     <name>Shell plc</name>
@@ -2119,6 +2387,7 @@
     <country>GB</country>
   </company>
   <company>
+    <isin />
     <conid>423920215</conid>
     <symbol>SII</symbol>
     <name>Sprott Inc.</name>
@@ -2127,6 +2396,7 @@
     <country>CA</country>
   </company>
   <company>
+    <isin />
     <symbol>SLG</symbol>
     <name>Sl Green Realty Corp</name>
     <taxNumber>133956775</taxNumber>
@@ -2134,6 +2404,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>4865977</conid>
     <symbol>SLHN</symbol>
     <name>Swiss Life Holding AG</name>
@@ -2142,6 +2413,7 @@
     <country>CH</country>
   </company>
   <company>
+    <isin />
     <conid>12259</conid>
     <symbol>SNA</symbol>
     <name>Snap On Inc</name>
@@ -2150,6 +2422,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>SO</symbol>
     <name>Southern Co</name>
     <taxNumber>580690070</taxNumber>
@@ -2157,6 +2430,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>12268</conid>
     <symbol>SONY</symbol>
     <name>Sony Group Corp</name>
@@ -2165,6 +2439,7 @@
     <country>JP</country>
   </company>
   <company>
+    <isin />
     <symbol>SPG</symbol>
     <name>Simon Property Group Inc</name>
     <taxNumber>046268599</taxNumber>
@@ -2172,6 +2447,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>SPGI</symbol>
     <name>S and P Global Inc.</name>
     <taxNumber>13-1026995</taxNumber>
@@ -2179,6 +2455,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>SRC</symbol>
     <name>Spirit Realty Capital, Inc.</name>
     <taxNumber>201676382</taxNumber>
@@ -2186,6 +2463,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>SRE</symbol>
     <name>Sempra Energy</name>
     <taxNumber>330732627</taxNumber>
@@ -2193,6 +2471,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>88414907</conid>
     <symbol>SREN</symbol>
     <name>Swiss Re AG</name>
@@ -2201,6 +2480,7 @@
     <country>CH</country>
   </company>
   <company>
+    <isin />
     <conid>284632520</conid>
     <symbol>SSRM</symbol>
     <name>SSR Mining Inc</name>
@@ -2209,6 +2489,7 @@
     <country>CA</country>
   </company>
   <company>
+    <isin />
     <conid>909271</conid>
     <symbol>STAN</symbol>
     <name>Standard Chartered PLC</name>
@@ -2217,6 +2498,7 @@
     <country>GB</country>
   </company>
   <company>
+    <isin />
     <symbol>STOR</symbol>
     <name>Store Capital Corp</name>
     <taxNumber>452280254</taxNumber>
@@ -2224,6 +2506,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>STX</symbol>
     <name>Seagate Technology Plc</name>
     <taxNumber>980648577</taxNumber>
@@ -2231,6 +2514,7 @@
     <country>IE</country>
   </company>
   <company>
+    <isin />
     <conid>424737148</conid>
     <symbol>SWBI</symbol>
     <name>SMITH &amp; WESSON BRANDS INC</name>
@@ -2239,6 +2523,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>SWCH</symbol>
     <name>Switch Inc</name>
     <taxNumber>821883953</taxNumber>
@@ -2246,6 +2531,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>SWK</symbol>
     <name>Stanley Black &amp; Decker, Inc.</name>
     <taxNumber>060548860</taxNumber>
@@ -2253,6 +2539,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>SWKS</symbol>
     <name>Skyworks Solutions, Inc.</name>
     <taxNumber>042302115</taxNumber>
@@ -2260,6 +2547,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>SWX</symbol>
     <name>Southwest Gas Holdings Inc</name>
     <taxNumber>813881866</taxNumber>
@@ -2267,6 +2555,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>T</symbol>
     <name>At&amp;t Inc.</name>
     <taxNumber>431301883</taxNumber>
@@ -2274,6 +2563,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>6845274</conid>
     <symbol>TAIT</symbol>
     <name>Taitron Components Inc</name>
@@ -2282,6 +2572,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>TD</symbol>
     <name>Toronto Dominion Bank</name>
     <taxNumber>135640479</taxNumber>
@@ -2289,6 +2580,7 @@
     <country>CA</country>
   </company>
   <company>
+    <isin />
     <symbol>TDS</symbol>
     <name>Telephone and Data Systems, Inc.</name>
     <taxNumber>363930160</taxNumber>
@@ -2296,6 +2588,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>565113874</conid>
     <symbol>TEFDe</symbol>
     <name>Telef&#243;nica, S.A.</name>
@@ -2304,6 +2597,7 @@
     <country>ES</country>
   </company>
   <company>
+    <isin />
     <conid>12723</conid>
     <symbol>TEO</symbol>
     <name>Telecom Argentina SA</name>
@@ -2312,6 +2606,7 @@
     <country>AR</country>
   </company>
   <company>
+    <isin />
     <conid>30314159</conid>
     <symbol>TFA</symbol>
     <name>Telefonica SA</name>
@@ -2320,6 +2615,7 @@
     <country>ES</country>
   </company>
   <company>
+    <isin />
     <conid>6437</conid>
     <symbol>TGT</symbol>
     <name>Target Corp</name>
@@ -2328,6 +2624,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>12816</conid>
     <symbol>TKC</symbol>
     <name>Turkcell Iletisim Hizmetleri AS</name>
@@ -2336,6 +2633,7 @@
     <country>TR</country>
   </company>
   <company>
+    <isin />
     <symbol>TMO</symbol>
     <name>Thermo Fisher Scientific Inc</name>
     <taxNumber>042209186</taxNumber>
@@ -2343,6 +2641,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>TOT</symbol>
     <name>Total SE</name>
     <taxNumber>9542051180</taxNumber>
@@ -2350,6 +2649,7 @@
     <country>FR</country>
   </company>
   <company>
+    <isin />
     <symbol>TROW</symbol>
     <name>Price T Rowe Group Inc</name>
     <taxNumber>522264646</taxNumber>
@@ -2357,6 +2657,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>TSM</symbol>
     <name>Taiwan Semiconductor Manufacturing Company Limited</name>
     <taxNumber>-</taxNumber>
@@ -2364,6 +2665,7 @@
     <country>TW</country>
   </company>
   <company>
+    <isin />
     <conid>275405</conid>
     <symbol>TSN</symbol>
     <name>TYSON FOODS INC-CL A</name>
@@ -2372,6 +2674,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>13024</conid>
     <symbol>TTC</symbol>
     <name>Toro Co</name>
@@ -2380,6 +2683,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>450564070</conid>
     <symbol>TTCFQ</symbol>
     <name>Tattooed Chef, Inc.</name>
@@ -2388,6 +2692,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>TTE</symbol>
     <name>TotalEnergies SE</name>
     <taxNumber>9542051180</taxNumber>
@@ -2395,6 +2700,7 @@
     <country>FR</country>
   </company>
   <company>
+    <isin />
     <conid>13096</conid>
     <symbol>TXN</symbol>
     <name>Texas Instruments Inc</name>
@@ -2403,6 +2709,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>TXT</symbol>
     <name>Textron Inc.</name>
     <taxNumber>050315468</taxNumber>
@@ -2410,6 +2717,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>UBA</symbol>
     <name>Urstadt Biddle Properties Inc</name>
     <taxNumber>042458042</taxNumber>
@@ -2417,6 +2725,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>UGI</symbol>
     <name>UGI Corporation</name>
     <taxNumber>232668356</taxNumber>
@@ -2424,6 +2733,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>UL</symbol>
     <name>UNILEVER PLC</name>
     <taxNumber>243359756</taxNumber>
@@ -2431,6 +2741,7 @@
     <country>GB</country>
   </company>
   <company>
+    <isin />
     <conid>33202307</conid>
     <symbol>ULH</symbol>
     <name>Universal Logistics Holdings Inc</name>
@@ -2439,6 +2750,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>13272</conid>
     <symbol>UNH</symbol>
     <name>Unitedhealth Group Inc</name>
@@ -2447,6 +2759,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>UNM</symbol>
     <name>Unum Group</name>
     <taxNumber>621598430</taxNumber>
@@ -2454,6 +2767,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>UNP</symbol>
     <name>Union Pacific Corp</name>
     <taxNumber>13-2626465</taxNumber>
@@ -2461,6 +2775,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>120420959</conid>
     <symbol>USAC</symbol>
     <name>Usa Compression Partners Lp</name>
@@ -2469,6 +2784,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>318336</conid>
     <symbol>USOI</symbol>
     <name>CREDIT SUISSE X-LINKS CRUDE OIL SHARES COVEREDCALL ETNS</name>
@@ -2477,6 +2793,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>V</symbol>
     <name>Visa Inc.</name>
     <taxNumber>260267673</taxNumber>
@@ -2484,6 +2801,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>60581038</conid>
     <symbol>VALE</symbol>
     <name>VALE SA-SP ADR</name>
@@ -2492,6 +2810,7 @@
     <country>BR</country>
   </company>
   <company>
+    <isin />
     <symbol>VEU</symbol>
     <name>Vanguard FTSE All-World ex-US ETF</name>
     <taxNumber>9220427754</taxNumber>
@@ -2499,6 +2818,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>13440</conid>
     <symbol>VFC</symbol>
     <name>V F Corp</name>
@@ -2507,6 +2827,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>VICI</symbol>
     <name>Vici Properties Inc.</name>
     <taxNumber>814177147</taxNumber>
@@ -2514,6 +2835,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>29612206</conid>
     <symbol>VIE</symbol>
     <name>Veolia Environnement</name>
@@ -2522,6 +2844,7 @@
     <country>FR</country>
   </company>
   <company>
+    <isin />
     <symbol>VLO</symbol>
     <name>Valero Energy Corp</name>
     <taxNumber>741244795</taxNumber>
@@ -2529,6 +2852,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>VOE</symbol>
     <name>Voestalpine AG</name>
     <taxNumber>ATU 36905408</taxNumber>
@@ -2536,6 +2860,7 @@
     <country>AT</country>
   </company>
   <company>
+    <isin />
     <symbol>VTI</symbol>
     <name>Vanguard Total Stock Market ETF</name>
     <taxNumber>9229087690</taxNumber>
@@ -2543,6 +2868,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>VTRS</symbol>
     <name>Viatris Inc</name>
     <taxNumber>83436429</taxNumber>
@@ -2550,6 +2876,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>128884495</conid>
     <symbol>VUSA</symbol>
     <name>Vanguard S&amp;P 500 UCITS ETF</name>
@@ -2558,6 +2885,7 @@
     <country>IE</country>
   </company>
   <company>
+    <isin />
     <symbol>VWRD</symbol>
     <name>Vanguard FTSE All-World UCITS ETF</name>
     <taxNumber>00B3RBWM25</taxNumber>
@@ -2565,6 +2893,7 @@
     <country>IE</country>
   </company>
   <company>
+    <isin />
     <symbol>VXUS</symbol>
     <name>Vanguard Total International Stock ETF</name>
     <taxNumber>9219097683</taxNumber>
@@ -2572,6 +2901,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>4901</conid>
     <symbol>VZ</symbol>
     <name>Verizon Communications Inc</name>
@@ -2580,6 +2910,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>WD</conid>
     <symbol>WD</symbol>
     <name>WALKER DUNLOP INC</name>
@@ -2588,6 +2919,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>70578542</conid>
     <symbol>WDS</symbol>
     <name>Woodside Energy Group Ltd</name>
@@ -2596,6 +2928,7 @@
     <country>AU</country>
   </company>
   <company>
+    <isin />
     <symbol>WELL</symbol>
     <name>Welltower Inc.</name>
     <taxNumber>341096634</taxNumber>
@@ -2603,6 +2936,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>WFC</symbol>
     <name>Wells Fargo &amp; Company</name>
     <taxNumber>410449260</taxNumber>
@@ -2610,6 +2944,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>WHR</symbol>
     <name>Whirlpool Corporation</name>
     <taxNumber>381490038</taxNumber>
@@ -2617,6 +2952,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>13379</conid>
     <symbol>WM</symbol>
     <name>Waste Management</name>
@@ -2625,6 +2961,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>13824</conid>
     <symbol>WMT</symbol>
     <name>Walmart Inc</name>
@@ -2633,6 +2970,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>WPC</symbol>
     <name>W. P. Carey Inc.</name>
     <taxNumber>133912578</taxNumber>
@@ -2640,6 +2978,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>274836867</conid>
     <symbol>WPM</symbol>
     <name>Wheaton Precious Metals Corp.</name>
@@ -2648,6 +2987,7 @@
     <country>CA</country>
   </company>
   <company>
+    <isin />
     <symbol>WRK</symbol>
     <name>Westrock Co</name>
     <taxNumber>371880617</taxNumber>
@@ -2655,6 +2995,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>413951493</conid>
     <symbol>XES</symbol>
     <name>SPDR S&amp;P Oil &amp; Gas Equipment &amp; Services ETF</name>
@@ -2663,6 +3004,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <symbol>XOM</symbol>
     <name>Exxon Mobil Corp</name>
     <taxNumber>135409005</taxNumber>
@@ -2670,6 +3012,7 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
     <conid>43626350</conid>
     <symbol>Z74</symbol>
     <name>Singapore Communications Ltd</name>
@@ -2678,6 +3021,7 @@
     <country>SG</country>
   </company>
   <company>
+    <isin />
     <symbol>ZIM</symbol>
     <name>ZIM Integrated Shipping Services Ltd.</name>
     <taxNumber>520015041</taxNumber>
@@ -2685,6 +3029,7 @@
     <country>IL</country>
   </company>
   <company>
+    <isin />
     <conid>262834</conid>
     <symbol>ZURN</symbol>
     <name>Zurich Insurance Group AG</name>
