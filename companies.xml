@@ -167,6 +167,15 @@
   </company>
   <company>
     <isin />
+    <conid>240486295</conid>
+    <symbol>AD.AS</symbol>
+    <name>Koninklijke Ahold Delhaize N.V.</name>
+    <taxNumber>NL001028789B01</taxNumber>
+    <address>Provincialeweg 11, 1506 MA Zaandam</address>
+    <country>NL</country>
+  </company>
+  <company>
+    <isin />
     <conid>4157</conid>
     <symbol>ADI</symbol>
     <name>Analog Devices Inc</name>
@@ -232,6 +241,15 @@
     <taxNumber>380572512</taxNumber>
     <address>Ally Detroit Center 500 Woodward Ave. Floor 10 Detroit Michigan 48226</address>
     <country>US</country>
+  </company>
+  <company>
+    <isin />
+    <conid>674617697</conid>
+    <symbol>ALTM</symbol>
+    <name>ARCADIUM LITHIUM PLC</name>
+    <taxNumber>98-1737136</taxNumber>
+    <address>Suite 12, Gateway Hub, Shannon Airport House, Shannon, Co. Clare V14 E3 70</address>
+    <country>IE</country>
   </company>
   <company>
     <isin />
@@ -388,12 +406,30 @@
   </company>
   <company>
     <isin />
+    <conid>166090175</conid>
+    <symbol>BABA</symbol>
+    <name>Alibaba Group Holding Limited</name>
+    <taxNumber>770536787</taxNumber>
+    <address>969 West Wen Yi Road, Yu Hang District, Hangzhou, Zhejiang, 311121z</address>
+    <country>CN</country>
+  </company>
+  <company>
+    <isin />
     <conid>10098</conid>
     <symbol>BAC</symbol>
     <name>Bank of America Corporation</name>
     <taxNumber>941687665</taxNumber>
     <address>100 N. Tryon St, Charlotte, NC 28255</address>
     <country>US</country>
+  </company>
+  <company>
+    <isin />
+    <conid>77680640</conid>
+    <symbol>BASd</symbol>
+    <name>BASF SE</name>
+    <taxNumber>DE149145247</taxNumber>
+    <address>Carl-Bosch-Str. 38, 67056 Ludwigshafen am Rhein</address>
+    <country>DE</country>
   </company>
   <company>
     <isin />
@@ -547,6 +583,15 @@
     <taxNumber>00102498</taxNumber>
     <address>1 St James's Square, London, SW1Y 4PD</address>
     <country>GB</country>
+  </company>
+  <company>
+    <isin />
+    <conid>72063691</conid>
+    <symbol>BRK B</symbol>
+    <name>Berkshire Hathaway Inc.</name>
+    <taxNumber>47-0813844</taxNumber>
+    <address>3555 Farnam St Ste 1440, Omaha, 68131-3378, Nebraska</address>
+    <country>US</country>
   </company>
   <company>
     <isin />
@@ -1641,6 +1686,14 @@
   </company>
   <company>
     <isin />
+    <symbol>LTHM</symbol>
+    <name>Livent Corporation</name>
+    <taxNumber>82-4688610</taxNumber>
+    <address>1818 Market Street, Philadelphia, 19103-3638, Pennsylvania</address>
+    <country>US</country>
+  </company>
+  <company>
+    <isin />
     <conid>6180</conid>
     <symbol>LUMN</symbol>
     <name>CenturyLink Inc</name>
@@ -2184,6 +2237,15 @@
   </company>
   <company>
     <isin />
+    <conid>199169591</conid>
+    <symbol>PYPL</symbol>
+    <name>Paypal Holdings, Inc.</name>
+    <taxNumber>47-2989869</taxNumber>
+    <address>2211 North First Street, San Jose, CA 95131</address>
+    <country>US</country>
+  </company>
+  <company>
+    <isin />
     <symbol>QCOM</symbol>
     <name>QUALCOMM, Inc.</name>
     <taxNumber>453157787</taxNumber>
@@ -2274,6 +2336,15 @@
     <taxNumber>951778500</taxNumber>
     <address>870 Winter Street, Waltham, MA 02451-1449</address>
     <country>US</country>
+  </company>
+  <company>
+    <isin />
+    <conid>282449256</conid>
+    <symbol>RUI.PA</symbol>
+    <name>Rubis SCA</name>
+    <taxNumber>FR81784393530</taxNumber>
+    <address>46, rue Boissiere, 75116 Paris</address>
+    <country>FR</country>
   </company>
   <company>
     <isin />
@@ -2906,6 +2977,15 @@
     <taxNumber>ATU 36905408</taxNumber>
     <address>Voestalpine-Stra&#223;e 3 4020 Linz</address>
     <country>AT</country>
+  </company>
+  <company>
+    <isin />
+    <conid>14237</conid>
+    <symbol>VOW3d</symbol>
+    <name>Volkswagen AG</name>
+    <taxNumber>DE115235681</taxNumber>
+    <address>Berliner Ring 2, 38440 Wolfsburg</address>
+    <country>DE</country>
   </company>
   <company>
     <isin />
