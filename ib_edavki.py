@@ -1102,6 +1102,9 @@ def main():
         if ibCashTransactions is None:
             continue
         for ibCashTransaction in ibCashTransactions:
+            """ Ignore levelOfDetail="SUMMARY" CashTransactions """
+            if ibCashTransaction.attrib["transactionID"] == ""
+                continue
             if (
                 ibCashTransaction.tag == "CashTransaction"
                 and ibCashTransaction.attrib["dateTime"].startswith(str(reportYear))
@@ -1147,6 +1150,9 @@ def main():
 
         missing_dividends_for_witholding_tax = defaultdict(lambda: set())
         for ibCashTransaction in ibCashTransactions:
+            """ Ignore levelOfDetail="SUMMARY" CashTransactions """
+            if ibCashTransaction.attrib["transactionID"] == ""
+                continue
             if (
                 ibCashTransaction.tag == "CashTransaction"
                 and ibCashTransaction.attrib["dateTime"].startswith(str(reportYear))
