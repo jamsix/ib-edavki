@@ -170,8 +170,13 @@ def main():
     """ Fetch companies.xml from GitHub if it doesn't exist locally or hasn't been updated for a day, and merge it with the local copy """
     companies = []
     companiesXmls = []
-    if os.path.isfile("companies.xml"):
-        companiesXmls.append(xml.etree.ElementTree.parse("companies.xml").getroot())
+    if not os.path.isfile("companies-local.xml"):
+        with open("companies-local.xml", "w") as f:
+            f.write("<companies>\n\n</companies>")
+    try:
+        companiesXmls.append(xml.etree.ElementTree.parse("companies-local.xml").getroot())
+    except:
+        pass
     try:
         r = requests.get("https://github.com/jamsix/ib-edavki/raw/master/companies.xml", headers={"User-Agent": userAgent})
         companiesXmls.append(xml.etree.ElementTree.ElementTree(xml.etree.ElementTree.fromstring(r.content)).getroot())
