@@ -16,7 +16,7 @@ napovedi. Za pravilnost davčne napovedi si odgovoren sam in avtor(ji) skripte z
 
 Če ti je skripta prihranila nekaj ur, nam največ veselja narediš s tem, da nekaj dobička podariš v dober namen. Slikaj priloženo QR kodo s svojo priljubljeno bančno aplikacijo ali klikni na njo:
 
-[![ib-edavki / ZPM donacija](https://www.zpmmoste.net/wp-content/uploads/2021/10/Popravljena-koda-300x300.png)](https://www.zpmmoste.net/donatorji/)
+[![ib-edavki / ZPM donacija](https://www.zveza-anitaogulin.si/wp-content/uploads/2024/07/QR-koda-za-BOTRSTVO-115.jpg)](https://www.zveza-anitaogulin.si/donatorji/donacija/)
 
 ## Uporaba
 
