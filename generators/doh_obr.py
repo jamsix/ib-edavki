@@ -73,7 +73,7 @@ def generate(
 
         for ibCashTransaction in ibCashTransactions:
             """ Ignore levelOfDetail="SUMMARY" CashTransactions """
-            if ibCashTransaction.attrib["transactionID"] == ""
+            if ibCashTransaction.attrib["transactionID"] == "":
                 continue
             if (
                 ibCashTransaction.tag == "CashTransaction"
@@ -94,7 +94,7 @@ def generate(
 
         for ibCashTransaction in ibCashTransactions:
             """ Ignore levelOfDetail="SUMMARY" CashTransactions """
-            if ibCashTransaction.attrib["transactionID"] == ""
+            if ibCashTransaction.attrib["transactionID"] == "":
                 continue
             if (
                 ibCashTransaction.tag == "CashTransaction"
