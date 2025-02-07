@@ -3,3 +3,6 @@
 *.pyc
 .idea
 __pycache__
+!companies.xml
+!ib-affiliates.xml
+!relief-statements.xml
