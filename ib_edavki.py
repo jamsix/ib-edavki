@@ -167,7 +167,7 @@ def main():
         "isResident": taxpayer.find("isResident").text,
     }
 
-    """ Fetch companies.xml from GitHub if it doesn't exist locally or hasn't been updated for a day, and merge it with the local copy """
+    """ Merge data from local companies-local.xml and repo companies.xml into local companies.xml """
     companies = []
     companiesXmls = []
     if not os.path.isfile("companies-local.xml"):
@@ -182,6 +182,14 @@ def main():
         companiesXmls.append(xml.etree.ElementTree.ElementTree(xml.etree.ElementTree.fromstring(r.content)).getroot())
     except:
         pass
+
+    """ To ease the transition from companies.xml to companies-local.xml we will keep local changes to companies.xml for now.
+        This part of code wil be removed later. """
+    try:
+        companiesXmls.append(xml.etree.ElementTree.parse("companies.xml").getroot())
+    except:
+        pass
+
     for cs in companiesXmls:
         for company in cs:
             c = {
