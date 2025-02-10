@@ -2708,4 +2708,53 @@
         <address>No. 1, Zijin Avenue, Shanghang County, Longyan, Fujian, 364200</address>
         <country>CN</country>
     </company>
+    <company>
+        <symbol>BABA</symbol>
+        <name>ALIBABA GROUP HOLDING-SP ADR</name>
+        <taxNumber>US01609W1027</taxNumber>
+        <address>LJUDSKA REPUBLIKA KITAJSKA</address>
+        <country>CN</country>
+    </company>
+    <company>
+        <symbol>DOYU</symbol>
+        <name>DOUYU INTERNATIONAL HOLD-ADR</name>
+        <taxNumber>US25985W2044</taxNumber>
+        <address>LJUDSKA REPUBLIKA KITAJSKA</address>
+        <country>CN</country>
+    </company>
+    <company>
+        <symbol>NNND</symbol>
+        <name>Tencent Holdings Ltd</name>
+        <taxNumber>KYG875721634</taxNumber>
+        <address>Kejizhongyi Avenue, Hi-tech Park, Nanshan District, Shenzhen, 518057</address>
+        <country>CN</country>
+    </company>
+    <company>
+        <symbol>JKS</symbol>
+        <name>JINKOSOLAR HOLDING CO-ADR</name>
+        <taxNumber>US47759T1007</taxNumber>
+        <address>LJUDSKA REPUBLIKA KITAJSKA</address>
+        <country>CN</country>
+    </company>
+    <company>
+        <symbol>RIGD</symbol>
+        <name>RELIANCE INDS-SPONS GDR 144A</name>
+        <taxNumber>US7594701077</taxNumber>
+        <address>INDIJA</address>
+        <country>IN</country>
+    </company>
+    <company>
+        <symbol>TRMD</symbol>
+        <name>TORM PLC-A</name>
+        <taxNumber>GB00BZ3CNK81</taxNumber>
+        <address>ZDRUŽENO KRALJESTVO VELIKE BRITANIJE IN SEVERNE IRSKE</address>
+        <country>GB</country>
+    </company>
+    <company>
+        <symbol>URWp</symbol>
+        <name>UNIBAIL-RODAMCO-WESTFIELD</name>
+        <taxNumber>GB00BZ3CNK81</taxNumber>
+        <address>FRANCIJA</address>
+        <country>FR</country>
+    </company>
 </companies>
