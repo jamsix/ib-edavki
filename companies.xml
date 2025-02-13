@@ -2708,4 +2708,12 @@
         <address>No. 1, Zijin Avenue, Shanghang County, Longyan, Fujian, 364200</address>
         <country>CN</country>
     </company>
+    <company>
+        <conid>68598660</conid>
+        <symbol>BAYNd</symbol>
+        <name>Bayer AG</name>
+        <taxNumber>DE123659859</taxNumber>
+        <address>Kaiser-Wilhelm-Allee 1, Leverkusen 51373, Germany</address>
+        <country>DE/country>
+    </company>
 </companies>
