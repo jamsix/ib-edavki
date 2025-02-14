@@ -72,6 +72,9 @@ def generate(
             continue
 
         for ibCashTransaction in ibCashTransactions:
+            """ Ignore levelOfDetail="SUMMARY" CashTransactions """
+            if ibCashTransaction.attrib["transactionID"] == "":
+                continue
             if (
                 ibCashTransaction.tag == "CashTransaction"
                 and ibCashTransaction.get("dateTime").startswith(str(reportYear))
@@ -90,6 +93,9 @@ def generate(
                 interests.append(interest)
 
         for ibCashTransaction in ibCashTransactions:
+            """ Ignore levelOfDetail="SUMMARY" CashTransactions """
+            if ibCashTransaction.attrib["transactionID"] == "":
+                continue
             if (
                 ibCashTransaction.tag == "CashTransaction"
                 and ibCashTransaction.attrib["dateTime"].startswith(str(reportYear))
