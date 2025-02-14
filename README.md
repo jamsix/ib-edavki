@@ -16,7 +16,7 @@ napovedi. Za pravilnost davčne napovedi si odgovoren sam in avtor(ji) skripte z
 
 Če ti je skripta prihranila nekaj ur, nam največ veselja narediš s tem, da nekaj dobička podariš v dober namen. Slikaj priloženo QR kodo s svojo priljubljeno bančno aplikacijo ali klikni na njo:
 
-[![ib-edavki / ZPM donacija](https://www.zpmmoste.net/wp-content/uploads/2021/10/Popravljena-koda-300x300.png)](https://www.zpmmoste.net/donatorji/)
+[![ib-edavki / ZPM donacija](https://www.zveza-anitaogulin.si/wp-content/uploads/2024/07/QR-koda-za-BOTRSTVO-115.jpg)](https://www.zveza-anitaogulin.si/donatorji/donacija/)
 
 ## Uporaba
 
@@ -80,8 +80,8 @@ eDavki ne omogočajo dodajanje popisnih listov za tekoče leto, temveč le za pr
 **Pozor: namenjeno informativnemu izračunu, ne oddajaj obrazca napolnjenega s temi podatki!**
 
 #### Dodatni podatki o podjetju za obrazec Doh-Div (opcijsko)
-Obrazec Doh-Div zahteva dodatne podatke o podjetju, ki je izplačalo dividende (identifikacijska številka, naslov, ...), ki jih v izvirnih podatkih IBja ni. Ob prvi uporabi, skripta prenese datoteki `companies.xml` in `relief-statement.xml`, ki že vsebujeta nekaj podjetij in sporazumov o izogibanju dvojnega obdavčevanja, ostale lahko dodaš sam, ali manjkajoče podatke po uvozu obrazca vneseš v eDavkih.
-*Če boš v `companies.xml` vnesel več novih podjetij, naredi pull request.*
+Obrazec Doh-Div zahteva dodatne podatke o podjetju, ki je izplačalo dividende (identifikacijska številka, naslov, ...), ki jih v izvirnih podatkih IBja ni. Ob prvi uporabi, skripta prenese datoteki `companies.xml` in `relief-statement.xml`, ki že vsebujeta nekaj podjetij in sporazumov o izogibanju dvojnega obdavčevanja. Manjkajoča podjetja lahko dodaš v `companies-local.xml` ali pa manjkajoče podatke po uvozu obrazca vneseš v eDavkih.
+*Če boš v `companies-local.xml` vnesel več novih podjetij, jih bomo avtomatično prenesli v `companies.xml` - prosimo, naredi pull request.*
 
 #### Podatki o podružnicah IB za obrazec Doh-Obr
 Obrazec Doh-Obr zahteva dodatne podatke o podružnici IB, ki je izplačevalka obresti Stock Yield Enhancement programa (identifikacijska številka, naziv, naslov, država) in jih v izvirnih podatkih IB-ja ni. Ob prvi uporabi skripta prenese datoteko `ib-affiliates.xml`, ki vsebuje zahtevane podatke za IB United Kingdom, IB Central Europe, IB Ireland in IB Luxembourg, po potrebi pa lahko te podatke spremeniš ali dodaš.

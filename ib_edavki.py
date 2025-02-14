@@ -167,25 +167,90 @@ def main():
         "isResident": taxpayer.find("isResident").text,
     }
 
-    """ Fetch companies.xml from GitHub if it doesn't exist or hasn't been updated for a month and use the data for Doh-Div.xml """
-    companies = {}
-    if not os.path.isfile("companies.xml") or datetime.datetime.fromtimestamp(os.path.getctime("companies.xml")) < (datetime.datetime.now() - datetime.timedelta(days=30)):
-        r = requests.get(
-            "https://github.com/jamsix/ib-edavki/raw/master/companies.xml",
-            headers={"User-Agent": userAgent}
-        )
-        open("companies.xml", 'wb').write(r.content)
-    if os.path.isfile("companies.xml"):
-        cmpns = xml.etree.ElementTree.parse("companies.xml").getroot()
-        for company in cmpns:
+    """ Merge data from local companies-local.xml and repo companies.xml into local companies.xml """
+    companies = []
+    companiesXmls = []
+    if not os.path.isfile("companies-local.xml"):
+        with open("companies-local.xml", "w") as f:
+            f.write("<companies>\n\n</companies>")
+    try:
+        companiesXmls.append(xml.etree.ElementTree.parse("companies-local.xml").getroot())
+    except:
+        pass
+    try:
+        r = requests.get("https://github.com/jamsix/ib-edavki/raw/master/companies.xml", headers={"User-Agent": userAgent})
+        companiesXmls.append(xml.etree.ElementTree.ElementTree(xml.etree.ElementTree.fromstring(r.content)).getroot())
+    except:
+        pass
+
+    """ To ease the transition from companies.xml to companies-local.xml we will keep local changes to companies.xml for now.
+        This part of code wil be removed later. """
+    try:
+        companiesXmls.append(xml.etree.ElementTree.parse("companies.xml").getroot())
+    except:
+        pass
+
+    for cs in companiesXmls:
+        for company in cs:
             c = {
-                "symbol": company.find("symbol").text,
-                "name": company.find("name").text,
-                "taxNumber": company.find("taxNumber").text,
-                "address": company.find("address").text,
-                "country": company.find("country").text,
+                "isin": "",
+                "symbol": company.find("symbol").text.strip(),
+                "name": company.find("name").text.strip(),
+                "taxNumber": "",
+                "address": company.find("address").text.strip(),
+                "country": company.find("country").text.strip(),
+                "conid": None,
             }
-            companies[c["symbol"]] = c
+            if company.find("isin") is not None and company.find("isin").text is not None:
+                c["isin"] = company.find("isin").text.strip()
+            if company.find("taxNumber") is not None and company.find("taxNumber").text is not None:
+                c["taxNumber"] = company.find("taxNumber").text.strip()
+            if company.find("conid") is not None and company.find("conid").text is not None:
+                c["conid"] = company.find("conid").text.strip()
+            if c["isin"] != "":
+                for x in companies:
+                    if x["isin"] != "" and x["isin"] == c["isin"]:
+                        break
+                    elif x["isin"] == "" and c["conid"] is not None and x["conid"] == c["conid"]:
+                        x["isin"] = c["isin"]
+                        break
+                    elif x["isin"] == "" and c["symbol"] is not None and x["symbol"] == c["symbol"] and x["name"] == c["name"]:
+                        x["isin"] = c["isin"]
+                        break
+                else:
+                    companies.append(c)
+                continue
+            if c["conid"] is not None:
+                for x in companies:
+                    if x["conid"] is not None and x["conid"] == c["conid"]:
+                        break
+                    elif x["conid"] is None and c["symbol"] is not None and x["symbol"] == c["symbol"] and x["name"] == c["name"]:
+                        x["conid"] = c["conid"]
+                        break
+                else:
+                    companies.append(c)
+                continue
+            for x in companies:
+                if x["symbol"] == c["symbol"]:
+                    break
+            else:
+                companies.append(c)
+    if len(companies) > 0:
+        companies.sort(key=lambda x: x["symbol"])
+        cs = xml.etree.ElementTree.Element("companies")
+        for company in companies:
+            c = xml.etree.ElementTree.SubElement(cs, "company")
+            xml.etree.ElementTree.SubElement(c, "isin").text = company["isin"]
+            if company["conid"] is not None and company["conid"] != "":
+                xml.etree.ElementTree.SubElement(c, "conid").text = company["conid"]
+            xml.etree.ElementTree.SubElement(c, "symbol").text = company["symbol"]
+            xml.etree.ElementTree.SubElement(c, "name").text = company["name"]
+            xml.etree.ElementTree.SubElement(c, "taxNumber").text = company["taxNumber"]
+            xml.etree.ElementTree.SubElement(c, "address").text = company["address"]
+            xml.etree.ElementTree.SubElement(c, "country").text = company["country"]
+        tree = xml.etree.ElementTree.ElementTree(cs)
+        xml.etree.ElementTree.indent(tree)
+        tree.write("companies.xml")
 
     """ Fetch relief-statements.xml from GitHub if it doesn't exist or hasn't been updated for a month and use the data for Doh-Div.xml """
     if not os.path.isfile("relief-statements.xml")  or datetime.datetime.fromtimestamp(os.path.getctime("relief-statements.xml")) < (datetime.datetime.now() - datetime.timedelta(days=30)):
@@ -197,9 +262,9 @@ def main():
     if os.path.isfile("relief-statements.xml"):
         statements = xml.etree.ElementTree.parse("relief-statements.xml").getroot()
         for statement in statements:
-            for symbol in companies:
-                if companies[symbol]["country"] == statement.find("country").text:
-                    companies[symbol]["reliefStatement"] = statement.find(
+            for company in companies:
+                if company["country"] == statement.find("country").text:
+                    company["reliefStatement"] = statement.find(
                         "statement"
                     ).text
 
@@ -1123,19 +1188,32 @@ def main():
                     "tax": 0,
                     "taxEUR": 0,
                 }
+                if ibCashTransaction.attrib.get("isin") is not None:
+                    dividend["isin"] = ibCashTransaction.attrib["isin"]
                 dividend["securityID"] = ibCashTransaction.attrib["securityID"]
                 if dividend["securityID"] == "":
                     dividend["securityID"] = dividend["conid"]
 
-                if companies and dividend["symbol"] in companies:
-                    dividend["name"] = companies[dividend["symbol"]]["name"]
-                    dividend["taxNumber"] = companies[dividend["symbol"]]["taxNumber"]
-                    dividend["address"] = companies[dividend["symbol"]]["address"]
-                    dividend["country"] = companies[dividend["symbol"]]["country"]
-                    if "reliefStatement" in companies[dividend["symbol"]]:
-                        dividend["reliefStatement"] = companies[dividend["symbol"]][
-                            "reliefStatement"
-                        ]
+                company = None
+                for x in companies:
+                    if "isin" in x and x["isin"] != "" and "isin" in dividend and x["isin"] == dividend["isin"]:
+                        company = x
+                else:
+                    for x in companies:
+                        if "conid" in x and x["conid"] == dividend["conid"]:
+                            company = x
+                    else:
+                        for x in companies:
+                            if x["symbol"] == dividend["symbol"]:
+                                company = x
+
+                if company is not None:
+                    dividend["name"] = company["name"]
+                    dividend["taxNumber"] = company["taxNumber"]
+                    dividend["address"] = company["address"]
+                    dividend["country"] = company["country"]
+                    if "reliefStatement" in company:
+                        dividend["reliefStatement"] = company["reliefStatement"]
                 else:
                     missingCompanies.add((dividend["conid"], dividend["symbol"]))
 
