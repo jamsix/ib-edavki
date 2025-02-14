@@ -166,7 +166,7 @@
     <country>IE</country>
   </company>
   <company>
-    <isin />
+    <isin>NL0011794037</isin>
     <conid>240486295</conid>
     <symbol>AD.AS</symbol>
     <name>Koninklijke Ahold Delhaize N.V.</name>
@@ -243,10 +243,10 @@
     <country>US</country>
   </company>
   <company>
-    <isin />
+    <isin>JE00BM9HZ112</isin>
     <conid>674617697</conid>
     <symbol>ALTM</symbol>
-    <name>ARCADIUM LITHIUM PLC</name>
+    <name>Arcadium Lithium</name>
     <taxNumber>98-1737136</taxNumber>
     <address>Suite 12, Gateway Hub, Shannon Airport House, Shannon, Co. Clare V14 E3 70</address>
     <country>IE</country>
@@ -405,13 +405,12 @@
     <country>US</country>
   </company>
   <company>
-    <isin />
-    <conid>166090175</conid>
+    <isin>US01609W1027</isin>
     <symbol>BABA</symbol>
     <name>Alibaba Group Holding Limited</name>
-    <taxNumber>770536787</taxNumber>
-    <address>969 West Wen Yi Road, Yu Hang District, Hangzhou, Zhejiang, 311121z</address>
-    <country>CN</country>
+    <taxNumber>5493001NTNQJDH60PM02</taxNumber>
+    <address>One Capital Place, P.O. Box 847, George Town, Grand Cayman</address>
+    <country>KY</country>
   </company>
   <company>
     <isin />
@@ -423,7 +422,7 @@
     <country>US</country>
   </company>
   <company>
-    <isin />
+    <isin>DE000BASF111</isin>
     <conid>77680640</conid>
     <symbol>BASd</symbol>
     <name>BASF SE</name>
@@ -439,6 +438,15 @@
     <taxNumber>GB239136950</taxNumber>
     <address>Globe House, 4 Temple Place, London WC2R 2PG</address>
     <country>GB</country>
+  </company>
+  <company>
+    <isin />
+    <conid>68598660</conid>
+    <symbol>BAYNd</symbol>
+    <name>Bayer AG</name>
+    <taxNumber>DE123659859</taxNumber>
+    <address>Kaiser-Wilhelm-Allee 1, Leverkusen 51373, Germany</address>
+    <country>DE</country>
   </company>
   <company>
     <isin />
@@ -585,7 +593,7 @@
     <country>GB</country>
   </company>
   <company>
-    <isin />
+    <isin>US0846707026</isin>
     <conid>72063691</conid>
     <symbol>BRK B</symbol>
     <name>Berkshire Hathaway Inc.</name>
@@ -865,6 +873,14 @@
     <taxNumber>260081711</taxNumber>
     <address>Four Embarcadero Center, Suite 3200, San Francisco, CA 94111</address>
     <country>US</country>
+  </company>
+  <company>
+    <isin>US25985W2044</isin>
+    <symbol>DOYU</symbol>
+    <name>DouYu International Holdings Limited</name>
+    <taxNumber />
+    <address>Ugland House, South Church Street, George Town, Grand Cayman</address>
+    <country>KY</country>
   </company>
   <company>
     <isin />
@@ -1494,6 +1510,14 @@
     <country>IRL</country>
   </company>
   <company>
+    <isin>US47759T1007</isin>
+    <symbol>JKS</symbol>
+    <name>JinkoSolar Holding Co Ltd</name>
+    <taxNumber>529900Y93WNCS05FG852</taxNumber>
+    <address>1 Yingbin Road, Shangrao Economic Development Zone, Shangrao, Jiangxi, 334100</address>
+    <country>CN</country>
+  </company>
+  <company>
     <isin />
     <conid>12973838</conid>
     <symbol>JNJ</symbol>
@@ -1685,7 +1709,7 @@
     <country>US</country>
   </company>
   <company>
-    <isin />
+    <isin>US53814L1089</isin>
     <symbol>LTHM</symbol>
     <name>Livent Corporation</name>
     <taxNumber>82-4688610</taxNumber>
@@ -1777,7 +1801,7 @@
     <symbol>META</symbol>
     <name>Meta Platforms, Inc.</name>
     <taxNumber>20-1665019</taxNumber>
-    <address>1 META WAY, MENLO PARK, CA, 94025</address>
+    <address>1 Meta Way, Menlo Park, CA 94025</address>
     <country>US</country>
   </company>
   <company>
@@ -1952,6 +1976,14 @@
     <taxNumber>561431377</taxNumber>
     <address>450 S Orange Ave, Suite 900, Orlando, FL 32801</address>
     <country>US</country>
+  </company>
+  <company>
+    <isin>KYG875721634</isin>
+    <symbol>NNND</symbol>
+    <name>Tencent Holdings Ltd</name>
+    <taxNumber>KYG875721634</taxNumber>
+    <address>Cricket Square, Hutchins Drive, P.O. Box 2681, Grand Cayman KY1-1111</address>
+    <country>KY</country>
   </company>
   <company>
     <isin />
@@ -2236,7 +2268,7 @@
     <country>US</country>
   </company>
   <company>
-    <isin />
+    <isin>US70450Y1038</isin>
     <conid>199169591</conid>
     <symbol>PYPL</symbol>
     <name>Paypal Holdings, Inc.</name>
@@ -2296,6 +2328,14 @@
     <country>US</country>
   </company>
   <company>
+    <isin>US7594701077</isin>
+    <symbol>RIGD</symbol>
+    <name>Reliance Industries Ltd</name>
+    <taxNumber>L17110MH1973PLC019786</taxNumber>
+    <address>Maker Chambers IV, 222 Nariman Point, Mumbai 400 021</address>
+    <country>IN</country>
+  </company>
+  <company>
     <isin />
     <conid>2852762</conid>
     <symbol>RIO</symbol>
@@ -2338,7 +2378,7 @@
     <country>US</country>
   </company>
   <company>
-    <isin />
+    <isin>FR0013269123</isin>
     <conid>282449256</conid>
     <symbol>RUI.PA</symbol>
     <name>Rubis SCA</name>
@@ -2752,6 +2792,14 @@
     <country>FR</country>
   </company>
   <company>
+    <isin>GB00BZ3CNK81</isin>
+    <symbol>TRMD</symbol>
+    <name>TORM plc</name>
+    <taxNumber>09818726</taxNumber>
+    <address>Office 105, 20 St Dunstan&#8217;s Hill, EC3R 8HL London</address>
+    <country>GB</country>
+  </company>
+  <company>
     <isin />
     <symbol>TROW</symbol>
     <name>Price T Rowe Group Inc</name>
@@ -2894,6 +2942,14 @@
     <country>US</country>
   </company>
   <company>
+    <isin>FR0013326246</isin>
+    <symbol>URWp</symbol>
+    <name>Unibail-Rodamco-Westfield SE</name>
+    <taxNumber>FR84682024096</taxNumber>
+    <address>7, Place du Chancelier Adenauer - CS 31622-772 Paris</address>
+    <country>FR</country>
+  </company>
+  <company>
     <isin />
     <conid>120420959</conid>
     <symbol>USAC</symbol>
@@ -2979,7 +3035,7 @@
     <country>AT</country>
   </company>
   <company>
-    <isin />
+    <isin>DE0007664039</isin>
     <conid>14237</conid>
     <symbol>VOW3d</symbol>
     <name>Volkswagen AG</name>
