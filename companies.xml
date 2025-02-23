@@ -202,6 +202,15 @@
   </company>
   <company>
     <isin />
+    <conid>2560358</conid>
+    <symbol>AES</symbol>
+    <name>The AES Corporation</name>
+    <taxNumber>541163725</taxNumber>
+    <address>4300 Wilson Boulevard, 11th Floor, Arlington, VA 22203</address>
+    <country>US</country>
+  </company>
+  <company>
+    <isin />
     <conid>4227</conid>
     <symbol>AFL</symbol>
     <name>Aflac Inc</name>
@@ -1629,6 +1638,15 @@
     <name>The Coca-Cola Company</name>
     <taxNumber>876272550</taxNumber>
     <address>One Coca-Cola Plaza, Atlanta, GA 30313</address>
+    <country>US</country>
+  </company>
+  <company>
+    <isin />
+    <conid>8908</conid>
+    <symbol>KR</symbol>
+    <name>The Kroger Co.</name>
+    <taxNumber>310345740</taxNumber>
+    <address>1014 Vine Street, Cincinnati, OH 45202-1100</address>
     <country>US</country>
   </company>
   <company>
@@ -3110,6 +3128,15 @@
     <taxNumber>63 005 482 986</taxNumber>
     <address>Mia Yellagonga, 11 Mount Street, Perth WA 6000</address>
     <country>AU</country>
+  </company>
+  <company>
+    <isin />
+    <conid>198560237</conid>
+    <symbol>WEC</symbol>
+    <name>WEC Energy Group Inc</name>
+    <taxNumber>391391525</taxNumber>
+    <address>PO Box 1331, 231 West Michigan Street, Milwaukee, WI 53201</address>
+    <country>US</country>
   </company>
   <company>
     <isin />
