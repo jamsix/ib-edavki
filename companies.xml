@@ -201,7 +201,7 @@
     <country>CA</country>
   </company>
   <company>
-    <isin />
+    <isin>US00130H1059</isin>
     <conid>2560358</conid>
     <symbol>AES</symbol>
     <name>The AES Corporation</name>
@@ -1641,7 +1641,7 @@
     <country>US</country>
   </company>
   <company>
-    <isin />
+    <isin>US5010441013</isin>
     <conid>8908</conid>
     <symbol>KR</symbol>
     <name>The Kroger Co.</name>
@@ -3130,7 +3130,7 @@
     <country>AU</country>
   </company>
   <company>
-    <isin />
+    <isin>US92939U1060</isin>
     <conid>198560237</conid>
     <symbol>WEC</symbol>
     <name>WEC Energy Group Inc</name>
