@@ -269,6 +269,9 @@ def generate(
         xml.etree.ElementTree.SubElement(Interest, "Country").text = ibAffiliateInfo[
             "country"
         ]
+        xml.etree.ElementTree.SubElement(Interest, "Country2").text = ibAffiliateInfo[
+            "country"
+        ]
         xml.etree.ElementTree.SubElement(Interest, "Type").text = "2"
         xml.etree.ElementTree.SubElement(Interest, "Value").text = "{0:.2f}".format(
             interest["amountEUR"]
@@ -276,10 +279,6 @@ def generate(
         xml.etree.ElementTree.SubElement(
             Interest, "ForeignTax"
         ).text = "{0:.2f}".format(interest["taxEUR"])
-        if "country" in interest:
-            xml.etree.ElementTree.SubElement(Interest, "Country2").text = interest[
-                "country"
-            ]
 
     xmlString = xml.etree.ElementTree.tostring(envelope)
     prettyXmlString = minidom.parseString(xmlString).toprettyxml(indent="\t")
