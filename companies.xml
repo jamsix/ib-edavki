@@ -3248,4 +3248,40 @@
     <address>Austrasse 46 Zurich, 8045</address>
     <country>CH</country>
   </company>
+  <company>
+    <isin />
+    <conid>4350</conid>
+    <symbol>HON</symbol>
+    <name>HONEYWELL INTERNATIONAL INC</name>
+    <taxNumber>222640650</taxNumber>
+    <address>855 S Mint St Charlotte, NC, 28202-1517</address>
+    <country>US</country>
+  </company>
+  <company>
+    <isin />
+    <conid>4627828</conid>
+    <symbol>GS</symbol>
+    <name>GOLDMAN SACHS GROUP INC</name>
+    <taxNumber>134019460</taxNumber>
+    <address>200 West Street, 29th Floor New York, NY 10282</address>
+    <country>US</country>
+  </company>
+  <company>
+    <isin />
+    <conid>5437</conid>
+    <symbol>CAT</symbol>
+    <name>CATERPILLAR INC</name>
+    <taxNumber>370602744</taxNumber>
+    <address>5205 N O Connor Blvd Ste 100 Irving, TX, 75039-3712</address>
+    <country>US</country>
+  </company>
+  <company>
+    <isin />
+    <conid>4721</conid>
+    <symbol>AXP</symbol>
+    <name>AMERICAN EXPRESS CO</name>
+    <taxNumber>111988350</taxNumber>
+    <address>200 Vesey Street New York, NY 10285-3106</address>
+    <country>US</country>
+  </company>
 </companies>
