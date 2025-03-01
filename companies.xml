@@ -3248,4 +3248,32 @@
     <address>Austrasse 46 Zurich, 8045</address>
     <country>CH</country>
   </company>
+    <company>
+    <conId>495479613</conId>
+    <isin>IT0005439085</isin>
+    <symbol>TISG</symbol>
+    <name>The Italian Sea Group S.p.A.</name>
+    <taxNumber>00096320452</taxNumber>
+    <address>Viale Cristoforo Colombo, 4, Marina di Carrara, MS 54033</address>
+    <country>IT</country>
+  </company>
+  <company>
+    <isin>US5658491064</isin>
+    <conId>9831</conId>
+    <symbol>MRO</symbol>
+    <name>Marathon Oil Corp</name>
+    <taxNumber>25-0996816</taxNumber>
+    <address>990 Town and Country Boulevard, Houston, TX 77024-2217</address>
+    <country>US</country>
+  </company>
+  <company>
+    <isin />
+    <conId>2585769</conId>
+    <isin>US1266501006</isin>
+    <symbol>CVS</symbol>
+    <name>CVS Health Corporation</name>
+    <taxNumber>05-0494040</taxNumber>
+    <address>One CVS Drive, Woonsocket, RI 02895</address>
+    <country>US</country>
+  </company>
 </companies>
