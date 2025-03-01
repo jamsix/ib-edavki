@@ -870,6 +870,14 @@
   </company>
   <company>
     <isin />
+    <symbol>CVS</symbol>
+    <name>CVS Health Corporation</name>
+    <taxNumber>05-0494040</taxNumber>
+    <address>One CVS Drive, Woonsocket, RI 02895</address>
+    <country>US</country>
+  </company>
+  <company>
+    <isin />
     <symbol>CVX</symbol>
     <name>Chevron Corp</name>
     <taxNumber>940890210</taxNumber>
@@ -1900,6 +1908,14 @@
     <country>US</country>
   </company>
   <company>
+    <isin>US5658491064</isin>
+    <symbol>MRO</symbol>
+    <name>Marathon Oil Corp</name>
+    <taxNumber>25-0996816</taxNumber>
+    <address>990 Town and Country Boulevard, Houston, TX 77024-2217</address>
+    <country>US</country>
+  </company>
+  <company>
     <isin />
     <conid>12178239</conid>
     <symbol>MSF</symbol>
@@ -2819,6 +2835,14 @@
     <taxNumber>410215170</taxNumber>
     <address>1000 Nicollet Mall, Minneapolis, Minnesota, 55403</address>
     <country>US</country>
+  </company>
+  <company>
+    <isin>IT0005439085</isin>
+    <symbol>TISG</symbol>
+    <name>The Italian Sea Group S.p.A.</name>
+    <taxNumber>00096320452</taxNumber>
+    <address>Viale Cristoforo Colombo, 4, Marina di Carrara, MS 54033</address>
+    <country>IT</country>
   </company>
   <company>
     <isin />
