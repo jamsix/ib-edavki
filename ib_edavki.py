@@ -23,6 +23,7 @@ userAgent = 'ib-edavki'
 
 
 stockSplits = defaultdict(list)
+cusipIsinChanges = defaultdict(list)
 
 
 def getSplitMultiplier(symbol, conid, date):
@@ -61,6 +62,22 @@ def addStockSplits(corporateActions):
                     continue
 
             stockSplits[key].append({"date": date, "multiplier": multiplier})
+
+
+def getLatestCusipIsin(cusipIsin):
+    return cusipIsinChanges.get(cusipIsin, cusipIsin)
+
+def updateChangedCusipIsin(corporateActions):
+    for action in corporateActions:
+        description = action.attrib["description"]
+        descriptionSearch = re.search(r"\(([^)]+)\) CUSIP/ISIN CHANGE TO \(([^)]+)\)", description)
+        if descriptionSearch is not None:
+            # we have to extract Cusp and/or ISIN change information from description since IB does not provide
+            # any information on what the corporate action is
+            cusipIsinOld = descriptionSearch.group(1)
+            cusipIsinNew = descriptionSearch.group(2)
+            cusipIsinChanges[cusipIsinOld] = cusipIsinNew
+            print(cusipIsinChanges["NL0011279492"])
 
 
 """ Gets the currency rate for a given date and currency. If no rate exists for a given
@@ -331,6 +348,7 @@ def main():
             corporateActions = ibFlexStatement.find("CorporateActions")
             if corporateActions is not None:
                 addStockSplits(corporateActions)
+                updateChangedCusipIsin(corporateActions)
 
     if test == True:
         statementStartDate = str(reportYear + testYearDiff) + "0101"
@@ -386,9 +404,9 @@ def main():
                     "openCloseIndicator": ibTrade.attrib["openCloseIndicator"],
                 }
                 if len(ibTrade.attrib["isin"]) > 0:
-                    trade["isin"] = ibTrade.attrib["isin"]
+                    trade["isin"] = getLatestCusipIsin(ibTrade.attrib["isin"])
                 if len(ibTrade.attrib["cusip"]) > 0:
-                    trade["cusip"] = ibTrade.attrib["cusip"]
+                    trade["cusip"] = getLatestCusipIsin(ibTrade.attrib["cusip"])
                 if len(ibTrade.attrib["securityID"]) > 0:
                     trade["securityID"] = ibTrade.attrib["securityID"]
 
@@ -402,9 +420,9 @@ def main():
                 if ibTrade.attrib["securityID"] != "":
                     trade["securityID"] = ibTrade.attrib["securityID"]
                 if ibTrade.attrib["isin"] != "":
-                    trade["isin"] = ibTrade.attrib["isin"]
+                    trade["isin"] = getLatestCusipIsin(ibTrade.attrib["isin"])
                 if ibTrade.attrib["cusip"] != "":
-                    trade["cusip"] = ibTrade.attrib["cusip"]
+                    trade["cusip"] = getLatestCusipIsin(ibTrade.attrib["cusip"])
                 if ibTrade.attrib["description"] != "":
                     trade["description"] = ibTrade.attrib["description"]
                 """ Futures and options have multipliers, i.e. a quantity of 1 with tradePrice 3 and multiplier 100 is actually a future/option for 100 stocks, worth 100 x 3 = 300 """
