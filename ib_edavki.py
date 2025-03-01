@@ -77,7 +77,6 @@ def updateChangedCusipIsin(corporateActions):
             cusipIsinOld = descriptionSearch.group(1)
             cusipIsinNew = descriptionSearch.group(2)
             cusipIsinChanges[cusipIsinOld] = cusipIsinNew
-            print(cusipIsinChanges["NL0011279492"])
 
 
 """ Gets the currency rate for a given date and currency. If no rate exists for a given
