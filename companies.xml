@@ -2227,6 +2227,14 @@
     <country>US</country>
   </company>
   <company>
+    <isin>US6745991058</isin>
+    <symbol>OXY</symbol>
+    <name>Occidental Petroleum Corporation</name>
+    <taxNumber>95-4035997</taxNumber>
+    <address>5 Greenway Plaza, Suite 110, Houston, TX 77046-0521</address>
+    <country>US</country>
+  </company>
+  <company>
     <isin />
     <conid>588392767</conid>
     <symbol>P911d</symbol>
