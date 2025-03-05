@@ -414,6 +414,15 @@
     <country>US</country>
   </company>
   <company>
+    <isin />
+    <conid>4721</conid>
+    <symbol>AXP</symbol>
+    <name>AMERICAN EXPRESS CO</name>
+    <taxNumber>111988350</taxNumber>
+    <address>200 Vesey Street New York, NY 10285-3106</address>
+    <country>US</country>
+  </company>
+  <company>
     <isin>US01609W1027</isin>
     <symbol>BABA</symbol>
     <name>Alibaba Group Holding Limited</name>
@@ -664,6 +673,15 @@
   </company>
   <company>
     <isin />
+    <conid>5437</conid>
+    <symbol>CAT</symbol>
+    <name>CATERPILLAR INC</name>
+    <taxNumber>370602744</taxNumber>
+    <address>5205 N O Connor Blvd Ste 100 Irving, TX, 75039-3712</address>
+    <country>US</country>
+  </company>
+  <company>
+    <isin />
     <symbol>CCI</symbol>
     <name>Crown Castle International Corp</name>
     <taxNumber>760470458</taxNumber>
@@ -848,6 +866,14 @@
     <name>Community Bankers Trust Corp</name>
     <taxNumber>20-2652949</taxNumber>
     <address>9954 Mayland Drive, Suite 2100, Richmond, VA 23233</address>
+    <country>US</country>
+  </company>
+  <company>
+    <isin />
+    <symbol>CVS</symbol>
+    <name>CVS Health Corporation</name>
+    <taxNumber>05-0494040</taxNumber>
+    <address>One CVS Drive, Woonsocket, RI 02895</address>
     <country>US</country>
   </company>
   <company>
@@ -1240,6 +1266,15 @@
   </company>
   <company>
     <isin />
+    <conid>4627828</conid>
+    <symbol>GS</symbol>
+    <name>GOLDMAN SACHS GROUP INC</name>
+    <taxNumber>134019460</taxNumber>
+    <address>200 West Street, 29th Floor New York, NY 10282</address>
+    <country>US</country>
+  </company>
+  <company>
+    <isin />
     <conid>909054</conid>
     <symbol>GSK</symbol>
     <name>GSK Plc</name>
@@ -1316,6 +1351,15 @@
     <taxNumber>05777693</taxNumber>
     <address>17 Cavendish Square, London, W1G 0PH</address>
     <country>GB</country>
+  </company>
+  <company>
+    <isin />
+    <conid>4350</conid>
+    <symbol>HON</symbol>
+    <name>HONEYWELL INTERNATIONAL INC</name>
+    <taxNumber>222640650</taxNumber>
+    <address>855 S Mint St Charlotte, NC, 28202-1517</address>
+    <country>US</country>
   </company>
   <company>
     <isin />
@@ -1864,6 +1908,14 @@
     <country>US</country>
   </company>
   <company>
+    <isin>US5658491064</isin>
+    <symbol>MRO</symbol>
+    <name>Marathon Oil Corp</name>
+    <taxNumber>25-0996816</taxNumber>
+    <address>990 Town and Country Boulevard, Houston, TX 77024-2217</address>
+    <country>US</country>
+  </company>
+  <company>
     <isin />
     <conid>12178239</conid>
     <symbol>MSF</symbol>
@@ -2172,6 +2224,14 @@
     <name>Oracle Corp</name>
     <taxNumber>542185193</taxNumber>
     <address>500 Oracle Parkway, Mail Stop 5 Op 7, Redwood City, CA 94065</address>
+    <country>US</country>
+  </company>
+  <company>
+    <isin>US6745991058</isin>
+    <symbol>OXY</symbol>
+    <name>Occidental Petroleum Corporation</name>
+    <taxNumber>95-4035997</taxNumber>
+    <address>5 Greenway Plaza, Suite 110, Houston, TX 77046-0521</address>
     <country>US</country>
   </company>
   <company>
@@ -2783,6 +2843,14 @@
     <taxNumber>410215170</taxNumber>
     <address>1000 Nicollet Mall, Minneapolis, Minnesota, 55403</address>
     <country>US</country>
+  </company>
+  <company>
+    <isin>IT0005439085</isin>
+    <symbol>TISG</symbol>
+    <name>The Italian Sea Group S.p.A.</name>
+    <taxNumber>00096320452</taxNumber>
+    <address>Viale Cristoforo Colombo, 4, Marina di Carrara, MS 54033</address>
+    <country>IT</country>
   </company>
   <company>
     <isin />

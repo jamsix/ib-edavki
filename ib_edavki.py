@@ -1353,15 +1353,6 @@ def main():
                     dividends.remove(reversal)
                     break
 
-    """ Get securities info from IB XML """
-    for ibSecuritiesInfo in ibSecuritiesInfoList:
-        if ibSecuritiesInfo is None:
-            continue
-        for ibSecurityInfo in ibSecuritiesInfo:
-            if ibSecurityInfo.attrib["conid"]:
-                for dividend in dividends:
-                    if ibSecurityInfo.attrib["conid"] == dividend["conid"]:
-                        dividend["name"] = ibSecurityInfo.attrib["description"]
 
     """ Generate Doh-Div.xml """
     envelope = xml.etree.ElementTree.Element(
