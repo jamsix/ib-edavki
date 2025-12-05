@@ -647,6 +647,14 @@
   </company>
   <company>
     <isin />
+    <symbol>BTU</symbol>
+    <name>PEABODY ENERGY CORP</name>
+    <taxNumber>134004153</taxNumber>
+    <address>515 Lowell St, Peabody, MA 01960, USA</address>
+    <country>USA</country>
+  </company>
+  <company>
+    <isin />
     <conid>1715014</conid>
     <symbol>BVN</symbol>
     <name>Cia de Minas Buenaventura SA</name>
@@ -2127,6 +2135,14 @@
   </company>
   <company>
     <isin />
+    <symbol>NVO</symbol>
+    <name>NOVO NORDISK A/S</name>
+    <taxNumber>DK24256790</taxNumber>
+    <address>Novo All&#233;, 2880 Bagsvaerd, Denmark</address>
+    <country>DK</country>
+  </company>
+  <company>
+    <isin />
     <symbol>NYMT</symbol>
     <name>New York Mortgage Trust Inc</name>
     <taxNumber>470934168</taxNumber>
@@ -2717,6 +2733,14 @@
     <taxNumber>GB244106593</taxNumber>
     <address>1 Basinghall Avenue London, EC2V 5DD</address>
     <country>GB</country>
+  </company>
+  <company>
+    <isin />
+    <symbol>STM</symbol>
+    <name>STMicroelectronics N.V.</name>
+    <taxNumber>CHE785414310</taxNumber>
+    <address>Plan-les-Ouates, Geneva, Switzerland</address>
+    <country>CH</country>
   </company>
   <company>
     <isin />
