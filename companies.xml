@@ -1,5 +1,32 @@
 <companies>
   <company>
+    <isin>GB0002634946</isin>
+    <conid>908964</conid>
+    <symbol>BA.</symbol>
+    <name>BAE Systems plc</name>
+    <taxNumber>GB641407169</taxNumber>
+    <address>Carlton Gardens 6, London SW1Y 5AD</address>
+    <country>GB</country>
+  </company>
+  <company>
+    <isin>US05606L1008</isin>
+    <conid>54740723</conid>
+    <symbol>BYDDY</symbol>
+    <name>BYD Company Limited</name>
+    <taxNumber></taxNumber>
+    <address>No. 3009, BYD Road, Pingshan District, Shenzhen, Guangdong</address>
+    <country>CN</country>
+  </company>
+  <company>
+    <isin>SI0031102120</isin>
+    <conid>42345383</conid>
+    <symbol>KRKG</symbol>
+    <name>Krka d.d.</name>
+    <taxNumber>SI61701500</taxNumber>
+    <address>Šmarješka cesta 6, 8501 Novo mesto</address>
+    <country>SI</country>
+  </company>
+  <company>
     <isin />
     <conid>389541685</conid>
     <symbol>005222141</symbol>
