@@ -27,6 +27,69 @@
     <country>SI</country>
   </company>
   <company>
+    <isin>US6701002056</isin>
+    <conid />
+    <symbol>NVO</symbol>
+    <name>Novo Nordisk A/S – Sponsored ADR</name>
+    <taxNumber>DK24256790</taxNumber>
+    <address>Novo Alle 1, 2880 BAGSVAERD</address>
+    <country>DK</country>
+  </company>
+  <company>
+    <isin>US26740W1099</isin>
+    <conid />
+    <symbol>RQ0</symbol>
+    <name>D-Wave Quantum Inc.</name>
+    <taxNumber />
+    <address>3033 Beta Avenue, Burnaby, BC, V5G 4M9</address>
+    <country>CA</country>
+  </company>
+  <company>
+    <isin>US49458Q1094</isin>
+    <conid />
+    <symbol>NAKA</symbol>
+    <name>Kindly MD, Inc.</name>
+    <taxNumber />
+    <address>801 Bradbury Drive SE, Albuquerque, NM</address>
+    <country>US</country>
+  </company>
+  <company>
+    <isin />
+    <conid>29612256</conid>
+    <symbol>AIRd</symbol>
+    <name>Airbus SE</name>
+    <taxNumber>NL808820400B01</taxNumber>
+    <address>Mendelweg 30, 2333 CS Leiden</address>
+    <country>NL</country>
+  </company>
+  <company>
+    <isin />
+    <conid>15085</conid>
+    <symbol>RHMd</symbol>
+    <name>Rheinmetall AG</name>
+    <taxNumber>DE119356818</taxNumber>
+    <address>Rheinmetall Platz 1, 40476 Düsseldorf</address>
+    <country>DE</country>
+  </company>
+  <company>
+    <isin />
+    <conid>1322028</conid>
+    <symbol>SAF</symbol>
+    <name>SAF-HOLLAND SE</name>
+    <taxNumber>DE332706484</taxNumber>
+    <address>Hauptstraße 26, 63856 Bessenbach</address>
+    <country>DE</country>
+  </company>
+  <company>
+    <isin />
+    <conid>917799</conid>
+    <symbol>HO</symbol>
+    <name>Thales SA</name>
+    <taxNumber>FR51552059024</taxNumber>
+    <address>Tour Carpe Diem, 31 Place des Corolles, 92400 Courbevoie</address>
+    <country>FR</country>
+  </company>
+  <company>
     <isin />
     <conid>389541685</conid>
     <symbol>005222141</symbol>
@@ -293,7 +356,7 @@
     <symbol>AMD</symbol>
     <name>Advanced Micro Devices</name>
     <taxNumber>941692300</taxNumber>
-    <address>2485 Augustine Drive, Santa Clara, CA 95054, USA</address>
+    <address>2485 Augustine Drive, Santa Clara, CA 95054</address>
     <country>US</country>
   </company>
   <company>
@@ -671,6 +734,14 @@
     <taxNumber>239136950</taxNumber>
     <address>REGENTS PARK ROAD, MILLBROOK, SOUTHAMPTON, SO15 8TL</address>
     <country>GB</country>
+  </company>
+  <company>
+    <isin />
+    <symbol>BTU</symbol>
+    <name>PEABODY ENERGY CORP</name>
+    <taxNumber>134004153</taxNumber>
+    <address>515 Lowell St, Peabody, MA 01960, US</address>
+    <country>US</country>
   </company>
   <company>
     <isin />
@@ -1507,7 +1578,7 @@
     <symbol>INTU</symbol>
     <name>INTUIT</name>
     <taxNumber>770034661</taxNumber>
-    <address>2700 Coast Avenue Mountain View, CA 94043 USA</address>
+    <address>2700 Coast Avenue Mountain View, CA 94043</address>
     <country>US</country>
   </company>
   <company>
@@ -2140,7 +2211,7 @@
     <symbol>NVD</symbol>
     <name>NVIDIA Corporation</name>
     <taxNumber>943177549</taxNumber>
-    <address>2788 San Tomas Expressway, Santa Clara, CA 95051, USA</address>
+    <address>2788 San Tomas Expressway, Santa Clara, CA 95051</address>
     <country>US</country>
   </company>
   <company>
@@ -2151,6 +2222,14 @@
     <taxNumber>943177549</taxNumber>
     <address>2788 San Tomas Expy, Santa Clara, CA 95051, United States</address>
     <country>US</country>
+  </company>
+  <company>
+    <isin />
+    <symbol>NVO</symbol>
+    <name>NOVO NORDISK A/S</name>
+    <taxNumber>DK24256790</taxNumber>
+    <address>Novo All&#233;, 2880 Bagsvaerd, Denmark</address>
+    <country>DK</country>
   </company>
   <company>
     <isin />
@@ -2744,6 +2823,14 @@
     <taxNumber>GB244106593</taxNumber>
     <address>1 Basinghall Avenue London, EC2V 5DD</address>
     <country>GB</country>
+  </company>
+  <company>
+    <isin />
+    <symbol>STM</symbol>
+    <name>STMicroelectronics N.V.</name>
+    <taxNumber>CHE785414310</taxNumber>
+    <address>Plan-les-Ouates, Geneva, Switzerland</address>
+    <country>CH</country>
   </company>
   <company>
     <isin />
