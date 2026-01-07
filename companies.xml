@@ -266,7 +266,7 @@
     <symbol>AMD</symbol>
     <name>Advanced Micro Devices</name>
     <taxNumber>941692300</taxNumber>
-    <address>2485 Augustine Drive, Santa Clara, CA 95054, USA</address>
+    <address>2485 Augustine Drive, Santa Clara, CA 95054</address>
     <country>US</country>
   </company>
   <company>
@@ -650,8 +650,8 @@
     <symbol>BTU</symbol>
     <name>PEABODY ENERGY CORP</name>
     <taxNumber>134004153</taxNumber>
-    <address>515 Lowell St, Peabody, MA 01960, USA</address>
-    <country>USA</country>
+    <address>515 Lowell St, Peabody, MA 01960, US</address>
+    <country>US</country>
   </company>
   <company>
     <isin />
@@ -1488,7 +1488,7 @@
     <symbol>INTU</symbol>
     <name>INTUIT</name>
     <taxNumber>770034661</taxNumber>
-    <address>2700 Coast Avenue Mountain View, CA 94043 USA</address>
+    <address>2700 Coast Avenue Mountain View, CA 94043</address>
     <country>US</country>
   </company>
   <company>
@@ -2121,7 +2121,7 @@
     <symbol>NVD</symbol>
     <name>NVIDIA Corporation</name>
     <taxNumber>943177549</taxNumber>
-    <address>2788 San Tomas Expressway, Santa Clara, CA 95051, USA</address>
+    <address>2788 San Tomas Expressway, Santa Clara, CA 95051</address>
     <country>US</country>
   </company>
   <company>
