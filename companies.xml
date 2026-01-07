@@ -28,6 +28,42 @@
   </company>
   <company>
     <isin />
+    <conid>29612256</conid>
+    <symbol>AIRd</symbol>
+    <name>Airbus SE</name>
+    <taxNumber>NL808820400B01</taxNumber>
+    <address>Mendelweg 30, 2333 CS Leiden</address>
+    <country>NL</country>
+  </company>
+  <company>
+    <isin />
+    <conid>15085</conid>
+    <symbol>RHMd</symbol>
+    <name>Rheinmetall AG</name>
+    <taxNumber>DE119356818</taxNumber>
+    <address>Rheinmetall Platz 1, 40476 Düsseldorf</address>
+    <country>DE</country>
+  </company>
+  <company>
+    <isin />
+    <conid>1322028</conid>
+    <symbol>SAF</symbol>
+    <name>SAF-HOLLAND SE</name>
+    <taxNumber>DE332706484</taxNumber>
+    <address>Hauptstraße 26, 63856 Bessenbach</address>
+    <country>DE</country>
+  </company>
+  <company>
+    <isin />
+    <conid>917799</conid>
+    <symbol>HO</symbol>
+    <name>Thales SA</name>
+    <taxNumber>FR51552059024</taxNumber>
+    <address>Tour Carpe Diem, 31 Place des Corolles, 92400 Courbevoie</address>
+    <country>FR</country>
+  </company>
+  <company>
+    <isin />
     <conid>389541685</conid>
     <symbol>005222141</symbol>
     <name>ALLIANZ GLOBAL INV (LU) ALLIANZ EURO CASH "A" (EUR) INC</name>
