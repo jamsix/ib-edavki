@@ -1,5 +1,32 @@
 <companies>
   <company>
+    <isin>US6701002056</isin>
+    <conid />
+    <symbol>NVO</symbol>
+    <name>Novo Nordisk A/S – Sponsored ADR</name>
+    <taxNumber>DK24256790</taxNumber>
+    <address>Novo Alle 1, 2880 BAGSVAERD</address>
+    <country>DK</country>
+  </company>
+  <company>
+    <isin>US26740W1099</isin>
+    <conid />
+    <symbol>RQ0</symbol>
+    <name>D-Wave Quantum Inc.</name>
+    <taxNumber />
+    <address>3033 Beta Avenue, Burnaby, BC, V5G 4M9</address>
+    <country>CA</country>
+  </company>
+  <company>
+    <isin>US49458Q1094</isin>
+    <conid />
+    <symbol>NAKA</symbol>
+    <name>Kindly MD, Inc.</name>
+    <taxNumber />
+    <address>801 Bradbury Drive SE, Albuquerque, NM</address>
+    <country>US</country>
+  </company>
+  <company>
     <isin />
     <conid>389541685</conid>
     <symbol>005222141</symbol>
