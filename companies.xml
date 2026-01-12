@@ -3430,4 +3430,31 @@
     <address>Austrasse 46 Zurich, 8045</address>
     <country>CH</country>
   </company>
+  <company>
+    <isin />
+    <conid>102048570</conid>
+    <symbol>JNKE</symbol>
+    <name>State Street Global Advisors Europe Ltd</name>
+    <taxNumber>49934</taxNumber>
+    <address>78 SIR JOHN ROGERSONS QUAY, DUBLIN, D02 HD32, Ireland</address>
+    <country>IE</country>
+  </company>
+  <company>
+    <isin />
+    <conid>350073450</conid>
+    <symbol>TDGB</symbol>
+    <name>VanEck Asset Management BV</name>
+    <taxNumber>NL819977184B01</taxNumber>
+    <address>Barbara Strozzilaan 310, 1083 HN Amsterdam</address>
+    <country>NL</country>
+  </company>
+  <company>
+    <isin />
+    <conid>119835414</conid>
+    <symbol>XDDX</symbol>
+    <name>DWS Investment SA</name>
+    <taxNumber>DE811248289</taxNumber>
+    <address>Mainzer Landstraße 11-17, 60329 Frankfurt am Main</address>
+    <country>DE</country>
+  </company>  
 </companies>
