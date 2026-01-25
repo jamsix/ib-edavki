@@ -634,12 +634,13 @@
     <country>AR</country>
   </company>
   <company>
-    <isin />
+    <isin>CA0636711016</isin>
+    <conid>5094</conid>
     <symbol>BMO</symbol>
-    <name>Bank Of Montreal Europe Plc</name>
-    <taxNumber>980392985</taxNumber>
-    <address>2 Harbourmaster Place, Ifsc, Dublin 1, L2 D01 X5P3</address>
-    <country>IE</country>
+    <name>Bank of Montreal</name>
+    <taxNumber></taxNumber>
+    <address>129 rue Saint Jacques, Montreal, QC H2Y 1L6</address>
+    <country>CA</country>
   </company>
   <company>
     <isin />
@@ -651,7 +652,8 @@
     <country>DE</country>
   </company>
   <company>
-    <isin />
+    <isin>US1101221083</isin>
+    <conid>5111</conid>
     <symbol>BMY</symbol>
     <name>Bristol-Myers Squibb Co</name>
     <taxNumber>220790350</taxNumber>
@@ -1268,7 +1270,8 @@
     <country>IE</country>
   </company>
   <company>
-    <isin />
+    <isin>US3695501086</isin>
+    <conid>7496</conid>
     <symbol>GD</symbol>
     <name>General Dynamics Corp</name>
     <taxNumber>131673581</taxNumber>
@@ -1328,7 +1331,8 @@
     <country>US</country>
   </company>
   <company>
-    <isin />
+    <isin>US02079K3059</isin>
+    <conid>208813719</conid>
     <symbol>GOOGL</symbol>
     <name>Alphabet Inc.</name>
     <taxNumber>61-1767919</taxNumber>
@@ -1477,7 +1481,8 @@
     <country>US</country>
   </company>
   <company>
-    <isin />
+    <isin>US4404521001</isin>
+    <conid>8153</conid>
     <symbol>HRL</symbol>
     <name>Hormel Foods Corp</name>
     <taxNumber>132599675</taxNumber>
@@ -1731,7 +1736,7 @@
     <country>CA</country>
   </company>
   <company>
-    <isin />
+    <isin>US5007541064</isin>
     <conid>199169586</conid>
     <symbol>KHC</symbol>
     <name>Kraft Heinz Co</name>
@@ -1834,7 +1839,8 @@
     <country>US</country>
   </company>
   <company>
-    <isin />
+    <isin>US5398301094</isin>
+    <conid>611191</conid>
     <symbol>LMT</symbol>
     <name>Lockheed Martin Corp</name>
     <taxNumber>521893632</taxNumber>
@@ -1998,7 +2004,8 @@
     <country>US</country>
   </company>
   <company>
-    <isin />
+    <isin>US58933Y1055</isin>
+    <conid>70101545</conid>
     <symbol>MRK</symbol>
     <name>Merck &amp; Co., Inc.</name>
     <taxNumber>221918501</taxNumber>
@@ -2121,8 +2128,8 @@
     <country>US</country>
   </company>
   <company>
-    <isin />
-    <conid>320187</conid>
+    <isin>US6541061031</isin>
+    <conid>10291</conid>
     <symbol>NKE</symbol>
     <name>Nike, Inc.</name>
     <taxNumber>930584541</taxNumber>
@@ -2138,7 +2145,8 @@
     <country>SI</country>
   </company>
   <company>
-    <isin />
+    <isin>US6374171063</isin>
+    <conid>39042404</conid>
     <symbol>NNN</symbol>
     <name>National Retail Properties, Inc.</name>
     <taxNumber>561431377</taxNumber>
@@ -2249,7 +2257,8 @@
     <country>US</country>
   </company>
   <company>
-    <isin />
+    <isin>US7561091049</isin>
+    <conid>10672</conid>
     <symbol>O</symbol>
     <name>Realty Income</name>
     <taxNumber>330580106</taxNumber>
@@ -2283,7 +2292,8 @@
     <country>US</country>
   </company>
   <company>
-    <isin />
+    <isin>US6826801036</isin>
+    <conid>10794</conid>
     <symbol>OKE</symbol>
     <name>Oneok Inc</name>
     <taxNumber>731520922</taxNumber>
@@ -2368,7 +2378,8 @@
     <country>CA</country>
   </company>
   <company>
-    <isin />
+    <isin>CA7063271034</isin>
+    <conid>105094305</conid>
     <symbol>PBA</symbol>
     <name>Pembina Pipeline Corp</name>
     <taxNumber>980131760</taxNumber>
@@ -2403,7 +2414,8 @@
     <country>US</country>
   </company>
   <company>
-    <isin />
+    <isin>US7134481081</isin>
+    <conid>11017</conid>
     <symbol>PEP</symbol>
     <name>Pepsico Inc</name>
     <taxNumber>131584302</taxNumber>
@@ -2411,7 +2423,8 @@
     <country>US</country>
   </company>
   <company>
-    <isin />
+    <isin>US7170811035</isin>
+    <conid>11031</conid>
     <symbol>PFE</symbol>
     <name>Pfizer Inc</name>
     <taxNumber>135315170</taxNumber>
@@ -3101,7 +3114,7 @@
     <country>US</country>
   </company>
   <company>
-    <isin />
+    <isin>US91324P1021</isin>
     <conid>13272</conid>
     <symbol>UNH</symbol>
     <name>Unitedhealth Group Inc</name>
@@ -3176,7 +3189,7 @@
     <country>US</country>
   </company>
   <company>
-    <isin />
+    <isin>US91912E1055</isin>
     <conid>60581038</conid>
     <symbol>VALE</symbol>
     <name>VALE SA-SP ADR</name>
@@ -3447,6 +3460,87 @@
     <taxNumber>NL819977184B01</taxNumber>
     <address>Barbara Strozzilaan 310, 1083 HN Amsterdam</address>
     <country>NL</country>
+</company>
+<company>
+    <isin>US29446M1027</isin>
+	<conid>316805238</conid>
+    <symbol>EQNR</symbol>
+    <name>EQUINOR ASA-SPON ADR</name>
+    <taxNumber>923609016MVA</taxNumber>
+    <address>Forusbeen 50, STAVANGER 4035 Norway</address>
+    <country>NO</country>
+</company>
+<company>
+    <isin>NO0010345853</isin>
+	<conid>573011565</conid>
+    <symbol>ARC</symbol>
+    <name>AKER BP ASA</name>
+    <taxNumber>989795848MVA</taxNumber>
+    <address>Oksenoyveien 10, LYSAKER 1366, Norway</address>
+    <country>NO</country>
+</company>
+<company>
+    <isin>US6410694060<isin/>
+	<conid>18416232</conid>
+    <symbol>NSRGY</symbol>
+    <name>Nestlé S.A.</name>
+    <taxNumber>CHE-105.909.036</taxNumber>
+    <address>Nestlé S.A. Avenue Nestlé 55, 1800 Vevey, Switzerland</address>
+    <country>CH</country>
+</company>
+<company>
+    <isin>US9485961018<isin/>
+	<conid>148782724</conid>
+    <symbol>WB</symbol>
+    <name>Weibo Corporation</name>
+    <taxNumber>243851</taxNumber>
+    <address>PO Box 309, Ugland House, Grand Cayman, KY1-1104, Cayman Islands</address>
+    <country>KY</country>
+</company>
+<company>
+    <isin>LU0875160326</isin>
+    <conid>142020617</conid>
+    <symbol>ASHR</symbol>
+    <name>Xtrackers Harvest CSI 300 China A-Shares ETF</name>
+    <taxNumber>46-2412431</taxNumber>
+    <address>875 Third Avenue, New York, NY 10022</address>
+    <country>US</country>
+</company>
+<company>
+    <isin>US47215P1066</isin>
+    <conid>152486141</conid>
+    <symbol>JD</symbol>
+    <name>JD.com, Inc. ADR</name>
+    <taxNumber>2034932</taxNumber>
+    <address>PO Box 309, Ugland House, Grand Cayman, KY1-1104</address>
+    <country>KY</country>
+</company>
+<company>
+    <isin>IE00BKX55T58</isin>
+    <conid>170547607</conid>
+    <symbol>VEVE</symbol>
+    <name>Vanguard FTSE Developed World UCITS ETF</name>
+    <taxNumber>IE9764954G</taxNumber>
+    <address>70 Sir John Rogerson's Quay, Dublin 2</address>
+    <country>IE</country>
+</company>
+  <company>
+    <isin>US0152711091</isin>
+    <conid>6607487</conid>
+    <symbol>ARE</symbol>
+    <name>Alexandria Real Estate Equities, Inc.</name>
+    <taxNumber>95-4502084</taxNumber>
+    <address>26 N. Euclid Ave., Pasadena, CA 91101</address>
+    <country>US</country>
+  </company>
+  <company>
+    <isin>NL0009434992</isin>
+    <conid>74866700</conid>
+    <symbol>LYB</symbol>
+    <name>LyondellBasell Industries N.V.</name>
+    <taxNumber>NL812526971B01</taxNumber>
+    <address>1221 McKinney Street, Suite 700, Houston, TX 77010</address>
+    <country>NL</country>
   </company>
   <company>
     <isin />
@@ -3456,5 +3550,5 @@
     <taxNumber>DE811248289</taxNumber>
     <address>Mainzer Landstraße 11-17, 60329 Frankfurt am Main</address>
     <country>DE</country>
-  </company>  
+  </company>
 </companies>
