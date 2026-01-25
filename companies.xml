@@ -3444,21 +3444,21 @@
     <country>CH</country>
   </company>
   <company>
-    <isin>NL0000313286</isin>
-	<conid>2950378</conid>
-    <symbol>ACOMO</symbol>
-    <name>Acomo NV</name>
-    <taxNumber>24180499</taxNumber>
-    <address>WTC, Beursplein 37, 21st floor ROTTERDAM 3011 AA Netherlands</address>
-    <country>NL</country>
-</company>
-<company>
-    <isin>NL0011683594</isin>
-	<conid>234004667</conid>
-    <symbol>TDIV</symbol>
-    <name>VANECK DEV MKT DVD LEADERS AEB</name>
+    <isin />
+    <conid>102048570</conid>
+    <symbol>JNKE</symbol>
+    <name>State Street Global Advisors Europe Ltd</name>
+    <taxNumber>49934</taxNumber>
+    <address>78 SIR JOHN ROGERSONS QUAY, DUBLIN, D02 HD32, Ireland</address>
+    <country>IE</country>
+  </company>
+  <company>
+    <isin />
+    <conid>350073450</conid>
+    <symbol>TDGB</symbol>
+    <name>VanEck Asset Management BV</name>
     <taxNumber>NL819977184B01</taxNumber>
-    <address>VanEck Asset Management B.V. Barbara Strozzilaan 310, 1083 HN Amsterdam</address>
+    <address>Barbara Strozzilaan 310, 1083 HN Amsterdam</address>
     <country>NL</country>
 </company>
 <company>
@@ -3541,5 +3541,14 @@
     <taxNumber>NL812526971B01</taxNumber>
     <address>1221 McKinney Street, Suite 700, Houston, TX 77010</address>
     <country>NL</country>
+  </company>
+  <company>
+    <isin />
+    <conid>119835414</conid>
+    <symbol>XDDX</symbol>
+    <name>DWS Investment SA</name>
+    <taxNumber>DE811248289</taxNumber>
+    <address>Mainzer Landstraße 11-17, 60329 Frankfurt am Main</address>
+    <country>DE</country>
   </company>
 </companies>
