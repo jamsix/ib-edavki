@@ -34,6 +34,17 @@ ib_edavki
 
 Odpri datoteko **taxpayer.xml** in vnesi svoje davčne podatke.
 
+#### Nix
+
+Skripto lahko zaženeš tudi direktno z [nix](https://nixos.org/), brez namestitve.
+
+```bash
+nix run github:jamsix/ib-edavki
+
+# V primeru, da želiš podati parametre
+nix run github:jamsix/ib-edavki -- ib-export-2020.xml ib-export-2021.xml
+```
+
 ### Izvoz poročila v platformi InteractiveBrokers
 
 1. V meniju **Performance & reports** odpri **Flex Queries**
