@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:element name="taxpayer">
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element name="taxNumber" type="xs:string" />
+            <xs:element name="taxpayerType" type="xs:string" />
+            <xs:element name="name" type="xs:string" />
+            <xs:element name="address1" type="xs:string" />
+            <xs:element name="city" type="xs:string" />
+            <xs:element name="postNumber" type="xs:string" />
+            <xs:element name="postName" type="xs:string" />
+            <xs:element name="email" type="xs:string" />
+            <xs:element name="telephoneNumber" type="xs:string" />
+            <xs:element name="residentCountry" type="xs:string" />
+            <xs:element name="isResident" type="xs:boolean" />
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+</xs:schema>
