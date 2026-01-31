@@ -13,7 +13,7 @@ from collections import defaultdict
 from difflib import SequenceMatcher
 from xml.dom import minidom
 
-from generators import doh_obr
+from ib_edavki.generators import doh_obr
 
 bsRateXmlUrl = "https://www.bsi.si/_data/tecajnice/dtecbs-l.xml"
 normalAssets = ["STK", "FUND"]

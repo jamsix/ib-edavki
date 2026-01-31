@@ -1,0 +1,23 @@
+[project]
+name = "ib_edavki"
+version = "1.4.8"
+description = "Skripta, ki prevede XML poročilo trgovalnih poslov v platformi InteractiveBrokers v XML format primeren za uvoz v obrazce Doh-KDVP, D-IFI, Doh-Div in Doh-Obr v eDavkih Finančne uprave."
+readme = "README.md"
+authors = [{ name = "Primož Sečnik Kolman", email = "primoz@outlook.com" }]
+license-files = ["LICENSE"]
+requires-python = ">=3.9"
+dependencies = ["certifi>=2024.8.30", "requests>=2.32.5"]
+
+[project.scripts]
+ib_edavki = "ib_edavki:main"
+ib-edavki = "ib_edavki:main"
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[dependency-groups]
+dev = [
+    "ruff>=0.14.14",
+    "xsdata[cli]>=25.7",
+]
