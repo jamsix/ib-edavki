@@ -26,20 +26,24 @@ stockSplits = defaultdict(list)
 cusipIsinChanges = defaultdict(list)
 
 
-def getSplitMultiplier(symbol, conid, date):
+def getSplitMultiplier(symbol, conid, date, time):
     multiplier = 1
-    key = f"{symbol}:{conid}"
+    #key = f"{symbol}:{conid}"
+    # If symbol changes after stock split then split is not found (eg. MMAT -> split -> rename to MMAT.OLD). Therefore only conid is considered for multiplier.
+    key = f"{conid}"
 
     if key not in stockSplits:
         return multiplier
 
     for splitData in stockSplits[key]:
-        if datetime.datetime.strptime(date, "%Y%m%d") < splitData["date"]:
+        if datetime.datetime.strptime(date + " " + time, "%Y%m%d %H%M%S") < splitData["dateTime"]:
             multiplier *= splitData["multiplier"]
 
     return multiplier
 
 
+""" Stores stock splits with multiplier by date and time
+"""
 def addStockSplits(corporateActions):
     for action in corporateActions:
         description = action.attrib["description"]
@@ -53,15 +57,29 @@ def addStockSplits(corporateActions):
             )
             symbol = action.attrib["symbol"]
             conid = action.attrib["conid"]
-            key = f"{symbol}:{conid}"
-            date = datetime.datetime.strptime(action.attrib["reportDate"], "%Y%m%d")
+            #key = f"{symbol}:{conid}"
+            # If symbol changes after stock split then split is not found (eg. MMAT -> split -> rename to MMAT.OLD). Therefore only conid is considered for multiplier.
+            key = f"{conid}"
+            """ dateTime is now the primary parameter, but old reports only have tradeDate and sometimes tradeTime """
+            try:
+                strDateTime = action.attrib["dateTime"].split(";")
+                strDate = strDateTime[0]
+                strTime = strDateTime[1]
+            except:
+                print("Stock split Corporate Action for conid='" + conid + "' (symbol '" + symbol + "') has issues with dateTime attributes (" + action.attrib["dateTime"] + "), which is a crucial stock split information!")
+                return
+            try:
+                dateTime = datetime.datetime.strptime(strDate + " " + strTime, "%Y%m%d %H%M%S")
+            except:
+                print("Stock split Corporate Action for conid='" + conid + "' (symbol '" + symbol + "') has issues with date and time attribute (" + strDate, strTime + "), which is a crucial stock split information!")
+                return               
 
             # check if the same split was added from a different report
             for split in stockSplits[key]:
-                if split["date"] == date and split["multiplier"] == multiplier:
+                if split["dateTime"] == dateTime and split["multiplier"] == multiplier:
                     continue
 
-            stockSplits[key].append({"date": date, "multiplier": multiplier})
+            stockSplits[key].append({"dateTime": dateTime, "multiplier": multiplier})
 
 
 def getLatestCusipIsin(cusipIsin):
@@ -82,8 +100,6 @@ def updateChangedCusipIsin(corporateActions):
 """ Gets the currency rate for a given date and currency. If no rate exists for a given
     date, it returns the last value on the last previous day on which the rate exists
 """
-
-
 def getCurrencyRate(dateStr, currency, rates):
     if currency == "CNH":
         currency = "CNY"
@@ -366,6 +382,8 @@ def main():
     tradesBySecurityId = {}
     tradesByConid = {}
     tradesBySymbol = {}
+    # cache for quick search of trades by transactionID
+    tradesByTransactionID = {}
 
     """ Get trades from IB XML and sort them by securityID """
     for ibTrades in ibTradesList:
@@ -385,8 +403,9 @@ def main():
                 try:
                     time = ibTrade.attrib["tradeTime"]
                 except KeyError:
-                    time = "0"
+                    time = "000000"
 
+            # Trade tag
             if ibTrade.tag == "Trade":
                 trade = {
                     "conid": ibTrade.attrib["conid"],
@@ -410,7 +429,7 @@ def main():
                     trade["securityID"] = ibTrade.attrib["securityID"]
 
                 splitMultiplier = getSplitMultiplier(
-                    trade["symbol"], trade["conid"], trade["tradeDate"]
+                    trade["symbol"], trade["conid"], date, time
                 )
 
                 trade["quantity"] *= splitMultiplier
@@ -452,22 +471,29 @@ def main():
                     if trade["symbol"] not in tradesBySymbol:
                         tradesBySymbol[trade["symbol"]] = []
                     tradesBySymbol[trade["symbol"]].append(trade)
+                # Cache trades by transactionID
+                if trade["transactionID"] not in tradesByTransactionID:
+                    tradesByTransactionID[trade["transactionID"]] = trade
 
+            # Lot tag (corresponding sell transaction reference)
             elif ibTrade.tag == "Lot" and lastTrade != None:
                 if "openTransactionIds" not in lastTrade:
                     lastTrade["openTransactionIds"] = {}
                 tid = ibTrade.attrib["transactionID"]
 
                 splitMultiplier = getSplitMultiplier(
-                    ibTrade.attrib["symbol"], ibTrade.attrib["conid"], date
+                    ibTrade.attrib["symbol"], ibTrade.attrib["conid"], date, time
                 )
 
                 if tid not in lastTrade["openTransactionIds"]:
-                    lastTrade["openTransactionIds"][tid] = (
+                    lastTrade["openTransactionIds"][tid] = {
+                        "openDateTime": ibTrade.attrib["openDateTime"],
+                        "quantity": (
                         float(ibTrade.attrib["quantity"]) * splitMultiplier
-                    )
+                        ),
+                    }
                 else:
-                    lastTrade["openTransactionIds"][tid] += (
+                    lastTrade["openTransactionIds"][tid]["quantity"] += (
                         float(ibTrade.attrib["quantity"]) * splitMultiplier
                     )
 
@@ -536,7 +562,7 @@ def main():
             else:
                 openSum = 0
                 for openTransactionId in trade["openTransactionIds"]:
-                    openSum += trade["openTransactionIds"][openTransactionId]
+                    openSum += trade["openTransactionIds"][openTransactionId]["quantity"]
                 if abs(trade["quantity"]) == abs(openSum):
                     xtrades.append(trade)
                 else:
@@ -599,15 +625,31 @@ def main():
             ):
                 if securityID not in yearTrades:
                     yearTrades[securityID] = []
-                for xtrade in trades[securityID]:
-                    if (
-                        xtrade["openCloseIndicator"] == "O"
-                        and xtrade["transactionID"] in trade["openTransactionIds"]
-                    ):
-                        ctrade = copy.copy(xtrade)
-                        tid = ctrade["transactionID"]
-                        ctrade["quantity"] = trade["openTransactionIds"][tid]
-                        yearTrades[securityID].append(ctrade)
+                """ Look for the past open trades by TransactionID from Lot """
+                for tid in trade["openTransactionIds"]:
+                    # Check if open transactionID record is missing and print missing info
+                    if tid not in tradesByTransactionID:
+                        # Get date from transactionID's openDateTime
+                        try:
+                            strOpenDateTime = trade["openTransactionIds"][tid]["openDateTime"].split(";")
+                            strOpenDate = strOpenDateTime[0]
+                            strOpenTime = strOpenDateTime[1]
+                        except:
+                            strOpenDate = "00010101"
+                            strOpenTime = "000000"
+                        try:
+                            openDateTime = datetime.datetime.strptime(strOpenDate + " " + strOpenTime, "%Y%m%d %H%M%S")
+                        except:
+                            print("Stock split Corporate Action for conid='" + conid + "' (symbol '" + symbol + "') has issues with date and time attribute (" + strDate, strTime + "), which is a crucial stock split information!")
+                            print("Open trade with transactionID=" + tid, "has issues with date and time attributes (" + strOpenDate, strOpenTime + ").")
+                        print("Open trade with transactionID=" + tid, "from date", openDateTime, "is missing. Report not complete!")
+                    else:
+                        """ Get the corresponding open trade (which may have different initial securityID) """
+                        xtrade = tradesByTransactionID[tid]
+                        if (xtrade["openCloseIndicator"] == "O"):
+                            ctrade = copy.copy(xtrade)
+                            ctrade["quantity"] = trade["openTransactionIds"][tid]["quantity"]
+                            yearTrades[securityID].append(ctrade)
 
                 yearTrades[securityID].append(trade)
 
