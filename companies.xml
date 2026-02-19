@@ -1718,6 +1718,15 @@
     <country>US</country>
   </company>
   <company>
+    <isin>BE0003565737</isin>
+    <conid>917964</conid>
+    <symbol>KBC</symbol>
+    <name>KBC Groep NV</name>
+    <taxNumber>BE0403227515</taxNumber>
+    <address>Havenlaan 2 1080 Brussel</address>
+    <country>BE</country>
+  </company>
+  <company>
     <isin />
     <conid>8772</conid>
     <symbol>KBH</symbol>
