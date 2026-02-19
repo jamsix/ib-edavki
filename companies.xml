@@ -3540,4 +3540,22 @@
     <address>Austrasse 46 Zurich, 8045</address>
     <country>CH</country>
   </company>
+  <company>
+    <isin>DK0062498333<isin/>
+    <conid>652806383</conid>
+    <symbol>NOVOBc</symbol>
+    <name>Novo Nordisk A/S &#8211; Series B</name>
+    <taxNumber>DK24256790</taxNumber>
+    <address>Novo Alle 1, 2880 BAGSVAERD</address>
+    <country>DK</country>
+  </company>
+  <company>
+    <isin>GB00BP6MXD84<isin/>
+    <conid>541411967</conid>
+    <symbol>SHELL</symbol>
+    <name>Shell plc</name>
+    <taxNumber>GB 235 7632 55</taxNumber>
+    <address>York Road Shell Centre London, SE1 7NA</address>
+    <country>GB</country>
+  </company>
 </companies>
