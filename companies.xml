@@ -19,10 +19,27 @@
   </company>
   <company>
     <isin />
+    <conid>69337079</conid>
+    <symbol>1128</symbol>
+    <name>Wynn Macau, Limited</name>
+    <taxNumber>254900NMDQ8ENTHU1I31</taxNumber>
+    <address>Rua Cidade de Sintra, NAPE, Macau</address>
+    <country>MO</country>
+  </company>
+  <company>
+    <isin />
     <symbol>1234</symbol>
     <name>China Lilang Ltd</name>
     <taxNumber />
     <address>Rm 3402 34/F LIPPO CTR TWR ONE 89 QUEENSWAY Admiralty Hong Kong</address>
+    <country>HK</country>
+  </company>
+  <company>
+    <isin />
+    <symbol>1616500</symbol>
+    <name>Shangri-La Asia Limited</name>
+    <taxNumber>197101000484</taxNumber>
+    <address>28/F, Kerry Centre, 683 King&#8217;s Road, Quarry Bay, Hong Kong</address>
     <country>HK</country>
   </company>
   <company>
@@ -63,6 +80,22 @@
   </company>
   <company>
     <isin />
+    <symbol>33222415</symbol>
+    <name>iShares MSCI Japan UCITS ETF</name>
+    <taxNumber>IE8227552C</taxNumber>
+    <address>2 Ballsbridge Park, Dublin 4, Dublin D04 YW83</address>
+    <country>IE</country>
+  </company>
+  <company>
+    <isin />
+    <symbol>45998497</symbol>
+    <name>iShares Core MSCI Europe UCITS ETF EUR</name>
+    <taxNumber>IE8227552C</taxNumber>
+    <address>2 Ballsbridge Park, Dublin 4, Dublin D04 YW83</address>
+    <country>IE</country>
+  </company>
+  <company>
+    <isin />
     <conid>92214835</conid>
     <symbol>5JS</symbol>
     <name>Indofood Agri Resources Ltd</name>
@@ -98,6 +131,15 @@
   </company>
   <company>
     <isin />
+    <conid>1616500</conid>
+    <symbol>69</symbol>
+    <name>Shangri-La Asia Limited</name>
+    <taxNumber>71487603</taxNumber>
+    <address>28/F Kerry Centre, 683 King's Road, Quarry Bay</address>
+    <country>HK</country>
+  </company>
+  <company>
+    <isin />
     <conid>46636681</conid>
     <symbol>857</symbol>
     <name>Petrochina Co Ltd</name>
@@ -122,6 +164,15 @@
     <taxNumber>911100007109250324</taxNumber>
     <address>29 Finance dajie, Xicheng, Beijing 100032</address>
     <country>CN</country>
+  </company>
+  <company>
+    <isin />
+    <conid>780702993</conid>
+    <symbol>9A4U</symbol>
+    <name>ESR-REIT</name>
+    <taxNumber>-</taxNumber>
+    <address>5 Temasek Boulevard, #12-09 Suntec Tower Five, Singapore 038985</address>
+    <country>SG</country>
   </company>
   <company>
     <isin />
@@ -457,6 +508,15 @@
     <taxNumber>111988350</taxNumber>
     <address>200 Vesey Street New York, NY 10285-3106</address>
     <country>US</country>
+  </company>
+  <company>
+    <isin>CA06849F1080</isin>
+    <conid>780709675</conid>
+    <symbol>B</symbol>
+    <name>Barrick Mining Corporation</name>
+    <taxNumber>980161470</taxNumber>
+    <address>161 Bay Street, Suite 3700, Toronto, Ontario M5J 2S1</address>
+    <country>CA</country>
   </company>
   <company>
     <isin>GB0002634946</isin>
@@ -1243,6 +1303,15 @@
     <country>IE</country>
   </company>
   <company>
+    <isin />
+    <conid>33222420</conid>
+    <symbol>FXC</symbol>
+    <name>BlackRock Asset Management Ireland Limited (iSHARES CHINA LARGE CAP)</name>
+    <taxNumber>8227552</taxNumber>
+    <address>2 Ballsbridge Park, Dublin 4, Dublin D04 YW83</address>
+    <country>IE</country>
+  </company>
+  <company>
     <isin>US3695501086</isin>
     <conid>7496</conid>
     <symbol>GD</symbol>
@@ -1507,6 +1576,15 @@
   </company>
   <company>
     <isin />
+    <conid>37036638</conid>
+    <symbol>IBZL</symbol>
+    <name>BlackRock Asset Management Ireland Limited (ISHARES MSCI BRAZIL)</name>
+    <taxNumber>8227552</taxNumber>
+    <address>2 Ballsbridge Park, Dublin 4, Dublin D04 YW83</address>
+    <country>IE</country>
+  </company>
+  <company>
+    <isin />
     <conid>385549212</conid>
     <symbol>IGLE</symbol>
     <name>BlackRock Asset Management Ireland Limited (ISHARES GLOBAL GOV BND-EURHD)</name>
@@ -1525,12 +1603,30 @@
   </company>
   <company>
     <isin />
+    <conid>33222415</conid>
+    <symbol>IJPN</symbol>
+    <name>BlackRock Asset Management Ireland Limited (ISHARES MSCI JAPAN)</name>
+    <taxNumber>8227552</taxNumber>
+    <address>2 Ballsbridge Park, Dublin 4, Dublin D04 YW83</address>
+    <country>IE</country>
+  </company>
+  <company>
+    <isin />
     <conid>2117419</conid>
     <symbol>IMB</symbol>
     <name>Imperial Brands Plc</name>
     <taxNumber>GB238578914</taxNumber>
     <address>121 Winterstoke Road, Bristol, England, BS3 2LL</address>
     <country>GB</country>
+  </company>
+  <company>
+    <isin />
+    <conid>45998497</conid>
+    <symbol>IMEU</symbol>
+    <name>BlackRock Asset Management Ireland Limited (ISHARES CORE MSCI EUROPE)</name>
+    <taxNumber>8227552</taxNumber>
+    <address>2 Ballsbridge Park, Dublin 4, Dublin D04 YW83</address>
+    <country>IE</country>
   </company>
   <company>
     <isin />
@@ -1936,6 +2032,15 @@
     <country>US</country>
   </company>
   <company>
+    <isin>CA55903Q1046</isin>
+    <conid>39924463</conid>
+    <symbol>MAG</symbol>
+    <name>MAG Silver Corp.</name>
+    <taxNumber>BC0523007</taxNumber>
+    <address>801 &#8211; 815 West Hastings Street, Vancouver, British Columbia V6C 1B4</address>
+    <country>CA</country>
+  </company>
+  <company>
     <isin />
     <conid>9358</conid>
     <symbol>MAR</symbol>
@@ -1988,6 +2093,15 @@
     <taxNumber>981183488</taxNumber>
     <address>20 On Hatch, Lower Hatch Street, Dublin, L2 2</address>
     <country>IE</country>
+  </company>
+  <company>
+    <isin>CA5889141019</isin>
+    <conid>785082299</conid>
+    <symbol>MER</symbol>
+    <name>Meren Energy Inc</name>
+    <taxNumber>BC0443700</taxNumber>
+    <address>Suite 2500, 666 Burrard Street, Vancouver, BC V6C 2X8</address>
+    <country>CA</country>
   </company>
   <company>
     <isin>US30303M1027</isin>
@@ -2165,6 +2279,15 @@
   <company>
     <isin>US6541061031</isin>
     <conid>10291</conid>
+    <symbol>NKE</symbol>
+    <name>Nike, Inc.</name>
+    <taxNumber>930584541</taxNumber>
+    <address>One Bowerman Drive, Beaverton, OR 97005-6453</address>
+    <country>US</country>
+  </company>
+  <company>
+    <isin />
+    <conid>320187</conid>
     <symbol>NKE</symbol>
     <name>Nike, Inc.</name>
     <taxNumber>930584541</taxNumber>
@@ -2717,12 +2840,30 @@
   </company>
   <company>
     <isin />
+    <conid>653738477</conid>
+    <symbol>SDZ</symbol>
+    <name>Sandoz Group AG</name>
+    <taxNumber>CHE-433.164.136</taxNumber>
+    <address>Suurstoffi 14, 6343 Rotkreuz</address>
+    <country>CH</country>
+  </company>
+  <company>
+    <isin />
     <conid>756607</conid>
     <symbol>SGC</symbol>
     <name>Superior Group Of Companies, Inc.</name>
     <taxNumber>11-1385670</taxNumber>
     <address>10055 Seminole Blvd, Seminole, Florida</address>
     <country>US</country>
+  </company>
+  <company>
+    <isin />
+    <conid>703603880</conid>
+    <symbol>SHELL.DIR</symbol>
+    <name>Shell plc</name>
+    <taxNumber>GB 235 7632 55</taxNumber>
+    <address>York Road Shell Centre London, SE1 7NA</address>
+    <country>GB</country>
   </company>
   <company>
     <isin />
@@ -2746,6 +2887,33 @@
     <isin />
     <conid>614215023</conid>
     <symbol>SHELL.DRI</symbol>
+    <name>Shell plc</name>
+    <taxNumber>GB 235 7632 55</taxNumber>
+    <address>York Road Shell Centre London, SE1 7NA</address>
+    <country>GB</country>
+  </company>
+  <company>
+    <isin />
+    <conid>806536925</conid>
+    <symbol>SHELL.DRS</symbol>
+    <name>Shell plc</name>
+    <taxNumber>GB 235 7632 55</taxNumber>
+    <address>York Road Shell Centre London, SE1 7NA</address>
+    <country>GB</country>
+  </company>
+  <company>
+    <isin />
+    <conid>760961438</conid>
+    <symbol>SHELL.DRS</symbol>
+    <name>Shell plc</name>
+    <taxNumber>GB 235 7632 55</taxNumber>
+    <address>York Road Shell Centre London, SE1 7NA</address>
+    <country>GB</country>
+  </company>
+  <company>
+    <isin />
+    <conid>722695122</conid>
+    <symbol>SHELL.DRT</symbol>
     <name>Shell plc</name>
     <taxNumber>GB 235 7632 55</taxNumber>
     <address>York Road Shell Centre London, SE1 7NA</address>
@@ -2780,6 +2948,15 @@
   </company>
   <company>
     <isin />
+    <conid>684159894</conid>
+    <symbol>SHELL.RIG</symbol>
+    <name>Shell plc</name>
+    <taxNumber>GB 235 7632 55</taxNumber>
+    <address>York Road Shell Centre London, SE1 7NA</address>
+    <country>GB</country>
+  </company>
+  <company>
+    <isin />
     <conid>562595593</conid>
     <symbol>SHELL.RT</symbol>
     <name>Shell plc</name>
@@ -2791,6 +2968,15 @@
     <isin />
     <conid>544925226</conid>
     <symbol>SHELL.RTS</symbol>
+    <name>Shell plc</name>
+    <taxNumber>GB 235 7632 55</taxNumber>
+    <address>York Road Shell Centre London, SE1 7NA</address>
+    <country>GB</country>
+  </company>
+  <company>
+    <isin />
+    <conid>830625049</conid>
+    <symbol>SHELL1.DI</symbol>
     <name>Shell plc</name>
     <taxNumber>GB 235 7632 55</taxNumber>
     <address>York Road Shell Centre London, SE1 7NA</address>
