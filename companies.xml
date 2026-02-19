@@ -2303,6 +2303,14 @@
     <country>SI</country>
   </company>
   <company>
+    <isin>SI0021117344</isin>
+    <symbol>NLBR</symbol>
+    <name>Nova Ljubljanska banka d.d., Ljubljana</name>
+    <taxNumber>SI91132550</taxNumber>
+    <address>Trg republike 2, 1000 Ljubljana</address>
+    <country>SI</country>
+  </company>
+  <company>
     <isin>US6374171063</isin>
     <conid>39042404</conid>
     <symbol>NNN</symbol>
@@ -2588,6 +2596,14 @@
     <taxNumber>131584302</taxNumber>
     <address>700 Anderson Hill Rd, Purchase, NY 10577</address>
     <country>US</country>
+  </company>
+  <company>
+    <isin>SI0031102153</isin>
+    <symbol>PETG</symbol>
+    <name>Petrol d.d., Ljubljana</name>
+    <taxNumber>SI80267432</taxNumber>
+    <address>Dunajska cesta 50, 1000 Ljubljana</address>
+    <country>SI</country>
   </company>
   <company>
     <isin>US7170811035</isin>
