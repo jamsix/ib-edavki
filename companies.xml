@@ -3752,7 +3752,7 @@
     <country>CH</country>
   </company>
   <company>
-    <isin>DK0062498333<isin/>
+    <isin>DK0062498333</isin>
     <conid>652806383</conid>
     <symbol>NOVOBc</symbol>
     <name>Novo Nordisk A/S &#8211; Series B</name>
@@ -3761,7 +3761,7 @@
     <country>DK</country>
   </company>
   <company>
-    <isin>GB00BP6MXD84<isin/>
+    <isin>GB00BP6MXD84</isin>
     <conid>541411967</conid>
     <symbol>SHELL</symbol>
     <name>Shell plc</name>
